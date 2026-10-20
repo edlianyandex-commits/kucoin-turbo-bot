@@ -83,7 +83,7 @@ strategy but the [protection](#layers-of-protection) around it.
 | Exposure (TWEL) | 20 | total position size up to 20× the balance |
 | Exchange leverage | 20 | |
 | Cooldown between entries | 1 min | |
-| Per-coin stop (HSL) | 0.375 / 0.625 / 0.80 of the slot | yellow → orange (no adds) → red (close the coin for 3 days) |
+| Per-coin stop (HSL) | 30% / 50% / 80% of the coin's slot | yellow → orange (no adds) → red (close the coin for 3 days) |
 | Realized-loss limit | 60% | the bot stops itself |
 | BTC crash exit | −5% in 12 h | close everything, resume after stabilization |
 | Coins | 53 | only those that passed the backtest |
@@ -136,7 +136,7 @@ A new profile is a new JSON block. The panel builds the config from it and
 shows its description and risk level.
 
 **2. Three strategies in the core.** TB Core (Rust) supports `ema_anchor`,
-`trailing_grid` and `trailing_martingale`; the strategy is a config key.
+`trailing_grid_v7` and `trailing_martingale`; the strategy is a config key.
 
 **3. Two operating modes, one codebase.** `bet` is a turbo bet on a dedicated
 balance with profit locking; `main` is continuous trading with a pause on a BTC
@@ -185,8 +185,8 @@ flowchart LR
     C -- no --> D[EMA Anchor strategy]
     D --> E[Per-coin exposure cap<br/>core patch]
     E --> F{Per-coin stop HSL}
-    F -- 37.5% of slot --> F1[Yellow: warning]
-    F -- 62.5% of slot --> F2[Orange: no adds,<br/>exit only]
+    F -- 30% of slot --> F1[Yellow: warning]
+    F -- 50% of slot --> F2[Orange: no adds,<br/>exit only]
     F -- 80% of slot --> F3[Red: close the coin<br/>for 3 days]
     D --> G{BTC −5% in 12 h?}
     G -- yes --> G1[Close all, pause,<br/>resume after stabilization]
