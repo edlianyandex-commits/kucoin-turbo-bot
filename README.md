@@ -1,37 +1,46 @@
-# TB — торговый бот для KuCoin Futures
+# TB — trading bot for KuCoin Futures
 
-Бот для фьючерсов KuCoin: веб-панель управления, турбо-режим «ставок» на месяц,
-защита от обвала BTC, фильтр делистинга и Telegram-бот для остановки и фиксации
-прибыли. Ядро торговли — TB Core (`engine/`), форк [passivbot](https://github.com/enarjord/passivbot)
-(public domain, Unlicense).
+**English** · [Русский](README.ru.md)
 
-## Состав
+A trading bot for KuCoin Futures: a web control panel, a monthly "bet" turbo
+mode, BTC-crash protection, a delisting filter and a Telegram bot for stopping
+and locking in profit. The trading core is TB Core (`engine/`), a fork of
+[passivbot](https://github.com/enarjord/passivbot) (public domain, Unlicense).
 
-| Папка | Что это |
+## Layout
+
+| Folder | What it is |
 |---|---|
-| `engine/` | ядро TB Core: Python + Rust-модуль (бэктест, оптимизация, live) |
-| `turbo/` | бот: панель `tb4/panel/`, конфиги, справочники монет |
-| `panel/` | общий исходник панели и пресеты |
-| `telegram/` | Telegram-бот (стоп / фиксация с подтверждением) |
-| `deploy/` | выкладка на сервер (Ubuntu + systemd), отчёты, симулятор `sim/` |
-| `ai/` | карта проекта и правила для работы ИИ с кодом |
-| `extras/` | исследования и архив |
+| `engine/` | TB Core: Python + Rust module (backtest, optimization, live trading) |
+| `turbo/` | the bot: `tb4/panel/` panel, configs, coin lists |
+| `panel/` | shared panel source and presets |
+| `telegram/` | Telegram bot (stop / lock profit with confirmation) |
+| `deploy/` | server deployment (Ubuntu + systemd), reports, `sim/` simulator |
+| `ai/` | project map and rules for AI-assisted work on the code |
+| `extras/` | research and archive |
 
-## Установка
+Most comments and internal docs are in Russian.
+
+## Installation
 
 1. Python 3.12, Rust (stable), Git.
-2. Ядро: см. [engine/docs/installation.md](engine/docs/installation.md); Rust-модуль
-   собирается скриптом `engine/rustbuild.sh`.
-3. Ключи биржи — в `api-keys.json` (файл в `.gitignore`, в репозиторий не попадает).
-4. Сервер: укажите свой адрес вместо `YOUR_SERVER_IP` в скриптах `deploy/` и
-   `telegram/telegram_setup.bat`, затем `deploy/deploy.ps1`.
+2. Core: see [engine/docs/installation.md](engine/docs/installation.md); the Rust
+   module is built with `engine/rustbuild.sh`.
+3. Exchange keys go into `api-keys.json` (listed in `.gitignore`, never committed).
+4. Server: replace `YOUR_SERVER_IP` in the `deploy/` scripts and
+   `telegram/telegram_setup.bat` with your address, then run `deploy/deploy.ps1`.
 
-## Реферальная ссылка
+## Referral link
 
-Регистрация на KuCoin по ссылке поддерживает проект:
+Signing up on KuCoin with this link supports the project:
 https://www.kucoin.com/r/rf/CXEENJJA
 
-## Лицензия
+## Disclaimer
 
-Ядро унаследовано от passivbot и распространяется как public domain (Unlicense),
-см. раздел License в [engine/README.md](engine/README.md).
+Trading futures with leverage carries a high risk of losing your funds. This
+software is provided as is, without any warranty; use it at your own risk.
+
+## License
+
+The core is inherited from passivbot and is released into the public domain
+(Unlicense); see the License section in [engine/README.md](engine/README.md).
