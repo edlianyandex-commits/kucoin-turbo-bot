@@ -88,7 +88,7 @@ strategy but the [protection](#layers-of-protection) around it.
 | BTC crash exit | −5% in 12 h | close everything, resume after stabilization |
 | Coins | 53 | only those that passed the backtest |
 
-**Backtest** (starting balance 8.6 USDT, KuCoin, 53 coins):
+**Backtest** (KuCoin, 53 coins):
 
 | Period | Result | Max drawdown |
 |---|---:|---:|
@@ -224,8 +224,9 @@ flowchart LR
 - **Reliance on the BTC guard.** Without the BTC exit, a crash like 10 Oct 2025
   wipes the account. If BTC data is unavailable the rule is skipped and only
   the per-coin stops and the loss limit remain.
-- **Small balance.** The results above use 8.6 USDT; a large balance gets worse
-  execution (slippage, order-book depth), a very small one hits minimum lots.
+- **Deposit size.** Results depend on the amount: a large balance gets worse
+  execution (slippage, order-book depth), a very small one hits the exchange's
+  minimum lots.
 - **Funding is not included** in backtests (historically the bot received
   funding more often than it paid, but don't count on it).
 - **Exchange and infrastructure risks.** API outages, regional restrictions,
