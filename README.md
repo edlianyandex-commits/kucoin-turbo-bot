@@ -173,7 +173,7 @@ works **outside** the tuning period.
 ## Layers of protection
 
 ```mermaid
-flowchart TD
+flowchart LR
     A[KuCoin coins] --> B{Passed backtest?}
     B -- no --> X1[Not traded]
     B -- yes --> C{Delisting or<br/>overheated coin?}
