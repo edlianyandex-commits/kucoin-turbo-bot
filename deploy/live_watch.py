@@ -393,7 +393,7 @@ def main():
         ex_err = f"{type(e).__name__}: {str(e)[:120]}"
         log_event("ОШИБКА ЧТЕНИЯ БИРЖИ: " + ex_err)
 
-    # экспозиция — к реальному капиталу на счёте; прежняя база из state застряла на ~200 USDT после вывода средств
+    # экспозиция — к реальному капиталу на счёте; прежняя база из state застряла на прежнем уровне после вывода средств
     equity_base = total or st.get("equity_base") or 0.0
     expo = (notional / equity_base) if (equity_base and notional is not None) else None
 
