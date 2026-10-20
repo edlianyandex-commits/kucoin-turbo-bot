@@ -3,6 +3,7 @@
 **English** · [Русский](README.ru.md)
 
 [![Support the project — USDT TRC20](https://img.shields.io/badge/Donate-USDT%20TRC20-26A17B?logo=tether&logoColor=white)](#support-the-project)
+[![Donate by card — DonationAlerts](https://img.shields.io/badge/Donate-DonationAlerts-F57507)](https://www.donationalerts.com/r/edwardluan11)
 
 > **In short.** TB is a complete trading system for KuCoin Futures: a Python +
 > Rust core, a web panel, a Telegram bot, server deployment and a simulator.
@@ -286,6 +287,10 @@ Signing up on KuCoin with this link supports the project:
 
 If the bot has been useful — or profitable — you can support its development
 with a donation. It pays for the server, backtest data and new research.
+
+**By card — DonationAlerts:**
+**https://www.donationalerts.com/r/edwardluan11**
+(the page opens in Russian by default — switch to English at the bottom of the page)
 
 **USDT on the TRON network (TRC20):**
 

@@ -3,6 +3,7 @@
 [English](README.md) · **Русский**
 
 [![Поддержать проект — USDT TRC20](https://img.shields.io/badge/%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C-USDT%20TRC20-26A17B?logo=tether&logoColor=white)](#поддержать-проект)
+[![Донат картой — DonationAlerts](https://img.shields.io/badge/%D0%94%D0%BE%D0%BD%D0%B0%D1%82-DonationAlerts-F57507)](https://www.donationalerts.com/r/edwardluan11)
 
 > **Коротко.** TB — это готовая торговая система для фьючерсов KuCoin: ядро на
 > Python + Rust, веб-панель, Telegram-бот, выкладка на сервер и симулятор.
@@ -288,6 +289,9 @@ flowchart LR
 
 Если бот принёс вам пользу — или прибыль, — можно поддержать его развитие
 донатом. Деньги идут на сервер, данные для бэктестов и новые исследования.
+
+**Картой или через СБП — DonationAlerts:**
+**https://www.donationalerts.com/r/edwardluan11**
 
 **USDT, сеть TRON (TRC20):**
 
