@@ -1,0 +1,20 @@
+{
+  "preset": "turbo_ema5",
+  "balance": 200.0,
+  "leverage": 20.0,
+  "auto_lock": true,
+  "target_mult": 0,
+  "regime_filter": false,
+  "profit_guard": false,
+  "bet_stop": 0,
+  "stop_rebase_days": 0,
+  "btc_exit": 0.05,
+  "btc_exit_hours": 12,
+  "btc_resume": true,
+  "coin_filter_dd": 0,
+  "coin_filter_days": 30,
+  "exposure": null,
+  "positions": null,
+  "hsl_enabled": null,
+  "hsl_threshold": null
+}

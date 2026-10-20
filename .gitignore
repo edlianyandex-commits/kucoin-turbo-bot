@@ -1,0 +1,17 @@
+BRIDGE.md
+**/api-keys.json
+api-keys.json
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyd
+*.so
+turbo/caches/
+turbo/backtests/
+logs/
+*.log
+**/target/
+target/
+*.rust-src-sha256
+*.pdb

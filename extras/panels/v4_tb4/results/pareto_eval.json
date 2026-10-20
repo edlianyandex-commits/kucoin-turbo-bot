@@ -1,0 +1,1206 @@
+[
+ {
+  "name": "Кандидат 1",
+  "file": "0652b2f1dd94a50049c95e53abe8a32928ce8813f0ccf5462de679fddb722a87.json",
+  "params": {
+   "exposure": 1.5,
+   "positions": 3.0,
+   "initial_pct": 0.0654,
+   "ddf": 0.4
+  },
+  "train": {
+   "adg_strategy_eq": 0.0031525499161644266,
+   "drawdown_worst_strategy_eq": 0.31038902602298335
+  },
+  "full": {
+   "return_pct": 214.5,
+   "month_pct": 12.1,
+   "max_dd_pct": 30.1,
+   "min_equity_pct": -14.5,
+   "best_30d_pct": 86.5,
+   "worst_30d_pct": -23.3,
+   "median_30d_pct": 8.9,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 78.8,
+   "monthly": {
+    "2025-12": -0.5,
+    "2026-01": 4.8,
+    "2026-02": -7.0,
+    "2026-03": 61.4,
+    "2026-04": 17.0,
+    "2026-05": 8.1,
+    "2026-06": 3.7,
+    "2026-07": 2.3,
+    "2026-08": 30.3,
+    "2026-09": 13.0
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 18.7,
+   "month_pct": 9.0,
+   "max_dd_pct": 7.6,
+   "min_equity_pct": -2.7,
+   "best_30d_pct": 20.4,
+   "worst_30d_pct": 1.2,
+   "median_30d_pct": 6.2,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.4,
+    "2026-08": 4.0,
+    "2026-09": 14.4
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 2",
+  "file": "0bd86a2db5b5c7776814ba641ccf210fe6af070d9f9418d9b50f0b0563bd0475.json",
+  "params": {
+   "exposure": 0.9,
+   "positions": 3.0,
+   "initial_pct": 0.0653,
+   "ddf": 0.46
+  },
+  "train": {
+   "adg_strategy_eq": 0.0008527239421300958,
+   "drawdown_worst_strategy_eq": 0.09611235818241466
+  },
+  "full": {
+   "return_pct": 40.1,
+   "month_pct": 3.4,
+   "max_dd_pct": 9.0,
+   "min_equity_pct": -3.2,
+   "best_30d_pct": 22.0,
+   "worst_30d_pct": -7.3,
+   "median_30d_pct": 2.4,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 73.9,
+   "monthly": {
+    "2025-12": 0.5,
+    "2026-01": 2.3,
+    "2026-02": -3.2,
+    "2026-03": 4.8,
+    "2026-04": 11.3,
+    "2026-05": 7.0,
+    "2026-06": -3.0,
+    "2026-07": 1.9,
+    "2026-08": 6.7,
+    "2026-09": 6.3
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 18.9,
+   "month_pct": 9.0,
+   "max_dd_pct": 4.4,
+   "min_equity_pct": -1.5,
+   "best_30d_pct": 21.1,
+   "worst_30d_pct": 1.9,
+   "median_30d_pct": 4.6,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.3,
+    "2026-08": 2.7,
+    "2026-09": 16.1
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 3",
+  "file": "107bb57cdd77151fa766349d130cccdff84dcdb492998a315dea3df5e1a1235c.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0457,
+   "ddf": 0.23
+  },
+  "train": {
+   "adg_strategy_eq": 0.00044544120068956694,
+   "drawdown_worst_strategy_eq": 0.0943340358515263
+  },
+  "full": {
+   "return_pct": 27.9,
+   "month_pct": 2.5,
+   "max_dd_pct": 9.0,
+   "min_equity_pct": -5.5,
+   "best_30d_pct": 15.8,
+   "worst_30d_pct": -8.0,
+   "median_30d_pct": 1.4,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 60.2,
+   "monthly": {
+    "2025-12": -0.4,
+    "2026-01": 0.5,
+    "2026-02": -2.6,
+    "2026-03": 4.1,
+    "2026-04": 8.5,
+    "2026-05": 5.2,
+    "2026-06": -4.2,
+    "2026-07": -0.3,
+    "2026-08": 3.3,
+    "2026-09": 11.0
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 7.5,
+   "month_pct": 3.7,
+   "max_dd_pct": 3.1,
+   "min_equity_pct": -0.1,
+   "best_30d_pct": 7.5,
+   "worst_30d_pct": 0.8,
+   "median_30d_pct": 2.6,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.1,
+    "2026-08": 1.8,
+    "2026-09": 5.6
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 4",
+  "file": "119ee4cdeaa3065b188dc4492855f643ed80d7d5aad8de33bd358b3634d76e38.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0685,
+   "ddf": 1.03
+  },
+  "train": {
+   "adg_strategy_eq": 0.0012223883351192288,
+   "drawdown_worst_strategy_eq": 0.12556475488381103
+  },
+  "full": {
+   "return_pct": 55.0,
+   "month_pct": 4.5,
+   "max_dd_pct": 11.9,
+   "min_equity_pct": -6.6,
+   "best_30d_pct": 26.4,
+   "worst_30d_pct": -9.0,
+   "median_30d_pct": 3.9,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 79.3,
+   "monthly": {
+    "2025-12": -2.1,
+    "2026-01": 0.8,
+    "2026-02": -1.4,
+    "2026-03": 15.9,
+    "2026-04": 10.7,
+    "2026-05": 4.7,
+    "2026-06": -0.0,
+    "2026-07": 2.4,
+    "2026-08": 8.7,
+    "2026-09": 5.9
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 11.8,
+   "month_pct": 5.7,
+   "max_dd_pct": 3.8,
+   "min_equity_pct": -1.8,
+   "best_30d_pct": 12.9,
+   "worst_30d_pct": 1.8,
+   "median_30d_pct": 4.4,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.3,
+    "2026-08": 2.5,
+    "2026-09": 9.3
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 5",
+  "file": "2363dad221917a67224862f58429649fa48f71c04939d1a7f8909ad9ecf46094.json",
+  "params": {
+   "exposure": 1.5,
+   "positions": 3.0,
+   "initial_pct": 0.026,
+   "ddf": 0.42
+  },
+  "train": {
+   "adg_strategy_eq": 0.003061977540890215,
+   "drawdown_worst_strategy_eq": 0.3085185540941216
+  },
+  "full": {
+   "return_pct": 283.9,
+   "month_pct": 14.4,
+   "max_dd_pct": 29.9,
+   "min_equity_pct": -15.5,
+   "best_30d_pct": 82.0,
+   "worst_30d_pct": -26.2,
+   "median_30d_pct": 10.5,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 78.7,
+   "monthly": {
+    "2025-12": -2.0,
+    "2026-01": 6.7,
+    "2026-02": -8.2,
+    "2026-03": 47.5,
+    "2026-04": 11.1,
+    "2026-05": 27.2,
+    "2026-06": -10.9,
+    "2026-07": 13.1,
+    "2026-08": 67.3,
+    "2026-09": 11.1
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 16.3,
+   "month_pct": 7.9,
+   "max_dd_pct": 9.1,
+   "min_equity_pct": -2.2,
+   "best_30d_pct": 22.2,
+   "worst_30d_pct": -0.9,
+   "median_30d_pct": 3.0,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 93.2,
+   "monthly": {
+    "2026-07": -0.1,
+    "2026-08": 0.4,
+    "2026-09": 15.9
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 6",
+  "file": "2e835ccbcce880b927558aff52ab201695075555ba94d81148e3ac6e2ddf0e16.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0458,
+   "ddf": 1.03
+  },
+  "train": {
+   "adg_strategy_eq": 0.0008983287411472585,
+   "drawdown_worst_strategy_eq": 0.11236427518067899
+  },
+  "full": {
+   "return_pct": 48.0,
+   "month_pct": 4.0,
+   "max_dd_pct": 10.7,
+   "min_equity_pct": -4.7,
+   "best_30d_pct": 20.8,
+   "worst_30d_pct": -8.5,
+   "median_30d_pct": 3.1,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 71.1,
+   "monthly": {
+    "2025-12": -0.3,
+    "2026-01": 3.0,
+    "2026-02": -4.2,
+    "2026-03": 4.7,
+    "2026-04": 10.2,
+    "2026-05": 16.2,
+    "2026-06": -4.4,
+    "2026-07": -2.3,
+    "2026-08": 12.2,
+    "2026-09": 6.5
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 7.2,
+   "month_pct": 3.5,
+   "max_dd_pct": 4.6,
+   "min_equity_pct": -1.6,
+   "best_30d_pct": 10.2,
+   "worst_30d_pct": -0.8,
+   "median_30d_pct": 1.5,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 85.6,
+   "monthly": {
+    "2026-07": -0.1,
+    "2026-08": -0.2,
+    "2026-09": 7.4
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 7",
+  "file": "3c7cd89e462c9e5bde63339b8a4302dedac4b12b883b8ea9e424b0ebbd98f24e.json",
+  "params": {
+   "exposure": 0.9,
+   "positions": 3.0,
+   "initial_pct": 0.0091,
+   "ddf": 1.14
+  },
+  "train": {
+   "adg_strategy_eq": 0.00023854044967741572,
+   "drawdown_worst_strategy_eq": 0.07160226929428312
+  },
+  "full": {
+   "return_pct": 7.5,
+   "month_pct": 0.7,
+   "max_dd_pct": 6.5,
+   "min_equity_pct": -2.2,
+   "best_30d_pct": 7.6,
+   "worst_30d_pct": -5.4,
+   "median_30d_pct": 0.6,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 92.6,
+   "monthly": {
+    "2025-12": 0.4,
+    "2026-01": -0.1,
+    "2026-02": 1.5,
+    "2026-03": 0.5,
+    "2026-04": 0.4,
+    "2026-05": 1.2,
+    "2026-06": -1.8,
+    "2026-07": 3.7,
+    "2026-08": 0.5,
+    "2026-09": 0.8
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 1.1,
+   "month_pct": 0.5,
+   "max_dd_pct": 0.4,
+   "min_equity_pct": -0.1,
+   "best_30d_pct": 0.9,
+   "worst_30d_pct": 0.3,
+   "median_30d_pct": 0.6,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.0,
+    "2026-08": 0.6,
+    "2026-09": 0.5
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 8",
+  "file": "3d445fceddbd69264b3c2eebdd6e1433832843525763addd7fc03ce5053cd590.json",
+  "params": {
+   "exposure": 0.9,
+   "positions": 3.0,
+   "initial_pct": 0.058,
+   "ddf": 1.12
+  },
+  "train": {
+   "adg_strategy_eq": 0.0014890576579205117,
+   "drawdown_worst_strategy_eq": 0.13642435554587093
+  },
+  "full": {
+   "return_pct": 67.3,
+   "month_pct": 5.3,
+   "max_dd_pct": 12.8,
+   "min_equity_pct": -7.9,
+   "best_30d_pct": 28.4,
+   "worst_30d_pct": -9.1,
+   "median_30d_pct": 4.6,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 80.9,
+   "monthly": {
+    "2025-12": -2.9,
+    "2026-01": 1.3,
+    "2026-02": -2.8,
+    "2026-03": 20.1,
+    "2026-04": 3.3,
+    "2026-05": 12.3,
+    "2026-06": 1.3,
+    "2026-07": 5.2,
+    "2026-08": 5.9,
+    "2026-09": 9.9
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 11.9,
+   "month_pct": 5.8,
+   "max_dd_pct": 3.6,
+   "min_equity_pct": -1.7,
+   "best_30d_pct": 10.7,
+   "worst_30d_pct": 2.5,
+   "median_30d_pct": 5.9,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.3,
+    "2026-08": 4.5,
+    "2026-09": 7.3
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 9",
+  "file": "5ab26969733cbe8db09288bbbc6fc16d79eb63c5acd9ba9f3e83be4722aa1d58.json",
+  "params": {
+   "exposure": 0.9,
+   "positions": 3.0,
+   "initial_pct": 0.0673,
+   "ddf": 0.25
+  },
+  "train": {
+   "adg_strategy_eq": 0.001961931174184972,
+   "drawdown_worst_strategy_eq": 0.1620128678090437
+  },
+  "full": {
+   "return_pct": 104.3,
+   "month_pct": 7.4,
+   "max_dd_pct": 14.9,
+   "min_equity_pct": -7.1,
+   "best_30d_pct": 34.5,
+   "worst_30d_pct": -11.4,
+   "median_30d_pct": 7.1,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 82.3,
+   "monthly": {
+    "2025-12": -1.2,
+    "2026-01": 1.8,
+    "2026-02": -2.6,
+    "2026-03": 21.1,
+    "2026-04": 7.1,
+    "2026-05": 14.3,
+    "2026-06": 7.3,
+    "2026-07": 1.8,
+    "2026-08": 13.1,
+    "2026-09": 12.4
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 17.4,
+   "month_pct": 8.4,
+   "max_dd_pct": 5.8,
+   "min_equity_pct": -1.5,
+   "best_30d_pct": 19.5,
+   "worst_30d_pct": 0.8,
+   "median_30d_pct": 4.3,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.3,
+    "2026-08": 2.0,
+    "2026-09": 15.2
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 10",
+  "file": "6f16485932eff4c202e1e543cabbc1a4dd27ec54a7c69da598fbb730bdcd3f49.json",
+  "params": {
+   "exposure": 0.9,
+   "positions": 3.0,
+   "initial_pct": 0.0378,
+   "ddf": 0.28
+  },
+  "train": {
+   "adg_strategy_eq": 0.0021342542038069734,
+   "drawdown_worst_strategy_eq": 0.17103539244466923
+  },
+  "full": {
+   "return_pct": 128.2,
+   "month_pct": 8.6,
+   "max_dd_pct": 16.5,
+   "min_equity_pct": -4.1,
+   "best_30d_pct": 46.9,
+   "worst_30d_pct": -13.8,
+   "median_30d_pct": 5.3,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 77.4,
+   "monthly": {
+    "2025-12": -0.2,
+    "2026-01": 6.3,
+    "2026-02": -2.8,
+    "2026-03": 27.6,
+    "2026-04": 4.0,
+    "2026-05": 21.7,
+    "2026-06": -4.2,
+    "2026-07": 3.2,
+    "2026-08": 24.8,
+    "2026-09": 9.2
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 6.7,
+   "month_pct": 3.3,
+   "max_dd_pct": 1.3,
+   "min_equity_pct": -0.1,
+   "best_30d_pct": 6.4,
+   "worst_30d_pct": 0.5,
+   "median_30d_pct": 1.9,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.1,
+    "2026-08": 1.0,
+    "2026-09": 5.6
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 11",
+  "file": "840ce64b7ee3e6fa9edeae3e18d1146e2d06f7f87d1a80c27a83c6045f0c47eb.json",
+  "params": {
+   "exposure": 1.25,
+   "positions": 3.0,
+   "initial_pct": 0.0868,
+   "ddf": 1.03
+  },
+  "train": {
+   "adg_strategy_eq": 0.0029018714269293255,
+   "drawdown_worst_strategy_eq": 0.25722183691761696
+  },
+  "full": {
+   "return_pct": 245.5,
+   "month_pct": 13.2,
+   "max_dd_pct": 25.1,
+   "min_equity_pct": -13.2,
+   "best_30d_pct": 62.0,
+   "worst_30d_pct": -21.0,
+   "median_30d_pct": 10.0,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 79.5,
+   "monthly": {
+    "2025-12": 0.6,
+    "2026-01": 5.1,
+    "2026-02": -9.5,
+    "2026-03": 13.2,
+    "2026-04": 18.5,
+    "2026-05": 49.8,
+    "2026-06": -12.1,
+    "2026-07": 16.2,
+    "2026-08": 53.2,
+    "2026-09": 12.3
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 11.7,
+   "month_pct": 5.7,
+   "max_dd_pct": 1.8,
+   "min_equity_pct": -0.3,
+   "best_30d_pct": 9.5,
+   "worst_30d_pct": 3.6,
+   "median_30d_pct": 7.3,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.2,
+    "2026-08": 6.6,
+    "2026-09": 4.9
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 12",
+  "file": "86ccfd3ecf1a3454d116e0c7fca7a9fd73a64e6e5b6df38d5abcc58643dc6214.json",
+  "params": {
+   "exposure": 0.95,
+   "positions": 3.0,
+   "initial_pct": 0.0483,
+   "ddf": 0.26
+  },
+  "train": {
+   "adg_strategy_eq": 0.0026698994358933525,
+   "drawdown_worst_strategy_eq": 0.1811610615511468
+  },
+  "full": {
+   "return_pct": 163.4,
+   "month_pct": 10.2,
+   "max_dd_pct": 17.5,
+   "min_equity_pct": -3.5,
+   "best_30d_pct": 44.6,
+   "worst_30d_pct": -10.9,
+   "median_30d_pct": 8.8,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 89.6,
+   "monthly": {
+    "2025-12": 0.9,
+    "2026-01": 10.9,
+    "2026-02": -2.5,
+    "2026-03": 11.3,
+    "2026-04": 16.6,
+    "2026-05": 24.9,
+    "2026-06": -0.6,
+    "2026-07": 6.7,
+    "2026-08": 37.9,
+    "2026-09": 0.9
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 12.7,
+   "month_pct": 6.2,
+   "max_dd_pct": 3.9,
+   "min_equity_pct": -1.3,
+   "best_30d_pct": 13.4,
+   "worst_30d_pct": 2.3,
+   "median_30d_pct": 4.4,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.2,
+    "2026-08": 3.0,
+    "2026-09": 9.6
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 13",
+  "file": "9c32e0d473c79f335e1dcfc75821f8f3d4e4c16e2e0b404359cf99677c86504f.json",
+  "params": {
+   "exposure": 1.2,
+   "positions": 3.0,
+   "initial_pct": 0.0478,
+   "ddf": 0.23
+  },
+  "train": {
+   "adg_strategy_eq": 0.0029993603259061974,
+   "drawdown_worst_strategy_eq": 0.2766151926493048
+  },
+  "full": {
+   "return_pct": 260.3,
+   "month_pct": 13.7,
+   "max_dd_pct": 25.9,
+   "min_equity_pct": -12.9,
+   "best_30d_pct": 68.5,
+   "worst_30d_pct": -21.8,
+   "median_30d_pct": 9.0,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 77.6,
+   "monthly": {
+    "2025-12": -0.9,
+    "2026-01": 6.0,
+    "2026-02": -7.3,
+    "2026-03": 39.5,
+    "2026-04": 5.8,
+    "2026-05": 37.0,
+    "2026-06": -3.5,
+    "2026-07": 5.5,
+    "2026-08": 57.8,
+    "2026-09": 11.8
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 19.1,
+   "month_pct": 9.1,
+   "max_dd_pct": 5.3,
+   "min_equity_pct": -2.0,
+   "best_30d_pct": 19.2,
+   "worst_30d_pct": 3.4,
+   "median_30d_pct": 7.1,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.4,
+    "2026-08": 5.0,
+    "2026-09": 13.6
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 14",
+  "file": "a0caacfe3efbcd79f315000b31f076741e606f088f788bc3d753507cce14658d.json",
+  "params": {
+   "exposure": 0.95,
+   "positions": 3.0,
+   "initial_pct": 0.0791,
+   "ddf": 1.11
+  },
+  "train": {
+   "adg_strategy_eq": 0.0011031587003731413,
+   "drawdown_worst_strategy_eq": 0.11347242239791688
+  },
+  "full": {
+   "return_pct": 52.8,
+   "month_pct": 4.3,
+   "max_dd_pct": 10.9,
+   "min_equity_pct": -4.3,
+   "best_30d_pct": 24.8,
+   "worst_30d_pct": -7.9,
+   "median_30d_pct": 3.1,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 74.4,
+   "monthly": {
+    "2025-12": 0.4,
+    "2026-01": 1.8,
+    "2026-02": -3.2,
+    "2026-03": 5.2,
+    "2026-04": 12.2,
+    "2026-05": 17.2,
+    "2026-06": -4.6,
+    "2026-07": -0.8,
+    "2026-08": 13.8,
+    "2026-09": 3.2
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 13.7,
+   "month_pct": 6.6,
+   "max_dd_pct": 3.7,
+   "min_equity_pct": -2.0,
+   "best_30d_pct": 13.7,
+   "worst_30d_pct": 2.5,
+   "median_30d_pct": 6.0,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.3,
+    "2026-08": 3.6,
+    "2026-09": 9.9
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 15",
+  "file": "a5e12c71d83ef331a9f267236886cd219b65bb7d6962662accd20130e6c1d598.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0673,
+   "ddf": 1.03
+  },
+  "train": {
+   "adg_strategy_eq": 0.0014575663248082016,
+   "drawdown_worst_strategy_eq": 0.1270917136927455
+  },
+  "full": {
+   "return_pct": 64.7,
+   "month_pct": 5.1,
+   "max_dd_pct": 12.3,
+   "min_equity_pct": -6.0,
+   "best_30d_pct": 26.9,
+   "worst_30d_pct": -8.7,
+   "median_30d_pct": 4.9,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 81.8,
+   "monthly": {
+    "2025-12": -2.0,
+    "2026-01": 0.9,
+    "2026-02": -0.8,
+    "2026-03": 16.1,
+    "2026-04": 11.0,
+    "2026-05": 4.8,
+    "2026-06": 3.7,
+    "2026-07": 3.2,
+    "2026-08": 7.7,
+    "2026-09": 7.3
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 12.0,
+   "month_pct": 5.8,
+   "max_dd_pct": 3.8,
+   "min_equity_pct": -1.6,
+   "best_30d_pct": 12.8,
+   "worst_30d_pct": 2.0,
+   "median_30d_pct": 4.4,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.3,
+    "2026-08": 2.7,
+    "2026-09": 9.2
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 16",
+  "file": "b0750ba096a0d8fc23cdc2515c56522747483622c7eb4c66996ea6d336b646e8.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0458,
+   "ddf": 0.26
+  },
+  "train": {
+   "adg_strategy_eq": 0.0017028163329750878,
+   "drawdown_worst_strategy_eq": 0.14560795501444604
+  },
+  "full": {
+   "return_pct": 78.9,
+   "month_pct": 6.0,
+   "max_dd_pct": 14.0,
+   "min_equity_pct": -4.8,
+   "best_30d_pct": 31.8,
+   "worst_30d_pct": -9.8,
+   "median_30d_pct": 4.1,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 81.5,
+   "monthly": {
+    "2025-12": -0.8,
+    "2026-01": 3.3,
+    "2026-02": -2.5,
+    "2026-03": 19.5,
+    "2026-04": 5.4,
+    "2026-05": 18.4,
+    "2026-06": -2.6,
+    "2026-07": 2.2,
+    "2026-08": 17.3,
+    "2026-09": 1.8
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 7.2,
+   "month_pct": 3.5,
+   "max_dd_pct": 4.3,
+   "min_equity_pct": -1.0,
+   "best_30d_pct": 9.4,
+   "worst_30d_pct": -0.3,
+   "median_30d_pct": 1.5,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 96.0,
+   "monthly": {
+    "2026-07": -0.1,
+    "2026-08": 0.4,
+    "2026-09": 6.8
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 17",
+  "file": "c8c8d91205a9bf0e8c33686738fc8fd8108dd341da9461faeb6b0650de6d965e.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0464,
+   "ddf": 0.42
+  },
+  "train": {
+   "adg_strategy_eq": 0.0008849987148644711,
+   "drawdown_worst_strategy_eq": 0.11090725034937307
+  },
+  "full": {
+   "return_pct": 61.7,
+   "month_pct": 4.9,
+   "max_dd_pct": 10.6,
+   "min_equity_pct": -4.6,
+   "best_30d_pct": 24.0,
+   "worst_30d_pct": -8.3,
+   "median_30d_pct": 3.4,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 72.0,
+   "monthly": {
+    "2025-12": 0.0,
+    "2026-01": 2.5,
+    "2026-02": -3.9,
+    "2026-03": 5.2,
+    "2026-04": 9.7,
+    "2026-05": 9.1,
+    "2026-06": -4.7,
+    "2026-07": 4.3,
+    "2026-08": 17.2,
+    "2026-09": 11.1
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 7.9,
+   "month_pct": 3.9,
+   "max_dd_pct": 5.0,
+   "min_equity_pct": -1.6,
+   "best_30d_pct": 11.1,
+   "worst_30d_pct": -0.7,
+   "median_30d_pct": 1.6,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 87.6,
+   "monthly": {
+    "2026-07": -0.1,
+    "2026-08": -0.0,
+    "2026-09": 8.0
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 18",
+  "file": "d3816440a8f309b64c79ff563b39116481f51f6afc84e7468275abc3774efd55.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0689,
+   "ddf": 0.42
+  },
+  "train": {
+   "adg_strategy_eq": 0.002841787715736066,
+   "drawdown_worst_strategy_eq": 0.22549081239005273
+  },
+  "full": {
+   "return_pct": 204.5,
+   "month_pct": 11.8,
+   "max_dd_pct": 22.3,
+   "min_equity_pct": -16.5,
+   "best_30d_pct": 50.0,
+   "worst_30d_pct": -19.9,
+   "median_30d_pct": 11.9,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 75.8,
+   "monthly": {
+    "2025-12": -4.5,
+    "2026-01": 2.5,
+    "2026-02": -7.8,
+    "2026-03": 27.0,
+    "2026-04": 8.7,
+    "2026-05": 33.6,
+    "2026-06": 17.2,
+    "2026-07": -1.4,
+    "2026-08": 43.0,
+    "2026-09": 8.7
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 28.7,
+   "month_pct": 13.4,
+   "max_dd_pct": 9.2,
+   "min_equity_pct": -3.2,
+   "best_30d_pct": 34.1,
+   "worst_30d_pct": 1.1,
+   "median_30d_pct": 6.9,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.4,
+    "2026-08": 3.1,
+    "2026-09": 25.1
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 19",
+  "file": "dbafa753f041c2560757b33470ab79e1a376f2969f1e6518c2aabd32036a2a8c.json",
+  "params": {
+   "exposure": 0.95,
+   "positions": 3.0,
+   "initial_pct": 0.065,
+   "ddf": 0.28
+  },
+  "train": {
+   "adg_strategy_eq": 0.002833175835153634,
+   "drawdown_worst_strategy_eq": 0.20998053595083668
+  },
+  "full": {
+   "return_pct": 222.0,
+   "month_pct": 12.4,
+   "max_dd_pct": 20.3,
+   "min_equity_pct": -4.6,
+   "best_30d_pct": 51.7,
+   "worst_30d_pct": -12.4,
+   "median_30d_pct": 9.8,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 87.2,
+   "monthly": {
+    "2025-12": 1.4,
+    "2026-01": 7.0,
+    "2026-02": -3.4,
+    "2026-03": 10.9,
+    "2026-04": 17.4,
+    "2026-05": 32.8,
+    "2026-06": 0.0,
+    "2026-07": 7.4,
+    "2026-08": 49.6,
+    "2026-09": 9.4
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 20.2,
+   "month_pct": 9.6,
+   "max_dd_pct": 5.9,
+   "min_equity_pct": -1.8,
+   "best_30d_pct": 23.0,
+   "worst_30d_pct": 2.2,
+   "median_30d_pct": 6.6,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.3,
+    "2026-08": 3.1,
+    "2026-09": 16.7
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Кандидат 20",
+  "file": "f6c9ac9bac55d8468edee7247d486cdcf9162157a46cde4e1193543df179e437.json",
+  "params": {
+   "exposure": 0.85,
+   "positions": 3.0,
+   "initial_pct": 0.0456,
+   "ddf": 0.24
+  },
+  "train": {
+   "adg_strategy_eq": 0.0004571319113944039,
+   "drawdown_worst_strategy_eq": 0.09499575395146223
+  },
+  "full": {
+   "return_pct": 28.4,
+   "month_pct": 2.5,
+   "max_dd_pct": 9.1,
+   "min_equity_pct": -5.5,
+   "best_30d_pct": 15.9,
+   "worst_30d_pct": -8.0,
+   "median_30d_pct": 1.4,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 60.5,
+   "monthly": {
+    "2025-12": -0.4,
+    "2026-01": 0.5,
+    "2026-02": -2.6,
+    "2026-03": 4.0,
+    "2026-04": 8.5,
+    "2026-05": 5.3,
+    "2026-06": -4.0,
+    "2026-07": -0.3,
+    "2026-08": 3.3,
+    "2026-09": 11.1
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 8.0,
+   "month_pct": 3.9,
+   "max_dd_pct": 2.2,
+   "min_equity_pct": -0.1,
+   "best_30d_pct": 7.6,
+   "worst_30d_pct": 0.9,
+   "median_30d_pct": 2.2,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.1,
+    "2026-08": 1.7,
+    "2026-09": 6.2
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Пресет «Осторожный» (автор)",
+  "file": null,
+  "params": {
+   "exposure": 1.5,
+   "positions": 7.0,
+   "initial_pct": 0.0081,
+   "ddf": 0.94
+  },
+  "train": {},
+  "full": {
+   "return_pct": 46.0,
+   "month_pct": 3.9,
+   "max_dd_pct": 14.2,
+   "min_equity_pct": -5.3,
+   "best_30d_pct": 21.9,
+   "worst_30d_pct": -9.9,
+   "median_30d_pct": 3.7,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 90.5,
+   "monthly": {
+    "2025-12": 3.6,
+    "2026-01": 4.1,
+    "2026-02": 5.1,
+    "2026-03": -4.7,
+    "2026-04": 6.0,
+    "2026-05": 2.0,
+    "2026-06": 14.3,
+    "2026-07": 1.9,
+    "2026-08": 2.8,
+    "2026-09": 3.6
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 6.9,
+   "month_pct": 3.4,
+   "max_dd_pct": 4.0,
+   "min_equity_pct": -0.1,
+   "best_30d_pct": 4.8,
+   "worst_30d_pct": -0.1,
+   "median_30d_pct": 3.7,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 99.9,
+   "monthly": {
+    "2026-07": 0.0,
+    "2026-08": 2.6,
+    "2026-09": 4.1
+   },
+   "completion": 1.0
+  }
+ },
+ {
+  "name": "Пресет «Сбалансированный» (экспозиция 3)",
+  "file": null,
+  "params": {
+   "exposure": 3.0,
+   "positions": 7.0,
+   "initial_pct": 0.0081,
+   "ddf": 0.94
+  },
+  "train": {},
+  "full": {
+   "return_pct": 102.0,
+   "month_pct": 7.3,
+   "max_dd_pct": 28.5,
+   "min_equity_pct": -16.3,
+   "best_30d_pct": 49.4,
+   "worst_30d_pct": -18.7,
+   "median_30d_pct": 6.2,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 97.5,
+   "monthly": {
+    "2025-12": -4.1,
+    "2026-01": 17.2,
+    "2026-02": 10.4,
+    "2026-03": 2.2,
+    "2026-04": 2.3,
+    "2026-05": 4.2,
+    "2026-06": 23.1,
+    "2026-07": 5.5,
+    "2026-08": 5.7,
+    "2026-09": 7.6
+   },
+   "completion": 1.0
+  },
+  "oos": {
+   "return_pct": 13.8,
+   "month_pct": 6.7,
+   "max_dd_pct": 7.6,
+   "min_equity_pct": -0.6,
+   "best_30d_pct": 10.5,
+   "worst_30d_pct": 1.2,
+   "median_30d_pct": 8.2,
+   "share_30d_target": 0.0,
+   "share_30d_positive": 100.0,
+   "monthly": {
+    "2026-07": -0.0,
+    "2026-08": 6.0,
+    "2026-09": 7.5
+   },
+   "completion": 1.0
+  }
+ }
+]

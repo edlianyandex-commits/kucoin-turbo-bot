@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TradeBot Turbo</title>
+<style>
+:root {
+  --bg: #f4f5f7; --panel: #ffffff; --panel-2: #f8f9fb; --line: #e3e6eb; --text: #151a22;
+  --muted: #6b7280; --faint: #9aa1ac; --accent: #3b5bdb; --accent-soft: #e7ecff;
+  --up: #12805c; --up-soft: #e3f5ed; --down: #c9372c; --down-soft: #fbe9e7;
+  --warn: #b7791f; --warn-soft: #fdf3dc; --shadow: 0 1px 2px rgba(16,24,40,.05), 0 1px 3px rgba(16,24,40,.06);
+  --radius: 12px; --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116; --panel: #161a21; --panel-2: #1b2029; --line: #272d38; --text: #e7eaf0;
+    --muted: #9aa3b2; --faint: #6b7483; --accent: #7c93ff; --accent-soft: #1f2640;
+    --up: #34c38f; --up-soft: #12281f; --down: #f06a5d; --down-soft: #2e1715;
+    --warn: #e0a846; --warn-soft: #2d2412; --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; }
+header { background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: center; gap: 14px; height: 58px; }
+.logo { font-weight: 700; font-size: 16px; letter-spacing: -.01em; }
+.logo span { color: var(--muted); font-weight: 500; }
+.grow { flex: 1; }
+nav { display: flex; gap: 4px; overflow-x: auto; }
+nav button { background: none; border: 0; color: var(--muted); font: inherit; font-weight: 600; padding: 10px 12px;
+  border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; }
+nav button.on { color: var(--text); border-color: var(--accent); }
+main { padding: 20px 0 60px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 16px; }
+.card-h { display: flex; align-items: center; gap: 10px; padding: 14px 18px 0; }
+.card-h h2 { margin: 0; font-size: 15px; }
+.card-b { padding: 14px 18px 18px; }
+.muted { color: var(--muted); } .faint { color: var(--faint); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.tile { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.tile .l { color: var(--muted); font-size: 12px; }
+.tile .v { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tile .s { color: var(--faint); font-size: 12px; }
+.up { color: var(--up); } .down { color: var(--down); } .warnc { color: var(--warn); }
+.btn { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px;
+  font: inherit; font-weight: 600; cursor: pointer; }
+.btn:hover { border-color: var(--faint); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.danger { background: var(--down); border-color: var(--down); color: #fff; }
+.btn:disabled { opacity: .5; cursor: default; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.banner { border-radius: 10px; padding: 10px 14px; margin: 0 0 12px; border: 1px solid; }
+.banner.info { background: var(--accent-soft); border-color: transparent; }
+.banner.warn { background: var(--warn-soft); border-color: transparent; }
+.banner.err { background: var(--down-soft); border-color: transparent; }
+.banner.ok { background: var(--up-soft); border-color: transparent; }
+.presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.preset { border: 2px solid var(--line); border-radius: 12px; padding: 14px; cursor: pointer; background: var(--panel-2); }
+.preset.on { border-color: var(--accent); background: var(--accent-soft); }
+.preset h3 { margin: 0 0 4px; font-size: 15px; display: flex; gap: 8px; align-items: center; }
+.risk { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+.risk.low { background: var(--up-soft); color: var(--up); }
+.risk.medium { background: var(--warn-soft); color: var(--warn); }
+.risk.high { background: var(--down-soft); color: var(--down); }
+.risk.extreme { background: var(--down); color: #fff; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 16px; }
+label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+input[type=number], input[type=text], input[type=password] { width: 100%; padding: 8px 10px; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--panel); color: var(--text); font: inherit; }
+.hint { color: var(--muted); font-size: 12px; margin-top: 3px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12px; padding: 3px 9px; border-radius: 99px; background: var(--panel-2); border: 1px solid var(--line); }
+.chip.ok { background: var(--up-soft); border-color: transparent; color: var(--up); }
+.chip.no { color: var(--faint); text-decoration: line-through; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); font-size: 13px; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; }
+td.r, th.r { text-align: right; }
+.chart { width: 100%; height: 260px; display: block; }
+.log { font-family: var(--mono); font-size: 12px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px; max-height: 320px; overflow: auto; white-space: pre-wrap; word-break: break-word; }
+.periods button.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.status { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 99px; }
+.status.run { background: var(--up-soft); color: var(--up); } .status.stop { background: var(--panel-2); color: var(--muted); border: 1px solid var(--line); }
+details summary { cursor: pointer; font-weight: 600; }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--bg);
+  padding: 10px 16px; border-radius: 10px; font-weight: 600; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 90vw; }
+.toast.show { opacity: 1; } .toast.err { background: var(--down); color: #fff; }
+.spin { display: inline-block; width: 12px; height: 12px; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: s 1s linear infinite; vertical-align: -1px; }
+@keyframes s { to { transform: rotate(360deg); } }
+.bars { display: flex; gap: 6px; align-items: flex-end; height: 120px; border-bottom: 1px solid var(--line); padding-top: 18px; }
+.bar { flex: 1; position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+.bar i { display: block; width: 100%; border-radius: 4px 4px 0 0; }
+.bar b { font-size: 11px; position: absolute; top: -16px; white-space: nowrap; }
+.bar-l { display: flex; gap: 6px; } .bar-l span { flex: 1; text-align: center; font-size: 11px; color: var(--muted); }
+@media (max-width: 640px) { .top { height: auto; flex-wrap: wrap; padding: 10px 0; } .tile .v { font-size: 17px; } }
+ul.ready { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+ul.ready li { display: flex; gap: 9px; align-items: flex-start; line-height: 1.4; }
+ul.ready li span { flex: none; width: 19px; height: 19px; border-radius: 50%; text-align: center; font-size: 12px; line-height: 19px; font-weight: 700; margin-top: 1px; }
+ul.ready li.ok span { background: var(--up-soft); color: var(--up); }
+ul.ready li.warn span { background: var(--warn-soft); color: var(--warn); }
+ul.ready li.bad span { background: var(--down-soft); color: var(--down); }
+ul.ready li.info span { background: var(--panel-2); color: var(--muted); }
+details.coinlist summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="top">
+    <div class="logo">TradeBot Turbo <span>· 5.0 · TB Core · KuCoin Futures</span></div>
+    <div class="grow"></div>
+    <span id="liveChip" class="status stop">Реальная торговля выключена</span>
+  </div>
+  <nav id="tabs">
+    <button data-t="home" class="on">Главная</button>
+    <button data-t="settings">Настройки</button>
+    <button data-t="test">Проверка на истории</button>
+    <button data-t="run">Ключи и запуск</button>
+  </nav>
+</div></header>
+<main class="wrap">
+  <section id="t-home"></section>
+  <section id="t-settings" hidden></section>
+  <section id="t-test" hidden></section>
+  <section id="t-run" hidden></section>
+</main>
+<div id="toast" class="toast"></div>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const nf = (v, d = 2) => v == null || isNaN(v) ? "—" : Number(v).toLocaleString("ru-RU", {minimumFractionDigits: d, maximumFractionDigits: d});
+const pct = (v, sign = true, d = 1) => v == null ? "—" : (sign && v > 0 ? "+" : "") + nf(v, d) + "%";
+const cls = v => v == null ? "" : v > 0 ? "up" : v < 0 ? "down" : "";
+let S = null, tab = localStorage.getItem("turbotab") || "home", period = 60, busy = false;
+
+function toast(t, err) { const e = $("#toast"); e.textContent = t; e.className = "toast show" + (err ? " err" : ""); clearTimeout(e._t); e._t = setTimeout(() => e.className = "toast", 3500); }
+async function api(path, body) {
+  const r = await fetch(path, body === undefined ? {} : {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || "Ошибка " + r.status);
+  return d;
+}
+function setTab(t) {
+  tab = t; try { localStorage.setItem("turbotab", t); } catch (e) {}
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.t === t));
+  ["home", "settings", "test", "run"].forEach(x => $("#t-" + x).hidden = x !== t);
+  render();
+}
+document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => setTab(b.dataset.t));
+
+// ------------------------------------------------------------ графики
+function lineChart(points, opts = {}) {
+  if (!points || points.length < 2) return `<p class="muted">Нет данных для графика.</p>`;
+  const W = 1000, H = 260, pl = 56, pr = 12, pt = 12, pb = 26;
+  const xs = points.map(p => p[0]), ys = points.map(p => p[1]);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), yMin = Math.min(...ys, opts.base ?? Infinity), yMax = Math.max(...ys, opts.base ?? -Infinity);
+  const pad = (yMax - yMin) * 0.06 || 1, y0 = yMin - pad, y1 = yMax + pad;
+  const X = x => pl + (x - x0) / (x1 - x0 || 1) * (W - pl - pr), Y = y => pt + (1 - (y - y0) / (y1 - y0)) * (H - pt - pb);
+  const d = points.map((p, i) => (i ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1)).join(" ");
+  const up = ys[ys.length - 1] >= ys[0];
+  const color = up ? "var(--up)" : "var(--down)";
+  let grid = "";
+  for (let i = 0; i <= 4; i++) { const v = y0 + (y1 - y0) * i / 4, y = Y(v);
+    grid += `<line x1="${pl}" x2="${W - pr}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${pl - 6}" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${nf(v, 0)}</text>`; }
+  for (let i = 0; i <= 4; i++) { const t = x0 + (x1 - x0) * i / 4, x = X(t);
+    grid += `<text x="${x}" y="${H - 6}" text-anchor="middle" font-size="11" fill="var(--muted)">${new Date(t).toLocaleDateString("ru-RU", {day: "2-digit", month: "2-digit", year: "2-digit"})}</text>`; }
+  const base = opts.base != null ? `<line x1="${pl}" x2="${W - pr}" y1="${Y(opts.base)}" y2="${Y(opts.base)}" stroke="var(--faint)" stroke-dasharray="4 4"/>` : "";
+  const area = d + ` L${X(x1)} ${H - pb} L${X(x0)} ${H - pb} Z`;
+  const id = "c" + Math.random().toString(36).slice(2);
+  setTimeout(() => {
+    const svg = document.getElementById(id); if (!svg) return;
+    const dot = svg.querySelector(".dot"), tip = svg.querySelector(".tip");
+    svg.onmousemove = e => {
+      const r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W;
+      let best = 0; for (let i = 1; i < points.length; i++) if (Math.abs(X(points[i][0]) - x) < Math.abs(X(points[best][0]) - x)) best = i;
+      const p = points[best]; dot.setAttribute("cx", X(p[0])); dot.setAttribute("cy", Y(p[1])); dot.style.display = "";
+      tip.textContent = new Date(p[0]).toLocaleDateString("ru-RU") + ": " + nf(p[1]) + " $";
+      tip.setAttribute("x", Math.min(W - 180, Math.max(pl + 4, X(p[0]) + 8))); tip.setAttribute("y", pt + 14); tip.style.display = "";
+    };
+    svg.onmouseleave = () => { dot.style.display = "none"; tip.style.display = "none"; };
+  }, 0);
+  return `<svg id="${id}" class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="График капитала">
+    ${grid}${base}<path d="${area}" fill="${color}" opacity=".08"/><path d="${d}" fill="none" stroke="${color}" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <circle class="dot" r="4" fill="${color}" style="display:none"/><text class="tip" font-size="13" font-weight="700" fill="var(--text)" style="display:none"></text></svg>`;
+}
+function monthBars(monthly) {
+  const e = Object.entries(monthly || {}); if (!e.length) return "";
+  // месяцы меньше ±0,5% полосу не рисуют: при одном месяце в периоде нормировка всегда даёт
+  // 100%, и плоский месяц −0,3% выглядел как огромная красная полоса с подписью «−0%».
+  const m = Math.max(...e.map(([, v]) => Math.abs(v)), 1);
+  return `<div class="bars">${e.map(([k, v]) => `<div class="bar"><b class="${cls(v)}">${pct(v, true, 0)}</b><i style="height:${Math.abs(v) < 0.5 ? 0 : Math.max(2, Math.abs(v) / m * 90)}%;background:${v >= 0 ? "var(--up)" : "var(--down)"}"></i></div>`).join("")}</div>
+    <div class="bar-l">${e.map(([k]) => `<span>${k.slice(5)}.${k.slice(2, 4)}</span>`).join("")}</div>`;
+}
+function resultBlock(r, title) {
+  if (!r) return "";
+  const liq = r.liquidated ? `<div class="banner err"><b>Счёт обнулился (ликвидация).</b> С такими настройками на этом периоде бот потерял почти весь депозит.</div>` : "";
+  const target = r.share_30d_target > 0 ? `<div class="banner warn">Цель «+100% за 30 дней» достигалась в ${pct(r.share_30d_target, false)} 30-дневных отрезков. Проверьте просадку: такие настройки обычно рискуют всем счётом.</div>` : "";
+  return `${liq}${target}
+  <div class="tiles">
+    <div class="tile"><div class="l">Итог за период</div><div class="v ${cls(r.return_pct)}">${pct(r.return_pct)}</div><div class="s">${nf(r.start_equity)} → ${nf(r.end_equity)} $</div></div>
+    <div class="tile"><div class="l">В среднем за 30 дней</div><div class="v ${cls(r.month_pct)}">${pct(r.month_pct)}</div><div class="s">медиана ${pct(r.median_30d_pct)}</div></div>
+    <div class="tile"><div class="l">Худшая просадка</div><div class="v down">${pct(-r.max_dd_pct, false)}</div><div class="s">от пика капитала</div></div>
+    <div class="tile"><div class="l">Худшие 30 дней</div><div class="v ${cls(r.worst_30d_pct)}">${pct(r.worst_30d_pct)}</div><div class="s">лучшие ${pct(r.best_30d_pct)}</div></div>
+    <div class="tile"><div class="l">30-дневок в плюсе</div><div class="v">${pct(r.share_30d_positive, false, 0)}</div><div class="s">сделок (исполнений): ${nf(r.fills, 0)}</div></div>
+  </div>
+  <div style="margin-top:14px">${lineChart(r.curve, {base: r.start_equity})}</div>
+  <h3 style="font-size:14px;margin:16px 0 4px">По месяцам</h3>${monthBars(r.monthly)}
+  ${r.by_coin && r.by_coin.length ? `<details style="margin-top:14px"><summary>Результат по монетам (${r.by_coin.length})</summary>
+    <table style="margin-top:8px"><tr><th>Монета</th><th class="r">Прибыль, $</th><th class="r">Исполнений</th></tr>
+    ${r.by_coin.map(c => `<tr><td>${esc(c.coin)}</td><td class="r ${cls(c.pnl)}">${nf(c.pnl)}</td><td class="r">${c.fills}</td></tr>`).join("")}</table></details>` : ""}`;
+}
+function jobBanner(kind) {
+  const j = S.job || {};
+  if (j.kind !== kind) return "";
+  if (j.state === "running") return `<div class="banner info"><span class="spin"></span> ${esc(j.stage || "Считаю…")} <span class="muted">(${j.elapsed || 0} с)</span></div>`;
+  if (j.state === "error") return `<div class="banner err"><b>Не получилось.</b> <span style="white-space:pre-wrap">${esc(j.error)}</span></div>`;
+  return "";
+}
+
+// ------------------------------------------------------------ турбо: ставка
+function btcBanner() {
+  // выход при обвале BTC: сейчас спокойно / обвал (новая ставка не запустится, идущая закрывает позиции и ждёт)
+  const M = S.btc_move, st = S.settings;
+  if (!st.btc_exit || !M) return "";
+  if (M.error) return `<div class="banner warn">Выход при обвале BTC: не удалось получить цену BTC (${esc(M.error)}).</div>`;
+  return M.drop_pct <= -st.btc_exit * 100
+    ? `<div class="banner err"><b>Сейчас обвал BTC:</b> ${nf(M.drop_pct, 1)}% от максимума за ${M.hours} ч (порог −${nf(st.btc_exit * 100, 0)}%). Новая ставка не запустится, идущая закрывает позиции и ждёт следующего дня. Проверено ${esc(M.checked)}.</div>`
+    : `<div class="banner ok">Выход при обвале BTC: сейчас ${nf(M.drop_pct, 1)}% от максимума за ${M.hours} ч, порог −${nf(st.btc_exit * 100, 0)}%. Проверено ${esc(M.checked)}.</div>`;
+}
+function betCard() {
+  const B = S.bet, L = S.live;
+  if (!B) return `<div class="card"><div class="card-h"><h2>Ставка</h2><span class="status stop">нет</span></div><div class="card-b">
+    <p class="muted" style="margin:0">Турбо-бот работает ставками: запускаете его на отдельном субаккаунте с суммой, которую готовы потерять. Ставка идёт без цели, прибыль остаётся в обороте. ${S.settings.btc_exit ? "При обвале BTC бот закроет позиции и продолжит ту же ставку со следующего дня." : "Выход при обвале BTC выключен."} Закончить ставку — кнопкой «Зафиксировать сейчас» (закрыть все позиции).</p></div></div>`;
+  const start = B.start_equity, last = B.last_equity ?? start;
+  const stateText = {waiting_start: "ждём первые данные с биржи", running: "идёт", locking: "фиксирую: закрываю позиции", done: "закрыта", stopped: "остановлена", btc_pause: "пауза после обвала BTC"}[B.state] || B.state;
+  const P = B.btc_pause;
+  const pauseNote = B.state !== "btc_pause" || !P ? ""
+    : P.state === "closing"
+      ? `<div class="banner err"><b>Обвал BTC (${nf(P.drop_pct, 1)}%):</b> закрываю все позиции (с ${esc(P.since)}). Потом пауза — ставка продолжится сама не раньше ${esc(P.resume_after)}, если BTC перестанет падать.${P.warned ? " Позиции не закрылись за 30 минут — проверьте KuCoin." : ""}</div>`
+      : `<div class="banner warn"><b>Пауза после обвала BTC:</b> позиции закрыты ${esc(P.closed || P.since)}${P.equity ? ", капитал " + nf(P.equity) + " $" : ""}. Ставка продолжится сама после ${esc(P.resume_after)} (это 00:00 UTC; решение — через 2 минуты по свежей цене BTC), если BTC перестанет падать; иначе пауза ещё на сутки. Панель должна быть открыта.</div>`;
+  const final = B.state === "done" || (B.state === "stopped" && B.final_equity != null);
+  return `<div class="card"><div class="card-h"><h2>Ставка</h2><span class="status ${B.state === "running" ? "run" : "stop"}">${esc(stateText)}</span></div><div class="card-b">
+    ${pauseNote}
+    <div class="tiles">
+      <div class="tile"><div class="l">Старт (${esc(B.started)})</div><div class="v">${nf(start)} $</div></div>
+      <div class="tile"><div class="l">${final ? "Итог" : "Сейчас"}</div><div class="v ${cls((final ? B.final_equity : last) - start)}">${nf(final ? B.final_equity : last)} $</div><div class="s">${start ? pct(((final ? B.final_equity : last) / start - 1) * 100) : ""}</div></div>
+      <div class="tile"><div class="l">Правила</div><div class="v">без цели</div><div class="s">${B.btc_exit ? "выход при обвале BTC −" + nf(B.btc_exit.drop * 100, 0) + "% за " + B.btc_exit.hours + " ч, затем пауза до следующего дня" : "выход при обвале BTC выключен"}${B.pauses ? " · пауз: " + B.pauses : ""}</div></div>
+    </div>
+    <div class="muted" style="font-size:12px;margin-top:12px">Бот работает без остановки, прибыль в обороте${B.btc_exit ? "; при обвале BTC — пауза до следующего дня" : ""}${B.lock_reason ? " · " + esc(B.lock_reason) : ""}</div>
+    <div class="row" style="margin-top:12px">
+      ${L.running && B.state === "running" ? `<button class="btn primary" id="bLock">Зафиксировать сейчас</button>` : ""}
+      ${B.state === "btc_pause" ? `<button class="btn" id="bEnd">Завершить ставку</button>` : !L.running ? `<button class="btn" id="bReset">Новая ставка</button>` : ""}
+    </div></div></div>`;
+}
+function bindBet() {
+  const l = $("#bLock"); if (l) l.onclick = async () => { if (!confirm("Закрыть все позиции и остановить бота?")) return; try { await api("/api/bet/lock", {}); toast("Фиксирую — закрываю позиции"); poll(); } catch (e) { toast(e.message, true); } };
+  const e = $("#bEnd"); if (e) e.onclick = async () => { if (!confirm("Завершить ставку? После паузы бот не запустится сам.")) return; try { await api("/api/live/stop", {}); toast("Ставка завершена"); poll(); } catch (x) { toast(x.message, true); } };
+  const r = $("#bReset"); if (r) r.onclick = async () => { try { await api("/api/bet/reset", {}); poll(); } catch (e) { toast(e.message, true); } };
+}
+
+function hslBanner(h) {
+  // состояние стопа TB Core (HSL) из снимка бота
+  if (!h || !h.enabled) return "";
+  if (h.mode === "coin") return hslCoinBanner(h.coins || []);
+  if (h.halted && h.no_restart_latched) return `<div class="banner err"><b>Сработал стоп по просадке (без перезапуска).</b> Позиции закрыты, новых сделок бот не откроет.</div>`;
+  if (h.halted) return `<div class="banner warn"><b>Сработал стоп по просадке.</b> Позиции закрыты, пауза${h.cooldown_until_ms ? " до " + new Date(h.cooldown_until_ms).toLocaleString("ru-RU", {day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit"}) : ""}.</div>`;
+  if (h.tier === "red") return `<div class="banner err"><b>Стоп по просадке сработал</b> — бот закрывает позиции.</div>`;
+  if (h.tier === "yellow" || h.tier === "orange") return `<div class="banner warn">Защита капитала: уровень «${h.tier === "yellow" ? "жёлтый" : "оранжевый"}» — просадка приближается к стопу.</div>`;
+  return "";
+}
+function hslCoinBanner(cs) {
+  // стоп по монете: оранжевый — без докупок, красный — монета закрывается / закрыта на паузу; остальные торгуют
+  const when = ms => new Date(ms).toLocaleString("ru-RU", {day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit"});
+  const loss = c => c.loss ? ` (минус ${nf(c.loss)} $${c.slot_pct != null ? ", " + c.slot_pct + "% доли" : ""})` : "";
+  const red = cs.filter(c => c.halted || c.tier === "red"), orange = cs.filter(c => !c.halted && c.tier === "orange");
+  let out = "";
+  if (red.length) out += `<div class="banner warn"><b>Стоп по монете:</b> ${red.map(c => esc(c.coin) + (!c.halted ? " — закрываю" + loss(c)
+    : c.no_restart_latched ? " — закрыта, больше не торгуется" : " — закрыта" + (c.cooldown_until_ms ? ", пауза до " + when(c.cooldown_until_ms) : ""))).join("; ")}. Остальные монеты торгуются, ставка продолжается.</div>`;
+  const op = (orange.find(c => c.orange_pct != null) || {}).orange_pct;
+  if (orange.length) out += `<div class="banner info"><b>Без докупок:</b> ${orange.map(c => esc(c.coin) + loss(c)).join(", ")} — минус по монете больше ${op != null ? op + "% её" : "половины её"} доли счёта; бот ждёт тейк, докупки вернутся, когда минус уменьшится.</div>`;
+  return out;
+}
+function guardBanner(G) {
+  // защита от делистинга: монеты, в которые бот не входит (и позиции по которым закрывает при назначенном делистинге);
+  // фильтр разогнанных монет — отдельной строкой, без тревоги
+  const all = Object.entries((G || {}).coins || {});
+  const hot = all.filter(([, x]) => x.hot), cs = all.filter(([, x]) => !x.hot);
+  let out = "";
+  if (cs.length) {
+    const close = cs.filter(([, x]) => x.level === "close");
+    out += `<div class="banner ${close.length ? "err" : "warn"}"><b>Защита от делистинга:</b> ${cs.map(([c, x]) => "<b>" + esc(c) + "</b> — " + esc(x.reason)).join("; ")}. Бот в ${cs.length > 1 ? "эти монеты" : "эту монету"} не входит${close.length ? "; открытую позицию по " + close.map(([c]) => esc(c)).join(", ") + " закрывает, остальные монеты торгуются" : ""}.</div>`;
+  }
+  if (hot.length) out += `<div class="banner info"><b>Фильтр разогнанных монет:</b> ${hot.map(([c, x]) => "<b>" + esc(c) + "</b>" + (/в ([\d.]+) раза/.exec(x.reason) ? " (×" + /в ([\d.]+) раза/.exec(x.reason)[1] + ")" : "")).join(", ")} — цена за 30 дней менялась в ${nf(G.hot_ratio || 3, 0)} раза и больше. Бот в ${hot.length > 1 ? "эти монеты" : "эту монету"} не входит; открытую позицию ведёт как обычно.</div>`;
+  return out;
+}
+function coinListLine() {
+  // список монет: раз в месяц, 1-го числа (панель, kucoin_refresh.py)
+  const C = S.coin_list;
+  if (!C) return "";
+  return ` · список монет: ${C.count} (обновляется 1-го числа${C.updated ? ", последний раз " + esc(C.updated) : ""}${C.error ? "; последняя попытка не удалась — торгуем прежним" : ""})`;
+}
+function guardLine(G) {
+  if (!G) return `<p class="muted" style="margin:8px 0 0">Защита от делистинга: проверка KuCoin ещё не проводилась (раз в 15 минут).</p>`;
+  const v = Object.values(G.coins || {}), n = v.filter(x => !x.hot).length, h = v.filter(x => x.hot).length;
+  const hl = G.hot_ratio ? ` · фильтр разогнанных ×${nf(G.hot_ratio, 0)}: ${h ? "не входим в " + h + " " + (h === 1 ? "монету" : h < 5 ? "монеты" : "монет") : "таких монет нет"}${G.hot_checked ? " (цены " + esc(G.hot_checked) + ")" : ""}` : " · фильтр разогнанных монет выключен";
+  return `<p class="muted" style="margin:8px 0 0">Защита от делистинга: ${n ? "не торгуем монет — " + n : "все монеты в порядке"} (проверено ${esc(G.checked || "—")})${hl}${coinListLine()}${G.error ? " · последняя проверка не удалась: " + esc(G.error) : ""}.</p>`;
+}
+function gaveUpBanner(L) {
+  return L.gave_up ? `<div class="banner err"><b>Бот падал сразу после запуска — автоперезапуск остановлен (${esc(L.gave_up)}).</b> Проверьте ключи («Проверить») и журнал бота во вкладке «Ключи и запуск», затем запустите торговлю снова.</div>` : "";
+}
+
+// ------------------------------------------------------------ вкладки
+// ------------------------------------------------------------ готовность к запуску
+function readyCard() {
+  // то, что панель может проверить сама перед реальной торговлей (при работающем боте карточка не нужна)
+  const L = S.live, p = S.coins.params, st = S.settings, P = S.paper;
+  if (L.running) return "";
+  const items = [];
+  const add = (state, text) => items.push(`<li class="${state}"><span>${{ok: "✓", warn: "!", bad: "✕", info: "i"}[state]}</span><div>${text}</div></li>`);
+  add(S.keys.set ? "ok" : "bad", S.keys.set ? "Ключи API KuCoin заданы" : "Ключи API KuCoin не заданы — вкладка «Ключи и запуск»");
+  const drop = Number(st.btc_exit || 0);
+  add(drop > 0 ? "ok" : "bad", drop > 0 ? `Выход при обвале BTC включён (−${nf(drop * 100, 0)}% за ${st.btc_exit_hours || 12} ч)`
+    : "Выход при обвале BTC выключен — без него обвал 10.10.2025 ликвидировал бы счёт");
+  if (p.hsl_mode === "coin") add(p.hsl_enabled ? "ok" : "warn", p.hsl_enabled ? `Быстрый стоп по монете включён (закрытие при ${Math.round(p.hsl_threshold * 100)}% доли монеты)` : "Стоп по монете выключен");
+  else add(p.hsl_enabled ? "ok" : "warn", p.hsl_enabled ? `Стоп по просадке счёта: ${Math.round(p.hsl_threshold * 100)}%` : "Стоп по просадке выключен");
+  const okc = S.coins.ok_count;
+  add(okc >= p.positions ? "ok" : "warn", `Монет проходит минимальный ордер: ${okc} из ${S.coins.coins.length}` + (okc >= p.positions ? "" : ` — меньше, чем позиций (${nf(p.positions, 0)}): увеличьте баланс`));
+  const G = S.coin_guard;
+  const fresh = G && G.checked && (Date.now() - new Date(String(G.checked).replace(" ", "T")).getTime()) < 3 * 3600e3;
+  add(fresh ? "ok" : "warn", fresh ? `Защита от делистинга проверяет KuCoin (последний раз ${esc(G.checked)})` : "Защита от делистинга давно не проверяла KuCoin — панель должна работать постоянно");
+  if (S.lite) add("info", "Бумажная торговля считается в панели на компьютере (на сервере отключена, чтобы хватало памяти)");
+  else if (!P.info) add("warn", "Бумажная торговля не запущена — запустите её и дайте поработать 2–4 недели");
+  else {
+    const d = Math.max(0, Math.floor((Date.now() - new Date(P.info.start + "T00:00:00Z").getTime()) / 86400e3));
+    add(d >= 14 ? "ok" : "warn", `Бумажная торговля идёт ${d} дн.` + (d >= 14 ? "" : " — рекомендуется хотя бы 2 недели"));
+  }
+  add("info", "Только на отдельном субаккаунте KuCoin и только сумма, которую не жалко потерять: фиксация ставки закрывает все позиции счёта");
+  add("info", "Начните с небольшой суммы и сравнивайте с бумажной торговлей: исполнение на KuCoin может быть хуже расчётного, особенно в резкие обвалы");
+  return `<div class="card"><div class="card-h"><h2>Готовность к запуску</h2></div><div class="card-b"><ul class="ready">${items.join("")}</ul></div></div>`;
+}
+function btStale(bt) {
+  // расчёт на истории сделан на прежних настройках (до их изменения)
+  if (!bt) return false;
+  if (bt.fp && S.cfg_fp) return bt.fp !== S.cfg_fp;
+  const pick = q => JSON.stringify(["exposure", "positions", "initial_pct", "hsl_enabled", "hsl_threshold"].map(k => (q || {})[k]));
+  return pick(bt.params) !== pick(S.coins.params) || (bt.params || {}).hsl_mode !== S.coins.params.hsl_mode;
+}
+
+function renderHome() {
+  const L = S.live, P = S.paper, pr = S.presets[S.settings.preset] || {};
+  let live = gaveUpBanner(L);
+  if (L.running || L.snapshot) {
+    const sn = L.snapshot || {};
+    live += `<div class="card"><div class="card-h"><h2>Реальная торговля</h2><span class="status ${L.running ? "run" : "stop"}">${L.running ? "работает" : "остановлена"}</span></div><div class="card-b">
+      ${L.running ? hslBanner(sn.hsl) : ""}
+      <div class="tiles"><div class="tile"><div class="l">Баланс</div><div class="v">${nf(sn.balance)} $</div></div>
+      <div class="tile"><div class="l">Капитал с позициями</div><div class="v">${nf(sn.equity)} $</div></div>
+      <div class="tile"><div class="l">Открытых позиций</div><div class="v">${(sn.positions || []).length}</div><div class="s">ордеров: ${sn.orders ?? "—"}</div></div></div>
+      ${(sn.positions || []).length ? `<table style="margin-top:12px"><tr><th>Пара</th><th>Сторона</th><th class="r">Размер</th><th class="r">Средняя цена</th><th class="r">Нереализ. $</th></tr>
+      ${sn.positions.map(p => `<tr><td>${esc(p.symbol)}</td><td>${p.side === "long" ? "лонг" : "шорт"}</td><td class="r">${nf(p.size, 4)}</td><td class="r">${nf(p.price, 5)}</td><td class="r ${cls(p.upnl)}">${nf(p.upnl)}</td></tr>`).join("")}</table>` : ""}
+    </div></div>`;
+  }
+  let paper;
+  if (S.lite) {
+    paper = `<p class="muted" style="margin:0">Это серверная панель: бумажная торговля и бэктесты здесь отключены, чтобы хватало памяти. Запускайте их в панели на компьютере.</p>`;
+  } else if (!P.info) {
+    paper = `<p class="muted" style="margin-top:0">Бумажная торговля без денег и ключей: панель прогоняет то же ядро TB Core по реальным ценам с выбранного дня до сегодняшнего. Правила те же, что у реального бота: при обвале BTC закрыть всё и продолжить со следующего дня. Пока панель открыта, результат пересчитывается сам раз в сутки (или по кнопке «Обновить»).</p>
+      <div class="row"><div style="width:180px"><label for="pbal">Виртуальный баланс, $</label><input id="pbal" type="number" min="20" step="50" value="${S.settings.balance}"></div>
+      <button class="btn primary" id="pStart" style="margin-top:22px">Начать с сегодняшнего дня</button></div>`;
+  } else {
+    const r = P.result;
+    const kindCls = k => ({"сгорела": "down", "обвал BTC": "down"}[k] || "");
+    const bets = r && r.bets ? `<h3 style="font-size:14px;margin:16px 0 4px">Отрезки торговли — до обвала BTC и после паузы</h3>
+      <table><tr><th>Старт</th><th>Конец</th><th>Чем закончился</th><th class="r">Старт, $</th><th class="r">Итог, $</th><th class="r">Итог</th><th class="r">Худшее внутри</th></tr>
+      ${r.bets.map(b => `<tr><td>${esc(b.start)}</td><td>${esc(b.end)}</td><td class="${kindCls(b.kind)}">${esc(b.kind)}</td><td class="r">${nf(b.start_equity)}</td><td class="r">${nf(b.final_equity)}</td><td class="r ${cls(b.result_pct)}">${pct(b.result_pct)}</td><td class="r down">${pct(b.min_pct)}</td></tr>`).join("")}</table>
+      <p class="muted" style="font-size:12px">Каждый отрезок — прогон TB Core с капиталом по минутам; выход по обвалу BTC — по цене той минуты, без учёта проскальзывания. Следующий отрезок — со следующего дня (если BTC перестал падать) на остаток счёта.${r.rules && r.rules.hot_ratio ? ` Фильтр разогнанных монет ×${nf(r.rules.hot_ratio, 0)} — на начало каждого отрезка: ${r.bets.some(b => b.hot && Object.keys(b.hot).length) ? r.bets.filter(b => b.hot && Object.keys(b.hot).length).map(b => esc(b.start) + " — без " + Object.entries(b.hot).map(([c, x]) => esc(c) + " ×" + nf(x, 1)).join(", ")).join("; ") : "разогнанных монет не было"}.` : ""}</p>` : "";
+    paper = `<p class="muted" style="margin-top:0">Старт: <b>${esc(P.info.start)}</b>, баланс ${nf(P.info.settings.balance, 0)} $, пресет «${esc((S.presets[P.info.settings.preset] || {}).name || P.info.settings.preset)}». Данные — по вчерашний день включительно; пока панель открыта, бумага обновляется сама раз в сутки.</p>
+      ${jobBanner("paper")}
+      ${r ? resultBlock(r) + bets : `<div class="banner info">Первые результаты появятся, когда пройдут первые сутки.</div>`}
+      <div class="row" style="margin-top:12px"><button class="btn" id="pRefresh">Обновить</button><button class="btn" id="pStop">Сбросить бумажную торговлю</button></div>`;
+  }
+  const bt = S.backtest;
+  const btOther = bt && bt.preset && bt.preset !== S.settings.preset ? (S.presets[bt.preset] || {}).name || bt.preset : null;
+  $("#t-home").innerHTML = `<div class="banner err"><b>Турбо-режим: высокий риск потерять большую часть ставки.</b> Бот работает с экспозицией до ${nf(S.coins.params.exposure, 0)}× баланса: на растущем рынке капитал растёт быстро, на падающем — ставка теряет, а резкое падение одной монеты может забрать большую часть счёта. Торгуйте только на отдельном субаккаунте KuCoin и только суммой, которую не жалко.</div>` + btcBanner() + guardBanner(S.coin_guard) + betCard() + live + readyCard() + `
+  <div class="card"><div class="card-h"><h2>Бумажная торговля</h2></div><div class="card-b">${paper}</div></div>
+  <div class="card"><div class="card-h"><h2>Сейчас выбрано</h2></div><div class="card-b">
+    <div class="row"><span class="risk ${pr.risk}">${{low: "низкий риск", medium: "средний риск", high: "высокий риск", extreme: "очень высокий риск"}[pr.risk] || ""}</span><b>${esc(pr.name)}</b><span class="muted">ставка ${nf(S.settings.balance, 0)} $ · доступно монет ${S.coins.ok_count} из ${S.coins.coins.length}</span></div>
+    ${guardLine(S.coin_guard)}
+    ${btOther ? `<p class="muted" style="margin-bottom:0">Последняя проверка на истории была для другого пресета («${esc(btOther)}»). Проверьте выбранный во вкладке «Проверка на истории».</p>`
+      : bt ? `<p class="muted" style="margin-bottom:0">Последняя проверка на истории (${bt.days} дн.${btStale(bt) ? ", на прежних настройках — пересчитайте" : ""}): итог <b class="${cls(bt.return_pct)}">${pct(bt.return_pct)}</b>, худшая просадка <b class="down">${pct(-bt.max_dd_pct, false)}</b>.</p>` : `<p class="muted" style="margin-bottom:0">${S.lite ? "Проверка на истории — в панели на компьютере." : "Проверьте выбранные настройки на истории во вкладке «Проверка на истории»."}</p>`}
+  </div></div>`;
+  bindBet();
+  const ps = $("#pStart"); if (ps) ps.onclick = async () => { try { await api("/api/paper/start", {balance: +$("#pbal").value}); toast("Бумажная торговля начата"); poll(); } catch (e) { toast(e.message, true); } };
+  const pr2 = $("#pRefresh"); if (pr2) pr2.onclick = async () => { try { await api("/api/paper/refresh", {}); poll(); } catch (e) { toast(e.message, true); } };
+  const pst = $("#pStop"); if (pst) pst.onclick = async () => { if (!confirm("Сбросить бумажную торговлю?")) return; try { await api("/api/paper/stop", {}); poll(); } catch (e) { toast(e.message, true); } };
+}
+
+let draft = null;
+function renderSettings() {
+  if (!draft) draft = JSON.parse(JSON.stringify(S.settings));
+  const c = S.coins, p = c.params, pr = S.presets[draft.preset] || {};
+  const coinStop = p.hsl_mode === "coin", slot = draft.balance / p.positions;   // стоп по монете: доля монеты = баланс / позиций
+  const warnLow = draft.balance < (pr.min_balance_hint || 0);
+  $("#t-settings").innerHTML = `
+  <div class="card"><div class="card-h"><h2>Стратегия</h2></div><div class="card-b">
+    <p class="muted" style="margin-top:0">Одна стратегия — TB Core «EMA Anchor», Turbo 5.0 (7 монет × экспозиция 9, плечо 10): покупает ниже скользящих средних цены и продаёт выше них; если монета падает дальше, докупает крупнее и ниже, но доля одной монеты — не больше 1,3 баланса (своя правка TB Core). Защиты: быстрый стоп по каждой монете, выход при обвале BTC с паузой до следующего дня, фильтр разогнанных монет, защита от делистинга; без цели и без стопа ставки.</p>
+    <div class="presets">${Object.entries(S.presets).map(([k, v]) => `<div class="preset ${k === draft.preset ? "on" : ""}" data-p="${k}">
+      <h3>${esc(v.name)} <span class="risk ${v.risk}">${{low: "низкий риск", medium: "средний", high: "высокий", extreme: "очень высокий"}[v.risk] || ""}</span></h3><div class="muted" style="font-size:13px">${esc(v.desc)}</div></div>`).join("")}</div>
+  </div></div>
+  <div class="card"><div class="card-h"><h2>Счёт</h2></div><div class="card-b">
+    <div class="fields"><div><label for="sBal">Ставка (баланс субаккаунта), $</label><input id="sBal" type="number" min="20" step="50" value="${draft.balance}">
+      <div class="hint">Нужна для расчёта первого входа и для бумажной торговли. В реальной торговле бот берёт баланс с биржи.</div></div>
+      <div><label for="sBtc">Выход при обвале BTC</label><select id="sBtc" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text)">
+        ${[[0.05, "BTC −5% за 12 ч (рекомендуется)"], [0.04, "BTC −4% за 12 ч"], [0.06, "BTC −6% за 12 ч"], [0, "выкл"]].map(([v, t]) => `<option value="${v}" ${Number(draft.btc_exit ?? 0) === v ? "selected" : ""}>${t}</option>`).join("")}</select>
+        <div class="hint">Закрытие часа BTC ниже максимума за 12 ч на столько — панель закрывает всё, не дожидаясь, пока обвал дойдёт до монет, и ставит паузу: в 00:02 UTC следующего дня проверяет BTC — перестал падать → торговля в той же ставке, иначе ещё сутки. Пока BTC падает, новая ставка не запускается. Это выполняет панель, поэтому она должна работать, пока идёт ставка.</div></div>
+      <div><label for="sHot">Фильтр разогнанных монет</label><select id="sHot" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text)">
+        ${[[3, "цена за 30 дней ×3 и больше (рекомендуется)"], [2, "×2 — строже"], [4, "×4 — мягче"], [0, "выкл"]].map(([v, t]) => `<option value="${v}" ${Number(draft.hot_ratio ?? 0) === v ? "selected" : ""}>${t}</option>`).join("")}</select>
+        <div class="hint">Монеты, у которых дневная цена закрытия за 30 дней менялась в столько раз (резко разогнали или обрушили), бот не покупает — открытую позицию ведёт как обычно. Такие монеты (SIREN, PIPPIN в 2026) рушились на 60–80% за полчаса–два часа; в честной проверке без фильтра Turbo обнулялся (−81% за 15 месяцев), с ×3 — +518%. Цены KuCoin панель берёт раз в час.</div></div></div>
+    ${warnLow ? `<div class="banner warn" style="margin-top:12px">Пресет рассчитан на счёт от ~${nf(pr.min_balance_hint, 0)} $. На меньшем счёте бот торгует только дешёвыми монетами, а позиции крупнее относительно баланса.</div>` : ""}
+    <p style="margin:14px 0 6px">Первый вход ≈ <b>${nf(c.first_entry)} $</b>. Монеты, где минимальный ордер KuCoin (1 контракт) не больше этой суммы — <b>${c.ok_count} из ${c.coins.length}</b>:</p>
+    <details class="coinlist"><summary>Показать монеты и их минимальные ордера</summary>
+    <div class="chips" style="margin-top:8px">${c.coins.map(x => `<span class="chip ${x.ok ? "ok" : "no"}" title="минимальный ордер ${nf(x.min_cost)} $">${esc(x.coin)} ${nf(x.min_cost, x.min_cost < 10 ? 2 : 0)} $</span>`).join("")}</div></details>
+    ${c.ok_count < p.positions ? `<div class="banner warn" style="margin-top:12px">Доступных монет (${c.ok_count}) меньше, чем позиций в стратегии (${nf(p.positions, 0)}). Бот будет держать меньше позиций, чем задумано.</div>` : ""}
+    ${c.ok_count === 0 ? `<div class="banner err" style="margin-top:12px"><b>Ни одна монета не проходит минимальный ордер.</b> Бот не откроет ни одной сделки. Увеличьте баланс или уменьшите число позиций.</div>` : ""}
+  </div></div>
+  <div class="card"><details class="card-b" ${draft.exposure || draft.positions || draft.hsl_enabled != null ? "open" : ""}><summary>Тонкая настройка — для опытных</summary>
+    <p class="muted">Пустое поле — значение из пресета. Сейчас: экспозиция ${nf(p.exposure, 2)}, позиций ${nf(p.positions, 0)}, ${coinStop
+      ? "стоп по монете " + (p.hsl_enabled ? `включён (без докупок при минусе монеты ${Math.round(p.hsl_threshold * p.hsl_orange * 100)}% её доли ≈ ${nf(slot * p.hsl_threshold * p.hsl_orange)} $, закрытие монеты при ${Math.round(p.hsl_threshold * 100)}%)` : "выключен")
+      : "аварийный стоп " + (p.hsl_enabled ? "включён (" + pct(p.hsl_threshold * 100, false, 0) + ")" : "выключен")}.</p>
+    <div class="fields">
+      <div><label for="sExp">Экспозиция (объём всех позиций к балансу)</label><input id="sExp" type="number" step="0.1" min="0.2" max="10" value="${draft.exposure ?? ""}" placeholder="${nf(p.exposure, 2)}"><div class="hint">9 = позиции суммарно до 9× баланса (так в пресете). При плече 10 больше 9 не ставьте — не останется запаса маржи.</div></div>
+      <div><label for="sPos">Позиций одновременно</label><input id="sPos" type="number" step="1" min="1" max="20" value="${draft.positions ?? ""}" placeholder="${nf(p.positions, 0)}"><div class="hint">Меньше позиций — крупнее каждая и выше риск одной монеты.</div></div>
+      <div><label for="sHsl">${coinStop ? "Стоп по монете" : "Аварийный стоп капитала"}</label><select id="sHsl" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text)">
+        <option value="" ${draft.hsl_enabled == null ? "selected" : ""}>как в пресете</option><option value="1" ${draft.hsl_enabled === true ? "selected" : ""}>включён</option><option value="0" ${draft.hsl_enabled === false ? "selected" : ""}>выключен</option></select>
+        <div class="hint">${coinStop
+          ? `Доля монеты = баланс / число позиций (≈ ${nf(slot)} $). Минус по монете дошёл до ${Math.round(p.hsl_orange * 100)}% порога — бот перестаёт её докупать и ждёт тейк; дошёл до порога и держится пару минут — закрывает только эту монету рыночным ордером и не торгует её 3 дня, остальные работают, ставка продолжается.`
+          : "Если капитал упал на заданный % от пика — бот закрывает всё и делает паузу."}</div></div>
+      <div><label for="sHslT">${coinStop ? "Порог стопа по монете, % её доли" : "Порог аварийного стопа, % просадки"}</label><input id="sHslT" type="number" step="1" min="${coinStop ? 20 : 5}" max="${coinStop ? 100 : 90}" value="${draft.hsl_threshold ? Math.round(draft.hsl_threshold * 100) : ""}" placeholder="${Math.round(p.hsl_threshold * 100)}"></div>
+      <div><label for="sLev">Плечо на бирже</label><input id="sLev" type="number" step="1" min="1" max="20" value="${draft.leverage}"><div class="hint">Лимит биржи: должен быть не меньше экспозиции. Реальный размер позиций задаёт экспозиция.</div></div>
+    </div></details></div>
+  <div class="row"><button class="btn primary" id="sSave">Сохранить</button><button class="btn" id="sReset">Вернуть как в пресете</button><span class="muted" id="sNote"></span></div>`;
+  document.querySelectorAll(".preset").forEach(e => e.onclick = () => { readDraft(); draft.preset = e.dataset.p; saveDraft(true); });
+  $("#sSave").onclick = () => { readDraft(); saveDraft(false); };
+  $("#sReset").onclick = () => { draft.exposure = draft.positions = draft.hsl_threshold = null; draft.hsl_enabled = null; saveDraft(false); };
+  $("#sBal").onchange = () => { readDraft(); saveDraft(true); };
+}
+function readDraft() {
+  const num = id => { const v = $(id).value.trim(); return v === "" ? null : Number(v.replace(",", ".")); };
+  draft.balance = num("#sBal") ?? draft.balance;
+  draft.exposure = num("#sExp"); draft.positions = num("#sPos");
+  const t = num("#sHslT"); draft.hsl_threshold = t == null ? null : t / 100;
+  const h = $("#sHsl").value; draft.hsl_enabled = h === "" ? null : h === "1";
+  draft.leverage = num("#sLev") ?? 10;
+  draft.btc_exit = Number($("#sBtc").value);
+  draft.hot_ratio = Number($("#sHot").value);
+}
+async function saveDraft(quiet) {
+  try { await api("/api/settings", draft); if (!quiet) toast("Сохранено"); draft = null; await poll(); } catch (e) { toast(e.message, true); }
+}
+
+function renderTest() {
+  const bt = S.backtest, running = S.job.state === "running";
+  $("#t-test").innerHTML = `
+  <div class="card"><div class="card-h"><h2>Проверка на истории</h2></div><div class="card-b">
+    <p class="muted" style="margin-top:0">Тот же движок TB Core, что и в реальной торговле. Цены — минутные свечи Binance (у KuCoin в истории пропуски), правила контрактов и комиссии — KuCoin. Баланс и настройки — из вкладки «Настройки».</p>
+    <div class="row periods">${[30, 60, 90, 160, 300].map(d => `<button class="btn ${d === period ? "on" : ""}" data-d="${d}">${d} дней</button>`).join("")}
+      <button class="btn primary" id="tRun" ${running ? "disabled" : ""}>Проверить</button></div>
+    <div style="margin-top:12px">${jobBanner("backtest")}</div>
+    ${bt ? `<p class="muted">Последний расчёт: ${esc(bt.finished)} · ${esc(bt.start)} — ${esc(bt.end)} · пресет «${esc((S.presets[bt.preset] || {}).name || bt.preset)}», баланс ${nf(bt.balance, 0)} $, экспозиция ${nf(bt.params.exposure, 2)}, позиций ${nf(bt.params.positions, 0)}</p>${btStale(bt) ? `<div class="banner warn">Этот расчёт сделан на прежних настройках (до их изменения). Нажмите «Проверить», чтобы пересчитать с нынешними.</div>` : ""}${resultBlock(bt)}` : ""}
+  </div></div>
+  <div class="banner info">Прошлое не гарантирует будущего. Эта проверка берёт сегодняшний список монет (без монет, которые за это время разогнали, обрушили и сняли с торгов) и не учитывает выход по обвалу BTC, фильтр разогнанных монет и проскальзывание — поэтому она завышена. Честная проверка (список монет по месяцам того времени, со снятыми с торгов, «как на реальных деньгах»): 01.2024–09.2026 +297% (≈ +4,3% в месяц), 2025–2026 +83%, последние 6 месяцев +111%; худший месяц −61% (обвал 03.02.2025), худшая минута −89%. Настройку стратегии подбирали на истории 07.2025–06.2026 — на этом отрезке результат завышен. Проверка «вперёд» — бумажная торговля и небольшая сумма в реальной торговле.</div>`;
+  document.querySelectorAll(".periods [data-d]").forEach(b => b.onclick = () => { period = +b.dataset.d; renderTest(); });
+  $("#tRun").onclick = async () => { try { await api("/api/backtest", {days: period}); poll(); } catch (e) { toast(e.message, true); } };
+}
+
+let logLines = [];
+function renderRun() {
+  const K = S.keys, L = S.live;
+  $("#t-run").innerHTML = `
+  <div class="card"><div class="card-h"><h2>Ключи API KuCoin</h2>${K.set ? `<span class="status run">заданы</span>` : `<span class="status stop">не заданы</span>`}</div><div class="card-b">
+    <div class="banner warn"><b>Нужен отдельный субаккаунт KuCoin только для турбо-бота.</b> Если турбо-бот и основной бот торгуют на одном счёте, они будут мешать друг другу, а фиксация ставки закроет и чужие позиции. Ключ: Профиль → API Management, права <b>General + Futures</b>, <b>без вывода средств (Withdrawal)</b>. ${S.lite ? "Ключи хранятся только на сервере (файл api-keys.json, доступ только у владельца). В ключе укажите белый список IP сервера." : "Ключи хранятся только на этом компьютере, в api-keys.json этой папки."}</div>
+    <div class="fields">
+      <div><label for="kKey">API Key</label><input id="kKey" type="text" autocomplete="off" spellcheck="false" placeholder="${K.key ? esc(K.key) + " — оставить" : "вставьте значение"}"></div>
+      <div><label for="kSec">API Secret</label><input id="kSec" type="password" autocomplete="off" placeholder="${K.secret ? "задан — оставить" : "вставьте значение"}"></div>
+      <div><label for="kPass">API Passphrase</label><input id="kPass" type="password" autocomplete="off" placeholder="${K.passphrase ? "задан — оставить" : "вставьте значение"}"></div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn primary" id="kSave">Сохранить ключи</button><button class="btn" id="kCheck" ${K.set ? "" : "disabled"}>Проверить (только чтение баланса)</button><span id="kRes" class="muted"></span></div>
+    ${S.lite ? "" : `<p class="hint">Запросы к KuCoin идут напрямую, мимо системного прокси. Если VPN работает в режиме TUN, биржа увидит адрес VPN — переключите его в режим прокси.</p>`}
+  </div></div>
+  <div class="card"><div class="card-h"><h2>Реальная торговля</h2><span class="status ${L.running ? "run" : "stop"}">${L.running ? "работает с " + esc(L.started) : L.btc_pause ? "пауза после обвала BTC" : "выключена"}</span></div><div class="card-b">
+    ${gaveUpBanner(L)}${L.running ? hslBanner((L.snapshot || {}).hsl) : ""}
+    ${!L.running && L.btc_pause ? `<div class="banner warn"><b>Пауза после обвала BTC:</b> бот запустится сам после ${esc(L.btc_pause.resume_after || "")}, если BTC перестанет падать. «Остановить бота» завершит ставку — тогда сам он не запустится.</div>` : ""}
+    ${L.running || L.btc_pause ? `<div class="row"><button class="btn danger" id="lStop">Остановить бота</button><span class="muted">Остановка не закрывает позиции и не снимает ордера на бирже — при следующем запуске бот продолжит их вести.</span></div>`
+    : `<div class="banner warn"><b>Реальные деньги.</b> Бот торгует фьючерсами с плечом: при резком падении рынка позиции могут потерять большую часть депозита. Сначала проверьте настройки на истории и 2–4 недели в бумажной торговле, потом начните с небольшой суммы: исполнение на KuCoin может оказаться хуже расчётного, а в месяц резкого обвала это стоит почти всего счёта. Запуск — пресет «${esc((S.presets[S.settings.preset] || {}).name)}», монет доступно ${S.coins.ok_count}.</div>
+      <div class="row"><div style="width:220px"><label for="lConf">Для запуска впишите ЗАПУСК</label><input id="lConf" type="text" autocomplete="off"></div>
+      <button class="btn danger" id="lStart" style="margin-top:22px" disabled>Запустить реальную торговлю</button></div>`}
+    <h3 style="font-size:14px;margin:16px 0 6px">Журнал бота</h3><div class="log" id="lLog">${esc(logLines.join("")) || "Пусто."}</div>
+  </div></div>`;
+  $("#kSave").onclick = async () => { try { await api("/api/keys", {key: $("#kKey").value, secret: $("#kSec").value, passphrase: $("#kPass").value}); toast("Ключи сохранены"); poll(); } catch (e) { toast(e.message, true); } };
+  $("#kCheck").onclick = async () => { $("#kRes").innerHTML = `<span class="spin"></span> проверяю…`; try { const r = await api("/api/keys/check", {}); $("#kRes").innerHTML = `<span class="up">Ключи рабочие.</span> Фьючерсный счёт: ${nf(r.balance.total)} USDT, свободно ${nf(r.balance.free)}`; } catch (e) { $("#kRes").innerHTML = `<span class="down">${esc(e.message)}</span>`; } };
+  // кнопка запуска разблокируется только когда в поле введено слово: раньше она рендерилась
+  // активной сразу после наличия ключей и выглядела «взведённой», хотя сервер всё равно
+  // отклонял запрос без подтверждения. Требование «осознанное действие» было чисто визуальным.
+  const lcf = $("#lConf"), lst = $("#lStart");
+  if (lcf && lst) lcf.oninput = () => { lst.disabled = !K.set || !lcf.value.trim(); };
+  const ls = $("#lStart"); if (ls) ls.onclick = async () => { try { await api("/api/live/start", {confirm: $("#lConf").value}); toast("Бот запущен"); poll(); } catch (e) { toast(e.message, true); } };
+  const lt = $("#lStop"); if (lt) lt.onclick = async () => { if (!confirm("Остановить бота? Позиции и ордера на бирже останутся.")) return; try { await api("/api/live/stop", {}); toast("Бот остановлен"); poll(); } catch (e) { toast(e.message, true); } };
+  const box = $("#lLog"); box.scrollTop = box.scrollHeight;
+}
+
+function render() {
+  if (!S) return;
+  const testBtn = document.querySelector('#tabs [data-t="test"]');
+  if (testBtn) testBtn.hidden = !!S.lite;           // на сервере бэктестов нет
+  if (S.lite && tab === "test") { setTab("home"); return; }
+  const chip = $("#liveChip");
+  chip.className = "status " + (S.live.running ? "run" : "stop");
+  chip.textContent = S.live.running ? "Реальная торговля работает" : "Реальная торговля выключена";
+  const active = document.activeElement;
+  if (tab === "settings" && active && active.closest && active.closest("#t-settings") && active.tagName !== "BUTTON") return; // не мешаем вводу
+  if (tab === "run" && active && active.closest && active.closest("#t-run") && active.tagName === "INPUT") return;
+  ({home: renderHome, settings: renderSettings, test: renderTest, run: renderRun})[tab]();
+}
+async function poll() {
+  try {
+    S = await api("/api/state");
+    if (tab === "run") logLines = (await api("/api/live/log")).lines;
+    render();
+  } catch (e) { toast("Нет связи с панелью: " + e.message, true); }
+}
+setTab(tab);
+poll();
+setInterval(() => { if (S && (S.job.state === "running" || S.live.running || tab === "run")) poll(); }, 3000);
+</script>
+</body>
+</html>

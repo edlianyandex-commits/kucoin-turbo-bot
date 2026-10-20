@@ -1,0 +1,50 @@
+{
+ "_comment": "Пресет турбо-бота — одна стратегия, Turbo 5.0 (02.10.2026; прежние пресеты и их шансы — turbo/results/presets_removed_2026-10-02.json). base — конфиг-основа, overrides — правки поверх, bet_defaults — правила панели (выход при обвале BTC, плечо). Цифры: turbo/main_variants.py, real_test.py.",
+ "turbo_ema5": {
+  "name": "Turbo 5.0 — EMA Anchor, 7 монет × 9 + быстрый стоп по монете",
+  "risk": "high",
+  "desc": "Для отдельного субаккаунта и суммы, которую не жалко потерять. TB Core EMA Anchor со своей настройкой, только лонг: 7 позиций из ~84 ликвидных монет KuCoin, экспозиция 9 (плечо 10), на монету не больше 1,3 баланса (своя правка TB Core), первая покупка ≈ 36 $ при 300 $. Защиты: выход при обвале BTC с паузой до следующего дня, быстрый стоп по каждой монете (как у основного бота: минус 62% доли — без докупок, 80% — закрыть только её на 3 дня), фильтр разогнанных монет ×3, защита от делистинга, список монет раз в месяц; ставка без цели — заканчиваете кнопкой. Честная проверка (список монет по месяцам того времени, со снятыми с торгов, $300): 01.2024–09.2026 +297% (≈ +4,3% в месяц), 2025–2026 +83%, последние 6 месяцев +111%; худший месяц −61% (обвал 03.02.2025), худшая минута −89% (резкие проколы рынка 03.01.2024, 12.04.2024, 09.12.2024, взлом UXLINK). Если исполнение на KuCoin хуже расчётного, спокойные месяцы дают примерно вдвое меньше, а месяц резкого обвала — почти полную потерю.",
+  "min_balance_hint": 200,
+  "base": "tuned/ema_anchor.json",
+  "bet_defaults": {
+   "target_mult": 0,
+   "regime_filter": false,
+   "profit_guard": false,
+   "bet_stop": 0,
+   "stop_rebase_days": 0,
+   "btc_exit": 0.05,
+   "btc_exit_hours": 12,
+   "btc_resume": true,
+   "coin_filter_dd": 0,
+   "coin_filter_days": 30,
+   "leverage": 10,
+   "hot_ratio": 3
+  },
+  "overrides": {
+   "bot.long.risk.total_wallet_exposure_limit": 9.0,
+   "bot.long.risk.n_positions": 7.0,
+   "bot.short.risk.total_wallet_exposure_limit": 0.0,
+   "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+   "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+   "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+   "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+   "bot.long.strategy.ema_anchor.base_qty_pct": 0.09375,
+   "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+   "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0,
+   "bot.long.risk.position_exposure_enforcer_enabled": true,
+   "bot.long.risk.position_exposure_enforcer_threshold": 1.0,
+   "bot.long.hsl.enabled": true,
+   "bot.long.hsl.red_threshold": 0.8,
+   "bot.long.hsl.restart_after_red_policy": "always",
+   "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+   "live.hsl_signal_mode": "coin",
+   "bot.long.hsl.tier_ratios": {
+    "yellow": 0.375,
+    "orange": 0.625
+   },
+   "bot.long.hsl.orange_tier_mode": "tp_only_with_active_entry_cancellation",
+   "bot.long.hsl.ema_span_minutes": 2.0,
+   "bot.long.hsl.panic_close_order_type": "market"
+  }
+ }
+}

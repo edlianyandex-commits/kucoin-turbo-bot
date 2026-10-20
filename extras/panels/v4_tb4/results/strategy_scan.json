@@ -1,0 +1,12469 @@
+[
+ {
+  "family": "hold",
+  "name": "держать BTC",
+  "params": {},
+  "cost": "none",
+  "universe": "BTC",
+  "is": {
+   "total": -6.4,
+   "ann": -6.4,
+   "dd": 34.8,
+   "sharpe": 0.07
+  },
+  "oos": {
+   "total": -4.5,
+   "ann": -6.1,
+   "dd": 40.3,
+   "sharpe": 0.07
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать ETH",
+  "params": {},
+  "cost": "none",
+  "universe": "ETH",
+  "is": {
+   "total": -11.0,
+   "ann": -11.0,
+   "dd": 61.8,
+   "sharpe": 0.2
+  },
+  "oos": {
+   "total": -9.9,
+   "ann": -13.0,
+   "dd": 55.0,
+   "sharpe": 0.04
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать SOL",
+  "params": {},
+  "cost": "none",
+  "universe": "SOL",
+  "is": {
+   "total": -34.2,
+   "ann": -34.2,
+   "dd": 66.1,
+   "sharpe": -0.05
+  },
+  "oos": {
+   "total": -4.4,
+   "ann": -5.9,
+   "dd": 58.8,
+   "sharpe": 0.22
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать XRP",
+  "params": {},
+  "cost": "none",
+  "universe": "XRP",
+  "is": {
+   "total": -11.6,
+   "ann": -11.6,
+   "dd": 51.3,
+   "sharpe": 0.27
+  },
+  "oos": {
+   "total": -19.1,
+   "ann": -24.7,
+   "dd": 58.6,
+   "sharpe": -0.13
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать BNB",
+  "params": {},
+  "cost": "none",
+  "universe": "BNB",
+  "is": {
+   "total": 23.2,
+   "ann": 23.2,
+   "dd": 40.8,
+   "sharpe": 0.66
+  },
+  "oos": {
+   "total": -12.2,
+   "ann": -16.0,
+   "dd": 43.3,
+   "sharpe": -0.19
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать DOGE",
+  "params": {},
+  "cost": "none",
+  "universe": "DOGE",
+  "is": {
+   "total": -62.8,
+   "ann": -62.8,
+   "dd": 72.8,
+   "sharpe": -0.6
+  },
+  "oos": {
+   "total": -20.1,
+   "ann": -26.0,
+   "dd": 55.4,
+   "sharpe": -0.12
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать ADA",
+  "params": {},
+  "cost": "none",
+  "universe": "ADA",
+  "is": {
+   "total": -60.6,
+   "ann": -60.6,
+   "dd": 71.3,
+   "sharpe": -0.4
+  },
+  "oos": {
+   "total": -26.7,
+   "ann": -34.1,
+   "dd": 67.5,
+   "sharpe": -0.19
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать LINK",
+  "params": {},
+  "cost": "none",
+  "universe": "LINK",
+  "is": {
+   "total": -39.0,
+   "ann": -39.0,
+   "dd": 62.2,
+   "sharpe": -0.05
+  },
+  "oos": {
+   "total": 19.6,
+   "ann": 27.2,
+   "dd": 50.8,
+   "sharpe": 0.69
+  }
+ },
+ {
+  "family": "hold",
+  "name": "держать 8 монет поровну",
+  "params": {},
+  "cost": "none",
+  "universe": "8",
+  "is": {
+   "total": -24.9,
+   "ann": -24.9,
+   "dd": 51.3,
+   "sharpe": -0.05
+  },
+  "oos": {
+   "total": -8.0,
+   "ann": -10.6,
+   "dd": 52.1,
+   "sharpe": 0.06
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–01:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -52.5,
+   "ann": -52.5,
+   "dd": 53.1,
+   "sharpe": -7.26
+  },
+  "oos": {
+   "total": -29.0,
+   "ann": -36.8,
+   "dd": 30.0,
+   "sharpe": -6.05
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–01:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -26.4,
+   "ann": -26.4,
+   "dd": 27.6,
+   "sharpe": -3.04
+  },
+  "oos": {
+   "total": -1.6,
+   "ann": -2.1,
+   "dd": 7.5,
+   "sharpe": -0.25
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–01:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -55.7,
+   "ann": -55.7,
+   "dd": 56.8,
+   "sharpe": -5.08
+  },
+  "oos": {
+   "total": -27.5,
+   "ann": -35.1,
+   "dd": 28.7,
+   "sharpe": -4.59
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–01:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -31.4,
+   "ann": -31.4,
+   "dd": 34.4,
+   "sharpe": -2.34
+  },
+  "oos": {
+   "total": 0.5,
+   "ann": 0.6,
+   "dd": 5.3,
+   "sharpe": 0.11
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–02:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -50.3,
+   "ann": -50.3,
+   "dd": 50.9,
+   "sharpe": -4.8
+  },
+  "oos": {
+   "total": -31.7,
+   "ann": -40.1,
+   "dd": 33.0,
+   "sharpe": -3.82
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–02:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -23.0,
+   "ann": -23.0,
+   "dd": 25.5,
+   "sharpe": -1.78
+  },
+  "oos": {
+   "total": -5.4,
+   "ann": -7.1,
+   "dd": 13.3,
+   "sharpe": -0.5
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–02:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -53.0,
+   "ann": -53.0,
+   "dd": 55.2,
+   "sharpe": -3.06
+  },
+  "oos": {
+   "total": -30.6,
+   "ann": -38.7,
+   "dd": 32.3,
+   "sharpe": -2.99
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–02:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -27.2,
+   "ann": -27.2,
+   "dd": 33.3,
+   "sharpe": -1.23
+  },
+  "oos": {
+   "total": -3.8,
+   "ann": -5.0,
+   "dd": 14.0,
+   "sharpe": -0.24
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–03:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -46.4,
+   "ann": -46.4,
+   "dd": 48.5,
+   "sharpe": -3.7
+  },
+  "oos": {
+   "total": -38.6,
+   "ann": -48.1,
+   "dd": 39.8,
+   "sharpe": -4.17
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–03:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -16.8,
+   "ann": -16.8,
+   "dd": 22.4,
+   "sharpe": -1.05
+  },
+  "oos": {
+   "total": -15.0,
+   "ann": -19.5,
+   "dd": 17.9,
+   "sharpe": -1.34
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–03:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -45.5,
+   "ann": -45.5,
+   "dd": 49.2,
+   "sharpe": -2.13
+  },
+  "oos": {
+   "total": -35.2,
+   "ann": -44.2,
+   "dd": 37.0,
+   "sharpe": -2.98
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–03:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -15.5,
+   "ann": -15.5,
+   "dd": 32.8,
+   "sharpe": -0.49
+  },
+  "oos": {
+   "total": -10.2,
+   "ann": -13.5,
+   "dd": 18.3,
+   "sharpe": -0.67
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–04:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -46.7,
+   "ann": -46.7,
+   "dd": 49.1,
+   "sharpe": -3.45
+  },
+  "oos": {
+   "total": -36.1,
+   "ann": -45.2,
+   "dd": 37.6,
+   "sharpe": -3.38
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–04:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -17.4,
+   "ann": -17.4,
+   "dd": 23.4,
+   "sharpe": -1.0
+  },
+  "oos": {
+   "total": -11.5,
+   "ann": -15.1,
+   "dd": 14.8,
+   "sharpe": -0.86
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–04:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -41.4,
+   "ann": -41.4,
+   "dd": 46.4,
+   "sharpe": -1.68
+  },
+  "oos": {
+   "total": -34.1,
+   "ann": -42.9,
+   "dd": 37.3,
+   "sharpe": -2.54
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 00:00–04:00 UTC",
+  "params": {
+   "h": 0,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -9.2,
+   "ann": -9.2,
+   "dd": 31.7,
+   "sharpe": -0.18
+  },
+  "oos": {
+   "total": -8.7,
+   "ann": -11.5,
+   "dd": 18.3,
+   "sharpe": -0.47
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–02:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -41.7,
+   "ann": -41.7,
+   "dd": 41.8,
+   "sharpe": -5.19
+  },
+  "oos": {
+   "total": -37.8,
+   "ann": -47.1,
+   "dd": 37.8,
+   "sharpe": -5.71
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–02:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -9.6,
+   "ann": -9.6,
+   "dd": 16.5,
+   "sharpe": -0.95
+  },
+  "oos": {
+   "total": -13.8,
+   "ann": -18.0,
+   "dd": 15.7,
+   "sharpe": -1.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–02:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -40.8,
+   "ann": -40.8,
+   "dd": 41.7,
+   "sharpe": -2.86
+  },
+  "oos": {
+   "total": -38.0,
+   "ann": -47.4,
+   "dd": 38.1,
+   "sharpe": -4.83
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–02:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -8.3,
+   "ann": -8.3,
+   "dd": 16.8,
+   "sharpe": -0.4
+  },
+  "oos": {
+   "total": -14.1,
+   "ann": -18.4,
+   "dd": 18.5,
+   "sharpe": -1.51
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–03:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -37.0,
+   "ann": -37.0,
+   "dd": 39.6,
+   "sharpe": -3.48
+  },
+  "oos": {
+   "total": -44.1,
+   "ann": -54.2,
+   "dd": 44.1,
+   "sharpe": -5.66
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–03:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -2.4,
+   "ann": -2.4,
+   "dd": 14.4,
+   "sharpe": -0.12
+  },
+  "oos": {
+   "total": -22.5,
+   "ann": -29.0,
+   "dd": 23.1,
+   "sharpe": -2.47
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–03:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -31.3,
+   "ann": -31.3,
+   "dd": 37.0,
+   "sharpe": -1.62
+  },
+  "oos": {
+   "total": -42.2,
+   "ann": -52.1,
+   "dd": 42.4,
+   "sharpe": -4.34
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–03:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 6.5,
+   "ann": 6.5,
+   "dd": 20.1,
+   "sharpe": 0.4
+  },
+  "oos": {
+   "total": -19.9,
+   "ann": -25.7,
+   "dd": 23.2,
+   "sharpe": -1.72
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–04:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -37.5,
+   "ann": -37.5,
+   "dd": 40.4,
+   "sharpe": -3.12
+  },
+  "oos": {
+   "total": -41.8,
+   "ann": -51.6,
+   "dd": 41.9,
+   "sharpe": -4.53
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–04:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -3.1,
+   "ann": -3.1,
+   "dd": 16.6,
+   "sharpe": -0.14
+  },
+  "oos": {
+   "total": -19.3,
+   "ann": -25.0,
+   "dd": 20.1,
+   "sharpe": -1.77
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–04:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -26.2,
+   "ann": -26.2,
+   "dd": 35.0,
+   "sharpe": -1.1
+  },
+  "oos": {
+   "total": -41.2,
+   "ann": -51.0,
+   "dd": 42.7,
+   "sharpe": -3.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–04:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 14.4,
+   "ann": 14.4,
+   "dd": 21.5,
+   "sharpe": 0.67
+  },
+  "oos": {
+   "total": -18.5,
+   "ann": -24.0,
+   "dd": 22.4,
+   "sharpe": -1.35
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–05:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -34.7,
+   "ann": -34.7,
+   "dd": 38.8,
+   "sharpe": -2.55
+  },
+  "oos": {
+   "total": -41.5,
+   "ann": -51.3,
+   "dd": 41.6,
+   "sharpe": -4.17
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–05:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 1.2,
+   "ann": 1.2,
+   "dd": 12.5,
+   "sharpe": 0.15
+  },
+  "oos": {
+   "total": -18.9,
+   "ann": -24.5,
+   "dd": 19.4,
+   "sharpe": -1.59
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–05:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -20.9,
+   "ann": -20.9,
+   "dd": 28.3,
+   "sharpe": -0.72
+  },
+  "oos": {
+   "total": -43.9,
+   "ann": -53.9,
+   "dd": 44.8,
+   "sharpe": -3.58
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 01:00–05:00 UTC",
+  "params": {
+   "h": 1,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 22.7,
+   "ann": 22.7,
+   "dd": 24.6,
+   "sharpe": 0.89
+  },
+  "oos": {
+   "total": -22.2,
+   "ann": -28.6,
+   "dd": 26.9,
+   "sharpe": -1.51
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–03:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -39.8,
+   "ann": -39.8,
+   "dd": 41.2,
+   "sharpe": -6.14
+  },
+  "oos": {
+   "total": -41.9,
+   "ann": -51.7,
+   "dd": 41.9,
+   "sharpe": -8.64
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–03:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -6.7,
+   "ann": -6.7,
+   "dd": 12.0,
+   "sharpe": -0.82
+  },
+  "oos": {
+   "total": -19.4,
+   "ann": -25.1,
+   "dd": 20.2,
+   "sharpe": -3.56
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–03:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -35.2,
+   "ann": -35.2,
+   "dd": 36.7,
+   "sharpe": -3.41
+  },
+  "oos": {
+   "total": -39.7,
+   "ann": -49.2,
+   "dd": 39.7,
+   "sharpe": -6.4
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–03:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 0.4,
+   "ann": 0.4,
+   "dd": 11.5,
+   "sharpe": 0.09
+  },
+  "oos": {
+   "total": -16.4,
+   "ann": -21.3,
+   "dd": 19.6,
+   "sharpe": -2.28
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–04:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.2,
+   "ann": -40.2,
+   "dd": 42.4,
+   "sharpe": -4.78
+  },
+  "oos": {
+   "total": -39.5,
+   "ann": -49.0,
+   "dd": 39.5,
+   "sharpe": -5.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–04:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.3,
+   "ann": -7.3,
+   "dd": 15.4,
+   "sharpe": -0.67
+  },
+  "oos": {
+   "total": -16.1,
+   "ann": -21.0,
+   "dd": 16.8,
+   "sharpe": -2.03
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–04:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -30.4,
+   "ann": -30.4,
+   "dd": 34.4,
+   "sharpe": -2.02
+  },
+  "oos": {
+   "total": -38.6,
+   "ann": -48.1,
+   "dd": 39.9,
+   "sharpe": -4.54
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–04:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 7.8,
+   "ann": 7.8,
+   "dd": 17.0,
+   "sharpe": 0.52
+  },
+  "oos": {
+   "total": -14.9,
+   "ann": -19.5,
+   "dd": 21.1,
+   "sharpe": -1.48
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–05:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -37.6,
+   "ann": -37.6,
+   "dd": 40.0,
+   "sharpe": -3.66
+  },
+  "oos": {
+   "total": -39.1,
+   "ann": -48.6,
+   "dd": 39.2,
+   "sharpe": -5.05
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–05:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -3.2,
+   "ann": -3.2,
+   "dd": 12.8,
+   "sharpe": -0.2
+  },
+  "oos": {
+   "total": -15.6,
+   "ann": -20.4,
+   "dd": 17.1,
+   "sharpe": -1.71
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–05:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -25.4,
+   "ann": -25.4,
+   "dd": 28.8,
+   "sharpe": -1.32
+  },
+  "oos": {
+   "total": -41.4,
+   "ann": -51.2,
+   "dd": 42.2,
+   "sharpe": -4.24
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–05:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 15.6,
+   "ann": 15.6,
+   "dd": 16.8,
+   "sharpe": 0.81
+  },
+  "oos": {
+   "total": -18.8,
+   "ann": -24.4,
+   "dd": 24.6,
+   "sharpe": -1.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–06:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -36.1,
+   "ann": -36.1,
+   "dd": 38.2,
+   "sharpe": -3.08
+  },
+  "oos": {
+   "total": -41.6,
+   "ann": -51.5,
+   "dd": 41.9,
+   "sharpe": -4.73
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–06:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -1.0,
+   "ann": -1.0,
+   "dd": 11.2,
+   "sharpe": 0.0
+  },
+  "oos": {
+   "total": -19.1,
+   "ann": -24.7,
+   "dd": 20.9,
+   "sharpe": -1.84
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–06:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -28.0,
+   "ann": -28.0,
+   "dd": 30.6,
+   "sharpe": -1.22
+  },
+  "oos": {
+   "total": -45.1,
+   "ann": -55.2,
+   "dd": 46.1,
+   "sharpe": -3.9
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 02:00–06:00 UTC",
+  "params": {
+   "h": 2,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 11.5,
+   "ann": 11.5,
+   "dd": 14.0,
+   "sharpe": 0.57
+  },
+  "oos": {
+   "total": -23.8,
+   "ann": -30.6,
+   "dd": 28.9,
+   "sharpe": -1.73
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–04:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -44.6,
+   "ann": -44.6,
+   "dd": 45.0,
+   "sharpe": -8.33
+  },
+  "oos": {
+   "total": -32.6,
+   "ann": -41.2,
+   "dd": 32.7,
+   "sharpe": -6.48
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–04:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -14.2,
+   "ann": -14.2,
+   "dd": 16.6,
+   "sharpe": -2.22
+  },
+  "oos": {
+   "total": -6.6,
+   "ann": -8.8,
+   "dd": 8.2,
+   "sharpe": -1.12
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–04:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -40.1,
+   "ann": -40.1,
+   "dd": 41.8,
+   "sharpe": -4.22
+  },
+  "oos": {
+   "total": -34.2,
+   "ann": -43.0,
+   "dd": 35.2,
+   "sharpe": -5.71
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–04:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -7.2,
+   "ann": -7.2,
+   "dd": 15.8,
+   "sharpe": -0.57
+  },
+  "oos": {
+   "total": -8.8,
+   "ann": -11.6,
+   "dd": 11.9,
+   "sharpe": -1.24
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–05:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.2,
+   "ann": -42.2,
+   "dd": 42.5,
+   "sharpe": -5.52
+  },
+  "oos": {
+   "total": -32.3,
+   "ann": -40.7,
+   "dd": 32.4,
+   "sharpe": -5.1
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–05:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -10.4,
+   "ann": -10.4,
+   "dd": 13.5,
+   "sharpe": -1.09
+  },
+  "oos": {
+   "total": -6.1,
+   "ann": -8.1,
+   "dd": 7.9,
+   "sharpe": -0.8
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–05:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -35.8,
+   "ann": -35.8,
+   "dd": 37.2,
+   "sharpe": -2.62
+  },
+  "oos": {
+   "total": -37.2,
+   "ann": -46.4,
+   "dd": 37.6,
+   "sharpe": -4.73
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–05:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -0.4,
+   "ann": -0.4,
+   "dd": 12.3,
+   "sharpe": 0.05
+  },
+  "oos": {
+   "total": -12.9,
+   "ann": -16.9,
+   "dd": 16.3,
+   "sharpe": -1.38
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–06:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.8,
+   "ann": -40.8,
+   "dd": 41.0,
+   "sharpe": -4.4
+  },
+  "oos": {
+   "total": -35.1,
+   "ann": -44.0,
+   "dd": 35.3,
+   "sharpe": -4.52
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–06:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -8.3,
+   "ann": -8.3,
+   "dd": 12.1,
+   "sharpe": -0.69
+  },
+  "oos": {
+   "total": -10.0,
+   "ann": -13.1,
+   "dd": 12.1,
+   "sharpe": -1.07
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–06:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -38.0,
+   "ann": -38.0,
+   "dd": 38.6,
+   "sharpe": -2.17
+  },
+  "oos": {
+   "total": -41.1,
+   "ann": -50.8,
+   "dd": 42.0,
+   "sharpe": -4.03
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–06:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -4.0,
+   "ann": -4.0,
+   "dd": 17.1,
+   "sharpe": -0.09
+  },
+  "oos": {
+   "total": -18.3,
+   "ann": -23.8,
+   "dd": 22.4,
+   "sharpe": -1.5
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–07:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -43.4,
+   "ann": -43.4,
+   "dd": 44.7,
+   "sharpe": -3.83
+  },
+  "oos": {
+   "total": -42.3,
+   "ann": -52.2,
+   "dd": 42.9,
+   "sharpe": -4.83
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–07:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -12.3,
+   "ann": -12.3,
+   "dd": 18.9,
+   "sharpe": -0.83
+  },
+  "oos": {
+   "total": -20.0,
+   "ann": -25.9,
+   "dd": 21.3,
+   "sharpe": -1.93
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–07:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -46.6,
+   "ann": -46.6,
+   "dd": 48.1,
+   "sharpe": -2.41
+  },
+  "oos": {
+   "total": -50.2,
+   "ann": -60.8,
+   "dd": 51.3,
+   "sharpe": -4.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 03:00–07:00 UTC",
+  "params": {
+   "h": 3,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -17.3,
+   "ann": -17.3,
+   "dd": 26.2,
+   "sharpe": -0.64
+  },
+  "oos": {
+   "total": -31.0,
+   "ann": -39.2,
+   "dd": 33.3,
+   "sharpe": -2.42
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–05:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -41.8,
+   "ann": -41.8,
+   "dd": 41.9,
+   "sharpe": -7.59
+  },
+  "oos": {
+   "total": -34.9,
+   "ann": -43.8,
+   "dd": 34.9,
+   "sharpe": -9.01
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–05:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -9.8,
+   "ann": -9.8,
+   "dd": 10.8,
+   "sharpe": -1.47
+  },
+  "oos": {
+   "total": -9.8,
+   "ann": -12.9,
+   "dd": 10.7,
+   "sharpe": -2.25
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–05:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -40.2,
+   "ann": -40.2,
+   "dd": 40.3,
+   "sharpe": -4.48
+  },
+  "oos": {
+   "total": -38.2,
+   "ann": -47.6,
+   "dd": 38.2,
+   "sharpe": -7.23
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–05:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -7.3,
+   "ann": -7.3,
+   "dd": 10.9,
+   "sharpe": -0.62
+  },
+  "oos": {
+   "total": -14.4,
+   "ann": -18.8,
+   "dd": 14.8,
+   "sharpe": -2.37
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–06:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.4,
+   "ann": -40.4,
+   "dd": 40.7,
+   "sharpe": -5.35
+  },
+  "oos": {
+   "total": -37.6,
+   "ann": -46.9,
+   "dd": 37.8,
+   "sharpe": -6.36
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–06:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.7,
+   "ann": -7.7,
+   "dd": 10.5,
+   "sharpe": -0.8
+  },
+  "oos": {
+   "total": -13.5,
+   "ann": -17.7,
+   "dd": 14.9,
+   "sharpe": -1.97
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–06:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -42.3,
+   "ann": -42.3,
+   "dd": 42.7,
+   "sharpe": -3.07
+  },
+  "oos": {
+   "total": -42.1,
+   "ann": -51.9,
+   "dd": 42.4,
+   "sharpe": -5.01
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–06:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -10.6,
+   "ann": -10.6,
+   "dd": 16.6,
+   "sharpe": -0.56
+  },
+  "oos": {
+   "total": -19.7,
+   "ann": -25.5,
+   "dd": 21.7,
+   "sharpe": -1.99
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–07:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -43.0,
+   "ann": -43.0,
+   "dd": 44.5,
+   "sharpe": -4.3
+  },
+  "oos": {
+   "total": -44.6,
+   "ann": -54.7,
+   "dd": 45.1,
+   "sharpe": -6.12
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–07:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.7,
+   "ann": -11.7,
+   "dd": 17.5,
+   "sharpe": -0.91
+  },
+  "oos": {
+   "total": -23.2,
+   "ann": -29.8,
+   "dd": 24.6,
+   "sharpe": -2.73
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–07:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -50.3,
+   "ann": -50.3,
+   "dd": 50.8,
+   "sharpe": -3.1
+  },
+  "oos": {
+   "total": -51.1,
+   "ann": -61.7,
+   "dd": 51.8,
+   "sharpe": -5.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–07:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -23.0,
+   "ann": -23.0,
+   "dd": 24.7,
+   "sharpe": -1.09
+  },
+  "oos": {
+   "total": -32.2,
+   "ann": -40.6,
+   "dd": 33.3,
+   "sharpe": -2.92
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–08:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -46.2,
+   "ann": -46.2,
+   "dd": 46.9,
+   "sharpe": -4.12
+  },
+  "oos": {
+   "total": -42.2,
+   "ann": -52.1,
+   "dd": 42.8,
+   "sharpe": -5.05
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–08:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -16.7,
+   "ann": -16.7,
+   "dd": 20.9,
+   "sharpe": -1.17
+  },
+  "oos": {
+   "total": -19.9,
+   "ann": -25.8,
+   "dd": 21.1,
+   "sharpe": -2.02
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–08:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -50.3,
+   "ann": -50.3,
+   "dd": 50.6,
+   "sharpe": -2.69
+  },
+  "oos": {
+   "total": -49.1,
+   "ann": -59.6,
+   "dd": 50.3,
+   "sharpe": -4.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 04:00–08:00 UTC",
+  "params": {
+   "h": 4,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -22.9,
+   "ann": -22.9,
+   "dd": 25.2,
+   "sharpe": -0.93
+  },
+  "oos": {
+   "total": -29.4,
+   "ann": -37.4,
+   "dd": 31.7,
+   "sharpe": -2.36
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–06:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.9,
+   "ann": -42.9,
+   "dd": 43.0,
+   "sharpe": -8.27
+  },
+  "oos": {
+   "total": -38.0,
+   "ann": -47.3,
+   "dd": 38.1,
+   "sharpe": -8.1
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–06:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.6,
+   "ann": -11.6,
+   "dd": 13.1,
+   "sharpe": -1.87
+  },
+  "oos": {
+   "total": -14.0,
+   "ann": -18.3,
+   "dd": 14.6,
+   "sharpe": -2.64
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–06:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -46.2,
+   "ann": -46.2,
+   "dd": 46.5,
+   "sharpe": -4.56
+  },
+  "oos": {
+   "total": -39.3,
+   "ann": -48.9,
+   "dd": 39.8,
+   "sharpe": -5.72
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–06:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -16.6,
+   "ann": -16.6,
+   "dd": 20.2,
+   "sharpe": -1.31
+  },
+  "oos": {
+   "total": -15.9,
+   "ann": -20.7,
+   "dd": 17.7,
+   "sharpe": -1.98
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–07:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -45.4,
+   "ann": -45.4,
+   "dd": 45.8,
+   "sharpe": -5.48
+  },
+  "oos": {
+   "total": -44.9,
+   "ann": -55.0,
+   "dd": 45.4,
+   "sharpe": -7.0
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–07:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -15.4,
+   "ann": -15.4,
+   "dd": 19.4,
+   "sharpe": -1.5
+  },
+  "oos": {
+   "total": -23.6,
+   "ann": -30.3,
+   "dd": 24.6,
+   "sharpe": -3.19
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–07:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -53.7,
+   "ann": -53.7,
+   "dd": 54.6,
+   "sharpe": -4.02
+  },
+  "oos": {
+   "total": -48.7,
+   "ann": -59.2,
+   "dd": 49.6,
+   "sharpe": -5.83
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–07:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -28.2,
+   "ann": -28.2,
+   "dd": 33.0,
+   "sharpe": -1.69
+  },
+  "oos": {
+   "total": -28.9,
+   "ann": -36.8,
+   "dd": 30.3,
+   "sharpe": -2.97
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–08:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.5,
+   "ann": -48.5,
+   "dd": 48.8,
+   "sharpe": -4.98
+  },
+  "oos": {
+   "total": -42.6,
+   "ann": -52.5,
+   "dd": 43.1,
+   "sharpe": -5.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–08:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -20.2,
+   "ann": -20.2,
+   "dd": 22.9,
+   "sharpe": -1.67
+  },
+  "oos": {
+   "total": -20.4,
+   "ann": -26.4,
+   "dd": 21.6,
+   "sharpe": -2.31
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–08:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -53.6,
+   "ann": -53.6,
+   "dd": 55.0,
+   "sharpe": -3.35
+  },
+  "oos": {
+   "total": -46.7,
+   "ann": -57.0,
+   "dd": 48.1,
+   "sharpe": -4.83
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–08:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -28.1,
+   "ann": -28.1,
+   "dd": 33.1,
+   "sharpe": -1.38
+  },
+  "oos": {
+   "total": -26.1,
+   "ann": -33.4,
+   "dd": 28.5,
+   "sharpe": -2.3
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–09:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -44.2,
+   "ann": -44.2,
+   "dd": 44.6,
+   "sharpe": -3.92
+  },
+  "oos": {
+   "total": -36.8,
+   "ann": -45.9,
+   "dd": 39.1,
+   "sharpe": -3.69
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–09:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -13.5,
+   "ann": -13.5,
+   "dd": 16.4,
+   "sharpe": -0.93
+  },
+  "oos": {
+   "total": -12.3,
+   "ann": -16.2,
+   "dd": 19.8,
+   "sharpe": -1.01
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–09:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -47.7,
+   "ann": -47.7,
+   "dd": 48.4,
+   "sharpe": -2.44
+  },
+  "oos": {
+   "total": -42.6,
+   "ann": -52.5,
+   "dd": 44.7,
+   "sharpe": -3.54
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 05:00–09:00 UTC",
+  "params": {
+   "h": 5,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -18.9,
+   "ann": -18.9,
+   "dd": 24.8,
+   "sharpe": -0.71
+  },
+  "oos": {
+   "total": -20.4,
+   "ann": -26.4,
+   "dd": 26.8,
+   "sharpe": -1.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–07:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -46.7,
+   "ann": -46.7,
+   "dd": 47.6,
+   "sharpe": -7.02
+  },
+  "oos": {
+   "total": -42.5,
+   "ann": -52.4,
+   "dd": 42.8,
+   "sharpe": -8.63
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–07:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -17.3,
+   "ann": -17.3,
+   "dd": 22.3,
+   "sharpe": -2.16
+  },
+  "oos": {
+   "total": -20.3,
+   "ann": -26.3,
+   "dd": 20.9,
+   "sharpe": -3.66
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–07:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -52.0,
+   "ann": -52.0,
+   "dd": 52.9,
+   "sharpe": -5.45
+  },
+  "oos": {
+   "total": -45.3,
+   "ann": -55.5,
+   "dd": 45.8,
+   "sharpe": -7.9
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–07:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.6,
+   "ann": -25.6,
+   "dd": 32.3,
+   "sharpe": -2.19
+  },
+  "oos": {
+   "total": -24.2,
+   "ann": -31.1,
+   "dd": 25.1,
+   "sharpe": -3.72
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–08:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -49.7,
+   "ann": -49.7,
+   "dd": 49.8,
+   "sharpe": -5.92
+  },
+  "oos": {
+   "total": -40.1,
+   "ann": -49.7,
+   "dd": 40.4,
+   "sharpe": -6.33
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–08:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -22.0,
+   "ann": -22.0,
+   "dd": 25.6,
+   "sharpe": -2.15
+  },
+  "oos": {
+   "total": -17.0,
+   "ann": -22.1,
+   "dd": 18.0,
+   "sharpe": -2.32
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–08:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -51.9,
+   "ann": -51.9,
+   "dd": 52.7,
+   "sharpe": -4.01
+  },
+  "oos": {
+   "total": -43.2,
+   "ann": -53.1,
+   "dd": 44.2,
+   "sharpe": -5.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–08:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.5,
+   "ann": -25.5,
+   "dd": 30.3,
+   "sharpe": -1.57
+  },
+  "oos": {
+   "total": -21.2,
+   "ann": -27.4,
+   "dd": 23.2,
+   "sharpe": -2.45
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–09:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -45.5,
+   "ann": -45.5,
+   "dd": 45.7,
+   "sharpe": -4.56
+  },
+  "oos": {
+   "total": -34.0,
+   "ann": -42.8,
+   "dd": 36.2,
+   "sharpe": -3.77
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–09:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -15.5,
+   "ann": -15.5,
+   "dd": 19.3,
+   "sharpe": -1.23
+  },
+  "oos": {
+   "total": -8.6,
+   "ann": -11.3,
+   "dd": 15.9,
+   "sharpe": -0.77
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–09:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -45.8,
+   "ann": -45.8,
+   "dd": 46.4,
+   "sharpe": -2.74
+  },
+  "oos": {
+   "total": -38.8,
+   "ann": -48.2,
+   "dd": 41.4,
+   "sharpe": -3.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–09:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -15.9,
+   "ann": -15.9,
+   "dd": 20.8,
+   "sharpe": -0.71
+  },
+  "oos": {
+   "total": -15.1,
+   "ann": -19.7,
+   "dd": 20.9,
+   "sharpe": -1.22
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–10:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.9,
+   "ann": -42.9,
+   "dd": 44.4,
+   "sharpe": -3.7
+  },
+  "oos": {
+   "total": -33.2,
+   "ann": -41.8,
+   "dd": 36.4,
+   "sharpe": -3.27
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–10:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.5,
+   "ann": -11.5,
+   "dd": 18.8,
+   "sharpe": -0.76
+  },
+  "oos": {
+   "total": -7.4,
+   "ann": -9.8,
+   "dd": 13.5,
+   "sharpe": -0.56
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–10:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -42.8,
+   "ann": -42.8,
+   "dd": 44.2,
+   "sharpe": -2.21
+  },
+  "oos": {
+   "total": -39.0,
+   "ann": -48.4,
+   "dd": 42.3,
+   "sharpe": -3.33
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 06:00–10:00 UTC",
+  "params": {
+   "h": 6,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -11.3,
+   "ann": -11.3,
+   "dd": 26.3,
+   "sharpe": -0.38
+  },
+  "oos": {
+   "total": -15.4,
+   "ann": -20.1,
+   "dd": 21.6,
+   "sharpe": -1.07
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–08:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -47.4,
+   "ann": -47.4,
+   "dd": 47.4,
+   "sharpe": -8.39
+  },
+  "oos": {
+   "total": -32.6,
+   "ann": -41.1,
+   "dd": 32.6,
+   "sharpe": -7.77
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–08:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -18.5,
+   "ann": -18.5,
+   "dd": 18.8,
+   "sharpe": -2.76
+  },
+  "oos": {
+   "total": -6.5,
+   "ann": -8.7,
+   "dd": 9.1,
+   "sharpe": -1.36
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–08:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -44.2,
+   "ann": -44.2,
+   "dd": 44.2,
+   "sharpe": -4.76
+  },
+  "oos": {
+   "total": -32.7,
+   "ann": -41.2,
+   "dd": 33.4,
+   "sharpe": -6.42
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–08:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -13.5,
+   "ann": -13.5,
+   "dd": 15.1,
+   "sharpe": -1.15
+  },
+  "oos": {
+   "total": -6.7,
+   "ann": -8.9,
+   "dd": 9.7,
+   "sharpe": -1.12
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–09:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -43.0,
+   "ann": -43.0,
+   "dd": 43.0,
+   "sharpe": -5.62
+  },
+  "oos": {
+   "total": -25.8,
+   "ann": -32.9,
+   "dd": 27.7,
+   "sharpe": -3.3
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–09:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.6,
+   "ann": -11.6,
+   "dd": 12.6,
+   "sharpe": -1.23
+  },
+  "oos": {
+   "total": 2.9,
+   "ann": 3.9,
+   "dd": 8.4,
+   "sharpe": 0.39
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–09:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -37.0,
+   "ann": -37.0,
+   "dd": 37.2,
+   "sharpe": -2.63
+  },
+  "oos": {
+   "total": -27.5,
+   "ann": -35.0,
+   "dd": 29.5,
+   "sharpe": -3.07
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–09:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -2.4,
+   "ann": -2.4,
+   "dd": 14.4,
+   "sharpe": -0.06
+  },
+  "oos": {
+   "total": 0.5,
+   "ann": 0.7,
+   "dd": 6.9,
+   "sharpe": 0.12
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–10:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.3,
+   "ann": -40.3,
+   "dd": 41.0,
+   "sharpe": -4.2
+  },
+  "oos": {
+   "total": -24.8,
+   "ann": -31.8,
+   "dd": 27.8,
+   "sharpe": -2.7
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–10:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.5,
+   "ann": -7.5,
+   "dd": 16.9,
+   "sharpe": -0.6
+  },
+  "oos": {
+   "total": 4.3,
+   "ann": 5.7,
+   "dd": 10.4,
+   "sharpe": 0.48
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–10:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -33.6,
+   "ann": -33.6,
+   "dd": 39.6,
+   "sharpe": -1.94
+  },
+  "oos": {
+   "total": -27.7,
+   "ann": -35.3,
+   "dd": 30.9,
+   "sharpe": -2.55
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–10:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 3.0,
+   "ann": 3.0,
+   "dd": 20.8,
+   "sharpe": 0.25
+  },
+  "oos": {
+   "total": 0.2,
+   "ann": 0.2,
+   "dd": 11.4,
+   "sharpe": 0.1
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–11:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.4,
+   "ann": -40.4,
+   "dd": 41.1,
+   "sharpe": -3.72
+  },
+  "oos": {
+   "total": -31.2,
+   "ann": -39.4,
+   "dd": 34.1,
+   "sharpe": -3.2
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–11:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.6,
+   "ann": -7.6,
+   "dd": 16.5,
+   "sharpe": -0.52
+  },
+  "oos": {
+   "total": -4.6,
+   "ann": -6.1,
+   "dd": 16.9,
+   "sharpe": -0.34
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–11:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -35.8,
+   "ann": -35.8,
+   "dd": 41.5,
+   "sharpe": -1.85
+  },
+  "oos": {
+   "total": -37.2,
+   "ann": -46.4,
+   "dd": 40.6,
+   "sharpe": -3.27
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 07:00–11:00 UTC",
+  "params": {
+   "h": 7,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -0.5,
+   "ann": -0.5,
+   "dd": 26.0,
+   "sharpe": 0.09
+  },
+  "oos": {
+   "total": -12.9,
+   "ann": -16.9,
+   "dd": 19.7,
+   "sharpe": -0.91
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–09:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -39.6,
+   "ann": -39.6,
+   "dd": 39.6,
+   "sharpe": -7.65
+  },
+  "oos": {
+   "total": -28.8,
+   "ann": -36.6,
+   "dd": 31.5,
+   "sharpe": -4.56
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–09:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -6.3,
+   "ann": -6.3,
+   "dd": 7.1,
+   "sharpe": -1.0
+  },
+  "oos": {
+   "total": -1.3,
+   "ann": -1.7,
+   "dd": 10.1,
+   "sharpe": -0.13
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–09:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -37.1,
+   "ann": -37.1,
+   "dd": 37.1,
+   "sharpe": -3.78
+  },
+  "oos": {
+   "total": -30.3,
+   "ann": -38.4,
+   "dd": 32.7,
+   "sharpe": -4.29
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–09:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -2.5,
+   "ann": -2.5,
+   "dd": 8.4,
+   "sharpe": -0.15
+  },
+  "oos": {
+   "total": -3.4,
+   "ann": -4.5,
+   "dd": 11.9,
+   "sharpe": -0.36
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–10:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -36.7,
+   "ann": -36.7,
+   "dd": 37.2,
+   "sharpe": -4.73
+  },
+  "oos": {
+   "total": -27.8,
+   "ann": -35.5,
+   "dd": 30.4,
+   "sharpe": -3.54
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–10:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -2.0,
+   "ann": -2.0,
+   "dd": 12.5,
+   "sharpe": -0.16
+  },
+  "oos": {
+   "total": 0.0,
+   "ann": 0.0,
+   "dd": 11.2,
+   "sharpe": 0.06
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–10:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -33.6,
+   "ann": -33.6,
+   "dd": 36.3,
+   "sharpe": -2.47
+  },
+  "oos": {
+   "total": -30.5,
+   "ann": -38.7,
+   "dd": 33.8,
+   "sharpe": -3.31
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–10:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 2.9,
+   "ann": 2.9,
+   "dd": 16.2,
+   "sharpe": 0.26
+  },
+  "oos": {
+   "total": -3.7,
+   "ann": -4.9,
+   "dd": 11.8,
+   "sharpe": -0.28
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–11:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -36.8,
+   "ann": -36.8,
+   "dd": 37.3,
+   "sharpe": -3.95
+  },
+  "oos": {
+   "total": -34.0,
+   "ann": -42.7,
+   "dd": 36.6,
+   "sharpe": -3.96
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–11:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -2.0,
+   "ann": -2.0,
+   "dd": 12.7,
+   "sharpe": -0.13
+  },
+  "oos": {
+   "total": -8.5,
+   "ann": -11.2,
+   "dd": 18.8,
+   "sharpe": -0.8
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–11:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -35.9,
+   "ann": -35.9,
+   "dd": 39.0,
+   "sharpe": -2.22
+  },
+  "oos": {
+   "total": -39.6,
+   "ann": -49.1,
+   "dd": 43.2,
+   "sharpe": -3.97
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–11:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -0.6,
+   "ann": -0.6,
+   "dd": 21.3,
+   "sharpe": 0.06
+  },
+  "oos": {
+   "total": -16.2,
+   "ann": -21.2,
+   "dd": 24.6,
+   "sharpe": -1.35
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–12:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -35.0,
+   "ann": -35.0,
+   "dd": 36.5,
+   "sharpe": -3.23
+  },
+  "oos": {
+   "total": -29.5,
+   "ann": -37.4,
+   "dd": 33.2,
+   "sharpe": -2.95
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–12:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 0.7,
+   "ann": 0.7,
+   "dd": 11.7,
+   "sharpe": 0.12
+  },
+  "oos": {
+   "total": -2.3,
+   "ann": -3.0,
+   "dd": 16.2,
+   "sharpe": -0.12
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–12:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -35.3,
+   "ann": -35.3,
+   "dd": 42.6,
+   "sharpe": -1.86
+  },
+  "oos": {
+   "total": -34.3,
+   "ann": -43.1,
+   "dd": 39.7,
+   "sharpe": -2.9
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 08:00–12:00 UTC",
+  "params": {
+   "h": 8,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 0.2,
+   "ann": 0.2,
+   "dd": 21.3,
+   "sharpe": 0.12
+  },
+  "oos": {
+   "total": -8.9,
+   "ann": -11.8,
+   "dd": 23.7,
+   "sharpe": -0.57
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–10:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -41.6,
+   "ann": -41.6,
+   "dd": 42.1,
+   "sharpe": -7.41
+  },
+  "oos": {
+   "total": -34.5,
+   "ann": -43.3,
+   "dd": 34.8,
+   "sharpe": -7.68
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–10:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -9.6,
+   "ann": -9.6,
+   "dd": 15.0,
+   "sharpe": -1.4
+  },
+  "oos": {
+   "total": -9.1,
+   "ann": -12.1,
+   "dd": 12.5,
+   "sharpe": -1.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–10:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -41.2,
+   "ann": -41.2,
+   "dd": 41.9,
+   "sharpe": -4.86
+  },
+  "oos": {
+   "total": -35.5,
+   "ann": -44.5,
+   "dd": 36.6,
+   "sharpe": -6.22
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–10:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -8.8,
+   "ann": -8.8,
+   "dd": 17.2,
+   "sharpe": -0.82
+  },
+  "oos": {
+   "total": -10.6,
+   "ann": -14.0,
+   "dd": 14.7,
+   "sharpe": -1.6
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–11:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -41.7,
+   "ann": -41.7,
+   "dd": 42.2,
+   "sharpe": -5.58
+  },
+  "oos": {
+   "total": -40.0,
+   "ann": -49.6,
+   "dd": 40.9,
+   "sharpe": -6.91
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–11:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -9.6,
+   "ann": -9.6,
+   "dd": 17.7,
+   "sharpe": -1.03
+  },
+  "oos": {
+   "total": -16.8,
+   "ann": -21.9,
+   "dd": 18.9,
+   "sharpe": -2.51
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–11:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -43.2,
+   "ann": -43.2,
+   "dd": 47.2,
+   "sharpe": -3.7
+  },
+  "oos": {
+   "total": -43.9,
+   "ann": -54.0,
+   "dd": 45.3,
+   "sharpe": -6.11
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–11:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -11.9,
+   "ann": -11.9,
+   "dd": 25.8,
+   "sharpe": -0.78
+  },
+  "oos": {
+   "total": -22.3,
+   "ann": -28.7,
+   "dd": 25.2,
+   "sharpe": -2.66
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–12:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.1,
+   "ann": -40.1,
+   "dd": 42.2,
+   "sharpe": -4.4
+  },
+  "oos": {
+   "total": -36.0,
+   "ann": -45.0,
+   "dd": 37.2,
+   "sharpe": -4.89
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–12:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.1,
+   "ann": -7.1,
+   "dd": 18.8,
+   "sharpe": -0.6
+  },
+  "oos": {
+   "total": -11.2,
+   "ann": -14.8,
+   "dd": 15.1,
+   "sharpe": -1.28
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–12:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -42.7,
+   "ann": -42.7,
+   "dd": 49.8,
+   "sharpe": -2.89
+  },
+  "oos": {
+   "total": -39.0,
+   "ann": -48.5,
+   "dd": 41.6,
+   "sharpe": -4.25
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–12:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -11.2,
+   "ann": -11.2,
+   "dd": 30.1,
+   "sharpe": -0.55
+  },
+  "oos": {
+   "total": -15.5,
+   "ann": -20.2,
+   "dd": 20.8,
+   "sharpe": -1.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–13:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -44.2,
+   "ann": -44.2,
+   "dd": 45.4,
+   "sharpe": -4.27
+  },
+  "oos": {
+   "total": -34.6,
+   "ann": -43.4,
+   "dd": 36.0,
+   "sharpe": -3.76
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–13:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -13.5,
+   "ann": -13.5,
+   "dd": 23.3,
+   "sharpe": -1.02
+  },
+  "oos": {
+   "total": -9.3,
+   "ann": -12.3,
+   "dd": 15.3,
+   "sharpe": -0.82
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–13:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -46.1,
+   "ann": -46.1,
+   "dd": 49.9,
+   "sharpe": -2.66
+  },
+  "oos": {
+   "total": -33.4,
+   "ann": -42.1,
+   "dd": 38.8,
+   "sharpe": -2.83
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 09:00–13:00 UTC",
+  "params": {
+   "h": 9,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -16.4,
+   "ann": -16.4,
+   "dd": 31.0,
+   "sharpe": -0.7
+  },
+  "oos": {
+   "total": -7.7,
+   "ann": -10.2,
+   "dd": 17.5,
+   "sharpe": -0.49
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–11:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -44.3,
+   "ann": -44.3,
+   "dd": 44.3,
+   "sharpe": -8.81
+  },
+  "oos": {
+   "total": -40.8,
+   "ann": -50.5,
+   "dd": 41.0,
+   "sharpe": -9.99
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–11:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -13.7,
+   "ann": -13.7,
+   "dd": 15.0,
+   "sharpe": -2.3
+  },
+  "oos": {
+   "total": -17.9,
+   "ann": -23.3,
+   "dd": 19.4,
+   "sharpe": -3.96
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–11:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -46.1,
+   "ann": -46.1,
+   "dd": 46.3,
+   "sharpe": -5.78
+  },
+  "oos": {
+   "total": -43.7,
+   "ann": -53.8,
+   "dd": 44.0,
+   "sharpe": -8.75
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–11:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -16.5,
+   "ann": -16.5,
+   "dd": 22.5,
+   "sharpe": -1.68
+  },
+  "oos": {
+   "total": -22.0,
+   "ann": -28.3,
+   "dd": 23.9,
+   "sharpe": -3.92
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–12:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.8,
+   "ann": -42.8,
+   "dd": 42.9,
+   "sharpe": -6.04
+  },
+  "oos": {
+   "total": -36.8,
+   "ann": -46.0,
+   "dd": 37.3,
+   "sharpe": -6.16
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–12:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.3,
+   "ann": -11.3,
+   "dd": 15.2,
+   "sharpe": -1.29
+  },
+  "oos": {
+   "total": -12.4,
+   "ann": -16.3,
+   "dd": 15.7,
+   "sharpe": -1.79
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–12:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -45.7,
+   "ann": -45.7,
+   "dd": 48.3,
+   "sharpe": -3.89
+  },
+  "oos": {
+   "total": -38.8,
+   "ann": -48.3,
+   "dd": 40.3,
+   "sharpe": -5.24
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–12:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -15.8,
+   "ann": -15.8,
+   "dd": 26.8,
+   "sharpe": -1.05
+  },
+  "oos": {
+   "total": -15.2,
+   "ann": -19.8,
+   "dd": 22.8,
+   "sharpe": -1.75
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–13:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -46.7,
+   "ann": -46.7,
+   "dd": 46.9,
+   "sharpe": -5.4
+  },
+  "oos": {
+   "total": -35.4,
+   "ann": -44.4,
+   "dd": 36.0,
+   "sharpe": -4.4
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–13:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -17.4,
+   "ann": -17.4,
+   "dd": 20.1,
+   "sharpe": -1.62
+  },
+  "oos": {
+   "total": -10.5,
+   "ann": -13.8,
+   "dd": 15.3,
+   "sharpe": -1.08
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–13:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -48.9,
+   "ann": -48.9,
+   "dd": 51.5,
+   "sharpe": -3.33
+  },
+  "oos": {
+   "total": -33.2,
+   "ann": -41.8,
+   "dd": 37.1,
+   "sharpe": -3.22
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–13:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -20.8,
+   "ann": -20.8,
+   "dd": 29.0,
+   "sharpe": -1.1
+  },
+  "oos": {
+   "total": -7.4,
+   "ann": -9.8,
+   "dd": 19.7,
+   "sharpe": -0.56
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–14:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -51.5,
+   "ann": -51.5,
+   "dd": 52.0,
+   "sharpe": -4.53
+  },
+  "oos": {
+   "total": -43.5,
+   "ann": -53.6,
+   "dd": 46.1,
+   "sharpe": -4.14
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–14:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -24.9,
+   "ann": -24.9,
+   "dd": 29.0,
+   "sharpe": -1.76
+  },
+  "oos": {
+   "total": -21.7,
+   "ann": -28.0,
+   "dd": 29.1,
+   "sharpe": -1.74
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–14:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -58.9,
+   "ann": -58.9,
+   "dd": 62.8,
+   "sharpe": -3.34
+  },
+  "oos": {
+   "total": -39.0,
+   "ann": -48.5,
+   "dd": 45.5,
+   "sharpe": -2.96
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 10:00–14:00 UTC",
+  "params": {
+   "h": 10,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -36.3,
+   "ann": -36.3,
+   "dd": 45.4,
+   "sharpe": -1.64
+  },
+  "oos": {
+   "total": -15.4,
+   "ann": -20.1,
+   "dd": 32.7,
+   "sharpe": -0.94
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–12:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.7,
+   "ann": -42.7,
+   "dd": 42.7,
+   "sharpe": -8.35
+  },
+  "oos": {
+   "total": -30.9,
+   "ann": -39.1,
+   "dd": 31.1,
+   "sharpe": -6.85
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–12:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.2,
+   "ann": -11.2,
+   "dd": 12.1,
+   "sharpe": -1.84
+  },
+  "oos": {
+   "total": -4.3,
+   "ann": -5.7,
+   "dd": 9.2,
+   "sharpe": -0.8
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–12:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -43.8,
+   "ann": -43.8,
+   "dd": 44.8,
+   "sharpe": -5.03
+  },
+  "oos": {
+   "total": -29.6,
+   "ann": -37.6,
+   "dd": 30.5,
+   "sharpe": -5.24
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–12:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -12.9,
+   "ann": -12.9,
+   "dd": 19.1,
+   "sharpe": -1.18
+  },
+  "oos": {
+   "total": -2.5,
+   "ann": -3.3,
+   "dd": 10.5,
+   "sharpe": -0.34
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–13:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -46.6,
+   "ann": -46.6,
+   "dd": 46.9,
+   "sharpe": -6.47
+  },
+  "oos": {
+   "total": -29.5,
+   "ann": -37.4,
+   "dd": 30.1,
+   "sharpe": -4.1
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–13:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -17.3,
+   "ann": -17.3,
+   "dd": 18.5,
+   "sharpe": -1.96
+  },
+  "oos": {
+   "total": -2.2,
+   "ann": -3.0,
+   "dd": 10.6,
+   "sharpe": -0.21
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–13:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -47.1,
+   "ann": -47.1,
+   "dd": 48.6,
+   "sharpe": -3.75
+  },
+  "oos": {
+   "total": -23.2,
+   "ann": -29.8,
+   "dd": 27.0,
+   "sharpe": -2.48
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–13:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -18.0,
+   "ann": -18.0,
+   "dd": 23.5,
+   "sharpe": -1.12
+  },
+  "oos": {
+   "total": 6.4,
+   "ann": 8.7,
+   "dd": 12.2,
+   "sharpe": 0.67
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–14:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -51.5,
+   "ann": -51.5,
+   "dd": 51.9,
+   "sharpe": -4.95
+  },
+  "oos": {
+   "total": -38.3,
+   "ann": -47.7,
+   "dd": 41.5,
+   "sharpe": -3.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–14:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -24.8,
+   "ann": -24.8,
+   "dd": 28.5,
+   "sharpe": -1.93
+  },
+  "oos": {
+   "total": -14.5,
+   "ann": -18.9,
+   "dd": 23.8,
+   "sharpe": -1.17
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–14:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -57.5,
+   "ann": -57.5,
+   "dd": 59.8,
+   "sharpe": -3.54
+  },
+  "oos": {
+   "total": -29.9,
+   "ann": -37.9,
+   "dd": 37.0,
+   "sharpe": -2.3
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–14:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -34.1,
+   "ann": -34.1,
+   "dd": 41.7,
+   "sharpe": -1.67
+  },
+  "oos": {
+   "total": -2.8,
+   "ann": -3.7,
+   "dd": 19.0,
+   "sharpe": -0.09
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–15:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -50.5,
+   "ann": -50.5,
+   "dd": 55.3,
+   "sharpe": -3.37
+  },
+  "oos": {
+   "total": -37.6,
+   "ann": -46.9,
+   "dd": 40.8,
+   "sharpe": -2.95
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–15:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -23.3,
+   "ann": -23.3,
+   "dd": 35.0,
+   "sharpe": -1.21
+  },
+  "oos": {
+   "total": -13.5,
+   "ann": -17.7,
+   "dd": 24.4,
+   "sharpe": -0.84
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–15:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -55.7,
+   "ann": -55.7,
+   "dd": 62.2,
+   "sharpe": -2.5
+  },
+  "oos": {
+   "total": -30.6,
+   "ann": -38.7,
+   "dd": 37.7,
+   "sharpe": -1.83
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 11:00–15:00 UTC",
+  "params": {
+   "h": 11,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -31.4,
+   "ann": -31.4,
+   "dd": 44.8,
+   "sharpe": -1.08
+  },
+  "oos": {
+   "total": -3.8,
+   "ann": -5.0,
+   "dd": 23.7,
+   "sharpe": -0.08
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–13:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.1,
+   "ann": -48.1,
+   "dd": 48.2,
+   "sharpe": -8.88
+  },
+  "oos": {
+   "total": -33.9,
+   "ann": -42.6,
+   "dd": 34.1,
+   "sharpe": -6.22
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–13:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -19.5,
+   "ann": -19.5,
+   "dd": 20.4,
+   "sharpe": -3.06
+  },
+  "oos": {
+   "total": -8.4,
+   "ann": -11.1,
+   "dd": 9.4,
+   "sharpe": -1.31
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–13:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -47.5,
+   "ann": -47.5,
+   "dd": 47.9,
+   "sharpe": -5.16
+  },
+  "oos": {
+   "total": -29.4,
+   "ann": -37.3,
+   "dd": 30.9,
+   "sharpe": -4.27
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–13:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -18.7,
+   "ann": -18.7,
+   "dd": 19.8,
+   "sharpe": -1.64
+  },
+  "oos": {
+   "total": -2.1,
+   "ann": -2.8,
+   "dd": 7.6,
+   "sharpe": -0.21
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–14:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -52.8,
+   "ann": -52.8,
+   "dd": 53.1,
+   "sharpe": -5.72
+  },
+  "oos": {
+   "total": -42.2,
+   "ann": -52.1,
+   "dd": 44.6,
+   "sharpe": -4.74
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–14:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -26.8,
+   "ann": -26.8,
+   "dd": 29.0,
+   "sharpe": -2.38
+  },
+  "oos": {
+   "total": -19.9,
+   "ann": -25.7,
+   "dd": 25.0,
+   "sharpe": -1.88
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–14:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -57.8,
+   "ann": -57.8,
+   "dd": 58.7,
+   "sharpe": -4.09
+  },
+  "oos": {
+   "total": -35.5,
+   "ann": -44.5,
+   "dd": 40.6,
+   "sharpe": -3.23
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–14:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -34.6,
+   "ann": -34.6,
+   "dd": 37.4,
+   "sharpe": -1.97
+  },
+  "oos": {
+   "total": -10.6,
+   "ann": -13.9,
+   "dd": 20.5,
+   "sharpe": -0.76
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–15:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -51.9,
+   "ann": -51.9,
+   "dd": 55.9,
+   "sharpe": -3.69
+  },
+  "oos": {
+   "total": -41.6,
+   "ann": -51.4,
+   "dd": 44.1,
+   "sharpe": -3.59
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–15:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -25.4,
+   "ann": -25.4,
+   "dd": 35.9,
+   "sharpe": -1.43
+  },
+  "oos": {
+   "total": -19.0,
+   "ann": -24.6,
+   "dd": 28.2,
+   "sharpe": -1.36
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–15:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -56.1,
+   "ann": -56.1,
+   "dd": 60.5,
+   "sharpe": -2.73
+  },
+  "oos": {
+   "total": -36.2,
+   "ann": -45.2,
+   "dd": 40.0,
+   "sharpe": -2.45
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–15:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -31.9,
+   "ann": -31.9,
+   "dd": 41.8,
+   "sharpe": -1.2
+  },
+  "oos": {
+   "total": -11.5,
+   "ann": -15.1,
+   "dd": 26.3,
+   "sharpe": -0.58
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–16:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -55.5,
+   "ann": -55.5,
+   "dd": 60.5,
+   "sharpe": -3.31
+  },
+  "oos": {
+   "total": -29.4,
+   "ann": -37.3,
+   "dd": 37.8,
+   "sharpe": -1.85
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–16:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -31.0,
+   "ann": -31.0,
+   "dd": 41.5,
+   "sharpe": -1.46
+  },
+  "oos": {
+   "total": -2.1,
+   "ann": -2.8,
+   "dd": 24.2,
+   "sharpe": -0.0
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–16:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -57.3,
+   "ann": -57.3,
+   "dd": 64.3,
+   "sharpe": -2.2
+  },
+  "oos": {
+   "total": -24.2,
+   "ann": -31.1,
+   "dd": 39.7,
+   "sharpe": -1.19
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 12:00–16:00 UTC",
+  "params": {
+   "h": 12,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -33.9,
+   "ann": -33.9,
+   "dd": 47.7,
+   "sharpe": -0.98
+  },
+  "oos": {
+   "total": 5.0,
+   "ann": 6.8,
+   "dd": 26.9,
+   "sharpe": 0.37
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–14:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -49.3,
+   "ann": -49.3,
+   "dd": 49.4,
+   "sharpe": -6.15
+  },
+  "oos": {
+   "total": -43.4,
+   "ann": -53.4,
+   "dd": 44.8,
+   "sharpe": -5.94
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–14:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -21.4,
+   "ann": -21.4,
+   "dd": 24.4,
+   "sharpe": -2.2
+  },
+  "oos": {
+   "total": -21.6,
+   "ann": -27.8,
+   "dd": 25.2,
+   "sharpe": -2.55
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–14:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -55.2,
+   "ann": -55.2,
+   "dd": 55.7,
+   "sharpe": -4.71
+  },
+  "oos": {
+   "total": -40.9,
+   "ann": -50.6,
+   "dd": 42.5,
+   "sharpe": -4.86
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–14:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -30.5,
+   "ann": -30.5,
+   "dd": 34.5,
+   "sharpe": -2.12
+  },
+  "oos": {
+   "total": -18.1,
+   "ann": -23.5,
+   "dd": 24.3,
+   "sharpe": -1.82
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–15:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.3,
+   "ann": -48.3,
+   "dd": 52.5,
+   "sharpe": -3.58
+  },
+  "oos": {
+   "total": -42.8,
+   "ann": -52.7,
+   "dd": 44.5,
+   "sharpe": -4.17
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–15:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -19.9,
+   "ann": -19.9,
+   "dd": 31.1,
+   "sharpe": -1.15
+  },
+  "oos": {
+   "total": -20.7,
+   "ann": -26.7,
+   "dd": 30.2,
+   "sharpe": -1.7
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–15:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -53.3,
+   "ann": -53.3,
+   "dd": 58.5,
+   "sharpe": -2.81
+  },
+  "oos": {
+   "total": -41.5,
+   "ann": -51.3,
+   "dd": 42.2,
+   "sharpe": -3.33
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–15:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -27.7,
+   "ann": -27.7,
+   "dd": 39.6,
+   "sharpe": -1.12
+  },
+  "oos": {
+   "total": -18.9,
+   "ann": -24.5,
+   "dd": 29.8,
+   "sharpe": -1.25
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–16:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -52.2,
+   "ann": -52.2,
+   "dd": 57.2,
+   "sharpe": -3.16
+  },
+  "oos": {
+   "total": -30.9,
+   "ann": -39.1,
+   "dd": 40.2,
+   "sharpe": -2.13
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–16:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -26.0,
+   "ann": -26.0,
+   "dd": 36.7,
+   "sharpe": -1.23
+  },
+  "oos": {
+   "total": -4.2,
+   "ann": -5.5,
+   "dd": 27.3,
+   "sharpe": -0.15
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–16:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -54.7,
+   "ann": -54.7,
+   "dd": 61.9,
+   "sharpe": -2.18
+  },
+  "oos": {
+   "total": -30.6,
+   "ann": -38.8,
+   "dd": 42.6,
+   "sharpe": -1.76
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–16:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -29.7,
+   "ann": -29.7,
+   "dd": 43.9,
+   "sharpe": -0.88
+  },
+  "oos": {
+   "total": -3.8,
+   "ann": -5.1,
+   "dd": 30.4,
+   "sharpe": -0.07
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–17:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -57.7,
+   "ann": -57.7,
+   "dd": 60.5,
+   "sharpe": -3.32
+  },
+  "oos": {
+   "total": -33.5,
+   "ann": -42.2,
+   "dd": 44.3,
+   "sharpe": -2.17
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–17:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -34.4,
+   "ann": -34.4,
+   "dd": 41.3,
+   "sharpe": -1.57
+  },
+  "oos": {
+   "total": -7.9,
+   "ann": -10.4,
+   "dd": 32.3,
+   "sharpe": -0.34
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–17:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -61.1,
+   "ann": -61.1,
+   "dd": 65.3,
+   "sharpe": -2.29
+  },
+  "oos": {
+   "total": -25.2,
+   "ann": -32.2,
+   "dd": 45.0,
+   "sharpe": -1.22
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 13:00–17:00 UTC",
+  "params": {
+   "h": 13,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -39.7,
+   "ann": -39.7,
+   "dd": 49.6,
+   "sharpe": -1.14
+  },
+  "oos": {
+   "total": 3.8,
+   "ann": 5.1,
+   "dd": 33.3,
+   "sharpe": 0.32
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–15:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -43.1,
+   "ann": -43.1,
+   "dd": 47.0,
+   "sharpe": -3.85
+  },
+  "oos": {
+   "total": -34.6,
+   "ann": -43.4,
+   "dd": 35.3,
+   "sharpe": -4.56
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–15:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.9,
+   "ann": -11.9,
+   "dd": 21.7,
+   "sharpe": -0.81
+  },
+  "oos": {
+   "total": -9.3,
+   "ann": -12.3,
+   "dd": 15.2,
+   "sharpe": -1.02
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–15:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -41.9,
+   "ann": -41.9,
+   "dd": 45.8,
+   "sharpe": -2.63
+  },
+  "oos": {
+   "total": -36.0,
+   "ann": -45.0,
+   "dd": 37.1,
+   "sharpe": -3.79
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–15:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -10.0,
+   "ann": -10.0,
+   "dd": 20.3,
+   "sharpe": -0.43
+  },
+  "oos": {
+   "total": -11.2,
+   "ann": -14.8,
+   "dd": 14.8,
+   "sharpe": -0.97
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–16:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -47.5,
+   "ann": -47.5,
+   "dd": 52.9,
+   "sharpe": -3.15
+  },
+  "oos": {
+   "total": -20.9,
+   "ann": -27.1,
+   "dd": 26.9,
+   "sharpe": -1.64
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–16:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -18.6,
+   "ann": -18.6,
+   "dd": 30.0,
+   "sharpe": -0.94
+  },
+  "oos": {
+   "total": 9.6,
+   "ann": 13.1,
+   "dd": 12.2,
+   "sharpe": 0.77
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–16:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -43.6,
+   "ann": -43.6,
+   "dd": 51.0,
+   "sharpe": -1.8
+  },
+  "oos": {
+   "total": -24.0,
+   "ann": -30.8,
+   "dd": 29.9,
+   "sharpe": -1.58
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–16:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -12.6,
+   "ann": -12.6,
+   "dd": 30.7,
+   "sharpe": -0.31
+  },
+  "oos": {
+   "total": 5.3,
+   "ann": 7.2,
+   "dd": 16.6,
+   "sharpe": 0.43
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–17:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -53.4,
+   "ann": -53.4,
+   "dd": 56.6,
+   "sharpe": -3.28
+  },
+  "oos": {
+   "total": -24.0,
+   "ann": -30.8,
+   "dd": 32.7,
+   "sharpe": -1.7
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–17:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -27.8,
+   "ann": -27.8,
+   "dd": 35.5,
+   "sharpe": -1.34
+  },
+  "oos": {
+   "total": 5.4,
+   "ann": 7.2,
+   "dd": 17.5,
+   "sharpe": 0.45
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–17:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -51.6,
+   "ann": -51.6,
+   "dd": 55.4,
+   "sharpe": -1.95
+  },
+  "oos": {
+   "total": -18.1,
+   "ann": -23.5,
+   "dd": 32.7,
+   "sharpe": -0.95
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–17:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -24.9,
+   "ann": -24.9,
+   "dd": 34.8,
+   "sharpe": -0.67
+  },
+  "oos": {
+   "total": 13.6,
+   "ann": 18.6,
+   "dd": 19.0,
+   "sharpe": 0.81
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–18:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -47.2,
+   "ann": -47.2,
+   "dd": 50.4,
+   "sharpe": -2.34
+  },
+  "oos": {
+   "total": -29.2,
+   "ann": -37.1,
+   "dd": 37.0,
+   "sharpe": -1.95
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–18:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -18.2,
+   "ann": -18.2,
+   "dd": 29.8,
+   "sharpe": -0.65
+  },
+  "oos": {
+   "total": -1.8,
+   "ann": -2.5,
+   "dd": 23.6,
+   "sharpe": -0.0
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–18:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -44.2,
+   "ann": -44.2,
+   "dd": 47.0,
+   "sharpe": -1.31
+  },
+  "oos": {
+   "total": -21.6,
+   "ann": -27.8,
+   "dd": 35.9,
+   "sharpe": -1.06
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 14:00–18:00 UTC",
+  "params": {
+   "h": 14,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -13.5,
+   "ann": -13.5,
+   "dd": 28.3,
+   "sharpe": -0.18
+  },
+  "oos": {
+   "total": 8.7,
+   "ann": 11.9,
+   "dd": 25.6,
+   "sharpe": 0.55
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–16:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.5,
+   "ann": -48.5,
+   "dd": 48.8,
+   "sharpe": -4.73
+  },
+  "oos": {
+   "total": -21.8,
+   "ann": -28.1,
+   "dd": 24.6,
+   "sharpe": -2.4
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–16:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -20.1,
+   "ann": -20.1,
+   "dd": 23.7,
+   "sharpe": -1.58
+  },
+  "oos": {
+   "total": 8.4,
+   "ann": 11.4,
+   "dd": 10.3,
+   "sharpe": 0.88
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–16:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -45.8,
+   "ann": -45.8,
+   "dd": 49.4,
+   "sharpe": -2.72
+  },
+  "oos": {
+   "total": -23.2,
+   "ann": -29.9,
+   "dd": 24.9,
+   "sharpe": -2.23
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–16:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -16.1,
+   "ann": -16.1,
+   "dd": 31.7,
+   "sharpe": -0.71
+  },
+  "oos": {
+   "total": 6.4,
+   "ann": 8.7,
+   "dd": 12.0,
+   "sharpe": 0.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–17:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -54.3,
+   "ann": -54.3,
+   "dd": 54.9,
+   "sharpe": -4.4
+  },
+  "oos": {
+   "total": -24.8,
+   "ann": -31.8,
+   "dd": 28.1,
+   "sharpe": -2.27
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–17:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -29.2,
+   "ann": -29.2,
+   "dd": 31.9,
+   "sharpe": -1.91
+  },
+  "oos": {
+   "total": 4.2,
+   "ann": 5.7,
+   "dd": 11.3,
+   "sharpe": 0.42
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–17:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -53.5,
+   "ann": -53.5,
+   "dd": 56.0,
+   "sharpe": -2.61
+  },
+  "oos": {
+   "total": -17.2,
+   "ann": -22.4,
+   "dd": 26.8,
+   "sharpe": -1.2
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–17:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -27.9,
+   "ann": -27.9,
+   "dd": 39.7,
+   "sharpe": -1.04
+  },
+  "oos": {
+   "total": 14.8,
+   "ann": 20.3,
+   "dd": 11.4,
+   "sharpe": 1.05
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–18:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.3,
+   "ann": -48.3,
+   "dd": 48.7,
+   "sharpe": -2.94
+  },
+  "oos": {
+   "total": -30.0,
+   "ann": -38.0,
+   "dd": 32.2,
+   "sharpe": -2.46
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–18:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -19.8,
+   "ann": -19.8,
+   "dd": 26.4,
+   "sharpe": -0.92
+  },
+  "oos": {
+   "total": -2.9,
+   "ann": -3.9,
+   "dd": 16.9,
+   "sharpe": -0.12
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–18:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -46.4,
+   "ann": -46.4,
+   "dd": 48.9,
+   "sharpe": -1.7
+  },
+  "oos": {
+   "total": -20.8,
+   "ann": -26.8,
+   "dd": 31.1,
+   "sharpe": -1.28
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–18:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -17.0,
+   "ann": -17.0,
+   "dd": 29.3,
+   "sharpe": -0.39
+  },
+  "oos": {
+   "total": 9.8,
+   "ann": 13.4,
+   "dd": 19.1,
+   "sharpe": 0.67
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–19:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -51.1,
+   "ann": -51.1,
+   "dd": 52.2,
+   "sharpe": -2.91
+  },
+  "oos": {
+   "total": -37.3,
+   "ann": -46.6,
+   "dd": 38.9,
+   "sharpe": -2.93
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–19:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -24.1,
+   "ann": -24.1,
+   "dd": 29.8,
+   "sharpe": -1.06
+  },
+  "oos": {
+   "total": -13.1,
+   "ann": -17.2,
+   "dd": 23.2,
+   "sharpe": -0.81
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–19:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -50.8,
+   "ann": -50.8,
+   "dd": 53.1,
+   "sharpe": -1.78
+  },
+  "oos": {
+   "total": -28.0,
+   "ann": -35.7,
+   "dd": 35.2,
+   "sharpe": -1.64
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 15:00–19:00 UTC",
+  "params": {
+   "h": 15,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -23.7,
+   "ann": -23.7,
+   "dd": 32.7,
+   "sharpe": -0.57
+  },
+  "oos": {
+   "total": -0.2,
+   "ann": -0.3,
+   "dd": 20.0,
+   "sharpe": 0.11
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–17:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -50.6,
+   "ann": -50.6,
+   "dd": 50.8,
+   "sharpe": -6.36
+  },
+  "oos": {
+   "total": -37.8,
+   "ann": -47.1,
+   "dd": 38.3,
+   "sharpe": -6.66
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–17:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -23.4,
+   "ann": -23.4,
+   "dd": 24.0,
+   "sharpe": -2.43
+  },
+  "oos": {
+   "total": -13.8,
+   "ann": -18.0,
+   "dd": 16.3,
+   "sharpe": -2.1
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–17:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -52.1,
+   "ann": -52.1,
+   "dd": 52.7,
+   "sharpe": -4.08
+  },
+  "oos": {
+   "total": -30.2,
+   "ann": -38.3,
+   "dd": 32.8,
+   "sharpe": -3.95
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–17:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.8,
+   "ann": -25.8,
+   "dd": 27.0,
+   "sharpe": -1.62
+  },
+  "oos": {
+   "total": -3.3,
+   "ann": -4.4,
+   "dd": 12.9,
+   "sharpe": -0.31
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–18:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -44.0,
+   "ann": -44.0,
+   "dd": 44.2,
+   "sharpe": -3.37
+  },
+  "oos": {
+   "total": -42.0,
+   "ann": -51.9,
+   "dd": 43.0,
+   "sharpe": -5.45
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–18:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -13.2,
+   "ann": -13.2,
+   "dd": 14.3,
+   "sharpe": -0.77
+  },
+  "oos": {
+   "total": -19.7,
+   "ann": -25.5,
+   "dd": 22.5,
+   "sharpe": -2.18
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–18:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -44.9,
+   "ann": -44.9,
+   "dd": 45.4,
+   "sharpe": -2.2
+  },
+  "oos": {
+   "total": -33.2,
+   "ann": -41.8,
+   "dd": 37.3,
+   "sharpe": -3.22
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–18:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -14.5,
+   "ann": -14.5,
+   "dd": 23.9,
+   "sharpe": -0.49
+  },
+  "oos": {
+   "total": -7.4,
+   "ann": -9.8,
+   "dd": 22.1,
+   "sharpe": -0.55
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–19:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -47.0,
+   "ann": -47.0,
+   "dd": 47.9,
+   "sharpe": -3.21
+  },
+  "oos": {
+   "total": -48.1,
+   "ann": -58.6,
+   "dd": 49.5,
+   "sharpe": -5.45
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–19:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -17.9,
+   "ann": -17.9,
+   "dd": 21.9,
+   "sharpe": -0.94
+  },
+  "oos": {
+   "total": -28.1,
+   "ann": -35.8,
+   "dd": 30.6,
+   "sharpe": -2.73
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–19:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -49.3,
+   "ann": -49.3,
+   "dd": 50.9,
+   "sharpe": -2.19
+  },
+  "oos": {
+   "total": -39.3,
+   "ann": -48.8,
+   "dd": 43.2,
+   "sharpe": -3.29
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–19:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -21.4,
+   "ann": -21.4,
+   "dd": 26.3,
+   "sharpe": -0.69
+  },
+  "oos": {
+   "total": -15.9,
+   "ann": -20.7,
+   "dd": 23.6,
+   "sharpe": -1.08
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–20:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.2,
+   "ann": -48.2,
+   "dd": 49.4,
+   "sharpe": -2.98
+  },
+  "oos": {
+   "total": -42.6,
+   "ann": -52.5,
+   "dd": 43.7,
+   "sharpe": -4.06
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–20:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -19.7,
+   "ann": -19.7,
+   "dd": 23.9,
+   "sharpe": -0.93
+  },
+  "oos": {
+   "total": -20.4,
+   "ann": -26.4,
+   "dd": 23.4,
+   "sharpe": -1.63
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–20:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -52.6,
+   "ann": -52.6,
+   "dd": 54.2,
+   "sharpe": -2.15
+  },
+  "oos": {
+   "total": -34.2,
+   "ann": -43.0,
+   "dd": 38.7,
+   "sharpe": -2.38
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 16:00–20:00 UTC",
+  "params": {
+   "h": 16,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -26.5,
+   "ann": -26.5,
+   "dd": 29.7,
+   "sharpe": -0.79
+  },
+  "oos": {
+   "total": -8.8,
+   "ann": -11.6,
+   "dd": 17.2,
+   "sharpe": -0.44
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–18:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -36.8,
+   "ann": -36.8,
+   "dd": 36.8,
+   "sharpe": -3.52
+  },
+  "oos": {
+   "total": -39.7,
+   "ann": -49.3,
+   "dd": 39.9,
+   "sharpe": -7.05
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–18:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -2.0,
+   "ann": -2.0,
+   "dd": 8.3,
+   "sharpe": -0.1
+  },
+  "oos": {
+   "total": -16.4,
+   "ann": -21.4,
+   "dd": 17.3,
+   "sharpe": -2.55
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–18:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -35.8,
+   "ann": -35.8,
+   "dd": 35.8,
+   "sharpe": -2.3
+  },
+  "oos": {
+   "total": -38.1,
+   "ann": -47.4,
+   "dd": 38.6,
+   "sharpe": -5.6
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–18:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -0.4,
+   "ann": -0.4,
+   "dd": 11.0,
+   "sharpe": 0.07
+  },
+  "oos": {
+   "total": -14.2,
+   "ann": -18.5,
+   "dd": 18.1,
+   "sharpe": -1.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–19:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.2,
+   "ann": -40.2,
+   "dd": 40.7,
+   "sharpe": -3.16
+  },
+  "oos": {
+   "total": -46.1,
+   "ann": -56.3,
+   "dd": 46.9,
+   "sharpe": -6.31
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–19:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.4,
+   "ann": -7.4,
+   "dd": 15.1,
+   "sharpe": -0.4
+  },
+  "oos": {
+   "total": -25.2,
+   "ann": -32.3,
+   "dd": 26.9,
+   "sharpe": -2.98
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–19:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -40.9,
+   "ann": -40.9,
+   "dd": 41.8,
+   "sharpe": -2.16
+  },
+  "oos": {
+   "total": -43.7,
+   "ann": -53.8,
+   "dd": 45.1,
+   "sharpe": -4.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–19:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -8.5,
+   "ann": -8.5,
+   "dd": 16.9,
+   "sharpe": -0.27
+  },
+  "oos": {
+   "total": -22.0,
+   "ann": -28.4,
+   "dd": 25.1,
+   "sharpe": -2.04
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–20:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -41.5,
+   "ann": -41.5,
+   "dd": 42.9,
+   "sharpe": -2.83
+  },
+  "oos": {
+   "total": -40.3,
+   "ann": -49.9,
+   "dd": 40.8,
+   "sharpe": -4.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–20:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -9.3,
+   "ann": -9.3,
+   "dd": 18.4,
+   "sharpe": -0.45
+  },
+  "oos": {
+   "total": -17.2,
+   "ann": -22.4,
+   "dd": 18.7,
+   "sharpe": -1.58
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–20:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -44.8,
+   "ann": -44.8,
+   "dd": 46.0,
+   "sharpe": -2.05
+  },
+  "oos": {
+   "total": -39.0,
+   "ann": -48.5,
+   "dd": 40.1,
+   "sharpe": -3.37
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–20:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -14.4,
+   "ann": -14.4,
+   "dd": 22.1,
+   "sharpe": -0.44
+  },
+  "oos": {
+   "total": -15.4,
+   "ann": -20.1,
+   "dd": 19.1,
+   "sharpe": -1.09
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–21:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.0,
+   "ann": -42.0,
+   "dd": 43.3,
+   "sharpe": -2.6
+  },
+  "oos": {
+   "total": -33.5,
+   "ann": -42.1,
+   "dd": 34.1,
+   "sharpe": -3.07
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–21:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -10.2,
+   "ann": -10.2,
+   "dd": 19.2,
+   "sharpe": -0.43
+  },
+  "oos": {
+   "total": -7.8,
+   "ann": -10.3,
+   "dd": 13.8,
+   "sharpe": -0.55
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–21:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -48.6,
+   "ann": -48.6,
+   "dd": 51.3,
+   "sharpe": -2.04
+  },
+  "oos": {
+   "total": -35.0,
+   "ann": -43.9,
+   "dd": 36.7,
+   "sharpe": -2.53
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 17:00–21:00 UTC",
+  "params": {
+   "h": 17,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -20.4,
+   "ann": -20.4,
+   "dd": 28.0,
+   "sharpe": -0.6
+  },
+  "oos": {
+   "total": -9.9,
+   "ann": -13.1,
+   "dd": 13.8,
+   "sharpe": -0.53
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–19:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -47.3,
+   "ann": -47.3,
+   "dd": 47.7,
+   "sharpe": -6.58
+  },
+  "oos": {
+   "total": -42.1,
+   "ann": -52.0,
+   "dd": 42.5,
+   "sharpe": -7.95
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–19:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -18.3,
+   "ann": -18.3,
+   "dd": 22.1,
+   "sharpe": -2.1
+  },
+  "oos": {
+   "total": -19.7,
+   "ann": -25.5,
+   "dd": 20.9,
+   "sharpe": -3.29
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–19:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -48.7,
+   "ann": -48.7,
+   "dd": 50.3,
+   "sharpe": -4.66
+  },
+  "oos": {
+   "total": -41.2,
+   "ann": -51.0,
+   "dd": 42.4,
+   "sharpe": -6.21
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–19:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -20.6,
+   "ann": -20.6,
+   "dd": 26.1,
+   "sharpe": -1.58
+  },
+  "oos": {
+   "total": -18.5,
+   "ann": -24.0,
+   "dd": 23.0,
+   "sharpe": -2.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–20:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.4,
+   "ann": -48.4,
+   "dd": 50.2,
+   "sharpe": -4.91
+  },
+  "oos": {
+   "total": -35.9,
+   "ann": -44.9,
+   "dd": 36.2,
+   "sharpe": -4.76
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–20:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -20.0,
+   "ann": -20.0,
+   "dd": 24.9,
+   "sharpe": -1.64
+  },
+  "oos": {
+   "total": -11.1,
+   "ann": -14.6,
+   "dd": 14.8,
+   "sharpe": -1.24
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–20:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -52.1,
+   "ann": -52.1,
+   "dd": 54.3,
+   "sharpe": -3.58
+  },
+  "oos": {
+   "total": -36.3,
+   "ann": -45.3,
+   "dd": 37.6,
+   "sharpe": -3.79
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–20:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.7,
+   "ann": -25.7,
+   "dd": 30.8,
+   "sharpe": -1.4
+  },
+  "oos": {
+   "total": -11.6,
+   "ann": -15.3,
+   "dd": 22.0,
+   "sharpe": -1.0
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–21:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.9,
+   "ann": -48.9,
+   "dd": 50.6,
+   "sharpe": -4.16
+  },
+  "oos": {
+   "total": -28.6,
+   "ann": -36.4,
+   "dd": 29.0,
+   "sharpe": -3.01
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–21:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -20.7,
+   "ann": -20.7,
+   "dd": 25.7,
+   "sharpe": -1.41
+  },
+  "oos": {
+   "total": -1.0,
+   "ann": -1.4,
+   "dd": 7.3,
+   "sharpe": -0.02
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–21:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -55.4,
+   "ann": -55.4,
+   "dd": 58.5,
+   "sharpe": -3.22
+  },
+  "oos": {
+   "total": -32.1,
+   "ann": -40.5,
+   "dd": 34.1,
+   "sharpe": -2.66
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–21:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -30.9,
+   "ann": -30.9,
+   "dd": 38.0,
+   "sharpe": -1.41
+  },
+  "oos": {
+   "total": -5.9,
+   "ann": -7.8,
+   "dd": 16.9,
+   "sharpe": -0.34
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–22:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -41.7,
+   "ann": -41.7,
+   "dd": 44.0,
+   "sharpe": -2.89
+  },
+  "oos": {
+   "total": -25.6,
+   "ann": -32.8,
+   "dd": 26.5,
+   "sharpe": -2.36
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–22:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -9.6,
+   "ann": -9.6,
+   "dd": 19.1,
+   "sharpe": -0.47
+  },
+  "oos": {
+   "total": 3.1,
+   "ann": 4.2,
+   "dd": 8.6,
+   "sharpe": 0.34
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–22:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -53.2,
+   "ann": -53.2,
+   "dd": 56.4,
+   "sharpe": -2.51
+  },
+  "oos": {
+   "total": -25.5,
+   "ann": -32.6,
+   "dd": 29.8,
+   "sharpe": -1.73
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 18:00–22:00 UTC",
+  "params": {
+   "h": 18,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -27.5,
+   "ann": -27.5,
+   "dd": 37.0,
+   "sharpe": -0.98
+  },
+  "oos": {
+   "total": 3.3,
+   "ann": 4.5,
+   "dd": 14.6,
+   "sharpe": 0.31
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–20:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -45.4,
+   "ann": -45.4,
+   "dd": 45.6,
+   "sharpe": -6.4
+  },
+  "oos": {
+   "total": -28.4,
+   "ann": -36.1,
+   "dd": 28.4,
+   "sharpe": -5.28
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–20:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -15.4,
+   "ann": -15.4,
+   "dd": 19.1,
+   "sharpe": -1.78
+  },
+  "oos": {
+   "total": -0.7,
+   "ann": -0.9,
+   "dd": 6.5,
+   "sharpe": -0.07
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–20:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -47.8,
+   "ann": -47.8,
+   "dd": 48.3,
+   "sharpe": -4.49
+  },
+  "oos": {
+   "total": -29.8,
+   "ann": -37.8,
+   "dd": 30.7,
+   "sharpe": -4.35
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–20:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -19.2,
+   "ann": -19.2,
+   "dd": 23.1,
+   "sharpe": -1.44
+  },
+  "oos": {
+   "total": -2.7,
+   "ann": -3.6,
+   "dd": 10.4,
+   "sharpe": -0.29
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–21:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -45.9,
+   "ann": -45.9,
+   "dd": 46.4,
+   "sharpe": -4.78
+  },
+  "oos": {
+   "total": -20.2,
+   "ann": -26.1,
+   "dd": 20.5,
+   "sharpe": -2.57
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–21:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -16.2,
+   "ann": -16.2,
+   "dd": 18.4,
+   "sharpe": -1.35
+  },
+  "oos": {
+   "total": 10.6,
+   "ann": 14.5,
+   "dd": 7.0,
+   "sharpe": 1.24
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–21:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -51.5,
+   "ann": -51.5,
+   "dd": 52.9,
+   "sharpe": -3.56
+  },
+  "oos": {
+   "total": -25.3,
+   "ann": -32.3,
+   "dd": 27.0,
+   "sharpe": -2.51
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–21:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -24.8,
+   "ann": -24.8,
+   "dd": 28.9,
+   "sharpe": -1.35
+  },
+  "oos": {
+   "total": 3.6,
+   "ann": 4.9,
+   "dd": 8.8,
+   "sharpe": 0.39
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–22:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -38.3,
+   "ann": -38.3,
+   "dd": 39.1,
+   "sharpe": -3.06
+  },
+  "oos": {
+   "total": -16.9,
+   "ann": -22.0,
+   "dd": 18.2,
+   "sharpe": -1.77
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–22:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -4.4,
+   "ann": -4.4,
+   "dd": 15.7,
+   "sharpe": -0.22
+  },
+  "oos": {
+   "total": 15.2,
+   "ann": 21.0,
+   "dd": 6.9,
+   "sharpe": 1.49
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–22:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -49.1,
+   "ann": -49.1,
+   "dd": 50.6,
+   "sharpe": -2.58
+  },
+  "oos": {
+   "total": -18.0,
+   "ann": -23.3,
+   "dd": 23.3,
+   "sharpe": -1.36
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–22:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -21.1,
+   "ann": -21.1,
+   "dd": 27.3,
+   "sharpe": -0.83
+  },
+  "oos": {
+   "total": 13.7,
+   "ann": 18.8,
+   "dd": 9.9,
+   "sharpe": 1.04
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–23:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -27.4,
+   "ann": -27.4,
+   "dd": 30.8,
+   "sharpe": -1.72
+  },
+  "oos": {
+   "total": -22.1,
+   "ann": -28.5,
+   "dd": 24.3,
+   "sharpe": -1.98
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–23:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 12.5,
+   "ann": 12.5,
+   "dd": 10.5,
+   "sharpe": 0.76
+  },
+  "oos": {
+   "total": 8.0,
+   "ann": 10.9,
+   "dd": 7.6,
+   "sharpe": 0.72
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–23:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -37.8,
+   "ann": -37.8,
+   "dd": 42.5,
+   "sharpe": -1.52
+  },
+  "oos": {
+   "total": -23.9,
+   "ann": -30.6,
+   "dd": 30.7,
+   "sharpe": -1.6
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 19:00–23:00 UTC",
+  "params": {
+   "h": 19,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -3.6,
+   "ann": -3.6,
+   "dd": 23.1,
+   "sharpe": 0.01
+  },
+  "oos": {
+   "total": 5.5,
+   "ann": 7.5,
+   "dd": 13.5,
+   "sharpe": 0.44
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–21:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -44.8,
+   "ann": -44.8,
+   "dd": 44.8,
+   "sharpe": -6.7
+  },
+  "oos": {
+   "total": -27.9,
+   "ann": -35.6,
+   "dd": 27.9,
+   "sharpe": -5.43
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–21:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -14.4,
+   "ann": -14.4,
+   "dd": 15.5,
+   "sharpe": -1.77
+  },
+  "oos": {
+   "total": -0.1,
+   "ann": -0.1,
+   "dd": 6.2,
+   "sharpe": 0.02
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–21:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -48.2,
+   "ann": -48.2,
+   "dd": 48.9,
+   "sharpe": -4.66
+  },
+  "oos": {
+   "total": -31.1,
+   "ann": -39.3,
+   "dd": 31.8,
+   "sharpe": -4.61
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–21:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -19.6,
+   "ann": -19.6,
+   "dd": 22.4,
+   "sharpe": -1.53
+  },
+  "oos": {
+   "total": -4.5,
+   "ann": -5.9,
+   "dd": 9.5,
+   "sharpe": -0.53
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–22:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -37.0,
+   "ann": -37.0,
+   "dd": 38.1,
+   "sharpe": -3.66
+  },
+  "oos": {
+   "total": -24.9,
+   "ann": -31.9,
+   "dd": 25.6,
+   "sharpe": -3.55
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–22:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -2.3,
+   "ann": -2.3,
+   "dd": 14.9,
+   "sharpe": -0.13
+  },
+  "oos": {
+   "total": 4.1,
+   "ann": 5.5,
+   "dd": 8.0,
+   "sharpe": 0.56
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–22:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -45.6,
+   "ann": -45.6,
+   "dd": 46.9,
+   "sharpe": -2.84
+  },
+  "oos": {
+   "total": -24.4,
+   "ann": -31.3,
+   "dd": 26.9,
+   "sharpe": -2.44
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–22:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -15.7,
+   "ann": -15.7,
+   "dd": 22.8,
+   "sharpe": -0.73
+  },
+  "oos": {
+   "total": 4.8,
+   "ann": 6.6,
+   "dd": 9.5,
+   "sharpe": 0.5
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–23:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -25.8,
+   "ann": -25.8,
+   "dd": 30.9,
+   "sharpe": -1.89
+  },
+  "oos": {
+   "total": -29.6,
+   "ann": -37.6,
+   "dd": 31.1,
+   "sharpe": -3.31
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–23:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 15.0,
+   "ann": 15.0,
+   "dd": 14.1,
+   "sharpe": 1.0
+  },
+  "oos": {
+   "total": -2.5,
+   "ann": -3.3,
+   "dd": 8.4,
+   "sharpe": -0.17
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–23:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -33.5,
+   "ann": -33.5,
+   "dd": 40.0,
+   "sharpe": -1.52
+  },
+  "oos": {
+   "total": -29.8,
+   "ann": -37.8,
+   "dd": 33.5,
+   "sharpe": -2.45
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–23:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 3.0,
+   "ann": 3.0,
+   "dd": 25.5,
+   "sharpe": 0.25
+  },
+  "oos": {
+   "total": -2.7,
+   "ann": -3.6,
+   "dd": 12.1,
+   "sharpe": -0.11
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–00:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -34.4,
+   "ann": -34.4,
+   "dd": 36.7,
+   "sharpe": -2.44
+  },
+  "oos": {
+   "total": -33.6,
+   "ann": -42.3,
+   "dd": 35.6,
+   "sharpe": -3.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–00:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 1.6,
+   "ann": 1.6,
+   "dd": 17.7,
+   "sharpe": 0.18
+  },
+  "oos": {
+   "total": -8.0,
+   "ann": -10.5,
+   "dd": 16.3,
+   "sharpe": -0.63
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–00:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -40.8,
+   "ann": -40.8,
+   "dd": 44.4,
+   "sharpe": -1.82
+  },
+  "oos": {
+   "total": -38.5,
+   "ann": -47.9,
+   "dd": 42.0,
+   "sharpe": -3.0
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 20:00–00:00 UTC",
+  "params": {
+   "h": 20,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -8.3,
+   "ann": -8.3,
+   "dd": 25.4,
+   "sharpe": -0.19
+  },
+  "oos": {
+   "total": -14.8,
+   "ann": -19.3,
+   "dd": 22.1,
+   "sharpe": -0.92
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–22:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -36.4,
+   "ann": -36.4,
+   "dd": 36.6,
+   "sharpe": -5.07
+  },
+  "oos": {
+   "total": -32.6,
+   "ann": -41.1,
+   "dd": 33.1,
+   "sharpe": -7.25
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–22:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -1.4,
+   "ann": -1.4,
+   "dd": 9.0,
+   "sharpe": -0.12
+  },
+  "oos": {
+   "total": -6.6,
+   "ann": -8.7,
+   "dd": 8.5,
+   "sharpe": -1.26
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–22:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -41.5,
+   "ann": -41.5,
+   "dd": 41.8,
+   "sharpe": -3.4
+  },
+  "oos": {
+   "total": -29.0,
+   "ann": -36.8,
+   "dd": 30.7,
+   "sharpe": -4.35
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–22:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -9.3,
+   "ann": -9.3,
+   "dd": 15.8,
+   "sharpe": -0.56
+  },
+  "oos": {
+   "total": -1.6,
+   "ann": -2.1,
+   "dd": 7.7,
+   "sharpe": -0.15
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–23:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -25.1,
+   "ann": -25.1,
+   "dd": 30.3,
+   "sharpe": -2.26
+  },
+  "oos": {
+   "total": -36.8,
+   "ann": -46.0,
+   "dd": 37.9,
+   "sharpe": -5.27
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–23:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 16.0,
+   "ann": 16.0,
+   "dd": 10.0,
+   "sharpe": 1.27
+  },
+  "oos": {
+   "total": -12.4,
+   "ann": -16.3,
+   "dd": 15.6,
+   "sharpe": -1.5
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–23:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -28.5,
+   "ann": -28.5,
+   "dd": 35.4,
+   "sharpe": -1.51
+  },
+  "oos": {
+   "total": -34.1,
+   "ann": -42.9,
+   "dd": 37.0,
+   "sharpe": -3.57
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–23:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 10.8,
+   "ann": 10.8,
+   "dd": 21.8,
+   "sharpe": 0.6
+  },
+  "oos": {
+   "total": -8.7,
+   "ann": -11.4,
+   "dd": 17.5,
+   "sharpe": -0.72
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–00:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -33.8,
+   "ann": -33.8,
+   "dd": 35.2,
+   "sharpe": -2.81
+  },
+  "oos": {
+   "total": -40.4,
+   "ann": -50.1,
+   "dd": 42.2,
+   "sharpe": -5.01
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–00:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 2.6,
+   "ann": 2.6,
+   "dd": 14.2,
+   "sharpe": 0.25
+  },
+  "oos": {
+   "total": -17.4,
+   "ann": -22.6,
+   "dd": 21.5,
+   "sharpe": -1.82
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–00:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -36.4,
+   "ann": -36.4,
+   "dd": 38.3,
+   "sharpe": -1.85
+  },
+  "oos": {
+   "total": -42.3,
+   "ann": -52.2,
+   "dd": 45.9,
+   "sharpe": -3.97
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–00:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -1.4,
+   "ann": -1.4,
+   "dd": 20.6,
+   "sharpe": 0.06
+  },
+  "oos": {
+   "total": -20.0,
+   "ann": -25.9,
+   "dd": 26.9,
+   "sharpe": -1.57
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–01:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -43.6,
+   "ann": -43.6,
+   "dd": 45.9,
+   "sharpe": -3.21
+  },
+  "oos": {
+   "total": -34.6,
+   "ann": -43.4,
+   "dd": 37.6,
+   "sharpe": -3.59
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–01:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -12.6,
+   "ann": -12.6,
+   "dd": 23.4,
+   "sharpe": -0.69
+  },
+  "oos": {
+   "total": -9.3,
+   "ann": -12.3,
+   "dd": 15.3,
+   "sharpe": -0.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–01:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -49.5,
+   "ann": -49.5,
+   "dd": 53.3,
+   "sharpe": -2.32
+  },
+  "oos": {
+   "total": -35.4,
+   "ann": -44.3,
+   "dd": 40.6,
+   "sharpe": -2.77
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 21:00–01:00 UTC",
+  "params": {
+   "h": 21,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -21.7,
+   "ann": -21.7,
+   "dd": 34.3,
+   "sharpe": -0.74
+  },
+  "oos": {
+   "total": -10.4,
+   "ann": -13.7,
+   "dd": 20.2,
+   "sharpe": -0.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–23:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -34.4,
+   "ann": -34.4,
+   "dd": 34.8,
+   "sharpe": -4.71
+  },
+  "oos": {
+   "total": -39.4,
+   "ann": -48.9,
+   "dd": 39.7,
+   "sharpe": -7.17
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–23:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 1.7,
+   "ann": 1.7,
+   "dd": 11.5,
+   "sharpe": 0.24
+  },
+  "oos": {
+   "total": -15.9,
+   "ann": -20.8,
+   "dd": 17.9,
+   "sharpe": -2.53
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–23:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -31.9,
+   "ann": -31.9,
+   "dd": 34.5,
+   "sharpe": -2.69
+  },
+  "oos": {
+   "total": -40.0,
+   "ann": -49.6,
+   "dd": 41.0,
+   "sharpe": -5.9
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–23:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 5.6,
+   "ann": 5.6,
+   "dd": 19.5,
+   "sharpe": 0.46
+  },
+  "oos": {
+   "total": -16.8,
+   "ann": -21.8,
+   "dd": 21.0,
+   "sharpe": -2.13
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–00:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.0,
+   "ann": -42.0,
+   "dd": 42.0,
+   "sharpe": -4.74
+  },
+  "oos": {
+   "total": -42.8,
+   "ann": -52.7,
+   "dd": 44.0,
+   "sharpe": -6.29
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–00:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -10.1,
+   "ann": -10.1,
+   "dd": 13.7,
+   "sharpe": -0.89
+  },
+  "oos": {
+   "total": -20.7,
+   "ann": -26.7,
+   "dd": 24.2,
+   "sharpe": -2.62
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–00:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -39.3,
+   "ann": -39.3,
+   "dd": 40.4,
+   "sharpe": -2.84
+  },
+  "oos": {
+   "total": -47.4,
+   "ann": -57.8,
+   "dd": 49.6,
+   "sharpe": -5.66
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–00:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -6.0,
+   "ann": -6.0,
+   "dd": 16.2,
+   "sharpe": -0.28
+  },
+  "oos": {
+   "total": -27.1,
+   "ann": -34.6,
+   "dd": 32.2,
+   "sharpe": -2.78
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–01:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -50.6,
+   "ann": -50.6,
+   "dd": 51.7,
+   "sharpe": -4.61
+  },
+  "oos": {
+   "total": -37.2,
+   "ann": -46.5,
+   "dd": 39.3,
+   "sharpe": -4.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–01:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -23.4,
+   "ann": -23.4,
+   "dd": 26.9,
+   "sharpe": -1.71
+  },
+  "oos": {
+   "total": -13.0,
+   "ann": -17.0,
+   "dd": 18.5,
+   "sharpe": -1.29
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–01:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -51.8,
+   "ann": -51.8,
+   "dd": 54.6,
+   "sharpe": -3.04
+  },
+  "oos": {
+   "total": -41.1,
+   "ann": -50.8,
+   "dd": 45.1,
+   "sharpe": -3.94
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–01:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.4,
+   "ann": -25.4,
+   "dd": 31.4,
+   "sharpe": -1.15
+  },
+  "oos": {
+   "total": -18.3,
+   "ann": -23.8,
+   "dd": 26.3,
+   "sharpe": -1.47
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–02:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.3,
+   "ann": -48.3,
+   "dd": 49.7,
+   "sharpe": -3.55
+  },
+  "oos": {
+   "total": -39.6,
+   "ann": -49.2,
+   "dd": 41.6,
+   "sharpe": -3.75
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–02:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -19.9,
+   "ann": -19.9,
+   "dd": 24.8,
+   "sharpe": -1.14
+  },
+  "oos": {
+   "total": -16.3,
+   "ann": -21.3,
+   "dd": 20.4,
+   "sharpe": -1.28
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–02:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -48.9,
+   "ann": -48.9,
+   "dd": 53.5,
+   "sharpe": -2.16
+  },
+  "oos": {
+   "total": -43.6,
+   "ann": -53.6,
+   "dd": 46.6,
+   "sharpe": -3.4
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 22:00–02:00 UTC",
+  "params": {
+   "h": 22,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -20.8,
+   "ann": -20.8,
+   "dd": 37.5,
+   "sharpe": -0.65
+  },
+  "oos": {
+   "total": -21.8,
+   "ann": -28.1,
+   "dd": 28.3,
+   "sharpe": -1.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–00:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -50.7,
+   "ann": -50.7,
+   "dd": 50.7,
+   "sharpe": -9.35
+  },
+  "oos": {
+   "total": -39.0,
+   "ann": -48.4,
+   "dd": 39.0,
+   "sharpe": -8.63
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–00:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -23.6,
+   "ann": -23.6,
+   "dd": 23.7,
+   "sharpe": -3.72
+  },
+  "oos": {
+   "total": -15.4,
+   "ann": -20.1,
+   "dd": 17.0,
+   "sharpe": -3.03
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–00:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 1
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -50.4,
+   "ann": -50.4,
+   "dd": 50.4,
+   "sharpe": -6.78
+  },
+  "oos": {
+   "total": -43.3,
+   "ann": -53.3,
+   "dd": 43.7,
+   "sharpe": -7.54
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–00:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 1
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -23.1,
+   "ann": -23.1,
+   "dd": 23.7,
+   "sharpe": -2.57
+  },
+  "oos": {
+   "total": -21.4,
+   "ann": -27.7,
+   "dd": 24.2,
+   "sharpe": -3.27
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–01:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -58.0,
+   "ann": -58.0,
+   "dd": 58.5,
+   "sharpe": -6.94
+  },
+  "oos": {
+   "total": -33.0,
+   "ann": -41.6,
+   "dd": 34.2,
+   "sharpe": -5.0
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–01:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -34.9,
+   "ann": -34.9,
+   "dd": 36.4,
+   "sharpe": -3.46
+  },
+  "oos": {
+   "total": -7.1,
+   "ann": -9.5,
+   "dd": 12.1,
+   "sharpe": -0.9
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–01:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 2
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -60.6,
+   "ann": -60.6,
+   "dd": 61.8,
+   "sharpe": -4.9
+  },
+  "oos": {
+   "total": -36.5,
+   "ann": -45.7,
+   "dd": 38.4,
+   "sharpe": -4.41
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–01:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 2
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -38.9,
+   "ann": -38.9,
+   "dd": 41.7,
+   "sharpe": -2.57
+  },
+  "oos": {
+   "total": -12.0,
+   "ann": -15.8,
+   "dd": 19.1,
+   "sharpe": -1.21
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–02:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -56.1,
+   "ann": -56.1,
+   "dd": 56.6,
+   "sharpe": -5.06
+  },
+  "oos": {
+   "total": -35.6,
+   "ann": -44.6,
+   "dd": 37.1,
+   "sharpe": -3.82
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–02:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -31.9,
+   "ann": -31.9,
+   "dd": 34.3,
+   "sharpe": -2.35
+  },
+  "oos": {
+   "total": -10.7,
+   "ann": -14.1,
+   "dd": 15.4,
+   "sharpe": -0.94
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–02:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -58.2,
+   "ann": -58.2,
+   "dd": 60.5,
+   "sharpe": -3.26
+  },
+  "oos": {
+   "total": -39.2,
+   "ann": -48.7,
+   "dd": 40.7,
+   "sharpe": -3.46
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–02:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -35.2,
+   "ann": -35.2,
+   "dd": 40.5,
+   "sharpe": -1.56
+  },
+  "oos": {
+   "total": -15.7,
+   "ann": -20.5,
+   "dd": 21.7,
+   "sharpe": -1.14
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–03:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -52.6,
+   "ann": -52.6,
+   "dd": 54.3,
+   "sharpe": -4.08
+  },
+  "oos": {
+   "total": -42.1,
+   "ann": -52.0,
+   "dd": 43.5,
+   "sharpe": -4.19
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–03:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -26.5,
+   "ann": -26.5,
+   "dd": 30.9,
+   "sharpe": -1.65
+  },
+  "oos": {
+   "total": -19.8,
+   "ann": -25.6,
+   "dd": 25.3,
+   "sharpe": -1.65
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–03:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 4
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -51.4,
+   "ann": -51.4,
+   "dd": 55.0,
+   "sharpe": -2.39
+  },
+  "oos": {
+   "total": -43.3,
+   "ann": -53.3,
+   "dd": 46.0,
+   "sharpe": -3.45
+  }
+ },
+ {
+  "family": "season",
+  "name": "держать 23:00–03:00 UTC",
+  "params": {
+   "h": 23,
+   "d": 4
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -24.7,
+   "ann": -24.7,
+   "dd": 32.3,
+   "sharpe": -0.85
+  },
+  "oos": {
+   "total": -21.4,
+   "ann": -27.6,
+   "dd": 31.1,
+   "sharpe": -1.41
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/вне рынка",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -48.5,
+   "ann": -48.5,
+   "dd": 53.9,
+   "sharpe": -2.09
+  },
+  "oos": {
+   "total": 5.7,
+   "ann": 7.7,
+   "dd": 23.8,
+   "sharpe": 0.4
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/вне рынка",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -40.5,
+   "ann": -40.5,
+   "dd": 47.1,
+   "sharpe": -1.61
+  },
+  "oos": {
+   "total": 16.1,
+   "ann": 22.2,
+   "dd": 19.1,
+   "sharpe": 0.85
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/вне рынка",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -27.0,
+   "ann": -27.0,
+   "dd": 41.4,
+   "sharpe": -0.59
+  },
+  "oos": {
+   "total": -10.4,
+   "ann": -13.7,
+   "dd": 37.3,
+   "sharpe": -0.29
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/вне рынка",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -16.4,
+   "ann": -16.4,
+   "dd": 37.9,
+   "sharpe": -0.25
+  },
+  "oos": {
+   "total": -0.8,
+   "ann": -1.0,
+   "dd": 33.1,
+   "sharpe": 0.13
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/шорт",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -74.6,
+   "ann": -74.6,
+   "dd": 76.8,
+   "sharpe": -2.86
+  },
+  "oos": {
+   "total": 8.3,
+   "ann": 11.2,
+   "dd": 33.1,
+   "sharpe": 0.46
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/шорт",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -66.1,
+   "ann": -66.1,
+   "dd": 69.5,
+   "sharpe": -2.22
+  },
+  "oos": {
+   "total": 30.6,
+   "ann": 43.0,
+   "dd": 27.9,
+   "sharpe": 1.05
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/шорт",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -45.8,
+   "ann": -45.8,
+   "dd": 57.1,
+   "sharpe": -0.72
+  },
+  "oos": {
+   "total": -21.7,
+   "ann": -28.0,
+   "dd": 51.6,
+   "sharpe": -0.48
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 12/48 ч, лонг/шорт",
+  "params": {
+   "fast": 12,
+   "slow": 48,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -28.9,
+   "ann": -28.9,
+   "dd": 44.4,
+   "sharpe": -0.27
+  },
+  "oos": {
+   "total": -3.9,
+   "ann": -5.2,
+   "dd": 46.9,
+   "sharpe": 0.12
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -27.6,
+   "ann": -27.6,
+   "dd": 36.6,
+   "sharpe": -0.95
+  },
+  "oos": {
+   "total": 1.0,
+   "ann": 1.4,
+   "dd": 23.6,
+   "sharpe": 0.19
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -22.3,
+   "ann": -22.3,
+   "dd": 35.1,
+   "sharpe": -0.71
+  },
+  "oos": {
+   "total": 6.2,
+   "ann": 8.4,
+   "dd": 20.6,
+   "sharpe": 0.43
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -31.5,
+   "ann": -31.5,
+   "dd": 42.6,
+   "sharpe": -0.77
+  },
+  "oos": {
+   "total": -4.5,
+   "ann": -6.0,
+   "dd": 34.9,
+   "sharpe": -0.03
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -26.3,
+   "ann": -26.3,
+   "dd": 38.4,
+   "sharpe": -0.59
+  },
+  "oos": {
+   "total": 0.4,
+   "ann": 0.6,
+   "dd": 32.4,
+   "sharpe": 0.18
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -49.9,
+   "ann": -49.9,
+   "dd": 55.2,
+   "sharpe": -1.34
+  },
+  "oos": {
+   "total": -1.4,
+   "ann": -1.8,
+   "dd": 38.6,
+   "sharpe": 0.17
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -42.2,
+   "ann": -42.2,
+   "dd": 48.5,
+   "sharpe": -1.01
+  },
+  "oos": {
+   "total": 9.0,
+   "ann": 12.2,
+   "dd": 35.4,
+   "sharpe": 0.48
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -52.5,
+   "ann": -52.5,
+   "dd": 60.8,
+   "sharpe": -0.95
+  },
+  "oos": {
+   "total": -11.4,
+   "ann": -15.0,
+   "dd": 49.3,
+   "sharpe": -0.12
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/96 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 96,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -45.1,
+   "ann": -45.1,
+   "dd": 55.3,
+   "sharpe": -0.7
+  },
+  "oos": {
+   "total": -2.1,
+   "ann": -2.8,
+   "dd": 47.0,
+   "sharpe": 0.17
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/вне рынка",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -27.2,
+   "ann": -27.2,
+   "dd": 33.4,
+   "sharpe": -0.96
+  },
+  "oos": {
+   "total": 11.6,
+   "ann": 15.9,
+   "dd": 15.9,
+   "sharpe": 0.68
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/вне рынка",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -24.6,
+   "ann": -24.6,
+   "dd": 32.4,
+   "sharpe": -0.84
+  },
+  "oos": {
+   "total": 14.2,
+   "ann": 19.5,
+   "dd": 15.2,
+   "sharpe": 0.8
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/вне рынка",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -23.2,
+   "ann": -23.2,
+   "dd": 33.8,
+   "sharpe": -0.52
+  },
+  "oos": {
+   "total": -9.6,
+   "ann": -12.6,
+   "dd": 36.2,
+   "sharpe": -0.26
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/вне рынка",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -20.6,
+   "ann": -20.6,
+   "dd": 32.7,
+   "sharpe": -0.43
+  },
+  "oos": {
+   "total": -7.2,
+   "ann": -9.5,
+   "dd": 34.8,
+   "sharpe": -0.15
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/шорт",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -49.6,
+   "ann": -49.6,
+   "dd": 50.8,
+   "sharpe": -1.32
+  },
+  "oos": {
+   "total": 19.8,
+   "ann": 27.4,
+   "dd": 29.8,
+   "sharpe": 0.78
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/шорт",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -45.9,
+   "ann": -45.9,
+   "dd": 47.4,
+   "sharpe": -1.16
+  },
+  "oos": {
+   "total": 25.4,
+   "ann": 35.5,
+   "dd": 29.0,
+   "sharpe": 0.92
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/шорт",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -41.4,
+   "ann": -41.4,
+   "dd": 48.6,
+   "sharpe": -0.59
+  },
+  "oos": {
+   "total": -20.5,
+   "ann": -26.5,
+   "dd": 51.8,
+   "sharpe": -0.43
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 48/192 ч, лонг/шорт",
+  "params": {
+   "fast": 48,
+   "slow": 192,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -37.3,
+   "ann": -37.3,
+   "dd": 47.2,
+   "sharpe": -0.48
+  },
+  "oos": {
+   "total": -16.3,
+   "ann": -21.2,
+   "dd": 50.8,
+   "sharpe": -0.28
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/вне рынка",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -11.1,
+   "ann": -11.1,
+   "dd": 25.2,
+   "sharpe": -0.33
+  },
+  "oos": {
+   "total": 15.4,
+   "ann": 21.2,
+   "dd": 17.9,
+   "sharpe": 0.86
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/вне рынка",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -9.7,
+   "ann": -9.7,
+   "dd": 24.4,
+   "sharpe": -0.27
+  },
+  "oos": {
+   "total": 16.8,
+   "ann": 23.2,
+   "dd": 17.6,
+   "sharpe": 0.92
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/вне рынка",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -14.3,
+   "ann": -14.3,
+   "dd": 26.2,
+   "sharpe": -0.26
+  },
+  "oos": {
+   "total": 2.4,
+   "ann": 3.3,
+   "dd": 26.0,
+   "sharpe": 0.26
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/вне рынка",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -13.0,
+   "ann": -13.0,
+   "dd": 25.9,
+   "sharpe": -0.21
+  },
+  "oos": {
+   "total": 3.7,
+   "ann": 5.0,
+   "dd": 25.3,
+   "sharpe": 0.31
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/шорт",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -26.0,
+   "ann": -26.0,
+   "dd": 36.1,
+   "sharpe": -0.46
+  },
+  "oos": {
+   "total": 27.9,
+   "ann": 39.2,
+   "dd": 29.6,
+   "sharpe": 0.98
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/шорт",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -23.7,
+   "ann": -23.7,
+   "dd": 34.9,
+   "sharpe": -0.39
+  },
+  "oos": {
+   "total": 31.2,
+   "ann": 43.9,
+   "dd": 29.1,
+   "sharpe": 1.06
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/шорт",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -27.7,
+   "ann": -27.7,
+   "dd": 39.1,
+   "sharpe": -0.25
+  },
+  "oos": {
+   "total": 1.1,
+   "ann": 1.5,
+   "dd": 36.1,
+   "sharpe": 0.27
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 96/384 ч, лонг/шорт",
+  "params": {
+   "fast": 96,
+   "slow": 384,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.4,
+   "ann": -25.4,
+   "dd": 38.0,
+   "sharpe": -0.19
+  },
+  "oos": {
+   "total": 3.7,
+   "ann": 5.0,
+   "dd": 35.3,
+   "sharpe": 0.34
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/вне рынка",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": 8.9,
+   "ann": 8.9,
+   "dd": 18.6,
+   "sharpe": 0.46
+  },
+  "oos": {
+   "total": 14.0,
+   "ann": 19.2,
+   "dd": 15.0,
+   "sharpe": 0.83
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/вне рынка",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 9.9,
+   "ann": 9.9,
+   "dd": 18.3,
+   "sharpe": 0.5
+  },
+  "oos": {
+   "total": 15.0,
+   "ann": 20.7,
+   "dd": 14.7,
+   "sharpe": 0.88
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/вне рынка",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -1.9,
+   "ann": -1.9,
+   "dd": 22.9,
+   "sharpe": 0.13
+  },
+  "oos": {
+   "total": 5.5,
+   "ann": 7.5,
+   "dd": 24.2,
+   "sharpe": 0.39
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/вне рынка",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -1.1,
+   "ann": -1.1,
+   "dd": 22.7,
+   "sharpe": 0.15
+  },
+  "oos": {
+   "total": 6.3,
+   "ann": 8.5,
+   "dd": 23.8,
+   "sharpe": 0.42
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/шорт",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": 11.1,
+   "ann": 11.1,
+   "dd": 26.5,
+   "sharpe": 0.46
+  },
+  "oos": {
+   "total": 24.1,
+   "ann": 33.6,
+   "dd": 27.4,
+   "sharpe": 0.89
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/шорт",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 13.2,
+   "ann": 13.2,
+   "dd": 25.9,
+   "sharpe": 0.5
+  },
+  "oos": {
+   "total": 26.4,
+   "ann": 36.9,
+   "dd": 27.0,
+   "sharpe": 0.94
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/шорт",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -4.4,
+   "ann": -4.4,
+   "dd": 33.2,
+   "sharpe": 0.22
+  },
+  "oos": {
+   "total": 6.6,
+   "ann": 8.9,
+   "dd": 33.5,
+   "sharpe": 0.42
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 168/672 ч, лонг/шорт",
+  "params": {
+   "fast": 168,
+   "slow": 672,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -2.8,
+   "ann": -2.8,
+   "dd": 32.8,
+   "sharpe": 0.25
+  },
+  "oos": {
+   "total": 8.1,
+   "ann": 11.0,
+   "dd": 33.0,
+   "sharpe": 0.46
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -19.8,
+   "ann": -19.8,
+   "dd": 28.0,
+   "sharpe": -0.63
+  },
+  "oos": {
+   "total": 8.8,
+   "ann": 12.0,
+   "dd": 19.9,
+   "sharpe": 0.56
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -16.7,
+   "ann": -16.7,
+   "dd": 27.2,
+   "sharpe": -0.5
+  },
+  "oos": {
+   "total": 12.1,
+   "ann": 16.6,
+   "dd": 18.4,
+   "sharpe": 0.7
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -20.6,
+   "ann": -20.6,
+   "dd": 32.2,
+   "sharpe": -0.44
+  },
+  "oos": {
+   "total": -5.7,
+   "ann": -7.5,
+   "dd": 36.0,
+   "sharpe": -0.09
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/вне рынка",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -17.4,
+   "ann": -17.4,
+   "dd": 31.1,
+   "sharpe": -0.34
+  },
+  "oos": {
+   "total": -2.6,
+   "ann": -3.4,
+   "dd": 34.3,
+   "sharpe": 0.05
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -38.9,
+   "ann": -38.9,
+   "dd": 46.5,
+   "sharpe": -0.89
+  },
+  "oos": {
+   "total": 14.0,
+   "ann": 19.3,
+   "dd": 35.0,
+   "sharpe": 0.62
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -34.0,
+   "ann": -34.0,
+   "dd": 42.8,
+   "sharpe": -0.71
+  },
+  "oos": {
+   "total": 21.1,
+   "ann": 29.3,
+   "dd": 32.0,
+   "sharpe": 0.81
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -37.4,
+   "ann": -37.4,
+   "dd": 43.4,
+   "sharpe": -0.48
+  },
+  "oos": {
+   "total": -13.5,
+   "ann": -17.7,
+   "dd": 52.7,
+   "sharpe": -0.19
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 24/240 ч, лонг/шорт",
+  "params": {
+   "fast": 24,
+   "slow": 240,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -32.3,
+   "ann": -32.3,
+   "dd": 40.7,
+   "sharpe": -0.35
+  },
+  "oos": {
+   "total": -7.7,
+   "ann": -10.2,
+   "dd": 51.2,
+   "sharpe": -0.0
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/вне рынка",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": 1.5,
+   "ann": 1.5,
+   "dd": 19.6,
+   "sharpe": 0.19
+  },
+  "oos": {
+   "total": 12.3,
+   "ann": 16.9,
+   "dd": 20.1,
+   "sharpe": 0.75
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/вне рынка",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 2.6,
+   "ann": 2.6,
+   "dd": 19.2,
+   "sharpe": 0.23
+  },
+  "oos": {
+   "total": 13.7,
+   "ann": 18.9,
+   "dd": 19.2,
+   "sharpe": 0.82
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/вне рынка",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -10.7,
+   "ann": -10.7,
+   "dd": 25.2,
+   "sharpe": -0.14
+  },
+  "oos": {
+   "total": 9.7,
+   "ann": 13.2,
+   "dd": 23.2,
+   "sharpe": 0.57
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/вне рынка",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -9.6,
+   "ann": -9.6,
+   "dd": 24.9,
+   "sharpe": -0.1
+  },
+  "oos": {
+   "total": 10.8,
+   "ann": 14.7,
+   "dd": 22.6,
+   "sharpe": 0.61
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/шорт",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -3.7,
+   "ann": -3.7,
+   "dd": 29.5,
+   "sharpe": 0.14
+  },
+  "oos": {
+   "total": 20.5,
+   "ann": 28.4,
+   "dd": 30.6,
+   "sharpe": 0.79
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/шорт",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -1.6,
+   "ann": -1.6,
+   "dd": 28.8,
+   "sharpe": 0.19
+  },
+  "oos": {
+   "total": 23.5,
+   "ann": 32.8,
+   "dd": 29.7,
+   "sharpe": 0.87
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/шорт",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -21.4,
+   "ann": -21.4,
+   "dd": 42.0,
+   "sharpe": -0.1
+  },
+  "oos": {
+   "total": 14.9,
+   "ann": 20.5,
+   "dd": 29.5,
+   "sharpe": 0.63
+  }
+ },
+ {
+  "family": "tsmom",
+  "name": "EMA 72/720 ч, лонг/шорт",
+  "params": {
+   "fast": 72,
+   "slow": 720,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -19.5,
+   "ann": -19.5,
+   "dd": 40.7,
+   "sharpe": -0.06
+  },
+  "oos": {
+   "total": 17.1,
+   "ann": 23.7,
+   "dd": 28.8,
+   "sharpe": 0.68
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -4.7,
+   "ann": -4.7,
+   "dd": 18.5,
+   "sharpe": -0.08
+  },
+  "oos": {
+   "total": -1.5,
+   "ann": -1.9,
+   "dd": 18.4,
+   "sharpe": 0.03
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -3.0,
+   "ann": -3.0,
+   "dd": 17.8,
+   "sharpe": -0.01
+  },
+  "oos": {
+   "total": 0.3,
+   "ann": 0.5,
+   "dd": 17.6,
+   "sharpe": 0.13
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -6.3,
+   "ann": -6.3,
+   "dd": 29.9,
+   "sharpe": -0.05
+  },
+  "oos": {
+   "total": -5.0,
+   "ann": -6.7,
+   "dd": 28.2,
+   "sharpe": -0.12
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -4.7,
+   "ann": -4.7,
+   "dd": 29.5,
+   "sharpe": 0.0
+  },
+  "oos": {
+   "total": -3.5,
+   "ann": -4.7,
+   "dd": 27.4,
+   "sharpe": -0.04
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг/шорт",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -17.6,
+   "ann": -17.6,
+   "dd": 32.3,
+   "sharpe": -0.31
+  },
+  "oos": {
+   "total": 18.7,
+   "ann": 25.8,
+   "dd": 24.7,
+   "sharpe": 0.78
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг/шорт",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -14.5,
+   "ann": -14.5,
+   "dd": 31.4,
+   "sharpe": -0.21
+  },
+  "oos": {
+   "total": 22.1,
+   "ann": 30.8,
+   "dd": 24.2,
+   "sharpe": 0.87
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг/шорт",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -38.7,
+   "ann": -38.7,
+   "dd": 48.9,
+   "sharpe": -0.63
+  },
+  "oos": {
+   "total": -19.0,
+   "ann": -24.7,
+   "dd": 43.9,
+   "sharpe": -0.46
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 10/5 дн., лонг/шорт",
+  "params": {
+   "n": 10,
+   "m": 5,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -36.4,
+   "ann": -36.4,
+   "dd": 48.1,
+   "sharpe": -0.56
+  },
+  "oos": {
+   "total": -16.5,
+   "ann": -21.5,
+   "dd": 42.4,
+   "sharpe": -0.36
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": 11.3,
+   "ann": 11.3,
+   "dd": 14.4,
+   "sharpe": 0.62
+  },
+  "oos": {
+   "total": 0.2,
+   "ann": 0.2,
+   "dd": 17.9,
+   "sharpe": 0.13
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 12.1,
+   "ann": 12.1,
+   "dd": 14.0,
+   "sharpe": 0.66
+  },
+  "oos": {
+   "total": 1.0,
+   "ann": 1.3,
+   "dd": 17.8,
+   "sharpe": 0.17
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 5.5,
+   "ann": 5.5,
+   "dd": 19.3,
+   "sharpe": 0.33
+  },
+  "oos": {
+   "total": -9.1,
+   "ann": -12.1,
+   "dd": 24.7,
+   "sharpe": -0.39
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 6.3,
+   "ann": 6.3,
+   "dd": 19.2,
+   "sharpe": 0.35
+  },
+  "oos": {
+   "total": -8.4,
+   "ann": -11.1,
+   "dd": 24.4,
+   "sharpe": -0.34
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг/шорт",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -36.2,
+   "ann": -36.2,
+   "dd": 41.9,
+   "sharpe": -0.99
+  },
+  "oos": {
+   "total": 16.2,
+   "ann": 22.4,
+   "dd": 21.2,
+   "sharpe": 0.72
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг/шорт",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -34.8,
+   "ann": -34.8,
+   "dd": 40.7,
+   "sharpe": -0.93
+  },
+  "oos": {
+   "total": 17.9,
+   "ann": 24.8,
+   "dd": 20.9,
+   "sharpe": 0.77
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг/шорт",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -41.2,
+   "ann": -41.2,
+   "dd": 47.9,
+   "sharpe": -0.78
+  },
+  "oos": {
+   "total": -10.5,
+   "ann": -13.9,
+   "dd": 32.0,
+   "sharpe": -0.18
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 20/10 дн., лонг/шорт",
+  "params": {
+   "n": 20,
+   "m": 10,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -40.0,
+   "ann": -40.0,
+   "dd": 46.9,
+   "sharpe": -0.74
+  },
+  "oos": {
+   "total": -9.1,
+   "ann": -12.1,
+   "dd": 31.6,
+   "sharpe": -0.13
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.8,
+   "ann": -7.8,
+   "dd": 25.4,
+   "sharpe": -0.25
+  },
+  "oos": {
+   "total": -9.0,
+   "ann": -11.9,
+   "dd": 19.2,
+   "sharpe": -0.47
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.1,
+   "ann": -7.1,
+   "dd": 25.2,
+   "sharpe": -0.22
+  },
+  "oos": {
+   "total": -8.4,
+   "ann": -11.1,
+   "dd": 19.0,
+   "sharpe": -0.43
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -0.2,
+   "ann": -0.2,
+   "dd": 18.0,
+   "sharpe": 0.13
+  },
+  "oos": {
+   "total": -13.4,
+   "ann": -17.6,
+   "dd": 24.4,
+   "sharpe": -0.62
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 0.3,
+   "ann": 0.3,
+   "dd": 17.9,
+   "sharpe": 0.15
+  },
+  "oos": {
+   "total": -12.9,
+   "ann": -16.9,
+   "dd": 24.1,
+   "sharpe": -0.59
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг/шорт",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -32.8,
+   "ann": -32.8,
+   "dd": 44.5,
+   "sharpe": -0.85
+  },
+  "oos": {
+   "total": 18.9,
+   "ann": 26.1,
+   "dd": 24.9,
+   "sharpe": 0.8
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг/шорт",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -31.7,
+   "ann": -31.7,
+   "dd": 43.7,
+   "sharpe": -0.81
+  },
+  "oos": {
+   "total": 20.0,
+   "ann": 27.6,
+   "dd": 24.7,
+   "sharpe": 0.84
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг/шорт",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -16.3,
+   "ann": -16.3,
+   "dd": 37.6,
+   "sharpe": -0.1
+  },
+  "oos": {
+   "total": -0.8,
+   "ann": -1.0,
+   "dd": 30.0,
+   "sharpe": 0.19
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 30/15 дн., лонг/шорт",
+  "params": {
+   "n": 30,
+   "m": 15,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -15.3,
+   "ann": -15.3,
+   "dd": 37.4,
+   "sharpe": -0.08
+  },
+  "oos": {
+   "total": 0.2,
+   "ann": 0.3,
+   "dd": 29.7,
+   "sharpe": 0.22
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -20.8,
+   "ann": -20.8,
+   "dd": 26.3,
+   "sharpe": -1.05
+  },
+  "oos": {
+   "total": -3.1,
+   "ann": -4.2,
+   "dd": 13.0,
+   "sharpe": -0.13
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -20.3,
+   "ann": -20.3,
+   "dd": 26.1,
+   "sharpe": -1.02
+  },
+  "oos": {
+   "total": -2.7,
+   "ann": -3.7,
+   "dd": 12.9,
+   "sharpe": -0.1
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -18.9,
+   "ann": -18.9,
+   "dd": 20.3,
+   "sharpe": -0.66
+  },
+  "oos": {
+   "total": 0.8,
+   "ann": 1.1,
+   "dd": 14.1,
+   "sharpe": 0.16
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -18.5,
+   "ann": -18.5,
+   "dd": 20.1,
+   "sharpe": -0.65
+  },
+  "oos": {
+   "total": 1.2,
+   "ann": 1.6,
+   "dd": 14.0,
+   "sharpe": 0.18
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг/шорт",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -8.0,
+   "ann": -8.0,
+   "dd": 31.9,
+   "sharpe": -0.03
+  },
+  "oos": {
+   "total": 4.2,
+   "ann": 5.6,
+   "dd": 17.5,
+   "sharpe": 0.33
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг/шорт",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -7.3,
+   "ann": -7.3,
+   "dd": 31.5,
+   "sharpe": -0.01
+  },
+  "oos": {
+   "total": 4.9,
+   "ann": 6.7,
+   "dd": 17.4,
+   "sharpe": 0.36
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг/шорт",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -13.9,
+   "ann": -13.9,
+   "dd": 40.6,
+   "sharpe": -0.07
+  },
+  "oos": {
+   "total": 7.9,
+   "ann": 10.7,
+   "dd": 23.0,
+   "sharpe": 0.45
+  }
+ },
+ {
+  "family": "donch",
+  "name": "Дончиан 55/20 дн., лонг/шорт",
+  "params": {
+   "n": 55,
+   "m": 20,
+   "short": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -13.3,
+   "ann": -13.3,
+   "dd": 40.3,
+   "sharpe": -0.06
+  },
+  "oos": {
+   "total": 8.6,
+   "ann": 11.6,
+   "dd": 22.9,
+   "sharpe": 0.47
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 70-го процентиля",
+  "params": {
+   "pct": 0.7
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": 1.1,
+   "ann": 1.1,
+   "dd": 31.5,
+   "sharpe": 0.24
+  },
+  "oos": {
+   "total": -15.0,
+   "ann": -19.6,
+   "dd": 32.9,
+   "sharpe": -0.38
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 70-го процентиля",
+  "params": {
+   "pct": 0.7
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": 2.5,
+   "ann": 2.5,
+   "dd": 31.2,
+   "sharpe": 0.27
+  },
+  "oos": {
+   "total": -13.6,
+   "ann": -17.8,
+   "dd": 32.7,
+   "sharpe": -0.32
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 80-го процентиля",
+  "params": {
+   "pct": 0.8
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -5.9,
+   "ann": -5.9,
+   "dd": 34.8,
+   "sharpe": 0.08
+  },
+  "oos": {
+   "total": -15.7,
+   "ann": -20.5,
+   "dd": 35.9,
+   "sharpe": -0.38
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 80-го процентиля",
+  "params": {
+   "pct": 0.8
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -5.5,
+   "ann": -5.5,
+   "dd": 34.8,
+   "sharpe": 0.09
+  },
+  "oos": {
+   "total": -14.1,
+   "ann": -18.4,
+   "dd": 35.8,
+   "sharpe": -0.32
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 90-го процентиля",
+  "params": {
+   "pct": 0.9
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -6.4,
+   "ann": -6.4,
+   "dd": 34.8,
+   "sharpe": 0.07
+  },
+  "oos": {
+   "total": -14.0,
+   "ann": -18.3,
+   "dd": 40.5,
+   "sharpe": -0.27
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 90-го процентиля",
+  "params": {
+   "pct": 0.9
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -6.4,
+   "ann": -6.4,
+   "dd": 34.8,
+   "sharpe": 0.07
+  },
+  "oos": {
+   "total": -13.3,
+   "ann": -17.4,
+   "dd": 40.4,
+   "sharpe": -0.25
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 95-го процентиля",
+  "params": {
+   "pct": 0.95
+  },
+  "cost": "taker",
+  "universe": "BTC",
+  "is": {
+   "total": -6.4,
+   "ann": -6.4,
+   "dd": 34.8,
+   "sharpe": 0.07
+  },
+  "oos": {
+   "total": -7.8,
+   "ann": -10.3,
+   "dd": 40.3,
+   "sharpe": -0.04
+  }
+ },
+ {
+  "family": "fund",
+  "name": "BTC: вне рынка, когда финансирование выше 95-го процентиля",
+  "params": {
+   "pct": 0.95
+  },
+  "cost": "maker",
+  "universe": "BTC",
+  "is": {
+   "total": -6.4,
+   "ann": -6.4,
+   "dd": 34.8,
+   "sharpe": 0.07
+  },
+  "oos": {
+   "total": -7.4,
+   "ann": -9.7,
+   "dd": 40.3,
+   "sharpe": -0.03
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 7 дн.",
+  "params": {
+   "look": 7,
+   "top": 1,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -13.1,
+   "ann": -13.1,
+   "dd": 52.0,
+   "sharpe": 0.22
+  },
+  "oos": {
+   "total": -47.2,
+   "ann": -57.5,
+   "dd": 54.3,
+   "sharpe": -1.06
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 7 дн.",
+  "params": {
+   "look": 7,
+   "top": 1,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -8.5,
+   "ann": -8.5,
+   "dd": 51.5,
+   "sharpe": 0.28
+  },
+  "oos": {
+   "total": -45.1,
+   "ann": -55.3,
+   "dd": 53.1,
+   "sharpe": -0.98
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 7 дн., против худших",
+  "params": {
+   "look": 7,
+   "top": 1,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 8.4,
+   "ann": 8.4,
+   "dd": 20.6,
+   "sharpe": 0.41
+  },
+  "oos": {
+   "total": -40.6,
+   "ann": -50.3,
+   "dd": 40.7,
+   "sharpe": -2.95
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 7 дн., против худших",
+  "params": {
+   "look": 7,
+   "top": 1,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 14.2,
+   "ann": 14.2,
+   "dd": 19.8,
+   "sharpe": 0.56
+  },
+  "oos": {
+   "total": -38.1,
+   "ann": -47.5,
+   "dd": 38.3,
+   "sharpe": -2.71
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 7 дн.",
+  "params": {
+   "look": 7,
+   "top": 2,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -30.5,
+   "ann": -30.5,
+   "dd": 51.5,
+   "sharpe": -0.18
+  },
+  "oos": {
+   "total": -35.5,
+   "ann": -44.5,
+   "dd": 54.4,
+   "sharpe": -0.79
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 7 дн.",
+  "params": {
+   "look": 7,
+   "top": 2,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -27.4,
+   "ann": -27.4,
+   "dd": 51.0,
+   "sharpe": -0.11
+  },
+  "oos": {
+   "total": -33.1,
+   "ann": -41.7,
+   "dd": 53.3,
+   "sharpe": -0.7
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 7 дн., против худших",
+  "params": {
+   "look": 7,
+   "top": 2,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -17.0,
+   "ann": -17.0,
+   "dd": 23.4,
+   "sharpe": -0.6
+  },
+  "oos": {
+   "total": -31.8,
+   "ann": -40.2,
+   "dd": 31.9,
+   "sharpe": -2.8
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 7 дн., против худших",
+  "params": {
+   "look": 7,
+   "top": 2,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -13.2,
+   "ann": -13.2,
+   "dd": 22.1,
+   "sharpe": -0.42
+  },
+  "oos": {
+   "total": -29.2,
+   "ann": -37.1,
+   "dd": 29.3,
+   "sharpe": -2.52
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 7 дн.",
+  "params": {
+   "look": 7,
+   "top": 3,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -28.3,
+   "ann": -28.3,
+   "dd": 54.0,
+   "sharpe": -0.16
+  },
+  "oos": {
+   "total": -36.2,
+   "ann": -45.3,
+   "dd": 56.1,
+   "sharpe": -0.87
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 7 дн.",
+  "params": {
+   "look": 7,
+   "top": 3,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.6,
+   "ann": -25.6,
+   "dd": 53.6,
+   "sharpe": -0.1
+  },
+  "oos": {
+   "total": -34.2,
+   "ann": -43.0,
+   "dd": 55.2,
+   "sharpe": -0.79
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 7 дн., против худших",
+  "params": {
+   "look": 7,
+   "top": 3,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -4.7,
+   "ann": -4.7,
+   "dd": 20.3,
+   "sharpe": -0.14
+  },
+  "oos": {
+   "total": -28.8,
+   "ann": -36.7,
+   "dd": 29.5,
+   "sharpe": -3.11
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 7 дн., против худших",
+  "params": {
+   "look": 7,
+   "top": 3,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -1.0,
+   "ann": -1.0,
+   "dd": 18.9,
+   "sharpe": 0.05
+  },
+  "oos": {
+   "total": -26.5,
+   "ann": -33.9,
+   "dd": 27.2,
+   "sharpe": -2.81
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 14 дн.",
+  "params": {
+   "look": 14,
+   "top": 1,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -18.6,
+   "ann": -18.6,
+   "dd": 56.2,
+   "sharpe": 0.14
+  },
+  "oos": {
+   "total": -41.3,
+   "ann": -51.1,
+   "dd": 55.4,
+   "sharpe": -0.87
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 14 дн.",
+  "params": {
+   "look": 14,
+   "top": 1,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -15.4,
+   "ann": -15.4,
+   "dd": 55.9,
+   "sharpe": 0.19
+  },
+  "oos": {
+   "total": -39.4,
+   "ann": -48.9,
+   "dd": 54.1,
+   "sharpe": -0.8
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 14 дн., против худших",
+  "params": {
+   "look": 14,
+   "top": 1,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 11.3,
+   "ann": 11.3,
+   "dd": 24.1,
+   "sharpe": 0.5
+  },
+  "oos": {
+   "total": -30.4,
+   "ann": -38.5,
+   "dd": 30.8,
+   "sharpe": -1.88
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 14 дн., против худших",
+  "params": {
+   "look": 14,
+   "top": 1,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 15.8,
+   "ann": 15.8,
+   "dd": 22.5,
+   "sharpe": 0.62
+  },
+  "oos": {
+   "total": -28.1,
+   "ann": -35.7,
+   "dd": 28.5,
+   "sharpe": -1.7
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 14 дн.",
+  "params": {
+   "look": 14,
+   "top": 2,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 5.5,
+   "ann": 5.5,
+   "dd": 41.8,
+   "sharpe": 0.45
+  },
+  "oos": {
+   "total": -37.9,
+   "ann": -47.3,
+   "dd": 55.1,
+   "sharpe": -0.88
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 14 дн.",
+  "params": {
+   "look": 14,
+   "top": 2,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 8.5,
+   "ann": 8.5,
+   "dd": 41.5,
+   "sharpe": 0.48
+  },
+  "oos": {
+   "total": -36.4,
+   "ann": -45.5,
+   "dd": 54.5,
+   "sharpe": -0.82
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 14 дн., против худших",
+  "params": {
+   "look": 14,
+   "top": 2,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 23.6,
+   "ann": 23.6,
+   "dd": 15.9,
+   "sharpe": 1.02
+  },
+  "oos": {
+   "total": -35.3,
+   "ann": -44.3,
+   "dd": 35.4,
+   "sharpe": -3.32
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 14 дн., против худших",
+  "params": {
+   "look": 14,
+   "top": 2,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 27.3,
+   "ann": 27.3,
+   "dd": 15.7,
+   "sharpe": 1.15
+  },
+  "oos": {
+   "total": -33.6,
+   "ann": -42.3,
+   "dd": 33.8,
+   "sharpe": -3.12
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 14 дн.",
+  "params": {
+   "look": 14,
+   "top": 3,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -18.1,
+   "ann": -18.1,
+   "dd": 52.5,
+   "sharpe": 0.08
+  },
+  "oos": {
+   "total": -37.1,
+   "ann": -46.3,
+   "dd": 58.1,
+   "sharpe": -0.87
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 14 дн.",
+  "params": {
+   "look": 14,
+   "top": 3,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -16.1,
+   "ann": -16.1,
+   "dd": 52.3,
+   "sharpe": 0.11
+  },
+  "oos": {
+   "total": -35.7,
+   "ann": -44.7,
+   "dd": 57.6,
+   "sharpe": -0.82
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 14 дн., против худших",
+  "params": {
+   "look": 14,
+   "top": 3,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 4.7,
+   "ann": 4.7,
+   "dd": 15.5,
+   "sharpe": 0.33
+  },
+  "oos": {
+   "total": -31.6,
+   "ann": -40.0,
+   "dd": 31.8,
+   "sharpe": -3.57
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 14 дн., против худших",
+  "params": {
+   "look": 14,
+   "top": 3,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 7.3,
+   "ann": 7.3,
+   "dd": 15.3,
+   "sharpe": 0.46
+  },
+  "oos": {
+   "total": -30.0,
+   "ann": -38.1,
+   "dd": 30.2,
+   "sharpe": -3.35
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 30 дн.",
+  "params": {
+   "look": 30,
+   "top": 1,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -13.7,
+   "ann": -13.7,
+   "dd": 66.0,
+   "sharpe": 0.22
+  },
+  "oos": {
+   "total": -54.0,
+   "ann": -64.7,
+   "dd": 63.6,
+   "sharpe": -1.51
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 30 дн.",
+  "params": {
+   "look": 30,
+   "top": 1,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -11.5,
+   "ann": -11.5,
+   "dd": 65.8,
+   "sharpe": 0.25
+  },
+  "oos": {
+   "total": -52.8,
+   "ann": -63.5,
+   "dd": 62.9,
+   "sharpe": -1.46
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 30 дн., против худших",
+  "params": {
+   "look": 30,
+   "top": 1,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 0.4,
+   "ann": 0.4,
+   "dd": 30.6,
+   "sharpe": 0.17
+  },
+  "oos": {
+   "total": -44.9,
+   "ann": -55.0,
+   "dd": 45.4,
+   "sharpe": -3.28
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 1 лучш. за 30 дн., против худших",
+  "params": {
+   "look": 30,
+   "top": 1,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 3.5,
+   "ann": 3.5,
+   "dd": 30.1,
+   "sharpe": 0.27
+  },
+  "oos": {
+   "total": -43.5,
+   "ann": -53.5,
+   "dd": 44.2,
+   "sharpe": -3.14
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 30 дн.",
+  "params": {
+   "look": 30,
+   "top": 2,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -27.1,
+   "ann": -27.1,
+   "dd": 54.4,
+   "sharpe": -0.11
+  },
+  "oos": {
+   "total": -40.1,
+   "ann": -49.7,
+   "dd": 58.1,
+   "sharpe": -0.97
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 30 дн.",
+  "params": {
+   "look": 30,
+   "top": 2,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -25.6,
+   "ann": -25.6,
+   "dd": 54.3,
+   "sharpe": -0.09
+  },
+  "oos": {
+   "total": -38.9,
+   "ann": -48.3,
+   "dd": 57.6,
+   "sharpe": -0.92
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 30 дн., против худших",
+  "params": {
+   "look": 30,
+   "top": 2,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 6.9,
+   "ann": 6.9,
+   "dd": 14.9,
+   "sharpe": 0.4
+  },
+  "oos": {
+   "total": -32.8,
+   "ann": -41.4,
+   "dd": 33.2,
+   "sharpe": -3.11
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 2 лучш. за 30 дн., против худших",
+  "params": {
+   "look": 30,
+   "top": 2,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 9.1,
+   "ann": 9.1,
+   "dd": 14.8,
+   "sharpe": 0.49
+  },
+  "oos": {
+   "total": -31.4,
+   "ann": -39.7,
+   "dd": 31.8,
+   "sharpe": -2.94
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 30 дн.",
+  "params": {
+   "look": 30,
+   "top": 3,
+   "ls": false
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -24.3,
+   "ann": -24.3,
+   "dd": 49.9,
+   "sharpe": -0.09
+  },
+  "oos": {
+   "total": -31.1,
+   "ann": -39.4,
+   "dd": 57.2,
+   "sharpe": -0.65
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 30 дн.",
+  "params": {
+   "look": 30,
+   "top": 3,
+   "ls": false
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -23.0,
+   "ann": -23.0,
+   "dd": 49.7,
+   "sharpe": -0.06
+  },
+  "oos": {
+   "total": -29.9,
+   "ann": -37.9,
+   "dd": 56.7,
+   "sharpe": -0.61
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 30 дн., против худших",
+  "params": {
+   "look": 30,
+   "top": 3,
+   "ls": true
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -0.5,
+   "ann": -0.5,
+   "dd": 13.4,
+   "sharpe": 0.07
+  },
+  "oos": {
+   "total": -20.6,
+   "ann": -26.6,
+   "dd": 21.8,
+   "sharpe": -2.3
+  }
+ },
+ {
+  "family": "xsec",
+  "name": "ротация: 3 лучш. за 30 дн., против худших",
+  "params": {
+   "look": 30,
+   "top": 3,
+   "ls": true
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 1.1,
+   "ann": 1.1,
+   "dd": 12.5,
+   "sharpe": 0.15
+  },
+  "oos": {
+   "total": -19.3,
+   "ann": -25.0,
+   "dd": 20.6,
+   "sharpe": -2.14
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 60 или 3 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 60,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 30.0,
+   "ann": 30.0,
+   "dd": 9.7,
+   "sharpe": 1.23
+  },
+  "oos": {
+   "total": 6.7,
+   "ann": 9.1,
+   "dd": 14.0,
+   "sharpe": 0.54
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 60 или 3 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 60,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 32.4,
+   "ann": 32.4,
+   "dd": 9.6,
+   "sharpe": 1.31
+  },
+  "oos": {
+   "total": 8.0,
+   "ann": 10.9,
+   "dd": 13.9,
+   "sharpe": 0.62
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 60 или 5 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 60,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 37.9,
+   "ann": 37.9,
+   "dd": 14.2,
+   "sharpe": 1.4
+  },
+  "oos": {
+   "total": -18.5,
+   "ann": -24.0,
+   "dd": 27.8,
+   "sharpe": -1.21
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 60 или 5 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 60,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 40.4,
+   "ann": 40.4,
+   "dd": 14.1,
+   "sharpe": 1.47
+  },
+  "oos": {
+   "total": -17.6,
+   "ann": -22.9,
+   "dd": 27.4,
+   "sharpe": -1.14
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 70 или 3 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 70,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 33.3,
+   "ann": 33.3,
+   "dd": 9.7,
+   "sharpe": 1.33
+  },
+  "oos": {
+   "total": 5.8,
+   "ann": 7.8,
+   "dd": 14.2,
+   "sharpe": 0.48
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 70 или 3 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 70,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 35.8,
+   "ann": 35.8,
+   "dd": 9.6,
+   "sharpe": 1.4
+  },
+  "oos": {
+   "total": 7.1,
+   "ann": 9.7,
+   "dd": 14.1,
+   "sharpe": 0.56
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 70 или 5 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 70,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 52.1,
+   "ann": 52.1,
+   "dd": 13.8,
+   "sharpe": 1.76
+  },
+  "oos": {
+   "total": -27.7,
+   "ann": -35.3,
+   "dd": 35.0,
+   "sharpe": -1.9
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 70 или 5 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 70,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 54.8,
+   "ann": 54.8,
+   "dd": 13.7,
+   "sharpe": 1.83
+  },
+  "oos": {
+   "total": -27.0,
+   "ann": -34.4,
+   "dd": 34.6,
+   "sharpe": -1.84
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 80 или 3 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 80,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 35.5,
+   "ann": 35.5,
+   "dd": 10.6,
+   "sharpe": 1.38
+  },
+  "oos": {
+   "total": 5.1,
+   "ann": 6.9,
+   "dd": 14.3,
+   "sharpe": 0.43
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 80 или 3 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 80,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 38.1,
+   "ann": 38.1,
+   "dd": 10.6,
+   "sharpe": 1.45
+  },
+  "oos": {
+   "total": 6.4,
+   "ann": 8.7,
+   "dd": 14.2,
+   "sharpe": 0.51
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 80 или 5 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 80,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 38.8,
+   "ann": 38.8,
+   "dd": 18.9,
+   "sharpe": 1.37
+  },
+  "oos": {
+   "total": -27.7,
+   "ann": -35.3,
+   "dd": 35.4,
+   "sharpe": -1.89
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 5, выход > 80 или 5 дн.",
+  "params": {
+   "lo": 5,
+   "hi": 80,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 41.3,
+   "ann": 41.3,
+   "dd": 18.8,
+   "sharpe": 1.44
+  },
+  "oos": {
+   "total": -27.0,
+   "ann": -34.4,
+   "dd": 35.1,
+   "sharpe": -1.82
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 60 или 3 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 60,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 27.2,
+   "ann": 27.2,
+   "dd": 17.2,
+   "sharpe": 0.88
+  },
+  "oos": {
+   "total": 11.7,
+   "ann": 15.9,
+   "dd": 17.7,
+   "sharpe": 0.73
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 60 или 3 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 60,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 31.1,
+   "ann": 31.1,
+   "dd": 17.1,
+   "sharpe": 0.97
+  },
+  "oos": {
+   "total": 14.3,
+   "ann": 19.7,
+   "dd": 17.5,
+   "sharpe": 0.86
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 60 или 5 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 60,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 29.1,
+   "ann": 29.1,
+   "dd": 19.3,
+   "sharpe": 0.89
+  },
+  "oos": {
+   "total": 3.9,
+   "ann": 5.3,
+   "dd": 21.7,
+   "sharpe": 0.33
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 60 или 5 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 60,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 32.8,
+   "ann": 32.8,
+   "dd": 19.1,
+   "sharpe": 0.97
+  },
+  "oos": {
+   "total": 6.2,
+   "ann": 8.4,
+   "dd": 21.4,
+   "sharpe": 0.44
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 70 или 3 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 70,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 37.4,
+   "ann": 37.4,
+   "dd": 17.2,
+   "sharpe": 1.09
+  },
+  "oos": {
+   "total": 11.9,
+   "ann": 16.2,
+   "dd": 17.9,
+   "sharpe": 0.73
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 70 или 3 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 70,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 41.7,
+   "ann": 41.7,
+   "dd": 17.1,
+   "sharpe": 1.17
+  },
+  "oos": {
+   "total": 14.5,
+   "ann": 20.0,
+   "dd": 17.7,
+   "sharpe": 0.86
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 70 или 5 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 70,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 35.8,
+   "ann": 35.8,
+   "dd": 19.2,
+   "sharpe": 1.01
+  },
+  "oos": {
+   "total": -3.1,
+   "ann": -4.1,
+   "dd": 23.5,
+   "sharpe": -0.02
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 70 или 5 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 70,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 39.5,
+   "ann": 39.5,
+   "dd": 18.9,
+   "sharpe": 1.09
+  },
+  "oos": {
+   "total": -1.1,
+   "ann": -1.4,
+   "dd": 23.2,
+   "sharpe": 0.08
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 80 или 3 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 80,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 37.8,
+   "ann": 37.8,
+   "dd": 17.3,
+   "sharpe": 1.09
+  },
+  "oos": {
+   "total": 14.1,
+   "ann": 19.3,
+   "dd": 18.5,
+   "sharpe": 0.83
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 80 или 3 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 80,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 42.0,
+   "ann": 42.0,
+   "dd": 17.2,
+   "sharpe": 1.17
+  },
+  "oos": {
+   "total": 16.8,
+   "ann": 23.2,
+   "dd": 18.4,
+   "sharpe": 0.95
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 80 или 5 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 80,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 23.7,
+   "ann": 23.7,
+   "dd": 23.6,
+   "sharpe": 0.75
+  },
+  "oos": {
+   "total": -6.6,
+   "ann": -8.8,
+   "dd": 26.9,
+   "sharpe": -0.19
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 10, выход > 80 или 5 дн.",
+  "params": {
+   "lo": 10,
+   "hi": 80,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 27.1,
+   "ann": 27.1,
+   "dd": 23.3,
+   "sharpe": 0.82
+  },
+  "oos": {
+   "total": -4.7,
+   "ann": -6.2,
+   "dd": 26.7,
+   "sharpe": -0.09
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 60 или 3 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 60,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 1.5,
+   "ann": 1.5,
+   "dd": 24.7,
+   "sharpe": 0.24
+  },
+  "oos": {
+   "total": -2.8,
+   "ann": -3.7,
+   "dd": 28.8,
+   "sharpe": -0.0
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 60 или 3 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 60,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 6.6,
+   "ann": 6.6,
+   "dd": 23.8,
+   "sharpe": 0.36
+  },
+  "oos": {
+   "total": 1.1,
+   "ann": 1.5,
+   "dd": 28.5,
+   "sharpe": 0.19
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 60 или 5 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 60,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 9.8,
+   "ann": 9.8,
+   "dd": 29.0,
+   "sharpe": 0.43
+  },
+  "oos": {
+   "total": 0.5,
+   "ann": 0.7,
+   "dd": 27.4,
+   "sharpe": 0.18
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 60 или 5 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 60,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 14.7,
+   "ann": 14.7,
+   "dd": 28.3,
+   "sharpe": 0.54
+  },
+  "oos": {
+   "total": 4.1,
+   "ann": 5.5,
+   "dd": 27.1,
+   "sharpe": 0.33
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 70 или 3 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 70,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 10.7,
+   "ann": 10.7,
+   "dd": 21.0,
+   "sharpe": 0.45
+  },
+  "oos": {
+   "total": -5.6,
+   "ann": -7.4,
+   "dd": 28.7,
+   "sharpe": -0.14
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 70 или 3 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 70,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 16.1,
+   "ann": 16.1,
+   "dd": 20.9,
+   "sharpe": 0.57
+  },
+  "oos": {
+   "total": -1.8,
+   "ann": -2.5,
+   "dd": 28.4,
+   "sharpe": 0.05
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 70 или 5 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 70,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 5.3,
+   "ann": 5.3,
+   "dd": 31.6,
+   "sharpe": 0.34
+  },
+  "oos": {
+   "total": 1.0,
+   "ann": 1.4,
+   "dd": 27.7,
+   "sharpe": 0.2
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 70 или 5 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 70,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 9.9,
+   "ann": 9.9,
+   "dd": 31.0,
+   "sharpe": 0.43
+  },
+  "oos": {
+   "total": 4.5,
+   "ann": 6.1,
+   "dd": 27.4,
+   "sharpe": 0.34
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 80 или 3 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 80,
+   "max_days": 3
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": 10.0,
+   "ann": 10.0,
+   "dd": 21.2,
+   "sharpe": 0.44
+  },
+  "oos": {
+   "total": -3.4,
+   "ann": -4.5,
+   "dd": 28.9,
+   "sharpe": -0.02
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 80 или 3 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 80,
+   "max_days": 3
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": 15.4,
+   "ann": 15.4,
+   "dd": 21.0,
+   "sharpe": 0.55
+  },
+  "oos": {
+   "total": 0.4,
+   "ann": 0.5,
+   "dd": 28.6,
+   "sharpe": 0.16
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 80 или 5 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 80,
+   "max_days": 5
+  },
+  "cost": "taker",
+  "universe": "8",
+  "is": {
+   "total": -5.3,
+   "ann": -5.3,
+   "dd": 35.2,
+   "sharpe": 0.1
+  },
+  "oos": {
+   "total": -1.6,
+   "ann": -2.1,
+   "dd": 29.8,
+   "sharpe": 0.1
+  }
+ },
+ {
+  "family": "rsi2",
+  "name": "RSI(2) < 20, выход > 80 или 5 дн.",
+  "params": {
+   "lo": 20,
+   "hi": 80,
+   "max_days": 5
+  },
+  "cost": "maker",
+  "universe": "8",
+  "is": {
+   "total": -1.3,
+   "ann": -1.3,
+   "dd": 34.7,
+   "sharpe": 0.19
+  },
+  "oos": {
+   "total": 1.7,
+   "ann": 2.3,
+   "dd": 29.4,
+   "sharpe": 0.23
+  }
+ }
+]

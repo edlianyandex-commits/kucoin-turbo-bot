@@ -1,0 +1,44 @@
+{
+ "coins": {
+  "QNT": {
+   "level": "ignore",
+   "reason": "цена разогнана: за 30 дней менялась в 4.7 раза (фильтр ×3) — новых входов нет",
+   "since_ms": 1790963107306,
+   "delist_ms": null,
+   "st": false,
+   "low_turnover": false,
+   "hot": true
+  },
+  "AIN": {
+   "level": "ignore",
+   "reason": "цена разогнана: за 30 дней менялась в 8.3 раза (фильтр ×3) — новых входов нет",
+   "since_ms": 1791119467478,
+   "delist_ms": null,
+   "st": false,
+   "low_turnover": false,
+   "hot": true
+  },
+  "BTW": {
+   "level": "ignore",
+   "reason": "цена разогнана: за 30 дней менялась в 3.2 раза (фильтр ×3) — новых входов нет",
+   "since_ms": 1790963107306,
+   "delist_ms": null,
+   "st": false,
+   "low_turnover": false,
+   "hot": true
+  },
+  "MOVR": {
+   "level": "ignore",
+   "reason": "цена разогнана: за 30 дней менялась в 4.1 раза (фильтр ×3) — новых входов нет",
+   "since_ms": 1790963107306,
+   "delist_ms": null,
+   "st": false,
+   "low_turnover": false,
+   "hot": true
+  }
+ },
+ "checked": "2026-10-05 22:21",
+ "error": null,
+ "hot_ratio": 3.0,
+ "hot_checked": "2026-10-04 19:31"
+}

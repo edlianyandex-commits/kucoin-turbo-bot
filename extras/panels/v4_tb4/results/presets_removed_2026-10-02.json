@@ -1,0 +1,102 @@
+{
+ "_comment": "Пресеты, убранные из панели 02.10.2026 (пользователь: оставить одну стратегию). Для истории проверок; панель их не читает. Прежний общий комментарий: Пресеты панели. base — свой конфиг-основа (иначе настройки автора passivbot), overrides — правки поверх. Цифры — бэктесты на счёте $300, правила KuCoin Futures: по годам 2022–2026 и сплошной прогон 2022–2026 (tb4/results/multi_year.json, multi_year_safer.json), 2025 (oos_2025.json), 03.12.2025–29.09.2026 (tests.json).",
+ "ema_btc": {
+  "name": "EMA Anchor, 7 монет + выход по BTC (осторожный)",
+  "risk": "medium",
+  "desc": "Осторожнее основного: Стратегия passivbot EMA Anchor (покупает у скользящей средней, без глубокого усреднения вниз), только лонг, 7 монет, экспозиция 3,5, стоп капитала 35% с паузой 3 дня. Выход при обвале BTC: закрытие часа BTC на 5% ниже максимума за 12 ч — панель закрывает все позиции и продолжает торговлю сама со следующего дня, когда BTC перестал падать. Счёт $300, без остановок: II пол. 2025 +29,6%, I пол. 2026 +13,3%, II пол. 2026 +17,2% — подряд +72% при худшей просадке 6,6% («Осторожный + стоп»: +69% при 24,5%). Без выхода по BTC этот вариант ликвидировался бы 10.10.2025 — выход сработал за 15 минут до обвала альтов. Панель (на сервере) должна работать, пока бот торгует.",
+  "min_balance_hint": 200,
+  "base": "tuned/ema_anchor.json",
+  "defaults": {
+   "btc_exit": 0.05,
+   "btc_exit_hours": 12
+  },
+  "overrides": {
+   "bot.long.risk.total_wallet_exposure_limit": 3.5,
+   "bot.long.risk.n_positions": 7.0,
+   "bot.short.risk.total_wallet_exposure_limit": 0.0,
+   "bot.long.hsl.enabled": true,
+   "bot.long.hsl.red_threshold": 0.35,
+   "bot.long.hsl.restart_after_red_policy": "always",
+   "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+   "live.hsl_signal_mode": "unified"
+  }
+ },
+ "careful_stop": {
+  "name": "Осторожный + стоп",
+  "risk": "low",
+  "desc": "Настройки автора (экспозиция 1,5, до 7 монет) плюс стоп капитала: если счёт просел на 35% от пика, бот закрывает всё и 3 дня отдыхает. Прежний основной (trailing martingale). Единственный вариант, который был в плюсе в каждом году: 2022 +25%, 2023 +37%, 2024 +77%, 2025 +6%, 2026 (9 мес.) +42%. Сплошняком 2022–2026: +590% (≈ +3,4% в месяц), худшая просадка 52%. Рекомендуется.",
+  "min_balance_hint": 150,
+  "overrides": {
+   "bot.long.hsl.enabled": true,
+   "bot.long.hsl.red_threshold": 0.35,
+   "bot.long.hsl.restart_after_red_policy": "always",
+   "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+   "live.hsl_signal_mode": "unified"
+  },
+  "defaults": {
+   "btc_exit": 0,
+   "btc_exit_hours": 12
+  }
+ },
+ "careful": {
+  "name": "Осторожный (без стопа)",
+  "risk": "medium",
+  "desc": "Настройки автора passivbot без стопа. По годам тоже в плюсе, но в феврале–апреле 2025 счёт падал на 90% (с $1206 до $114) и вернулся к пику только к сентябрю 2026. Сплошняком 2022–2026: +289%, просадка 91%.",
+  "min_balance_hint": 150,
+  "overrides": {},
+  "defaults": {
+   "btc_exit": 0,
+   "btc_exit_hours": 12
+  }
+ },
+ "tuned_moderate": {
+  "name": "Подобранный · умеренный",
+  "risk": "high",
+  "desc": "Подобран оптимизатором на декабре 2025–июле 2026: 3 монеты, экспозиция 0,95. На своём периоде +222%, но на новом для него 2025 году всего +17% за 9 месяцев при просадке 48%. Подогнан под историю — не рекомендуется.",
+  "min_balance_hint": 150,
+  "base": "tuned/tuned_moderate.json",
+  "overrides": {},
+  "defaults": {
+   "btc_exit": 0,
+   "btc_exit_hours": 12
+  }
+ },
+ "balanced": {
+  "name": "Сбалансированный",
+  "risk": "high",
+  "desc": "Настройки автора с экспозицией 3. Ликвидирован в 2024 и в 2025 году. Не рекомендуется.",
+  "min_balance_hint": 150,
+  "overrides": {
+   "bot.long.risk.total_wallet_exposure_limit": 3.0
+  },
+  "defaults": {
+   "btc_exit": 0,
+   "btc_exit_hours": 12
+  }
+ },
+ "tuned_growth": {
+  "name": "Подобранный · доходный",
+  "risk": "high",
+  "desc": "Подобран оптимизатором: 3 монеты, экспозиция 1,2. На своём периоде +260%, на новом для него 2025 году +25% за 9 месяцев при просадке 49%. Не рекомендуется.",
+  "min_balance_hint": 150,
+  "base": "tuned/tuned_growth.json",
+  "overrides": {},
+  "defaults": {
+   "btc_exit": 0,
+   "btc_exit_hours": 12
+  }
+ },
+ "aggressive": {
+  "name": "Агрессивный",
+  "risk": "high",
+  "desc": "Настройки автора с экспозицией 5. Ликвидирован в обвал октября 2025 (−99% за месяц); экспозиция 2 и выше не пережила 2022–2026 подряд. Только для денег, которые не жалко потерять.",
+  "min_balance_hint": 150,
+  "overrides": {
+   "bot.long.risk.total_wallet_exposure_limit": 5.0
+  },
+  "defaults": {
+   "btc_exit": 0,
+   "btc_exit_hours": 12
+  }
+ }
+}

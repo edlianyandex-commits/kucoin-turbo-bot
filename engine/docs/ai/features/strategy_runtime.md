@@ -1,0 +1,271 @@
+# Strategy Runtime Contracts
+
+## Canonical And Legacy Strategy Schemas
+
+The canonical strategy kind is `trailing_martingale`. The released v7 `trailing_grid` schema is not
+aliased to it. Do not add compatibility migrations, duplicate strategy names, or silent shims for
+removed fields unless the user explicitly asks for released-version compatibility.
+
+`trailing_grid_v7` is the explicit compatibility exception. It is a normal Rust strategy kind,
+deprecated from introduction, and exists only for configs converted by
+`passivbot tool migrate-config-v7`. Keep its v7-only fields under
+`bot.<side>.strategy.trailing_grid_v7`; do not add them to `trailing_martingale` or shared
+`BotParams` unless a shared runtime function truly requires it.
+
+The legacy pre-V8 `pb_multi` root shape (`TWE_long`, `TWE_short`,
+`universal_live_config`, and related top-level fields) is not a supported V8 config input or
+migration contract. Residual flavor detection, formatter code, and narrow unit fixtures are stale
+internal compatibility surfaces: ignore them when adding current config fields, and do not infer
+production or live support from their presence. The only supported pre-V8 strategy migration path
+is the explicit `passivbot tool migrate-config-v7` workflow for normalized V7 trailing-grid input.
+
+With `entry_cooldown_minutes = 0.0`, `trailing_grid_v7` preserves v7's simultaneous grid-entry
+ladder even when a later trailing leg uses retracement. Its recursive generator stops expansion
+before stacking retracement-dependent trailing orders. Positive entry cooldowns still stage at
+most one position-adding order and apply their configured post-fill delay.
+
+Removed v7 trailing-grid concepts:
+
+- `entry_trailing_grid_ratio`
+- `close_trailing_grid_ratio`
+- `close_grid_markup_start`
+- `close_grid_markup_end`
+- linear `markup_start` to `markup_end` TP grids
+- separate entry grid spacing vs trailing threshold knobs
+
+Canonical config path:
+
+```text
+bot.<side>.strategy.trailing_martingale
+```
+
+Deprecated v7 compatibility config path:
+
+```text
+bot.<side>.strategy.trailing_grid_v7
+```
+
+Optimizer selector contract:
+
+- `optimize.fixed_params` and `--fine_tune_params` use dotted config-path selectors.
+- `long.*` / `short.*` selectors are aliases for `bot.long.*` / `bot.short.*`.
+- Selectors match path segments by prefix or suffix, not partial substring. Use `long.strategy`
+  to match the whole active strategy subtree, `long.strategy.close` to match only
+  `bot.long.strategy.<active_strategy>.close.*`, or a leaf selector such as
+  `we_excess_allowance_pct` to match every bound ending with that parameter name.
+- `*` is allowed as a one-segment wildcard, for example `*.strategy.close`.
+- Do not use flattened underscore selector names such as `long_entry_*` in current user-facing docs
+  or agent instructions.
+- When `--fine_tune_params` is combined with `--start`, the starting configs are anchor configs:
+  non-tuned optimizer-bound bot params are fixed from the selected anchor, while the fine-tune
+  selectors remain tunable. Base-config policy fields, including boolean toggles such as
+  `bot.<side>.hsl.enabled`, still win over anchors. Anchor and seed values outside
+  `optimize.bounds` are clamped into bounds with aggregated source/key logging. Without
+  `--fine_tune_params`, `--start` remains seed-only.
+
+Seed evaluation contract:
+
+- Shared ingestion normalizes, clamps, quantizes, and deduplicates starting configs before each
+  backend applies its seed policy.
+- CPU optimization exact-Rust evaluates every deduplicated seed before population trimming.
+- GPU `seed_bootstrap.mode=auto` exact-evaluates small pools and full-history proxy-screens pools
+  larger than `max_exact`. Screened pools exact-Rust validate a capped, constraint-aware diverse
+  proxy set; only that subset enters the authoritative exact archive.
+- Seed-bootstrap exact evaluations are recorded separately from the GPU evolutionary
+  `optimize.iters` budget. Exact fitness seeds the archive and vector-only initial sampling; exact
+  and proxy fitness must never share an NSGA objective matrix.
+- An incomplete bootstrap checkpoint owns its normalized seed plan. Resume does not depend on the
+  original seed files, including for anchored fine-tuning, and must recover any exact seed result
+  already flushed to durable history.
+
+Timeframe-specific EMA spans use explicit horizon suffixes in canonical config names. Use `_1m`
+for 1-minute candle inputs and `_1h` for 1-hour candle inputs, for example
+`volatility_ema_span_1m`, `volatility_ema_span_1h`, `forager_volume_ema_span_1m`, and
+`forager_volatility_ema_span_1m`. Generic strategy EMA spans such as `ema_span_0` and `ema_span_1`
+remain unsuffixed because their timeframe comes from the strategy's base candle stream.
+
+## Forager Readiness Stages
+
+Live health distinguishes three stages:
+
+1. The candidate universe contains approved, age-eligible, cost-eligible symbols.
+2. A rankable candidate has the required real-candle quote-volume and log-range
+   features.
+3. Each Rust-plannable action has the strategy, trailing, and risk inputs it
+   consumes; availability may differ by position side and entry/close branch.
+
+A flat candidate with unavailable ranking features remains visible as a forager
+candidate but is marked `forager.rankable=false`; this is distinct from an
+active symbol losing a required strategy input. The Rust payload still fails
+closed for an unrankable candidate. Monitor health must preserve that stage
+distinction so operators do not mistake a bounded candidate-ranking exclusion
+for an exchange market becoming intrinsically nontradable. Before the current
+EMA bundle completes—or after a replacement bundle fails—eligible candidates
+remain visible with `forager.rankable=false` and
+`ema_bundle_unevaluated`; monitor health must not infer readiness from empty
+failure sets. Bundle readiness is scoped to the exact evaluated symbol set, so
+a newly age- or cost-eligible candidate remains unevaluated until a subsequent
+bundle includes it. Forager candidate ranking continues to use completed-candle
+metrics; held and explicitly normal symbols nevertheless retain any open-tail
+log-range projections required by their active strategy. Live orchestration
+passes completed-candle forager metrics separately from strategy EMA maps so a
+shared span cannot leak a projected strategy value into coin ranking.
+
+## Trailing Martingale Semantics
+
+Trailing-martingale price spans belong to `entry.ema_span_0/1`. Schema v8.4.0 migrates
+old strategy-root leaves before hydration and before file/inline override merges; explicit
+new leaves win with warnings on conflicting values. Public optimizer bounds share the nested
+paths; internal optimizer keys and Metal columns retain `ema_span_0/1`. Entry subtree selectors
+include the horizons. EMA-anchor and trailing-grid-v7 paths are unchanged. Volatility horizons
+remain shared by entries and closes.
+
+Entries and closes use threshold/retracement fields.
+
+- `retracement_base_pct <= 0.0`: trailing disabled, use passive recursive limit-order behavior.
+- `retracement_base_pct > 0.0`: threshold is the required excursion, retracement is the confirmation move.
+- Trailing extrema reset after any fill for the same coin+pside.
+- Passivbot tracks trailing state itself from candle inputs; exchange-native trailing order types are not part of the core contract.
+
+Live trailing availability is a Rust planning input, not a Python reconciliation policy. Python
+sets `trailing_available=false` only for the affected coin+position-side while retaining a
+structurally valid but inert bundle. Rust omits only an entry or close branch whose active strategy
+configuration actually consumes trailing extrema. The other branch, the other position side,
+panic, and independent risk reducers continue when their own inputs are complete. The resulting
+Rust ideal set remains authoritative: reconciliation cancels resting orders absent from that set
+and never preserves them merely because trailing reconstruction is pending.
+
+Entry thresholds and retracements are multiplicative distances. Positive volatility or wallet
+exposure weights widen them.
+
+`bot.<side>.strategy.trailing_martingale.entry.ema_gate_mode` controls which entry orders are
+capped/floored by the EMA entry band:
+
+- `disabled`: no emitted entry order is capped/floored by EMA. Flat initial entries rest at current
+  best bid/ask; re-entries use normal threshold/retracement logic.
+- `all`: initial entries, partial initial entries, and re-entries are capped/floored by EMA.
+- `initial`: normal initial and partial initial entries are capped/floored by EMA. Re-entries are
+  not EMA capped/floored. This is the default and preserves the previous canonical behavior.
+- `reentry`: flat initial entries are not capped/floored by EMA; re-entries are capped/floored by
+  EMA.
+
+The value is fixed config, not an optimizer parameter. In one-way mode, if both sides are flat and
+both long and short are otherwise eligible, the long-vs-short tie-break still uses the EMA entry
+band distance even when `ema_gate_mode = "disabled"`. Candles and EMA bands are therefore required
+for that tie-break, and missing EMA inputs must fail loudly.
+
+Close thresholds are additive so they can intentionally cross through break-even or negative markup
+as wallet exposure rises. Close retracement is volatility-weighted and intentionally has no
+wallet-exposure modifier.
+
+Auto-unstuck has its own EMA trigger toggle:
+`bot.<side>.unstuck.ema_gating_enabled`. It defaults to `true`. When false, auto-unstuck skips the
+EMA trigger/readiness check but still requires `unstuck.enabled`, loss allowance, exposure
+threshold, close sizing, and valid market/exchange inputs.
+
+`bot.<side>.unstuck.ema_span_0` and `ema_span_1` independently define the unstuck price EMA
+band, using the same base candle stream and unrounded geometric-mean third span as the strategy
+band. Long eligibility uses the upper band; short eligibility uses the lower band. Strategy EMA
+changes must not change the unstuck band. Missing required unstuck EMAs follow the existing scoped
+input-unavailable contract; disabled gating does not require them or extend warmup. Live loading
+requests unstuck-only spans for held sides separately, preserving usable strategy spans when an
+unstuck horizon is unavailable. Live warmup uses that same held/static eligibility and does not
+expand flat forager candidates to an unused unstuck horizon. Monitor bands are independently
+available for each consumer.
+
+Schema v8.3.0 materializes missing unstuck spans from the effective active strategy before default
+hydration, including coin overrides and external-file/inline precedence. Explicit unstuck spans
+win. New optimizer bounds copy fixed legacy bounds, or freeze at the migrated starting values for
+varying legacy ranges unless supplied; a warning explains that independent genes cannot preserve
+the old coupled search. New defaults expose tunable spans.
+Apple MPS models a separate price EMA band for unstuck in all directional and multicoin kernels.
+It uses the same seeded recurrence, floating horizons and candle-interval scaling as exact Rust.
+Coin overrides win over candidate globals, and temporal replay persists the independent band.
+
+The opt-in optimizer override `couple_unstuck_ema_spans` derives each side/coin's unstuck pair
+from its effective strategy, after mirroring and fixed/scenario overrides. It removes redundant
+unstuck span genes and materializes explicit runtime spans in saved candidates and scenarios.
+GPU packing preserves the dependency on candidate strategy genes while retaining strategy coin
+pins. This is optimizer configuration finalization, not a live/backtest coupling mode.
+
+## Backtest Limit Fill Buffer
+
+`backtest.limit_order_fill_buffer_pct` is a simulation-only ratio, defaulting to `0.0`.
+Limit buys require `low < price * (1 - buffer)` and limit sells require
+`high > price * (1 + buffer)`. Equality never fills. The buffer changes eligibility only:
+filled limit orders retain the original order price and maker fees. Market execution bypasses it.
+The actual fill and next-candle ladder-expansion hint share the same Rust predicate; raw candles
+used for indicators, trailing extrema, equity, and risk remain unchanged. Live inputs do not
+forward this setting. CPU optimization treats it as fixed evaluation policy; GPU screening
+rejects nonzero values until it implements the same contract.
+The native backtest payload loader accepts an absent buffer as `0.0` for payloads from before
+this setting existed; explicit invalid values still fail. Canonical Python loading always supplies
+the field. Orchestrator next-candle hints likewise default absence to zero and reject non-finite
+values or ratios outside `[0, 1)` before order construction.
+
+## Live/Backtest Market Slippage Boundary
+
+`backtest.market_order_slippage_pct` is a backtest simulation knob only. Live orchestrator input
+must not read or forward it; live callers intentionally omit `market_order_slippage_pct` and rely
+on Rust's `0.0` serde default for live loss projections. Live market-order execution uses the
+current bid/ask snapshot plus exchange-side behavior, controlled by `live.market_orders_allowed`
+and `live.market_order_near_touch_threshold`.
+
+## Close Recursion Contract
+
+Close orders are computed recursively when the close threshold depends on wallet exposure:
+
+1. Compute the next close from current position exposure.
+2. Size it up to `close.qty_pct`.
+3. Simulate that close as filled.
+4. Recompute wallet-exposure ratio.
+5. Repeat until the position is exhausted or the ladder is complete.
+
+If `close.retracement_base_pct <= 0.0` and `close.threshold_we_weight == 0.0`, recursive closes all
+have the same price. Rust intentionally emits one full-position close in that case; `close.qty_pct`
+is effectively moot because multiple same-price slices would be redundant.
+
+## Close Reducer Compatibility
+
+For each coin and position side, Rust selects at most one protective reducer per ideal-order batch.
+Active panic, TWEL/WEL exposure-repair, and auto-unstuck intents are consolidated by keeping the
+largest loss-admissible absolute reduction after final position/minimum sizing, not by summing
+their quantities. If the realized-loss gate blocks the largest non-panic intent, Rust tries the
+next-largest intent. This prevents a small auto-reduce from suppressing a materially larger unstuck
+close while retaining a smaller safety fallback when the larger close would exceed the loss
+budget. A full-position HSL panic is therefore largest and remains exclusive; equal-size ties keep
+panic first and otherwise prefer the closest-to-fill candidate.
+
+A selected non-panic reducer may coexist with ordinary grid, trailing, or EMA-anchor closes. Its
+quantity is reserved first; if aggregate close quantity would exceed the position, ordinary closes
+are trimmed furthest-from-fill first against the remaining quantity. Aggregate reduce-only quantity
+must never exceed the position after quantity-step and effective-minimum handling. The cumulative
+realized-loss gate participates in this allocation, checks the final reducer size, and spends the
+shared batch allowance on final reducer quantities largest-first rather than in symbol iteration
+order. It then evaluates ordinary closes after the selected reducers. Live reconciliation reapplies
+the same aggregate cap against current exchange position size, still trimming ordinary closes
+before the reducer if the position shrank after planning.
+This contract is shared by every strategy kind, including `trailing_grid_v7`.
+
+## Source Of Truth
+
+Rust owns strategy dispatch and order behavior. If Python docs, adapters, or tests imply old
+`trailing_grid` behavior, update those surfaces to match Rust rather than adding Python-side
+behavior patches.
+
+## Validation
+
+- Rust unit tests cover strategy dispatch, entries, closes, recursion, risk, and unstuck behavior.
+- Python tests use the verified real extension when asserting Rust output.
+- Live/backtest parity tests compare optimized behavior with a simple reference contract.
+- Config migration/schema tests reject removed fields outside `trailing_grid_v7`.
+- Behaviorally relevant changes include a bounded real backtest smoke.
+
+## Key Code And Tests
+
+- `passivbot-rust/src/orchestrator.rs`
+- `passivbot-rust/src/entries.rs`
+- `passivbot-rust/src/closes.rs`
+- `tests/test_orchestrator_json_api.py`
+- `tests/test_orchestrator_integration.py`
+- `tests/test_auto_unstuck_allowance.py`

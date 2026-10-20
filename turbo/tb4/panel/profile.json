@@ -1,0 +1,9 @@
+{
+  "_about": "Личность панели. Задаётся при установке бота, не редактируется из UI.",
+  "app": "turbo",
+  "mode": "bet",
+  "port": 8771,
+  "user": "kucoin_turbo",
+  "default_preset": "turbo_ema5",
+  "label": "Турбо"
+}

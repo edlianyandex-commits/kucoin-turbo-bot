@@ -1,0 +1,5222 @@
+[
+ {
+  "name": "1. Основной бот: обычный месяц (30 дней, сентябрь 2026)",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "бот запущен панелью и работал весь месяц",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "ровно один процесс бота всё время",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "капитал в панели совпадает с расчётом passivbot",
+    "ok": true,
+    "detail": "398.5036 против 398.50"
+   },
+   {
+    "name": "Telegram: пришло «запуск»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: тревог не было",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: утренние отчёты каждый день",
+    "ok": true,
+    "detail": "30 за 30 дней"
+   },
+   {
+    "name": "Telegram: статус и позиции отвечают",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: без сообщения о каждой сделке, но со сводкой сделок за сутки в утреннем отчёте",
+    "ok": true,
+    "detail": "открытий за сутки в среднем 11 (по расчёту passivbot 11; стенд видит позиции раз в ~1,4 ч рыночного времени, поэтому меньше)"
+   },
+   {
+    "name": "Telegram: пресет назван по-человечески",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "ema_wide",
+    "balance": 300.0,
+    "leverage": 10,
+    "btc_exit": 0.05,
+    "btc_exit_hours": 12,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "ema_wide": {
+     "name": "EMA Anchor, 10 монет + выход по BTC + стоп по монете",
+     "risk": "medium",
+     "desc": "Рекомендуется (основной). Стратегия TB Core EMA Anchor со своей настройкой (02.10.2026), только лонг, 10 позиций из 84 ликвидных монет KuCoin, экспозиция 8 (при плече 10 — 20% запаса маржи). Защиты: выход при обвале BTC (закрытие часа на 5% ниже максимума за 12 ч → закрыть всё, со следующего дня торговля продолжается сама) и стоп по каждой монете: монета ушла в минус на половину своей доли счёта (≈ 5% баланса) — по ней больше не докупаем; минус в целую долю (≈ 10% баланса) держится полдня и дольше — закрыть только эту монету и не торговать её 3 дня, остальные монеты работают. Счёт $300, «как на реальных деньгах»: II пол. 2025 +123%, I пол. 2026 +46%, II пол. 2026 +117% → +609% за 15 мес. (≈ +14% в месяц; со старыми настройками было +302%); худшая минута −25% (обвал ZEC 05.06.2026). Июль–сентябрь 2026 при подборе настроек не участвовали: там +117% против +74%. Выигрыш держится на большем числе сделок (42 в сутки вместо 32): при очень плохом исполнении ордеров он почти исчезает. Плечо на бирже — 10. Панель на сервере должна работать, пока бот торгует.",
+     "min_balance_hint": 200,
+     "base": "tuned/ema_anchor.json",
+     "defaults": {
+      "btc_exit": 0.05,
+      "btc_exit_hours": 12
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 8.0,
+      "bot.long.risk.n_positions": 10.0,
+      "bot.short.risk.total_wallet_exposure_limit": 0.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 1.0,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "coin",
+      "bot.long.hsl.tier_ratios": {
+       "yellow": 0.3,
+       "orange": 0.5
+      },
+      "bot.long.hsl.orange_tier_mode": "tp_only_with_active_entry_cancellation",
+      "bot.long.hsl.ema_span_minutes": 60.0,
+      "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+      "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+      "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+      "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+      "bot.long.strategy.ema_anchor.base_qty_pct": 0.075,
+      "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+      "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 18.0,
+    "coins": [
+     {
+      "coin": "GALA",
+      "min_cost": 0.0,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "DYDX",
+      "min_cost": 0.01,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "SNX",
+      "min_cost": 0.02,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ICP",
+      "min_cost": 0.03,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "LDO",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "S",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "JASMY",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "EDEN",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "PENGU",
+      "min_cost": 0.09,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.1,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "OP",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "FARTCOIN",
+      "min_cost": 0.17,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.19,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "TRUMP",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "SOMI",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "4",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "EIGEN",
+      "min_cost": 0.24,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.25,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "MOVR",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "ALLO",
+      "min_cost": 0.28,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "0G",
+      "min_cost": 0.29,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "MET",
+      "min_cost": 0.3,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "JUP",
+      "min_cost": 0.32,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "CRV",
+      "min_cost": 0.38,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "SOON",
+      "min_cost": 0.42,
+      "ok": true,
+      "turnover_m": 31
+     },
+     {
+      "coin": "SPX",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "TIA",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 55
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "DASH",
+      "min_cost": 0.59,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "HEMI",
+      "min_cost": 0.63,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "H",
+      "min_cost": 0.69,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ZEN",
+      "min_cost": 0.71,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "SEI",
+      "min_cost": 0.72,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "MYX",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "VIRTUAL",
+      "min_cost": 0.78,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "POWER",
+      "min_cost": 0.82,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "VET",
+      "min_cost": 0.86,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.03,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.09,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 38
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "AVNT",
+      "min_cost": 1.22,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "FF",
+      "min_cost": 1.24,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.43,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.66,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "RAVE",
+      "min_cost": 1.99,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.18,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "USELESS",
+      "min_cost": 2.25,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "FET",
+      "min_cost": 2.26,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ARK",
+      "min_cost": 2.31,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.44,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "WIF",
+      "min_cost": 2.46,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "FOLKS",
+      "min_cost": 2.49,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "CAKE",
+      "min_cost": 2.58,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "QNT",
+      "min_cost": 2.63,
+      "ok": true,
+      "turnover_m": 45
+     },
+     {
+      "coin": "US",
+      "min_cost": 3.05,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 32
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "1000BONK",
+      "min_cost": 3.68,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.24,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "CT",
+      "min_cost": 4.57,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 4.9,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.39,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "PUMP",
+      "min_cost": 5.46,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.69,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.44,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.84,
+      "ok": true,
+      "turnover_m": 41
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.4,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 11.72,
+      "ok": true,
+      "turnover_m": 194
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 13.76,
+      "ok": true,
+      "turnover_m": 83
+     },
+     {
+      "coin": "PIEVERSE",
+      "min_cost": 13.96,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "BTW",
+      "min_cost": 14.38,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 14.82,
+      "ok": true,
+      "turnover_m": 238
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 26.85,
+      "ok": false,
+      "turnover_m": 192
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.31,
+      "ok": false,
+      "turnover_m": 7
+     },
+     {
+      "coin": "NIGHT",
+      "min_cost": 39.63,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 83.94,
+      "ok": false,
+      "turnover_m": 394
+     }
+    ],
+    "ok_count": 80,
+    "params": {
+     "exposure": 8.0,
+     "positions": 10.0,
+     "allowance": 0.0,
+     "initial_pct": 0.075,
+     "strategy": "ema_anchor",
+     "hsl_enabled": true,
+     "hsl_threshold": 1.0,
+     "hsl_mode": "coin",
+     "hsl_orange": 0.5
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-10-02 17:40",
+    "preset": "ema_wide",
+    "gave_up": null,
+    "btc_exit": {
+     "drop": 0.05,
+     "hours": 12
+    },
+    "btc_pause": null,
+    "mode": "normal",
+    "snapshot": {
+     "balance": 400.5524,
+     "equity": 398.5036,
+     "positions": [
+      {
+       "symbol": "MYX/USDT:USDT",
+       "side": "long",
+       "size": 2.0,
+       "price": 0.075710883797054,
+       "upnl": -0.0001,
+       "we": 0.0037834935522847
+      },
+      {
+       "symbol": "S/USDT:USDT",
+       "side": "long",
+       "size": 54.0,
+       "price": 0.0384888450148075,
+       "upnl": -0.0008,
+       "we": 0.0052802529207392
+      },
+      {
+       "symbol": "DASH/USDT:USDT",
+       "side": "long",
+       "size": 3.0,
+       "price": 63.98901425691244,
+       "upnl": -0.0706,
+       "we": 0.0048093327586994
+      },
+      {
+       "symbol": "WLD/USDT:USDT",
+       "side": "long",
+       "size": 49.0,
+       "price": 0.4997492063492063,
+       "upnl": -0.009,
+       "we": 0.0613042486995149
+      },
+      {
+       "symbol": "USELESS/USDT:USDT",
+       "side": "long",
+       "size": 9.0,
+       "price": 0.2528189411764705,
+       "upnl": -0.0008,
+       "we": 0.0568447948654238
+      },
+      {
+       "symbol": "ONDO/USDT:USDT",
+       "side": "long",
+       "size": 3.0,
+       "price": 0.5131122448979591,
+       "upnl": -0.0006,
+       "we": 0.0386116501020679
+      },
+      {
+       "symbol": "NEAR/USDT:USDT",
+       "side": "long",
+       "size": 50.0,
+       "price": 4.834923577235772,
+       "upnl": -0.089,
+       "we": 0.060308774590486
+      },
+      {
+       "symbol": "JUP/USDT:USDT",
+       "side": "long",
+       "size": 66.0,
+       "price": 0.3270370967741935,
+       "upnl": -0.0079,
+       "we": 0.0540321676074352
+      },
+      {
+       "symbol": "ZEC/USDT:USDT",
+       "side": "long",
+       "size": 2.0,
+       "price": 1500.5700000000002,
+       "upnl": -1.1045,
+       "we": 0.0749776932160355
+      },
+      {
+       "symbol": "QNT/USDT:USDT",
+       "side": "long",
+       "size": 9.0,
+       "price": 231.12823529411764,
+       "upnl": -0.7655,
+       "we": 0.0519321380896924
+      }
+     ],
+     "orders": 20,
+     "ts": 1790952204933,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null,
+      "mode": "coin",
+      "coins": []
+     }
+    }
+   },
+   "lite": true,
+   "coin_guard": {
+    "coins": {},
+    "checked": "2026-10-02 17:43",
+    "error": null
+   },
+   "btc_move": {
+    "btc": 83137.0,
+    "high": 84000.1,
+    "hours": 12,
+    "drop_pct": -1.03,
+    "checked": "2026-09-29 02:06 (сценарий)"
+   },
+   "server_time": "17:43:24"
+  },
+  "replay_stats": {
+   "days": 29.96,
+   "fills": 1450,
+   "fills_per_day": 48.4,
+   "position_opens": 316,
+   "position_closes": 306,
+   "position_msgs_per_day": 20.8,
+   "start_equity": 300.0,
+   "end_equity": 398.5036,
+   "max_dd_pct": 9.5,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "2. Основной бот: стоп по монете — учебная тревога (неделя сентября 2026)",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "Telegram: «ZEC — докупки по монете остановлены» один раз (повтор через 4 ч не шлётся)",
+    "ok": true,
+    "detail": "1"
+   },
+   {
+    "name": "Telegram: «стоп по монете ZEC … закрывает только эту монету» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «ZEC закрыта по стопу; пауза по монете до …» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "панель во время паузы: стоп по монете, ZEC закрыта с паузой, её позиции нет",
+    "ok": true,
+    "detail": "{'enabled': True, 'tier': 'red', 'halted': True, 'no_restart_latched': False, 'cooldown_until_ms': None, 'mode': 'coin', 'coins': [{'coin': 'ZEC', 'tier': 'red', 'halted': True, 'no_restart_latched': False, 'cooldown_until_ms': 1788480600000, 'loss': 33.0, 'slot_pct': 110, 'orange_pct': 50}]}"
+   },
+   {
+    "name": "Telegram /status во время паузы: «стоп по монете: ZEC закрыта, пауза до …»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "утренний отчёт во время паузы называет закрытую монету",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «пауза по монете ZEC закончилась — монета снова в работе»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "не путает со стопом всего счёта, тревог нет",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "бот работал всё время, один процесс",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "ema_wide",
+    "balance": 300.0,
+    "leverage": 10,
+    "btc_exit": 0.05,
+    "btc_exit_hours": 12,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "ema_wide": {
+     "name": "EMA Anchor, 10 монет + выход по BTC + стоп по монете",
+     "risk": "medium",
+     "desc": "Рекомендуется (основной). Стратегия TB Core EMA Anchor со своей настройкой (02.10.2026), только лонг, 10 позиций из 84 ликвидных монет KuCoin, экспозиция 8 (при плече 10 — 20% запаса маржи). Защиты: выход при обвале BTC (закрытие часа на 5% ниже максимума за 12 ч → закрыть всё, со следующего дня торговля продолжается сама) и стоп по каждой монете: монета ушла в минус на половину своей доли счёта (≈ 5% баланса) — по ней больше не докупаем; минус в целую долю (≈ 10% баланса) держится полдня и дольше — закрыть только эту монету и не торговать её 3 дня, остальные монеты работают. Счёт $300, «как на реальных деньгах»: II пол. 2025 +123%, I пол. 2026 +46%, II пол. 2026 +117% → +609% за 15 мес. (≈ +14% в месяц; со старыми настройками было +302%); худшая минута −25% (обвал ZEC 05.06.2026). Июль–сентябрь 2026 при подборе настроек не участвовали: там +117% против +74%. Выигрыш держится на большем числе сделок (42 в сутки вместо 32): при очень плохом исполнении ордеров он почти исчезает. Плечо на бирже — 10. Панель на сервере должна работать, пока бот торгует.",
+     "min_balance_hint": 200,
+     "base": "tuned/ema_anchor.json",
+     "defaults": {
+      "btc_exit": 0.05,
+      "btc_exit_hours": 12
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 8.0,
+      "bot.long.risk.n_positions": 10.0,
+      "bot.short.risk.total_wallet_exposure_limit": 0.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 1.0,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "coin",
+      "bot.long.hsl.tier_ratios": {
+       "yellow": 0.3,
+       "orange": 0.5
+      },
+      "bot.long.hsl.orange_tier_mode": "tp_only_with_active_entry_cancellation",
+      "bot.long.hsl.ema_span_minutes": 60.0,
+      "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+      "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+      "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+      "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+      "bot.long.strategy.ema_anchor.base_qty_pct": 0.075,
+      "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+      "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 18.0,
+    "coins": [
+     {
+      "coin": "GALA",
+      "min_cost": 0.0,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "DYDX",
+      "min_cost": 0.01,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "SNX",
+      "min_cost": 0.02,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ICP",
+      "min_cost": 0.03,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "LDO",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "S",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "JASMY",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "EDEN",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "PENGU",
+      "min_cost": 0.09,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.1,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "OP",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "FARTCOIN",
+      "min_cost": 0.17,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.19,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "TRUMP",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "SOMI",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "4",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "EIGEN",
+      "min_cost": 0.24,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.25,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "MOVR",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "ALLO",
+      "min_cost": 0.28,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "0G",
+      "min_cost": 0.29,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "MET",
+      "min_cost": 0.3,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "JUP",
+      "min_cost": 0.32,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "CRV",
+      "min_cost": 0.38,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "SOON",
+      "min_cost": 0.42,
+      "ok": true,
+      "turnover_m": 31
+     },
+     {
+      "coin": "SPX",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "TIA",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 55
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "DASH",
+      "min_cost": 0.59,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "HEMI",
+      "min_cost": 0.63,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "H",
+      "min_cost": 0.69,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ZEN",
+      "min_cost": 0.71,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "SEI",
+      "min_cost": 0.72,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "MYX",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "VIRTUAL",
+      "min_cost": 0.78,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "POWER",
+      "min_cost": 0.82,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "VET",
+      "min_cost": 0.86,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.03,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.09,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 38
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "AVNT",
+      "min_cost": 1.22,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "FF",
+      "min_cost": 1.24,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.43,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.66,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "RAVE",
+      "min_cost": 1.99,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.18,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "USELESS",
+      "min_cost": 2.25,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "FET",
+      "min_cost": 2.26,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ARK",
+      "min_cost": 2.31,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.44,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "WIF",
+      "min_cost": 2.46,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "FOLKS",
+      "min_cost": 2.49,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "CAKE",
+      "min_cost": 2.58,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "QNT",
+      "min_cost": 2.63,
+      "ok": true,
+      "turnover_m": 45
+     },
+     {
+      "coin": "US",
+      "min_cost": 3.05,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 32
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "1000BONK",
+      "min_cost": 3.68,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.24,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "CT",
+      "min_cost": 4.57,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 4.9,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.39,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "PUMP",
+      "min_cost": 5.46,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.69,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.44,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.84,
+      "ok": true,
+      "turnover_m": 41
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.4,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 11.72,
+      "ok": true,
+      "turnover_m": 194
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 13.76,
+      "ok": true,
+      "turnover_m": 83
+     },
+     {
+      "coin": "PIEVERSE",
+      "min_cost": 13.96,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "BTW",
+      "min_cost": 14.38,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 14.82,
+      "ok": true,
+      "turnover_m": 238
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 26.85,
+      "ok": false,
+      "turnover_m": 192
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.31,
+      "ok": false,
+      "turnover_m": 7
+     },
+     {
+      "coin": "NIGHT",
+      "min_cost": 39.63,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 83.94,
+      "ok": false,
+      "turnover_m": 394
+     }
+    ],
+    "ok_count": 80,
+    "params": {
+     "exposure": 8.0,
+     "positions": 10.0,
+     "allowance": 0.0,
+     "initial_pct": 0.075,
+     "strategy": "ema_anchor",
+     "hsl_enabled": true,
+     "hsl_threshold": 1.0,
+     "hsl_mode": "coin",
+     "hsl_orange": 0.5
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-10-02 17:43",
+    "preset": "ema_wide",
+    "gave_up": null,
+    "btc_exit": {
+     "drop": 0.05,
+     "hours": 12
+    },
+    "btc_pause": null,
+    "mode": "normal",
+    "snapshot": {
+     "balance": 319.8964,
+     "equity": 320.1792,
+     "positions": [
+      {
+       "symbol": "FIL/USDT:USDT",
+       "side": "long",
+       "size": 20.0,
+       "price": 0.7555516509433963,
+       "upnl": 0.0346,
+       "we": 0.0047367256907154
+      },
+      {
+       "symbol": "JASMY/USDT:USDT",
+       "side": "long",
+       "size": 3.0,
+       "price": 0.0045592129496402,
+       "upnl": 0.0,
+       "we": 0.000428689298369
+      },
+      {
+       "symbol": "ARB/USDT:USDT",
+       "side": "long",
+       "size": 23.0,
+       "price": 0.1312872947658402,
+       "upnl": 0.0069,
+       "we": 0.0095530243873484
+      },
+      {
+       "symbol": "SOL/USDT:USDT",
+       "side": "long",
+       "size": 1.0,
+       "price": 100.61733333333332,
+       "upnl": 0.2304,
+       "we": 0.0316948465079417
+      },
+      {
+       "symbol": "XRP/USDT:USDT",
+       "side": "long",
+       "size": 1.0,
+       "price": 1.41518,
+       "upnl": 0.0032,
+       "we": 0.0450205657669636
+      },
+      {
+       "symbol": "PENGU/USDT:USDT",
+       "side": "long",
+       "size": 23.0,
+       "price": 0.0082956330749354,
+       "upnl": 0.0004,
+       "we": 0.0059751784193858
+      },
+      {
+       "symbol": "USELESS/USDT:USDT",
+       "side": "long",
+       "size": 13.0,
+       "price": 0.2404861538461538,
+       "upnl": 0.0072,
+       "we": 0.0978057099315891
+      }
+     ],
+     "orders": 14,
+     "ts": 1790952267429,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null,
+      "mode": "coin",
+      "coins": []
+     }
+    }
+   },
+   "lite": true,
+   "coin_guard": {
+    "coins": {},
+    "checked": "2026-10-02 17:44",
+    "error": null
+   },
+   "btc_move": {
+    "btc": 79616.1,
+    "high": 79754.7,
+    "hours": 12,
+    "drop_pct": -0.17,
+    "checked": "2026-09-05 00:50 (сценарий)"
+   },
+   "server_time": "17:44:27"
+  },
+  "replay_stats": {
+   "days": 29.96,
+   "fills": 1450,
+   "fills_per_day": 48.4,
+   "position_opens": 316,
+   "position_closes": 306,
+   "position_msgs_per_day": 20.8,
+   "start_equity": 300.0,
+   "end_equity": 398.5036,
+   "max_dd_pct": 9.5,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "3. Сбои: падение бота, перезапуск панели, перезагрузка сервера, бот падает при запуске, остановка из Telegram",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "3.1 бот упал → панель подняла его сама",
+    "ok": true,
+    "detail": "[333660] → [333690]"
+   },
+   {
+    "name": "3.1 Telegram: «автовосстановление» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.1 Telegram: в сводке ошибок — суть падения, а не «Traceback»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.2 панель перезапущена — бот тот же процесс, не дублируется",
+    "ok": true,
+    "detail": "[333690] → [333690]"
+   },
+   {
+    "name": "3.2 без лишнего «автовосстановления»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.2 пока панели нет — только «панель не отвечает», без ложного «процесса нет»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.3 после «перезагрузки» панель сама подняла бота",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.4 падает при запуске — 3 попытки, затем стоп автоперезапуска",
+    "ok": true,
+    "detail": "попыток: 3"
+   },
+   {
+    "name": "3.4 Telegram: «автоперезапуск остановлен» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.4 Telegram: тревога «бот должен работать, но процесса нет»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.4 после исправления «Запуск» снова работает, тревога снята",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.5 остановка из Telegram (с подтверждением) — бот остановлен",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "3.5 Telegram: подтверждение и «бот остановлен»",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": []
+ },
+ {
+  "name": "4. Основной бот: EMA Anchor + выход при обвале BTC и запуск после паузы (ноябрь 2025)",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "пресет «EMA Anchor, 10 монет»: EMA Anchor, выход при обвале BTC −5% за 12 ч",
+    "ok": true,
+    "detail": "{'preset': 'ema_wide', 'btc_exit': 0.05, 'btc_exit_hours': 12}"
+   },
+   {
+    "name": "Telegram: «обвал BTC … закрываю все позиции» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «позиции закрыты — пауза, продолжится сама»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "во время паузы бот остановлен (процесса нет)",
+    "ok": true,
+    "detail": "проверок с паузой: 197"
+   },
+   {
+    "name": "Telegram /status во время паузы: «пауза после обвала BTC»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "нет ложной тревоги «бот не работает» во время паузы",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "в 00:00 21.11 BTC ещё падал — «пауза продлена»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «пауза после обвала BTC закончилась — торговля возобновлена»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "возобновление — не раньше 00:00 22.11 (UTC), бот снова работает в обычном режиме",
+    "ok": true,
+    "detail": "22.11 03:06"
+   },
+   {
+    "name": "ровно один процесс бота",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "ema_wide",
+    "balance": 300.0,
+    "leverage": 10,
+    "btc_exit": 0.05,
+    "btc_exit_hours": 12,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "ema_wide": {
+     "name": "EMA Anchor, 10 монет + выход по BTC + стоп по монете",
+     "risk": "medium",
+     "desc": "Рекомендуется (основной). Стратегия TB Core EMA Anchor со своей настройкой (02.10.2026), только лонг, 10 позиций из 84 ликвидных монет KuCoin, экспозиция 8 (при плече 10 — 20% запаса маржи). Защиты: выход при обвале BTC (закрытие часа на 5% ниже максимума за 12 ч → закрыть всё, со следующего дня торговля продолжается сама) и стоп по каждой монете: монета ушла в минус на половину своей доли счёта (≈ 5% баланса) — по ней больше не докупаем; минус в целую долю (≈ 10% баланса) держится полдня и дольше — закрыть только эту монету и не торговать её 3 дня, остальные монеты работают. Счёт $300, «как на реальных деньгах»: II пол. 2025 +123%, I пол. 2026 +46%, II пол. 2026 +117% → +609% за 15 мес. (≈ +14% в месяц; со старыми настройками было +302%); худшая минута −25% (обвал ZEC 05.06.2026). Июль–сентябрь 2026 при подборе настроек не участвовали: там +117% против +74%. Выигрыш держится на большем числе сделок (42 в сутки вместо 32): при очень плохом исполнении ордеров он почти исчезает. Плечо на бирже — 10. Панель на сервере должна работать, пока бот торгует.",
+     "min_balance_hint": 200,
+     "base": "tuned/ema_anchor.json",
+     "defaults": {
+      "btc_exit": 0.05,
+      "btc_exit_hours": 12
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 8.0,
+      "bot.long.risk.n_positions": 10.0,
+      "bot.short.risk.total_wallet_exposure_limit": 0.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 1.0,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "coin",
+      "bot.long.hsl.tier_ratios": {
+       "yellow": 0.3,
+       "orange": 0.5
+      },
+      "bot.long.hsl.orange_tier_mode": "tp_only_with_active_entry_cancellation",
+      "bot.long.hsl.ema_span_minutes": 60.0,
+      "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+      "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+      "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+      "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+      "bot.long.strategy.ema_anchor.base_qty_pct": 0.075,
+      "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+      "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 18.0,
+    "coins": [
+     {
+      "coin": "GALA",
+      "min_cost": 0.0,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "DYDX",
+      "min_cost": 0.01,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "SNX",
+      "min_cost": 0.02,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ICP",
+      "min_cost": 0.03,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "LDO",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "S",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "JASMY",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "EDEN",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "PENGU",
+      "min_cost": 0.09,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.1,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "OP",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "FARTCOIN",
+      "min_cost": 0.17,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.19,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "TRUMP",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "SOMI",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "4",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "EIGEN",
+      "min_cost": 0.24,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.25,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "MOVR",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "ALLO",
+      "min_cost": 0.28,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "0G",
+      "min_cost": 0.29,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "MET",
+      "min_cost": 0.3,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "JUP",
+      "min_cost": 0.32,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "CRV",
+      "min_cost": 0.38,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "SOON",
+      "min_cost": 0.42,
+      "ok": true,
+      "turnover_m": 31
+     },
+     {
+      "coin": "SPX",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "TIA",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 55
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "DASH",
+      "min_cost": 0.59,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "HEMI",
+      "min_cost": 0.63,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "H",
+      "min_cost": 0.69,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ZEN",
+      "min_cost": 0.71,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "SEI",
+      "min_cost": 0.72,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "MYX",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "VIRTUAL",
+      "min_cost": 0.78,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "POWER",
+      "min_cost": 0.82,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "VET",
+      "min_cost": 0.86,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.03,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.09,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 38
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "AVNT",
+      "min_cost": 1.22,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "FF",
+      "min_cost": 1.24,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.43,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.66,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "RAVE",
+      "min_cost": 1.99,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.18,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "USELESS",
+      "min_cost": 2.25,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "FET",
+      "min_cost": 2.26,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ARK",
+      "min_cost": 2.31,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.44,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "WIF",
+      "min_cost": 2.46,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "FOLKS",
+      "min_cost": 2.49,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "CAKE",
+      "min_cost": 2.58,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "QNT",
+      "min_cost": 2.63,
+      "ok": true,
+      "turnover_m": 45
+     },
+     {
+      "coin": "US",
+      "min_cost": 3.05,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 32
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "1000BONK",
+      "min_cost": 3.68,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.24,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "CT",
+      "min_cost": 4.57,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 4.9,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.39,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "PUMP",
+      "min_cost": 5.46,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.69,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.44,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.84,
+      "ok": true,
+      "turnover_m": 41
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.4,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 11.72,
+      "ok": true,
+      "turnover_m": 194
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 13.76,
+      "ok": true,
+      "turnover_m": 83
+     },
+     {
+      "coin": "PIEVERSE",
+      "min_cost": 13.96,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "BTW",
+      "min_cost": 14.38,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 14.82,
+      "ok": true,
+      "turnover_m": 238
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 26.85,
+      "ok": false,
+      "turnover_m": 192
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.31,
+      "ok": false,
+      "turnover_m": 7
+     },
+     {
+      "coin": "NIGHT",
+      "min_cost": 39.63,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 83.94,
+      "ok": false,
+      "turnover_m": 394
+     }
+    ],
+    "ok_count": 80,
+    "params": {
+     "exposure": 8.0,
+     "positions": 10.0,
+     "allowance": 0.0,
+     "initial_pct": 0.075,
+     "strategy": "ema_anchor",
+     "hsl_enabled": true,
+     "hsl_threshold": 1.0,
+     "hsl_mode": "coin",
+     "hsl_orange": 0.5
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-10-02 17:45",
+    "preset": "ema_wide",
+    "gave_up": null,
+    "btc_exit": {
+     "drop": 0.05,
+     "hours": 12
+    },
+    "btc_pause": null,
+    "mode": "normal",
+    "snapshot": {
+     "balance": 300.3031,
+     "equity": 300.3031,
+     "positions": [],
+     "orders": 0,
+     "ts": 1790952496607,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null,
+      "mode": "coin",
+      "coins": []
+     }
+    }
+   },
+   "lite": true,
+   "coin_guard": {
+    "coins": {},
+    "checked": "2026-10-02 17:48",
+    "error": null
+   },
+   "btc_move": {
+    "btc": 84250.0,
+    "high": 85143.0,
+    "hours": 12,
+    "drop_pct": -1.05,
+    "checked": "2025-11-22 06:17 (сценарий)"
+   },
+   "server_time": "17:48:16"
+  },
+  "replay_stats": {
+   "days": 5.96,
+   "fills": 382,
+   "fills_per_day": 64.1,
+   "position_opens": 66,
+   "position_closes": 63,
+   "position_msgs_per_day": 21.7,
+   "start_equity": 302.5158,
+   "end_equity": 294.05,
+   "max_dd_pct": 8.6,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "5. Turbo 5.0: ставка, статус и фиксация из Telegram (ноябрь 2025)",
+  "app": "turbo",
+  "checks": [
+   {
+    "name": "единственный пресет 5.0: EMA Anchor 7 × 9, плечо 10, выход по BTC −5%/12 ч",
+    "ok": true,
+    "detail": "{'preset': 'turbo_ema5', 'leverage': 10, 'btc_exit': 0.05}"
+   },
+   {
+    "name": "Telegram: «капитал на старте ставки … без цели»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram /status: «Ставка: идёт … без цели»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: подтверждение фиксации",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «фиксация: вручную из Telegram» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "бот перезапускался в режиме panic и закрыл позиции",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "ставка закрыта с итогом, бот остановлен",
+    "ok": true,
+    "detail": "старт 299.6012, итог 308.2769"
+   },
+   {
+    "name": "Telegram: «ставка закрыта», без лишнего «⏹ бот остановлен» и тревог",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "turbo_ema5",
+    "balance": 300.0,
+    "leverage": 10,
+    "btc_exit": 0.05,
+    "btc_exit_hours": 12,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "turbo_ema5": {
+     "name": "Turbo 5.0 — EMA Anchor, 7 монет × 9",
+     "risk": "high",
+     "desc": "Рекомендуется. Укладывается в плечо 10× (экспозиция 9). Стратегия TB Core EMA Anchor со своей настройкой (02.10.2026, та же, что у основного бота), только лонг, 7 позиций из 84 ликвидных монет KuCoin, вся прибыль в обороте, без цели ×2 и без стопа панели. Защиты: при обвале BTC (закрытие часа на 5% ниже максимума за 12 ч) закрыть всё и подождать до 00:00 UTC следующего дня, затем продолжить, если BTC перестал падать; стоп TB Core при просадке 35% с перезапуском через 3 дня; защита от делистинга. «Как на реальных деньгах», $300: июль–сентябрь 2026 (подбор настроек их не видел) +176% против +130% со старыми настройками; за 15 мес. +1533% (часть месяцев «знакомая» подбору — честнее ждать ≈ +17…19% в месяц). Обычный месяц +18% против +10%, в минусе 2 месяца из 15. Худшая минута −45% (обвал ZEC 05.06.2026: бот докупал падающую монету). Монета, рухнувшая на 70–90% и исчезнувшая с биржи, в нынешнем списке отсутствует — такой риск бэктест не показывает. Ставьте не больше ~25% своих денег.",
+     "min_balance_hint": 200,
+     "base": "tuned/ema_anchor.json",
+     "bet_defaults": {
+      "target_mult": 0,
+      "regime_filter": false,
+      "profit_guard": false,
+      "bet_stop": 0,
+      "stop_rebase_days": 0,
+      "btc_exit": 0.05,
+      "btc_exit_hours": 12,
+      "btc_resume": true,
+      "coin_filter_dd": 0,
+      "coin_filter_days": 30,
+      "leverage": 10
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 9.0,
+      "bot.long.risk.n_positions": 7.0,
+      "bot.short.risk.total_wallet_exposure_limit": 0.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.35,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "unified",
+      "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+      "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+      "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+      "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+      "bot.long.strategy.ema_anchor.base_qty_pct": 0.075,
+      "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+      "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 28.93,
+    "coins": [
+     {
+      "coin": "GALA",
+      "min_cost": 0.0,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "DYDX",
+      "min_cost": 0.01,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "SNX",
+      "min_cost": 0.02,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ICP",
+      "min_cost": 0.03,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "LDO",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "S",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "JASMY",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "EDEN",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "PENGU",
+      "min_cost": 0.09,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.1,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "OP",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "FARTCOIN",
+      "min_cost": 0.17,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.19,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "TRUMP",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "SOMI",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "4",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "EIGEN",
+      "min_cost": 0.24,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.25,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "MOVR",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "ALLO",
+      "min_cost": 0.28,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "0G",
+      "min_cost": 0.29,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "MET",
+      "min_cost": 0.3,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "JUP",
+      "min_cost": 0.32,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "CRV",
+      "min_cost": 0.38,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "SOON",
+      "min_cost": 0.42,
+      "ok": true,
+      "turnover_m": 31
+     },
+     {
+      "coin": "SPX",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "TIA",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 55
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "DASH",
+      "min_cost": 0.59,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "HEMI",
+      "min_cost": 0.63,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "H",
+      "min_cost": 0.69,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ZEN",
+      "min_cost": 0.71,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "SEI",
+      "min_cost": 0.72,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "MYX",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "VIRTUAL",
+      "min_cost": 0.78,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "POWER",
+      "min_cost": 0.82,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "VET",
+      "min_cost": 0.86,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.03,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.09,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 38
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "AVNT",
+      "min_cost": 1.22,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "FF",
+      "min_cost": 1.24,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.43,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.66,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "RAVE",
+      "min_cost": 1.99,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.18,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "USELESS",
+      "min_cost": 2.25,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "FET",
+      "min_cost": 2.26,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ARK",
+      "min_cost": 2.31,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.44,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "WIF",
+      "min_cost": 2.46,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "FOLKS",
+      "min_cost": 2.49,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "CAKE",
+      "min_cost": 2.58,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "QNT",
+      "min_cost": 2.63,
+      "ok": true,
+      "turnover_m": 45
+     },
+     {
+      "coin": "US",
+      "min_cost": 3.05,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 32
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "1000BONK",
+      "min_cost": 3.68,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.24,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "CT",
+      "min_cost": 4.57,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 4.9,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.39,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "PUMP",
+      "min_cost": 5.46,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.69,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.44,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.84,
+      "ok": true,
+      "turnover_m": 41
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.4,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 11.72,
+      "ok": true,
+      "turnover_m": 194
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 13.76,
+      "ok": true,
+      "turnover_m": 83
+     },
+     {
+      "coin": "PIEVERSE",
+      "min_cost": 13.96,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "BTW",
+      "min_cost": 14.38,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 14.82,
+      "ok": true,
+      "turnover_m": 238
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 26.85,
+      "ok": true,
+      "turnover_m": 192
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.31,
+      "ok": false,
+      "turnover_m": 7
+     },
+     {
+      "coin": "NIGHT",
+      "min_cost": 39.63,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 83.94,
+      "ok": false,
+      "turnover_m": 394
+     }
+    ],
+    "ok_count": 81,
+    "params": {
+     "exposure": 9.0,
+     "positions": 7.0,
+     "allowance": 0.0,
+     "initial_pct": 0.075,
+     "strategy": "ema_anchor",
+     "hsl_enabled": true,
+     "hsl_threshold": 0.35
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": false,
+    "started": "2026-10-02 17:48",
+    "preset": "turbo_ema5",
+    "gave_up": null,
+    "btc_pause": null,
+    "mode": "panic",
+    "snapshot": {
+     "balance": 308.2769,
+     "equity": 308.2769,
+     "positions": [],
+     "orders": 0,
+     "ts": 1790952543636,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null
+     }
+    }
+   },
+   "bet": {
+    "state": "done",
+    "started_ms": 1790952498350,
+    "start_equity": 299.6012,
+    "btc_exit": {
+     "drop": 0.05,
+     "hours": 12
+    },
+    "preset": "turbo_ema5",
+    "started": "2026-10-02 17:48",
+    "peak_equity": 312.3618,
+    "last_equity": 309.9939,
+    "lock_reason": "вручную из Telegram",
+    "lock_started_ms": 1790952513583,
+    "final_equity": 308.2769,
+    "finished": "2026-10-02 17:49"
+   },
+   "lite": true,
+   "coin_guard": {
+    "coins": {},
+    "checked": "2026-10-02 17:49",
+    "error": null
+   },
+   "btc_move": {
+    "btc": 91470.1,
+    "high": 91681.2,
+    "hours": 12,
+    "drop_pct": -0.23,
+    "checked": "2025-11-18 13:31 (сценарий)"
+   },
+   "server_time": "17:49:04"
+  },
+  "replay_stats": {
+   "days": 6.0,
+   "fills": 293,
+   "fills_per_day": 48.8,
+   "position_opens": 48,
+   "position_closes": 46,
+   "position_msgs_per_day": 15.7,
+   "start_equity": 300.0,
+   "end_equity": 293.2655,
+   "max_dd_pct": 12.4,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "6. Turbo 5.0: обвал BTC → пауза до следующего дня → та же ставка (ноябрь 2025)",
+  "app": "turbo",
+  "checks": [
+   {
+    "name": "пресет 5.0: EMA Anchor 7 × 9, плечо 10, выход по BTC −5%/12 ч с паузой",
+    "ok": true,
+    "detail": "{'preset': 'turbo_ema5', 'leverage': 10, 'btc_exit': 0.05, 'btc_exit_hours': 12}"
+   },
+   {
+    "name": "Telegram: «обвал BTC … закрываю все позиции» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "ставка не закончилась: закрытие → ожидание",
+    "ok": true,
+    "detail": "{'waiting', 'closing'}"
+   },
+   {
+    "name": "Telegram: «позиции закрыты — пауза, ставка продолжится сама»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "во время паузы бот остановлен (процесса нет)",
+    "ok": true,
+    "detail": "проверок с паузой: 194"
+   },
+   {
+    "name": "Telegram /status во время паузы: «пауза после обвала BTC»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "нет ложной тревоги и «⏹ бот остановлен» во время паузы",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "в 00:00 21.11 BTC ещё падал — «пауза продлена»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «пауза после обвала BTC закончилась — торговля возобновлена»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "возобновление — не раньше 00:00 22.11 (UTC), та же ставка снова идёт",
+    "ok": true,
+    "detail": "22.11 03:07"
+   },
+   {
+    "name": "ровно один процесс бота",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "turbo_ema5",
+    "balance": 300.0,
+    "leverage": 10,
+    "btc_exit": 0.05,
+    "btc_exit_hours": 12,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "turbo_ema5": {
+     "name": "Turbo 5.0 — EMA Anchor, 7 монет × 9",
+     "risk": "high",
+     "desc": "Рекомендуется. Укладывается в плечо 10× (экспозиция 9). Стратегия TB Core EMA Anchor со своей настройкой (02.10.2026, та же, что у основного бота), только лонг, 7 позиций из 84 ликвидных монет KuCoin, вся прибыль в обороте, без цели ×2 и без стопа панели. Защиты: при обвале BTC (закрытие часа на 5% ниже максимума за 12 ч) закрыть всё и подождать до 00:00 UTC следующего дня, затем продолжить, если BTC перестал падать; стоп TB Core при просадке 35% с перезапуском через 3 дня; защита от делистинга. «Как на реальных деньгах», $300: июль–сентябрь 2026 (подбор настроек их не видел) +176% против +130% со старыми настройками; за 15 мес. +1533% (часть месяцев «знакомая» подбору — честнее ждать ≈ +17…19% в месяц). Обычный месяц +18% против +10%, в минусе 2 месяца из 15. Худшая минута −45% (обвал ZEC 05.06.2026: бот докупал падающую монету). Монета, рухнувшая на 70–90% и исчезнувшая с биржи, в нынешнем списке отсутствует — такой риск бэктест не показывает. Ставьте не больше ~25% своих денег.",
+     "min_balance_hint": 200,
+     "base": "tuned/ema_anchor.json",
+     "bet_defaults": {
+      "target_mult": 0,
+      "regime_filter": false,
+      "profit_guard": false,
+      "bet_stop": 0,
+      "stop_rebase_days": 0,
+      "btc_exit": 0.05,
+      "btc_exit_hours": 12,
+      "btc_resume": true,
+      "coin_filter_dd": 0,
+      "coin_filter_days": 30,
+      "leverage": 10
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 9.0,
+      "bot.long.risk.n_positions": 7.0,
+      "bot.short.risk.total_wallet_exposure_limit": 0.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.35,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "unified",
+      "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+      "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+      "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+      "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+      "bot.long.strategy.ema_anchor.base_qty_pct": 0.075,
+      "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+      "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 28.93,
+    "coins": [
+     {
+      "coin": "GALA",
+      "min_cost": 0.0,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "DYDX",
+      "min_cost": 0.01,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "SNX",
+      "min_cost": 0.02,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ICP",
+      "min_cost": 0.03,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "LDO",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "S",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "JASMY",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "EDEN",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "PENGU",
+      "min_cost": 0.09,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.1,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "OP",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "FARTCOIN",
+      "min_cost": 0.17,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.19,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "TRUMP",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "SOMI",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "4",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "EIGEN",
+      "min_cost": 0.24,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.25,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "MOVR",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "ALLO",
+      "min_cost": 0.28,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "0G",
+      "min_cost": 0.29,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "MET",
+      "min_cost": 0.3,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "JUP",
+      "min_cost": 0.32,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "CRV",
+      "min_cost": 0.38,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "SOON",
+      "min_cost": 0.42,
+      "ok": true,
+      "turnover_m": 31
+     },
+     {
+      "coin": "SPX",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "TIA",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 55
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "DASH",
+      "min_cost": 0.59,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "HEMI",
+      "min_cost": 0.63,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "H",
+      "min_cost": 0.69,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ZEN",
+      "min_cost": 0.71,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "SEI",
+      "min_cost": 0.72,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "MYX",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "VIRTUAL",
+      "min_cost": 0.78,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "POWER",
+      "min_cost": 0.82,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "VET",
+      "min_cost": 0.86,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.03,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.09,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 38
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "AVNT",
+      "min_cost": 1.22,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "FF",
+      "min_cost": 1.24,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.43,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.66,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "RAVE",
+      "min_cost": 1.99,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.18,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "USELESS",
+      "min_cost": 2.25,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "FET",
+      "min_cost": 2.26,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ARK",
+      "min_cost": 2.31,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.44,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "WIF",
+      "min_cost": 2.46,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "FOLKS",
+      "min_cost": 2.49,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "CAKE",
+      "min_cost": 2.58,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "QNT",
+      "min_cost": 2.63,
+      "ok": true,
+      "turnover_m": 45
+     },
+     {
+      "coin": "US",
+      "min_cost": 3.05,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 32
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "1000BONK",
+      "min_cost": 3.68,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.24,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "CT",
+      "min_cost": 4.57,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 4.9,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.39,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "PUMP",
+      "min_cost": 5.46,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.69,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.44,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.84,
+      "ok": true,
+      "turnover_m": 41
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.4,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 11.72,
+      "ok": true,
+      "turnover_m": 194
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 13.76,
+      "ok": true,
+      "turnover_m": 83
+     },
+     {
+      "coin": "PIEVERSE",
+      "min_cost": 13.96,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "BTW",
+      "min_cost": 14.38,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 14.82,
+      "ok": true,
+      "turnover_m": 238
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 26.85,
+      "ok": true,
+      "turnover_m": 192
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.31,
+      "ok": false,
+      "turnover_m": 7
+     },
+     {
+      "coin": "NIGHT",
+      "min_cost": 39.63,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 83.94,
+      "ok": false,
+      "turnover_m": 394
+     }
+    ],
+    "ok_count": 81,
+    "params": {
+     "exposure": 9.0,
+     "positions": 7.0,
+     "allowance": 0.0,
+     "initial_pct": 0.075,
+     "strategy": "ema_anchor",
+     "hsl_enabled": true,
+     "hsl_threshold": 0.35
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-10-02 17:51",
+    "preset": "turbo_ema5",
+    "gave_up": null,
+    "btc_pause": null,
+    "mode": "normal",
+    "snapshot": {
+     "balance": 302.4882,
+     "equity": 302.4882,
+     "positions": [],
+     "orders": 0,
+     "ts": 1790952725352,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null
+     }
+    }
+   },
+   "bet": {
+    "state": "running",
+    "started_ms": 1790952545872,
+    "start_equity": 303.6932,
+    "btc_exit": {
+     "drop": 0.05,
+     "hours": 12
+    },
+    "preset": "turbo_ema5",
+    "started": "2026-10-02 17:49",
+    "peak_equity": 312.675,
+    "last_equity": 302.4882,
+    "btc_pause": null,
+    "pauses": 1,
+    "resumed_ms": 1790952693797
+   },
+   "lite": true,
+   "coin_guard": {
+    "coins": {},
+    "checked": "2026-10-02 17:52",
+    "error": null
+   },
+   "btc_move": {
+    "btc": 84250.0,
+    "high": 85143.0,
+    "hours": 12,
+    "drop_pct": -1.05,
+    "checked": "2025-11-22 06:17 (сценарий)"
+   },
+   "server_time": "17:52:05"
+  },
+  "replay_stats": {
+   "days": 6.0,
+   "fills": 293,
+   "fills_per_day": 48.8,
+   "position_opens": 48,
+   "position_closes": 46,
+   "position_msgs_per_day": 15.7,
+   "start_equity": 300.0,
+   "end_equity": 293.2655,
+   "max_dd_pct": 12.4,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "7. Основной бот: учебный делистинг монеты с открытой позицией (сентябрь 2026)",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "в день 1 у бота были позиции — «KuCoin» назначил делистинг одной из них",
+    "ok": true,
+    "detail": "TRUMP, остальные: S, MOVR, H, FARTCOIN, PUMP, JASMY, SOL, GALA, ZEC"
+   },
+   {
+    "name": "Telegram: «защита от делистинга: TRUMP — KuCoin закроет контракт …» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «закрываю позицию по TRUMP — перезапуск бота, остальные монеты торгуются» со звуком, один раз",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «позиция по TRUMP закрыта»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "после закрытия позиции TRUMP нет, бот работает",
+    "ok": true,
+    "detail": "S, MOVR, H, FARTCOIN, PUMP, JASMY, SOL, GALA, ZEC"
+   },
+   {
+    "name": "Telegram /status: «🚫 Защита от делистинга: не торгуем …»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "нет тревог и ложного «процесса нет», ровно один процесс бота",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "ema_wide",
+    "balance": 300.0,
+    "leverage": 10,
+    "btc_exit": 0.05,
+    "btc_exit_hours": 12,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "ema_wide": {
+     "name": "EMA Anchor, 10 монет + выход по BTC + стоп по монете",
+     "risk": "medium",
+     "desc": "Рекомендуется (основной). Стратегия TB Core EMA Anchor со своей настройкой (02.10.2026), только лонг, 10 позиций из 84 ликвидных монет KuCoin, экспозиция 8 (при плече 10 — 20% запаса маржи). Защиты: выход при обвале BTC (закрытие часа на 5% ниже максимума за 12 ч → закрыть всё, со следующего дня торговля продолжается сама) и стоп по каждой монете: монета ушла в минус на половину своей доли счёта (≈ 5% баланса) — по ней больше не докупаем; минус в целую долю (≈ 10% баланса) держится полдня и дольше — закрыть только эту монету и не торговать её 3 дня, остальные монеты работают. Счёт $300, «как на реальных деньгах»: II пол. 2025 +123%, I пол. 2026 +46%, II пол. 2026 +117% → +609% за 15 мес. (≈ +14% в месяц; со старыми настройками было +302%); худшая минута −25% (обвал ZEC 05.06.2026). Июль–сентябрь 2026 при подборе настроек не участвовали: там +117% против +74%. Выигрыш держится на большем числе сделок (42 в сутки вместо 32): при очень плохом исполнении ордеров он почти исчезает. Плечо на бирже — 10. Панель на сервере должна работать, пока бот торгует.",
+     "min_balance_hint": 200,
+     "base": "tuned/ema_anchor.json",
+     "defaults": {
+      "btc_exit": 0.05,
+      "btc_exit_hours": 12
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 8.0,
+      "bot.long.risk.n_positions": 10.0,
+      "bot.short.risk.total_wallet_exposure_limit": 0.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 1.0,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "coin",
+      "bot.long.hsl.tier_ratios": {
+       "yellow": 0.3,
+       "orange": 0.5
+      },
+      "bot.long.hsl.orange_tier_mode": "tp_only_with_active_entry_cancellation",
+      "bot.long.hsl.ema_span_minutes": 60.0,
+      "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+      "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+      "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+      "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+      "bot.long.strategy.ema_anchor.base_qty_pct": 0.075,
+      "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+      "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 18.0,
+    "coins": [
+     {
+      "coin": "GALA",
+      "min_cost": 0.0,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "DYDX",
+      "min_cost": 0.01,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "SNX",
+      "min_cost": 0.02,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ICP",
+      "min_cost": 0.03,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "LDO",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "S",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "JASMY",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "EDEN",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "PENGU",
+      "min_cost": 0.09,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.1,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "OP",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "FARTCOIN",
+      "min_cost": 0.17,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.19,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "TRUMP",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "SOMI",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "4",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "EIGEN",
+      "min_cost": 0.24,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.25,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "MOVR",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "ALLO",
+      "min_cost": 0.28,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "0G",
+      "min_cost": 0.29,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "MET",
+      "min_cost": 0.3,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "JUP",
+      "min_cost": 0.32,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "CRV",
+      "min_cost": 0.38,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "SOON",
+      "min_cost": 0.42,
+      "ok": true,
+      "turnover_m": 31
+     },
+     {
+      "coin": "SPX",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "TIA",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 55
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "DASH",
+      "min_cost": 0.59,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "HEMI",
+      "min_cost": 0.63,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "H",
+      "min_cost": 0.69,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ZEN",
+      "min_cost": 0.71,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "SEI",
+      "min_cost": 0.72,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "MYX",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "VIRTUAL",
+      "min_cost": 0.78,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "POWER",
+      "min_cost": 0.82,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "VET",
+      "min_cost": 0.86,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.03,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.09,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 38
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "AVNT",
+      "min_cost": 1.22,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "FF",
+      "min_cost": 1.24,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.43,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.66,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "RAVE",
+      "min_cost": 1.99,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.18,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "USELESS",
+      "min_cost": 2.25,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "FET",
+      "min_cost": 2.26,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ARK",
+      "min_cost": 2.31,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.44,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "WIF",
+      "min_cost": 2.46,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "FOLKS",
+      "min_cost": 2.49,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "CAKE",
+      "min_cost": 2.58,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "QNT",
+      "min_cost": 2.63,
+      "ok": true,
+      "turnover_m": 45
+     },
+     {
+      "coin": "US",
+      "min_cost": 3.05,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 32
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "1000BONK",
+      "min_cost": 3.68,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.24,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "CT",
+      "min_cost": 4.57,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 4.9,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.39,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "PUMP",
+      "min_cost": 5.46,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.69,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.44,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.84,
+      "ok": true,
+      "turnover_m": 41
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.4,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 11.72,
+      "ok": true,
+      "turnover_m": 194
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 13.76,
+      "ok": true,
+      "turnover_m": 83
+     },
+     {
+      "coin": "PIEVERSE",
+      "min_cost": 13.96,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "BTW",
+      "min_cost": 14.38,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 14.82,
+      "ok": true,
+      "turnover_m": 238
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 26.85,
+      "ok": false,
+      "turnover_m": 192
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.31,
+      "ok": false,
+      "turnover_m": 7
+     },
+     {
+      "coin": "NIGHT",
+      "min_cost": 39.63,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 83.94,
+      "ok": false,
+      "turnover_m": 394
+     }
+    ],
+    "ok_count": 80,
+    "params": {
+     "exposure": 8.0,
+     "positions": 10.0,
+     "allowance": 0.0,
+     "initial_pct": 0.075,
+     "strategy": "ema_anchor",
+     "hsl_enabled": true,
+     "hsl_threshold": 1.0,
+     "hsl_mode": "coin",
+     "hsl_orange": 0.5
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-10-02 17:52",
+    "preset": "ema_wide",
+    "gave_up": null,
+    "btc_exit": {
+     "drop": 0.05,
+     "hours": 12
+    },
+    "btc_pause": null,
+    "mode": "normal",
+    "snapshot": {
+     "balance": 301.0813,
+     "equity": 296.9356,
+     "positions": [
+      {
+       "symbol": "S/USDT:USDT",
+       "side": "long",
+       "size": 658.0,
+       "price": 0.027953002401827,
+       "upnl": -0.0358,
+       "we": 0.0610813217042743
+      },
+      {
+       "symbol": "MOVR/USDT:USDT",
+       "side": "long",
+       "size": 197.0,
+       "price": 0.813256,
+       "upnl": -0.312,
+       "we": 0.0532120091414841
+      },
+      {
+       "symbol": "H/USDT:USDT",
+       "side": "long",
+       "size": 2.0,
+       "price": 0.0724485714285714,
+       "upnl": -0.0003,
+       "we": 0.004809098968143
+      },
+      {
+       "symbol": "FARTCOIN/USDT:USDT",
+       "side": "long",
+       "size": 188.0,
+       "price": 0.1783653136531365,
+       "upnl": -0.0653,
+       "we": 0.1113794477582067
+      },
+      {
+       "symbol": "PUMP/USDT:USDT",
+       "side": "long",
+       "size": 7.0,
+       "price": 0.0045156,
+       "upnl": -0.0001,
+       "we": 0.1049344603006088
+      },
+      {
+       "symbol": "JASMY/USDT:USDT",
+       "side": "long",
+       "size": 420.0,
+       "price": 0.0043529315606936,
+       "upnl": -0.0036,
+       "we": 0.0606731988262582
+      },
+      {
+       "symbol": "SOL/USDT:USDT",
+       "side": "long",
+       "size": 2.0,
+       "price": 102.1775,
+       "upnl": -0.3979,
+       "we": 0.0679103786635788
+      },
+      {
+       "symbol": "GALA/USDT:USDT",
+       "side": "long",
+       "size": 20328.0,
+       "price": 0.0016685835715515,
+       "upnl": -0.066,
+       "we": 0.1125972466095009
+      },
+      {
+       "symbol": "ZEC/USDT:USDT",
+       "side": "long",
+       "size": 2.0,
+       "price": 838.32,
+       "upnl": -3.2648,
+       "we": 0.0557170093887503
+      }
+     ],
+     "orders": 18,
+     "ts": 1790952748477,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null,
+      "mode": "coin",
+      "coins": []
+     }
+    }
+   },
+   "lite": true,
+   "coin_guard": {
+    "coins": {
+     "TRUMP": {
+      "level": "close",
+      "reason": "KuCoin закроет контракт 03.09 03:38 (делистинг)",
+      "since_ms": 1790952738689,
+      "delist_ms": 1788395884885,
+      "st": false,
+      "low_turnover": false
+     }
+    },
+    "checked": "2026-10-02 17:52",
+    "error": null
+   },
+   "btc_move": {
+    "btc": 77903.8,
+    "high": 79304.9,
+    "hours": 12,
+    "drop_pct": -1.77,
+    "checked": "2026-08-31 01:44 (сценарий)"
+   },
+   "server_time": "17:52:28"
+  },
+  "replay_stats": {
+   "days": 29.96,
+   "fills": 1450,
+   "fills_per_day": 48.4,
+   "position_opens": 316,
+   "position_closes": 306,
+   "position_msgs_per_day": 20.8,
+   "start_equity": 300.0,
+   "end_equity": 398.5036,
+   "max_dd_pct": 9.5,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "8. Turbo 5.0: учебный делистинг монеты с открытой позицией — ставка продолжается (ноябрь 2025)",
+  "app": "turbo",
+  "checks": [
+   {
+    "name": "в день 1 у бота были позиции — «KuCoin» назначил делистинг одной из них",
+    "ok": true,
+    "detail": "SNX, остальные: DYDX, ENA, SOL, CRV, ZEC"
+   },
+   {
+    "name": "Telegram: «защита от делистинга: SNX — KuCoin закроет контракт …» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «закрываю позицию по SNX — перезапуск бота, остальные монеты торгуются» со звуком, один раз",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «позиция по SNX закрыта»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "после закрытия позиции SNX нет, бот работает",
+    "ok": true,
+    "detail": "DYDX, ENA, SOL, ZEC, ZEN, DASH"
+   },
+   {
+    "name": "Telegram /status: «🚫 Защита от делистинга: не торгуем …»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "нет тревог и ложного «процесса нет», ровно один процесс бота",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "ставка продолжается (не закрыта и не на паузе)",
+    "ok": true,
+    "detail": "running"
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "turbo_ema5",
+    "balance": 300.0,
+    "leverage": 10,
+    "btc_exit": 0.05,
+    "btc_exit_hours": 12,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "turbo_ema5": {
+     "name": "Turbo 5.0 — EMA Anchor, 7 монет × 9",
+     "risk": "high",
+     "desc": "Рекомендуется. Укладывается в плечо 10× (экспозиция 9). Стратегия TB Core EMA Anchor со своей настройкой (02.10.2026, та же, что у основного бота), только лонг, 7 позиций из 84 ликвидных монет KuCoin, вся прибыль в обороте, без цели ×2 и без стопа панели. Защиты: при обвале BTC (закрытие часа на 5% ниже максимума за 12 ч) закрыть всё и подождать до 00:00 UTC следующего дня, затем продолжить, если BTC перестал падать; стоп TB Core при просадке 35% с перезапуском через 3 дня; защита от делистинга. «Как на реальных деньгах», $300: июль–сентябрь 2026 (подбор настроек их не видел) +176% против +130% со старыми настройками; за 15 мес. +1533% (часть месяцев «знакомая» подбору — честнее ждать ≈ +17…19% в месяц). Обычный месяц +18% против +10%, в минусе 2 месяца из 15. Худшая минута −45% (обвал ZEC 05.06.2026: бот докупал падающую монету). Монета, рухнувшая на 70–90% и исчезнувшая с биржи, в нынешнем списке отсутствует — такой риск бэктест не показывает. Ставьте не больше ~25% своих денег.",
+     "min_balance_hint": 200,
+     "base": "tuned/ema_anchor.json",
+     "bet_defaults": {
+      "target_mult": 0,
+      "regime_filter": false,
+      "profit_guard": false,
+      "bet_stop": 0,
+      "stop_rebase_days": 0,
+      "btc_exit": 0.05,
+      "btc_exit_hours": 12,
+      "btc_resume": true,
+      "coin_filter_dd": 0,
+      "coin_filter_days": 30,
+      "leverage": 10
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 9.0,
+      "bot.long.risk.n_positions": 7.0,
+      "bot.short.risk.total_wallet_exposure_limit": 0.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.35,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "unified",
+      "bot.long.strategy.ema_anchor.ema_span_1": 476.0,
+      "bot.long.strategy.ema_anchor.offset_psize_weight": 0.28608,
+      "bot.long.strategy.ema_anchor.offset_volatility_1h_weight": 10.4,
+      "bot.long.strategy.ema_anchor.entry_double_down_factor": 2.94,
+      "bot.long.strategy.ema_anchor.base_qty_pct": 0.075,
+      "bot.long.strategy.ema_anchor.ema_span_0": 332.0,
+      "bot.long.strategy.ema_anchor.offset_volatility_ema_span_1h": 560.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 28.93,
+    "coins": [
+     {
+      "coin": "GALA",
+      "min_cost": 0.0,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "DYDX",
+      "min_cost": 0.01,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "SNX",
+      "min_cost": 0.02,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ICP",
+      "min_cost": 0.03,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "LDO",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "S",
+      "min_cost": 0.04,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "JASMY",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "EDEN",
+      "min_cost": 0.06,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "PENGU",
+      "min_cost": 0.09,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.1,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "OP",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "FARTCOIN",
+      "min_cost": 0.17,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.19,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "TRUMP",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "SOMI",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "4",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "EIGEN",
+      "min_cost": 0.24,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.25,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "MOVR",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "ALLO",
+      "min_cost": 0.28,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "0G",
+      "min_cost": 0.29,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "MET",
+      "min_cost": 0.3,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "JUP",
+      "min_cost": 0.32,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "CRV",
+      "min_cost": 0.38,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "SOON",
+      "min_cost": 0.42,
+      "ok": true,
+      "turnover_m": 31
+     },
+     {
+      "coin": "SPX",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "TIA",
+      "min_cost": 0.43,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 55
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "DASH",
+      "min_cost": 0.59,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "HEMI",
+      "min_cost": 0.63,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "H",
+      "min_cost": 0.69,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ZEN",
+      "min_cost": 0.71,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "SEI",
+      "min_cost": 0.72,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "MYX",
+      "min_cost": 0.74,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "VIRTUAL",
+      "min_cost": 0.78,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "POWER",
+      "min_cost": 0.82,
+      "ok": true,
+      "turnover_m": 8
+     },
+     {
+      "coin": "VET",
+      "min_cost": 0.86,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.03,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.09,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 38
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "AVNT",
+      "min_cost": 1.22,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "FF",
+      "min_cost": 1.24,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.43,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.66,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "RAVE",
+      "min_cost": 1.99,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.18,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "USELESS",
+      "min_cost": 2.25,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "FET",
+      "min_cost": 2.26,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "ARK",
+      "min_cost": 2.31,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.44,
+      "ok": true,
+      "turnover_m": 23
+     },
+     {
+      "coin": "WIF",
+      "min_cost": 2.46,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "FOLKS",
+      "min_cost": 2.49,
+      "ok": true,
+      "turnover_m": 7
+     },
+     {
+      "coin": "CAKE",
+      "min_cost": 2.58,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "QNT",
+      "min_cost": 2.63,
+      "ok": true,
+      "turnover_m": 45
+     },
+     {
+      "coin": "US",
+      "min_cost": 3.05,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 32
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.06,
+      "ok": true,
+      "turnover_m": 21
+     },
+     {
+      "coin": "1000BONK",
+      "min_cost": 3.68,
+      "ok": true,
+      "turnover_m": 15
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.24,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "CT",
+      "min_cost": 4.57,
+      "ok": true,
+      "turnover_m": 10
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 4.9,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.39,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "PUMP",
+      "min_cost": 5.46,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.69,
+      "ok": true,
+      "turnover_m": 9
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.44,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 13
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.84,
+      "ok": true,
+      "turnover_m": 41
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.4,
+      "ok": true,
+      "turnover_m": 19
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 11.72,
+      "ok": true,
+      "turnover_m": 194
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 13.76,
+      "ok": true,
+      "turnover_m": 83
+     },
+     {
+      "coin": "PIEVERSE",
+      "min_cost": 13.96,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "BTW",
+      "min_cost": 14.38,
+      "ok": true,
+      "turnover_m": 5
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 14.82,
+      "ok": true,
+      "turnover_m": 238
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 26.85,
+      "ok": true,
+      "turnover_m": 192
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.31,
+      "ok": false,
+      "turnover_m": 7
+     },
+     {
+      "coin": "NIGHT",
+      "min_cost": 39.63,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 83.94,
+      "ok": false,
+      "turnover_m": 394
+     }
+    ],
+    "ok_count": 81,
+    "params": {
+     "exposure": 9.0,
+     "positions": 7.0,
+     "allowance": 0.0,
+     "initial_pct": 0.075,
+     "strategy": "ema_anchor",
+     "hsl_enabled": true,
+     "hsl_threshold": 0.35
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-10-02 17:52",
+    "preset": "turbo_ema5",
+    "gave_up": null,
+    "btc_pause": null,
+    "mode": "normal",
+    "snapshot": {
+     "balance": 311.7203,
+     "equity": 308.876,
+     "positions": [
+      {
+       "symbol": "DYDX/USDT:USDT",
+       "side": "long",
+       "size": 44.0,
+       "price": 0.276090279387897,
+       "upnl": -0.0035,
+       "we": 0.0038964501706683
+      },
+      {
+       "symbol": "ENA/USDT:USDT",
+       "side": "long",
+       "size": 113.0,
+       "price": 0.2614630236159505,
+       "upnl": -0.0084,
+       "we": 0.0949473560193419
+      },
+      {
+       "symbol": "SOL/USDT:USDT",
+       "side": "long",
+       "size": 2.0,
+       "price": 135.3075,
+       "upnl": -0.0771,
+       "we": 0.0873544777086065
+      },
+      {
+       "symbol": "ZEC/USDT:USDT",
+       "side": "long",
+       "size": 7.0,
+       "price": 621.7789898989898,
+       "upnl": -1.2399,
+       "we": 0.1396244489773241
+      },
+      {
+       "symbol": "ZEN/USDT:USDT",
+       "side": "long",
+       "size": 16.0,
+       "price": 15.216,
+       "upnl": -0.0694,
+       "we": 0.0781327490690312
+      },
+      {
+       "symbol": "DASH/USDT:USDT",
+       "side": "long",
+       "size": 65.0,
+       "price": 78.08923076923077,
+       "upnl": -1.446,
+       "we": 0.1628318682621783
+      }
+     ],
+     "orders": 12,
+     "ts": 1790952770994,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null
+     }
+    }
+   },
+   "bet": {
+    "state": "running",
+    "started_ms": 1790952750213,
+    "start_equity": 300.2791,
+    "btc_exit": {
+     "drop": 0.05,
+     "hours": 12
+    },
+    "preset": "turbo_ema5",
+    "started": "2026-10-02 17:52",
+    "peak_equity": 312.3149,
+    "last_equity": 309.2136
+   },
+   "lite": true,
+   "coin_guard": {
+    "coins": {
+     "SNX": {
+      "level": "close",
+      "reason": "KuCoin закроет контракт 21.11 03:48 (делистинг)",
+      "since_ms": 1790952761196,
+      "delist_ms": 1763686100699,
+      "st": false,
+      "low_turnover": false
+     }
+    },
+    "checked": "2026-10-02 17:52",
+    "error": null
+   },
+   "btc_move": {
+    "btc": 92120.2,
+    "high": 94730.2,
+    "hours": 12,
+    "drop_pct": -2.76,
+    "checked": "2025-11-18 01:51 (сценарий)"
+   },
+   "server_time": "17:52:51"
+  },
+  "replay_stats": {
+   "days": 6.0,
+   "fills": 293,
+   "fills_per_day": 48.8,
+   "position_opens": 48,
+   "position_closes": 46,
+   "position_msgs_per_day": 15.7,
+   "start_equity": 300.0,
+   "end_equity": 293.2655,
+   "max_dd_pct": 12.4,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ }
+]

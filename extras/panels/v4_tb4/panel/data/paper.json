@@ -1,0 +1,15 @@
+{
+ "start": "2026-10-01",
+ "settings": {
+  "preset": "ema_wide",
+  "balance": 300.0,
+  "leverage": 10,
+  "btc_exit": 0.05,
+  "btc_exit_hours": 12,
+  "exposure": null,
+  "positions": null,
+  "hsl_enabled": null,
+  "hsl_threshold": null
+ },
+ "created": "2026-10-01 18:14"
+}

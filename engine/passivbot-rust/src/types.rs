@@ -1,0 +1,1294 @@
+use core::str::FromStr;
+use num_enum::{IntoPrimitive, TryFromPrimitive};
+use numpy::{PyArray1, PyArray3, PyUntypedArrayMethods};
+use pyo3::exceptions::PyValueError;
+use pyo3::prelude::{Py, PyResult, Python};
+use serde::{Deserialize, Serialize};
+use serde_json::Value;
+use std::collections::HashSet;
+use strum_macros::{Display, EnumIter, EnumString};
+
+/// Canonical metadata describing one coin/contract entry inside a unified HLCV tensor.
+///
+/// The numeric fields mirror the values currently distributed through `mss` dictionaries in
+/// Python.  Keeping them here ensures every column in the `(T, N, 4)` cube has an aligned
+/// metadata record with deterministic indexing.
+#[derive(Clone, Debug, Serialize)]
+pub struct CoinMeta {
+    /// Zero-based index that lines up with the second dimension of the HLCV tensor.
+    pub index: usize,
+    /// Full CCXT-style symbol (e.g. "BTC/USDT:USDT").
+    pub symbol: String,
+    /// Shorthand coin ticker (e.g. "BTC") assuming an implied USD quote.
+    pub coin: String,
+    /// Normalized exchange identifier (e.g. "binanceusdm").
+    pub exchange: String,
+    /// Quote asset, extracted from the symbol for readability.
+    pub quote: String,
+    /// Base asset, extracted from the symbol for readability.
+    pub base: String,
+    /// Smallest allowed quantity increment.
+    pub qty_step: f64,
+    /// Smallest allowed price increment.
+    pub price_step: f64,
+    /// Minimal order quantity enforced by the venue.
+    pub min_qty: f64,
+    /// Minimal notional/trade value enforced by the venue.
+    pub min_cost: f64,
+    /// Contract multiplier (lot size) used for sized calculations.
+    pub c_mult: f64,
+    /// Maker fee rate associated with this market (fractional, not percentage).
+    pub maker_fee: f64,
+    /// Taker fee rate associated with this market (fractional, not percentage).
+    pub taker_fee: f64,
+    /// First index (inclusive) in the HLCV tensor that contains valid data for this coin.
+    pub first_valid_index: usize,
+    /// Last index (inclusive) in the HLCV tensor that contains valid data for this coin.
+    pub last_valid_index: usize,
+    /// Warmup bars (expressed in minutes) required before this coin may trade.
+    pub warmup_minutes: usize,
+    /// Index in the HLCV tensor where trading is allowed to begin (>= `first_valid_index`).
+    pub trade_start_index: usize,
+}
+
+/// Metadata describing how an HLCV tensor was produced.  It travels alongside the raw
+/// `(time, coin, feature)` cube so both Python and Rust callers can reason about how to
+/// slice or merge the data without extra dictionaries.
+#[derive(Clone, Debug, Serialize)]
+pub struct HlcvsMeta {
+    pub requested_start_timestamp_ms: u64,
+    pub effective_start_timestamp_ms: u64,
+    pub warmup_minutes_requested: u64,
+    pub warmup_minutes_provided: u64,
+    pub coins: Vec<CoinMeta>,
+    pub active_coin_indices: Option<Vec<usize>>,
+}
+
+/// Represents a fully-qualified HLCV tensor and its associated metadata.  The NumPy arrays are
+/// stored as owned Python references so Rust callers can obtain zero-copy views as needed while
+/// Python retains control over the underlying memory.
+#[derive(Clone)]
+pub struct HlcvsBundle {
+    pub hlcvs: Py<PyArray3<f64>>,
+    pub btc_usd: Py<PyArray1<f64>>,
+    pub timestamps: Py<PyArray1<i64>>,
+    pub meta: HlcvsMeta,
+}
+
+impl HlcvsBundle {
+    pub fn coin_meta_by_index(&self, idx: usize) -> Option<&CoinMeta> {
+        self.meta.coins.iter().find(|coin| coin.index == idx)
+    }
+
+    pub fn coin_meta_by_symbol(&self, symbol: &str) -> Option<&CoinMeta> {
+        self.meta
+            .coins
+            .iter()
+            .find(|coin| coin.symbol == symbol || coin.coin == symbol)
+    }
+
+    pub fn coins_len(&self) -> usize {
+        self.meta.coins.len()
+    }
+
+    pub fn validate_shapes(&self, py: Python<'_>) -> PyResult<()> {
+        let hlcvs_ref = self.hlcvs.bind(py);
+        let shape = hlcvs_ref.shape();
+        if shape.len() != 3 {
+            return Err(PyValueError::new_err(format!(
+                "hlcvs must be a 3D array, got ndim={}",
+                shape.len()
+            )));
+        }
+
+        let n_timesteps = shape[0];
+        let n_coins = shape[1];
+        if n_coins != self.meta.coins.len() {
+            let active_indices = self.meta.active_coin_indices.as_ref().ok_or_else(|| {
+                PyValueError::new_err(format!(
+                    "coin metadata length ({}) does not match hlcvs coin dimension ({})",
+                    self.meta.coins.len(),
+                    n_coins
+                ))
+            })?;
+            if active_indices.len() != self.meta.coins.len() {
+                return Err(PyValueError::new_err(format!(
+                    "active_coin_indices length ({}) does not match coin metadata length ({})",
+                    active_indices.len(),
+                    self.meta.coins.len()
+                )));
+            }
+            let mut seen = HashSet::with_capacity(active_indices.len());
+            for (idx, &col) in active_indices.iter().enumerate() {
+                if col >= n_coins {
+                    return Err(PyValueError::new_err(format!(
+                        "active coin index {} exceeds hlcvs coin dimension {}",
+                        col, n_coins
+                    )));
+                }
+                if !seen.insert(col) {
+                    return Err(PyValueError::new_err(format!(
+                        "active coin index {} appears more than once",
+                        col
+                    )));
+                }
+                if self.meta.coins[idx].index != col {
+                    return Err(PyValueError::new_err(format!(
+                        "coin metadata index ({}) does not match active coin index ({}) at position {}",
+                        self.meta.coins[idx].index, col, idx
+                    )));
+                }
+            }
+        } else if let Some(active_indices) = &self.meta.active_coin_indices {
+            if active_indices.len() != self.meta.coins.len() {
+                return Err(PyValueError::new_err(format!(
+                    "active_coin_indices length ({}) does not match coin metadata length ({})",
+                    active_indices.len(),
+                    self.meta.coins.len()
+                )));
+            }
+            let mut seen = HashSet::with_capacity(active_indices.len());
+            for (idx, &col) in active_indices.iter().enumerate() {
+                if col >= n_coins {
+                    return Err(PyValueError::new_err(format!(
+                        "active coin index {} exceeds hlcvs coin dimension {}",
+                        col, n_coins
+                    )));
+                }
+                if !seen.insert(col) {
+                    return Err(PyValueError::new_err(format!(
+                        "active coin index {} appears more than once",
+                        col
+                    )));
+                }
+                if self.meta.coins[idx].index != col {
+                    return Err(PyValueError::new_err(format!(
+                        "coin metadata index ({}) does not match active coin index ({}) at position {}",
+                        self.meta.coins[idx].index, col, idx
+                    )));
+                }
+            }
+        }
+
+        let timestamps_ref = self.timestamps.bind(py);
+        if timestamps_ref.len() != n_timesteps {
+            return Err(PyValueError::new_err(format!(
+                "timestamps length ({}) does not match hlcvs timesteps ({})",
+                timestamps_ref.len(),
+                n_timesteps
+            )));
+        }
+
+        let btc_ref = self.btc_usd.bind(py);
+        if btc_ref.len() != n_timesteps {
+            return Err(PyValueError::new_err(format!(
+                "btc_usd length ({}) does not match hlcvs timesteps ({})",
+                btc_ref.len(),
+                n_timesteps
+            )));
+        }
+
+        Ok(())
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct ExchangeParams {
+    pub qty_step: f64,
+    pub price_step: f64,
+    pub min_qty: f64,
+    pub min_cost: f64,
+    pub c_mult: f64,
+    pub maker_fee: f64,
+    pub taker_fee: f64,
+}
+
+impl Default for ExchangeParams {
+    fn default() -> Self {
+        ExchangeParams {
+            qty_step: 0.00001,
+            price_step: 0.00001,
+            min_qty: 0.00001,
+            min_cost: 1.0,
+            c_mult: 1.0,
+            maker_fee: 0.0002,
+            taker_fee: 0.00055,
+        }
+    }
+}
+
+impl ExchangeParams {
+    pub fn validate_required(&self) -> Result<(), String> {
+        fn finite_positive(value: f64, field: &str) -> Result<(), String> {
+            if value.is_finite() && value > 0.0 {
+                Ok(())
+            } else {
+                Err(format!("{field} must be finite and > 0"))
+            }
+        }
+        fn finite_non_negative(value: f64, field: &str) -> Result<(), String> {
+            if value.is_finite() && value >= 0.0 {
+                Ok(())
+            } else {
+                Err(format!("{field} must be finite and >= 0"))
+            }
+        }
+        fn finite(value: f64, field: &str) -> Result<(), String> {
+            if value.is_finite() {
+                Ok(())
+            } else {
+                Err(format!("{field} must be finite"))
+            }
+        }
+
+        finite_positive(self.qty_step, "qty_step")?;
+        finite_positive(self.price_step, "price_step")?;
+        finite_non_negative(self.min_qty, "min_qty")?;
+        finite_non_negative(self.min_cost, "min_cost")?;
+        finite_positive(self.c_mult, "c_mult")?;
+        finite(self.maker_fee, "maker_fee")?;
+        finite(self.taker_fee, "taker_fee")?;
+        Ok(())
+    }
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct EquityHardStopLossTierRatios {
+    pub yellow: f64,
+    pub orange: f64,
+}
+
+impl Default for EquityHardStopLossTierRatios {
+    fn default() -> Self {
+        Self {
+            yellow: 0.5,
+            orange: 0.75,
+        }
+    }
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct EquityHardStopLossConfig {
+    pub revised: Option<crate::backtest::revised_runtime::Config>,
+    pub enabled: bool,
+    pub signal_mode: String,
+    pub red_threshold: f64,
+    pub ema_span_minutes: f64,
+    pub cooldown_minutes_after_red: f64,
+    pub no_restart_drawdown_threshold: f64,
+    pub restart_after_red_policy: String,
+    pub tier_ratios: EquityHardStopLossTierRatios,
+    pub orange_tier_mode: String,
+    #[allow(dead_code)]
+    // Parsed in Rust for config parity; consumed by Python live order handling.
+    pub panic_close_order_type: String,
+}
+
+impl Default for EquityHardStopLossConfig {
+    fn default() -> Self {
+        Self {
+            revised: None,
+            enabled: false,
+            signal_mode: "unified".to_string(),
+            red_threshold: 0.25,
+            ema_span_minutes: 60.0,
+            cooldown_minutes_after_red: 0.0,
+            no_restart_drawdown_threshold: 1.0,
+            restart_after_red_policy: "threshold".to_string(),
+            tier_ratios: EquityHardStopLossTierRatios::default(),
+            orange_tier_mode: "tp_only_with_active_entry_cancellation".to_string(),
+            panic_close_order_type: "market".to_string(),
+        }
+    }
+}
+
+#[derive(Clone, Debug)]
+pub struct BacktestParams {
+    pub starting_balance: f64,
+    pub maker_fee: f64,
+    pub taker_fee: f64,
+    pub coins: Vec<String>,
+    pub active_coin_indices: Option<Vec<usize>>,
+    pub first_timestamp_ms: u64,
+    pub requested_start_timestamp_ms: u64,
+    pub first_valid_indices: Vec<usize>,
+    pub last_valid_indices: Vec<usize>,
+    pub warmup_minutes: Vec<usize>,
+    pub trade_start_indices: Vec<usize>,
+    pub global_warmup_bars: usize,
+    pub btc_collateral_cap: f64,
+    pub btc_collateral_ltv_cap: Option<f64>,
+    pub metrics_only: bool,
+    pub hsl_detailed_report: bool,
+    pub skip_btc_analysis: bool,
+    pub filter_by_min_effective_cost: bool,
+    pub dynamic_wel_by_tradability: bool,
+    pub hedge_mode: bool,
+    pub max_realized_loss_pct: f64,
+    pub pnls_max_lookback_days: f64,
+    pub liquidation_threshold: f64,
+    pub equity_hard_stop_loss: EquityHardStopLossConfig,
+    pub market_orders_allowed: bool,
+    pub market_order_near_touch_threshold: f64,
+    pub market_order_slippage_pct: f64,
+    pub limit_order_fill_buffer_pct: f64,
+    pub forager_score_hysteresis_pct: f64,
+    pub candle_interval_minutes: u64, // 1 for 1m candles (default), 5 for 5m, etc.
+}
+
+#[derive(Default, Debug, Clone, Copy, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Position {
+    pub size: f64,
+    pub price: f64,
+}
+
+#[derive(Debug, Default, Clone, Copy, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct EMABands {
+    pub upper: f64,
+    pub lower: f64,
+}
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Order {
+    pub qty: f64,
+    pub price: f64,
+    pub order_type: OrderType,
+}
+
+impl Default for Order {
+    fn default() -> Self {
+        Order {
+            qty: 0.0,
+            price: 0.0,
+            order_type: OrderType::Empty,
+        }
+    }
+}
+
+#[derive(Debug, Default, Clone, Copy, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OrderBook {
+    pub bid: f64,
+    pub ask: f64,
+}
+
+#[derive(Debug, Default, Clone, Copy, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct StateParams {
+    pub balance: f64,
+    pub order_book: OrderBook,
+    pub ema_bands: EMABands,
+    pub volatility_ema_1m: f64,
+    pub volatility_ema_1h: f64,
+}
+
+#[derive(Clone, Default, Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct BotParamsPair {
+    pub long: BotParams,
+    pub short: BotParams,
+}
+
+#[derive(Clone, Copy, Default, Debug, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct RuntimeBudgetState {
+    pub configured_wallet_exposure_limit: f64,
+    pub effective_wallet_exposure_limit: f64,
+    pub configured_n_positions: usize,
+    pub effective_n_positions: usize,
+}
+
+#[derive(Clone, Copy, Default, Debug, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct RuntimeBudgetStatePair {
+    pub long: RuntimeBudgetState,
+    pub short: RuntimeBudgetState,
+}
+
+#[derive(Clone, Default, Debug, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct StrategyParamsPairValue {
+    pub long: Value,
+    pub short: Value,
+}
+
+fn default_hsl_enabled() -> bool {
+    false
+}
+
+fn default_hsl_red_threshold() -> f64 {
+    0.25
+}
+
+fn default_hsl_ema_span_minutes() -> f64 {
+    60.0
+}
+
+fn default_hsl_cooldown_minutes_after_red() -> f64 {
+    0.0
+}
+
+fn default_hsl_no_restart_drawdown_threshold() -> f64 {
+    1.0
+}
+
+fn default_hsl_restart_after_red_policy() -> String {
+    "threshold".to_string()
+}
+
+fn default_hsl_tier_ratio_yellow() -> f64 {
+    0.5
+}
+
+fn default_hsl_tier_ratio_orange() -> f64 {
+    0.75
+}
+
+fn default_hsl_orange_tier_mode() -> String {
+    "tp_only_with_active_entry_cancellation".to_string()
+}
+
+fn default_hsl_panic_close_order_type() -> String {
+    "market".to_string()
+}
+
+fn default_true() -> bool {
+    true
+}
+
+#[derive(
+    Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize, EnumString, Display,
+)]
+#[serde(rename_all = "snake_case")]
+#[strum(serialize_all = "snake_case")]
+pub enum WeExcessAllowanceMode {
+    #[default]
+    Bounded,
+    LegacyRaw,
+}
+
+#[derive(
+    Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize, EnumString, Display,
+)]
+#[serde(rename_all = "snake_case")]
+#[strum(serialize_all = "snake_case")]
+pub enum TwelEnforcerPolicy {
+    #[default]
+    ReduceOverweight,
+    ReducePortfolio,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct ForagerScoreWeights {
+    pub volume: f64,
+    pub ema_readiness: f64,
+    pub volatility: f64,
+}
+
+impl Default for ForagerScoreWeights {
+    fn default() -> Self {
+        Self {
+            volume: 0.0,
+            ema_readiness: 0.0,
+            volatility: 1.0,
+        }
+    }
+}
+
+impl ForagerScoreWeights {
+    pub fn canonicalize(&self) -> Result<Self, String> {
+        let values = [self.volume, self.ema_readiness, self.volatility];
+        if values
+            .iter()
+            .any(|value| !value.is_finite() || *value < 0.0)
+        {
+            return Err("forager_score_weights must be finite and non-negative".to_string());
+        }
+        let total = self.volume + self.ema_readiness + self.volatility;
+        if total <= 0.0 {
+            return Ok(Self {
+                volume: 0.0,
+                ema_readiness: 1.0,
+                volatility: 0.0,
+            });
+        }
+        Ok(Self {
+            volume: self.volume / total,
+            ema_readiness: self.ema_readiness / total,
+            volatility: self.volatility / total,
+        })
+    }
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct BotParams {
+    #[serde(default)]
+    pub close_grid_qty_pct: f64,
+    #[serde(default)]
+    pub close_trailing_retracement_pct: f64,
+    #[serde(default)]
+    pub close_trailing_qty_pct: f64,
+    #[serde(default)]
+    pub close_trailing_threshold_pct: f64,
+    #[serde(default)]
+    pub close_weight_volatility_1h: f64,
+    #[serde(default)]
+    pub close_weight_volatility_1m: f64,
+    #[serde(default)]
+    pub entry_grid_double_down_factor: f64,
+    #[serde(default)]
+    pub entry_grid_spacing_pct: f64,
+    #[serde(default)]
+    pub entry_volatility_ema_span_1h: f64,
+    #[serde(default)]
+    pub entry_volatility_ema_span_1m: f64,
+    #[serde(default)]
+    pub entry_weight_volatility_1h: f64,
+    #[serde(default)]
+    pub entry_weight_volatility_1m: f64,
+    #[serde(default)]
+    pub entry_we_weight: f64,
+    #[serde(default)]
+    pub entry_initial_ema_dist: f64,
+    #[serde(default)]
+    pub entry_initial_qty_pct: f64,
+    #[serde(default)]
+    pub entry_trailing_double_down_factor: f64,
+    #[serde(default)]
+    pub entry_trailing_retracement_pct: f64,
+    #[serde(default)]
+    pub entry_trailing_threshold_pct: f64,
+    pub filter_volatility_ema_span_1m: f64,
+    pub filter_volume_ema_span_1m: f64,
+    #[serde(default, skip_serializing, rename = "filter_volatility_drop_pct")]
+    pub _legacy_filter_volatility_drop_pct: f64,
+    #[serde(default, alias = "filter_volume_drop_pct")]
+    pub forager_volume_drop_pct: f64,
+    #[serde(default)]
+    pub forager_score_weights: ForagerScoreWeights,
+    #[serde(default)]
+    pub is_forced_active: bool,
+    /// Whether this symbol+position-side may open new positions.
+    ///
+    /// Backtests set this from side-specific approved-coins membership.  Live
+    /// callers retain their existing mode-based eligibility contract through
+    /// the default value.
+    #[serde(default = "default_true")]
+    pub entry_eligible: bool,
+    #[serde(default)]
+    pub ema_span_0: f64,
+    #[serde(default)]
+    pub ema_span_1: f64,
+    #[serde(default = "default_hsl_enabled")]
+    pub hsl_enabled: bool,
+    #[serde(default = "default_hsl_red_threshold")]
+    pub hsl_red_threshold: f64,
+    #[serde(default = "default_hsl_ema_span_minutes")]
+    pub hsl_ema_span_minutes: f64,
+    #[serde(default = "default_hsl_cooldown_minutes_after_red")]
+    pub hsl_cooldown_minutes_after_red: f64,
+    #[serde(default = "default_hsl_no_restart_drawdown_threshold")]
+    pub hsl_no_restart_drawdown_threshold: f64,
+    #[serde(default = "default_hsl_restart_after_red_policy")]
+    pub hsl_restart_after_red_policy: String,
+    #[serde(default = "default_hsl_tier_ratio_yellow")]
+    pub hsl_tier_ratio_yellow: f64,
+    #[serde(default = "default_hsl_tier_ratio_orange")]
+    pub hsl_tier_ratio_orange: f64,
+    #[serde(default = "default_hsl_orange_tier_mode")]
+    pub hsl_orange_tier_mode: String,
+    #[serde(default = "default_hsl_panic_close_order_type")]
+    pub hsl_panic_close_order_type: String,
+    #[serde(default)]
+    pub risk_entry_cooldown_minutes: f64,
+    pub n_positions: usize,
+    pub total_wallet_exposure_limit: f64,
+    pub wallet_exposure_limit: f64, // per-position base limit (without excess allowance)
+    #[serde(default = "default_true")]
+    pub risk_wel_enforcer_enabled: bool,
+    pub risk_wel_enforcer_threshold: f64,
+    #[serde(default = "default_true")]
+    pub risk_twel_entry_gate_enabled: bool,
+    #[serde(default = "default_true")]
+    pub risk_twel_enforcer_enabled: bool,
+    #[serde(default)]
+    pub risk_twel_enforcer_policy: TwelEnforcerPolicy,
+    pub risk_twel_enforcer_threshold: f64,
+    pub risk_we_excess_allowance_pct: f64,
+    #[serde(default)]
+    pub risk_we_excess_allowance_mode: WeExcessAllowanceMode,
+    #[serde(default = "default_true")]
+    pub unstuck_enabled: bool,
+    #[serde(default = "default_true")]
+    pub unstuck_ema_gating_enabled: bool,
+    pub unstuck_close_pct: f64,
+    pub unstuck_ema_dist: f64,
+    pub unstuck_ema_span_0: f64,
+    pub unstuck_ema_span_1: f64,
+    pub unstuck_loss_allowance_pct: f64,
+    pub unstuck_threshold: f64,
+}
+
+impl Default for BotParams {
+    fn default() -> Self {
+        Self {
+            close_grid_qty_pct: 0.0,
+            close_trailing_retracement_pct: 0.0,
+            close_trailing_qty_pct: 0.0,
+            close_trailing_threshold_pct: 0.0,
+            close_weight_volatility_1h: 0.0,
+            close_weight_volatility_1m: 0.0,
+            entry_grid_double_down_factor: 0.0,
+            entry_grid_spacing_pct: 0.0,
+            entry_volatility_ema_span_1h: 0.0,
+            entry_volatility_ema_span_1m: 0.0,
+            entry_weight_volatility_1h: 0.0,
+            entry_weight_volatility_1m: 0.0,
+            entry_we_weight: 0.0,
+            entry_initial_ema_dist: 0.0,
+            entry_initial_qty_pct: 0.0,
+            entry_trailing_double_down_factor: 0.0,
+            entry_trailing_retracement_pct: 0.0,
+            entry_trailing_threshold_pct: 0.0,
+            filter_volatility_ema_span_1m: 0.0,
+            filter_volume_ema_span_1m: 0.0,
+            _legacy_filter_volatility_drop_pct: 0.0,
+            forager_volume_drop_pct: 0.0,
+            forager_score_weights: ForagerScoreWeights::default(),
+            is_forced_active: false,
+            entry_eligible: true,
+            ema_span_0: 0.0,
+            ema_span_1: 0.0,
+            hsl_enabled: default_hsl_enabled(),
+            hsl_red_threshold: default_hsl_red_threshold(),
+            hsl_ema_span_minutes: default_hsl_ema_span_minutes(),
+            hsl_cooldown_minutes_after_red: default_hsl_cooldown_minutes_after_red(),
+            hsl_no_restart_drawdown_threshold: default_hsl_no_restart_drawdown_threshold(),
+            hsl_restart_after_red_policy: default_hsl_restart_after_red_policy(),
+            hsl_tier_ratio_yellow: default_hsl_tier_ratio_yellow(),
+            hsl_tier_ratio_orange: default_hsl_tier_ratio_orange(),
+            hsl_orange_tier_mode: default_hsl_orange_tier_mode(),
+            hsl_panic_close_order_type: default_hsl_panic_close_order_type(),
+            risk_entry_cooldown_minutes: 0.0,
+            n_positions: 0,
+            total_wallet_exposure_limit: 0.0,
+            wallet_exposure_limit: 0.0,
+            risk_wel_enforcer_enabled: true,
+            risk_wel_enforcer_threshold: 0.0,
+            risk_twel_entry_gate_enabled: true,
+            risk_twel_enforcer_enabled: true,
+            risk_twel_enforcer_policy: TwelEnforcerPolicy::default(),
+            risk_twel_enforcer_threshold: 0.0,
+            risk_we_excess_allowance_pct: 0.0,
+            risk_we_excess_allowance_mode: WeExcessAllowanceMode::default(),
+            unstuck_enabled: true,
+            unstuck_ema_gating_enabled: true,
+            unstuck_close_pct: 0.0,
+            unstuck_ema_dist: 0.0,
+            unstuck_ema_span_0: 60.0,
+            unstuck_ema_span_1: 60.0,
+            unstuck_loss_allowance_pct: 0.0,
+            unstuck_threshold: 0.0,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, Default)]
+pub struct RuntimeOrderContext {
+    pub effective_wallet_exposure_limit: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct TrailingPriceBundle {
+    pub min_since_open: f64,
+    pub max_since_min: f64,
+    pub max_since_open: f64,
+    pub min_since_max: f64,
+}
+impl Default for TrailingPriceBundle {
+    fn default() -> Self {
+        TrailingPriceBundle {
+            min_since_open: f64::MAX,
+            max_since_min: 0.0,
+            max_since_open: 0.0,
+            min_since_max: f64::MAX,
+        }
+    }
+}
+
+#[repr(u16)]
+#[derive(
+    Debug,
+    PartialEq,
+    Eq,
+    Clone,
+    Copy,
+    Serialize,
+    Deserialize,
+    IntoPrimitive,
+    TryFromPrimitive,
+    EnumString,
+    Display,
+    EnumIter,
+)]
+#[serde(rename_all = "snake_case")]
+#[strum(serialize_all = "snake_case")]
+pub enum OrderType {
+    EntryInitialNormalLong = 0,
+    EntryInitialPartialLong = 1,
+    EntryTrailingNormalLong = 2,
+    EntryTrailingCroppedLong = 3,
+    EntryGridNormalLong = 4,
+    EntryGridCroppedLong = 5,
+    EntryGridInflatedLong = 6,
+
+    CloseGridLong = 7,
+    CloseTrailingLong = 8,
+    CloseUnstuckLong = 9,
+    CloseAutoReduceTwelLong = 10,
+
+    EntryInitialNormalShort = 11,
+    EntryInitialPartialShort = 12,
+    EntryTrailingNormalShort = 13,
+    EntryTrailingCroppedShort = 14,
+    EntryGridNormalShort = 15,
+    EntryGridCroppedShort = 16,
+    EntryGridInflatedShort = 17,
+
+    CloseGridShort = 18,
+    CloseTrailingShort = 19,
+    CloseUnstuckShort = 20,
+    CloseAutoReduceTwelShort = 21,
+
+    ClosePanicLong = 22,
+    ClosePanicShort = 23,
+    CloseAutoReduceWelLong = 24,
+    CloseAutoReduceWelShort = 25,
+    EntryEmaAnchorLong = 26,
+    CloseEmaAnchorLong = 27,
+    EntryEmaAnchorShort = 28,
+    CloseEmaAnchorShort = 29,
+
+    Empty = 65535,
+}
+
+impl OrderType {
+    #[inline]
+    pub const fn id(self) -> u16 {
+        self as u16
+    }
+    #[inline]
+    pub fn from_snake(s: &str) -> Option<Self> {
+        OrderType::from_str(s).ok()
+    }
+}
+
+impl OrderType {
+    #[inline]
+    pub const fn is_long(self) -> bool {
+        use OrderType::*;
+        matches!(
+            self,
+            EntryInitialNormalLong
+                | EntryInitialPartialLong
+                | EntryTrailingNormalLong
+                | EntryTrailingCroppedLong
+                | EntryGridNormalLong
+                | EntryGridCroppedLong
+                | EntryGridInflatedLong
+                | CloseGridLong
+                | CloseTrailingLong
+                | CloseUnstuckLong
+                | CloseAutoReduceTwelLong
+                | CloseAutoReduceWelLong
+                | ClosePanicLong
+                | EntryEmaAnchorLong
+                | CloseEmaAnchorLong
+        )
+    }
+
+    #[inline]
+    pub const fn is_entry(self) -> bool {
+        use OrderType::*;
+        matches!(
+            self,
+            EntryInitialNormalLong
+                | EntryInitialPartialLong
+                | EntryTrailingNormalLong
+                | EntryTrailingCroppedLong
+                | EntryGridNormalLong
+                | EntryGridCroppedLong
+                | EntryGridInflatedLong
+                | EntryInitialNormalShort
+                | EntryInitialPartialShort
+                | EntryTrailingNormalShort
+                | EntryTrailingCroppedShort
+                | EntryGridNormalShort
+                | EntryGridCroppedShort
+                | EntryGridInflatedShort
+                | EntryEmaAnchorLong
+                | EntryEmaAnchorShort
+        )
+    }
+
+    #[inline]
+    pub const fn is_close(self) -> bool {
+        use OrderType::*;
+        matches!(
+            self,
+            CloseGridLong
+                | CloseTrailingLong
+                | CloseUnstuckLong
+                | CloseAutoReduceTwelLong
+                | CloseGridShort
+                | CloseTrailingShort
+                | CloseUnstuckShort
+                | CloseAutoReduceTwelShort
+                | ClosePanicLong
+                | ClosePanicShort
+                | CloseAutoReduceWelLong
+                | CloseAutoReduceWelShort
+                | CloseEmaAnchorLong
+                | CloseEmaAnchorShort
+        )
+    }
+}
+
+#[derive(Default)]
+pub struct Balance {
+    pub usd_cash_wallet: f64,                // raw usd wallet balance
+    pub usd_total_balance: f64,              // usd cash + btc converted to usd
+    pub usd_total_balance_rounded: f64,      // rounded usd total for hysteresis logic
+    pub btc_cash_wallet: f64,                // raw btc wallet balance
+    pub btc_total_balance: f64,              // btc cash + usd converted to btc
+    pub use_btc_collateral: bool,            // whether to use btc as collateral
+    pub btc_collateral_cap: f64,             // target/cap ratio of collateral held in btc
+    pub btc_collateral_ltv_cap: Option<f64>, // optional LTV ceiling when topping up btc
+}
+
+#[derive(Default, Clone)]
+pub struct Equities {
+    pub timestamps_ms: Vec<u64>,
+    pub usd_total_equity: Vec<f64>,
+    pub btc_total_equity: Vec<f64>,
+}
+
+#[derive(Debug, Clone)]
+pub struct Fill {
+    pub index: usize,
+    pub timestamp_ms: u64,
+    pub coin: String,
+    pub pnl: f64,
+    pub fee_paid: f64,
+    pub usd_total_balance: f64,
+    pub btc_cash_wallet: f64,
+    pub usd_cash_wallet: f64,
+    pub btc_price: f64,
+    pub fill_qty: f64,
+    pub fill_price: f64,
+    pub position_size: f64,
+    pub position_price: f64,
+    pub order_type: OrderType,
+    pub liquidity: String,
+    pub wallet_exposure: f64, // signed: long positive, short negative
+    pub twe_long: f64,
+    pub twe_short: f64, // signed negative
+    pub twe_net: f64,   // twe_long + twe_short
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub struct Analysis {
+    pub adg: f64,
+    pub mdg: f64,
+    pub gain: f64,
+    pub liquidated: bool,
+    pub backtest_completion_ratio: f64,
+    pub adg_pnl: f64,
+    pub mdg_pnl: f64,
+    pub sharpe_ratio_pnl: f64,
+    pub sortino_ratio_pnl: f64,
+    pub sharpe_ratio: f64,
+    pub sortino_ratio: f64,
+    pub omega_ratio: f64,
+    pub expected_shortfall_1pct: f64,
+    pub calmar_ratio: f64,
+    pub sterling_ratio: f64,
+    pub drawdown_worst: f64,
+    pub drawdown_worst_mean_1pct: f64,
+    pub gain_strategy_eq: f64,
+    pub adg_strategy_eq: f64,
+    pub adg_rolling_hmean_strategy_eq: f64,
+    pub adg_time_integrated_strategy_eq: f64,
+    pub positive_gain_participation_strategy_eq: f64,
+    pub mdg_strategy_eq: f64,
+    pub sharpe_ratio_strategy_eq: f64,
+    pub sortino_ratio_strategy_eq: f64,
+    pub omega_ratio_strategy_eq: f64,
+    pub expected_shortfall_1pct_strategy_eq: f64,
+    pub calmar_ratio_strategy_eq: f64,
+    pub sterling_ratio_strategy_eq: f64,
+    pub drawdown_worst_strategy_eq: f64,
+    pub drawdown_worst_strategy_eq_long: f64,
+    pub drawdown_worst_strategy_eq_short: f64,
+    pub drawdown_worst_ema_strategy_eq: f64,
+    pub drawdown_worst_ema_strategy_eq_long: f64,
+    pub drawdown_worst_ema_strategy_eq_short: f64,
+    pub drawdown_worst_mean_1pct_strategy_eq: f64,
+    pub drawdown_worst_mean_1pct_strategy_eq_long: f64,
+    pub drawdown_worst_mean_1pct_strategy_eq_short: f64,
+    pub drawdown_worst_mean_1pct_ema_strategy_eq: f64,
+    pub drawdown_worst_mean_1pct_ema_strategy_eq_long: f64,
+    pub drawdown_worst_mean_1pct_ema_strategy_eq_short: f64,
+    pub strategy_eq_underwater_pct_mean: f64,
+    pub strategy_eq_underwater_pct_median: f64,
+    pub strategy_eq_recovery_days_mean: f64,
+    pub strategy_eq_recovery_days_median: f64,
+    pub strategy_eq_recovery_days_p95: f64,
+    pub strategy_eq_recovery_days_p99: f64,
+    pub strategy_eq_recovery_days_mean_worst_5pct: f64,
+    pub strategy_eq_recovery_days_mean_worst_1pct: f64,
+    pub strategy_eq_recovery_days_max: f64,
+    pub peak_recovery_hours_strategy_eq: f64,
+    pub peak_recovery_hours_strategy_eq_long: f64,
+    pub peak_recovery_hours_strategy_eq_short: f64,
+    pub peak_recovery_days_strategy_eq: f64,
+    pub peak_recovery_days_strategy_eq_long: f64,
+    pub peak_recovery_days_strategy_eq_short: f64,
+    pub equity_balance_diff_neg_max: f64,
+    pub equity_balance_diff_neg_mean: f64,
+    pub equity_balance_diff_pos_max: f64,
+    pub equity_balance_diff_pos_mean: f64,
+    pub paper_loss_ratio: f64,
+    pub paper_loss_mean_ratio: f64,
+    pub exposure_ratio: f64,
+    pub exposure_mean_ratio: f64,
+    pub loss_profit_ratio: f64,
+    pub loss_profit_ratio_long: f64,
+    pub loss_profit_ratio_short: f64,
+    pub pnl_ratio_long_short: f64,
+    pub long_short_profit_ratio: f64,
+    pub peak_recovery_hours_equity: f64,
+    pub peak_recovery_hours_pnl: f64,
+    pub peak_recovery_days_equity: f64,
+    pub peak_recovery_days_pnl: f64,
+
+    pub equity_choppiness: f64,
+    pub equity_jerkiness: f64,
+    pub exponential_fit_error: f64,
+    pub equity_choppiness_w: f64,
+    pub equity_jerkiness_w: f64,
+    pub exponential_fit_error_w: f64,
+
+    pub positions_held_per_day: f64,
+    pub positions_held_per_day_w: f64,
+    pub position_held_time_weighted_mean_hours: f64,
+    pub position_held_hours_mean: f64,
+    pub position_held_hours_max: f64,
+    pub position_held_hours_median: f64,
+    pub position_unchanged_hours_max: f64,
+    pub position_held_days_mean: f64,
+    pub position_held_days_max: f64,
+    pub position_held_days_median: f64,
+    pub position_unchanged_days_max: f64,
+    pub win_rate: f64,
+    pub trade_loss_max: f64,
+    pub trade_loss_mean: f64,
+    pub trade_loss_median: f64,
+    pub fills_active_days_count: f64,
+    pub fills_active_days_ratio: f64,
+    pub fills_active_symbols_count: f64,
+    pub fills_analysis_duration_days: f64,
+    pub fills_count: f64,
+    pub fills_count_close: f64,
+    pub fills_count_entry: f64,
+    pub fills_count_long: f64,
+    pub fills_count_short: f64,
+    pub fills_entry_per_close: f64,
+    pub fills_gap_longest_days: f64,
+    pub fills_gap_mean_hours: f64,
+    pub fills_gap_median_hours: f64,
+    pub fills_gap_p95_hours: f64,
+    pub fills_gap_p99_hours: f64,
+    pub fills_gap_time_weighted_mean_hours: f64,
+    pub fills_per_day: f64,
+    pub fills_per_day_close: f64,
+    pub fills_per_day_entry: f64,
+    pub fills_per_day_long: f64,
+    pub fills_per_day_per_position_slot: f64,
+    pub fills_per_day_per_position_slot_long: f64,
+    pub fills_per_day_per_position_slot_short: f64,
+    pub fills_per_day_short: f64,
+    pub fills_top_symbol_share: f64,
+
+    pub adg_w: f64,
+    pub adg_pnl_w: f64,
+    pub mdg_pnl_w: f64,
+    pub sharpe_ratio_pnl_w: f64,
+    pub sortino_ratio_pnl_w: f64,
+    pub adg_strategy_eq_w: f64,
+    pub mdg_strategy_eq_w: f64,
+    pub sharpe_ratio_strategy_eq_w: f64,
+    pub sortino_ratio_strategy_eq_w: f64,
+    pub omega_ratio_strategy_eq_w: f64,
+    pub calmar_ratio_strategy_eq_w: f64,
+    pub sterling_ratio_strategy_eq_w: f64,
+    pub mdg_w: f64,
+    pub sharpe_ratio_w: f64,
+    pub sortino_ratio_w: f64,
+    pub omega_ratio_w: f64,
+    pub calmar_ratio_w: f64,
+    pub sterling_ratio_w: f64,
+    pub loss_profit_ratio_w: f64,
+    pub win_rate_w: f64,
+    pub paper_loss_ratio_w: f64,
+    pub paper_loss_mean_ratio_w: f64,
+    pub exposure_ratio_w: f64,
+    pub exposure_mean_ratio_w: f64,
+    pub volume_pct_per_day_avg: f64,
+    pub volume_pct_per_day_avg_w: f64,
+
+    pub total_wallet_exposure_max: f64,
+    pub total_wallet_exposure_mean: f64,
+    pub total_wallet_exposure_median: f64,
+    pub high_exposure_hours_mean_long: f64,
+    pub high_exposure_hours_max_long: f64,
+    pub high_exposure_hours_mean_short: f64,
+    pub high_exposure_hours_max_short: f64,
+    pub high_exposure_days_mean_long: f64,
+    pub high_exposure_days_max_long: f64,
+    pub high_exposure_days_mean_short: f64,
+    pub high_exposure_days_max_short: f64,
+    pub entry_initial_balance_pct_long: f64,
+    pub entry_initial_balance_pct_short: f64,
+    pub entry_interval_hours_mean: f64,
+    pub entry_interval_hours_median: f64,
+    pub entry_interval_hours_p95: f64,
+    pub entry_interval_hours_p99: f64,
+    pub entry_interval_hours_max: f64,
+
+    pub hard_stop_triggers: u32,
+    pub hard_stop_triggers_per_year: f64,
+    pub hard_stop_triggers_long: u32,
+    pub hard_stop_triggers_short: u32,
+    pub hard_stop_halt_to_restart_equity_loss_pct: f64,
+    pub hard_stop_restarts: u32,
+    pub hard_stop_restarts_per_year: f64,
+    pub hard_stop_restarts_per_year_long: f64,
+    pub hard_stop_restarts_per_year_short: f64,
+    pub hard_stop_restarts_long: u32,
+    pub hard_stop_restarts_short: u32,
+    pub hard_stop_time_in_yellow_pct: f64,
+    pub hard_stop_time_in_orange_pct: f64,
+    pub hard_stop_time_in_red_pct: f64,
+    pub hard_stop_duration_minutes_mean: f64,
+    pub hard_stop_duration_minutes_max: f64,
+    pub hard_stop_trigger_drawdown_mean: f64,
+    pub hard_stop_panic_close_loss_sum: f64,
+    pub hard_stop_panic_close_loss_max: f64,
+    pub hard_stop_panic_close_loss_drawdown_pct_min: f64,
+    pub hard_stop_panic_close_loss_drawdown_pct_mean: f64,
+    pub hard_stop_panic_close_loss_drawdown_pct_max: f64,
+    pub hard_stop_flatten_time_minutes_mean: f64,
+    pub hard_stop_post_restart_retrigger_pct: f64,
+}
+
+impl Default for Analysis {
+    fn default() -> Self {
+        Analysis {
+            adg: 0.0,
+            mdg: 0.0,
+            gain: 0.0,
+            liquidated: false,
+            backtest_completion_ratio: 0.0,
+            adg_pnl: 0.0,
+            mdg_pnl: 0.0,
+            sharpe_ratio_pnl: 0.0,
+            sortino_ratio_pnl: 0.0,
+            sharpe_ratio: 0.0,
+            sortino_ratio: 0.0,
+            omega_ratio: 0.0,
+            expected_shortfall_1pct: 0.0,
+            calmar_ratio: 0.0,
+            sterling_ratio: 0.0,
+            drawdown_worst: 1.0,
+            drawdown_worst_mean_1pct: 1.0,
+            gain_strategy_eq: 0.0,
+            adg_strategy_eq: 0.0,
+            adg_rolling_hmean_strategy_eq: 0.0,
+            adg_time_integrated_strategy_eq: 0.0,
+            positive_gain_participation_strategy_eq: 0.0,
+            mdg_strategy_eq: 0.0,
+            sharpe_ratio_strategy_eq: 0.0,
+            sortino_ratio_strategy_eq: 0.0,
+            omega_ratio_strategy_eq: 0.0,
+            expected_shortfall_1pct_strategy_eq: 0.0,
+            calmar_ratio_strategy_eq: 0.0,
+            sterling_ratio_strategy_eq: 0.0,
+            drawdown_worst_strategy_eq: 0.0,
+            drawdown_worst_strategy_eq_long: 0.0,
+            drawdown_worst_strategy_eq_short: 0.0,
+            drawdown_worst_ema_strategy_eq: 0.0,
+            drawdown_worst_ema_strategy_eq_long: 0.0,
+            drawdown_worst_ema_strategy_eq_short: 0.0,
+            drawdown_worst_mean_1pct_strategy_eq: 0.0,
+            drawdown_worst_mean_1pct_strategy_eq_long: 0.0,
+            drawdown_worst_mean_1pct_strategy_eq_short: 0.0,
+            drawdown_worst_mean_1pct_ema_strategy_eq: 0.0,
+            drawdown_worst_mean_1pct_ema_strategy_eq_long: 0.0,
+            drawdown_worst_mean_1pct_ema_strategy_eq_short: 0.0,
+            strategy_eq_underwater_pct_mean: 0.0,
+            strategy_eq_underwater_pct_median: 0.0,
+            strategy_eq_recovery_days_mean: 0.0,
+            strategy_eq_recovery_days_median: 0.0,
+            strategy_eq_recovery_days_p95: 0.0,
+            strategy_eq_recovery_days_p99: 0.0,
+            strategy_eq_recovery_days_mean_worst_5pct: 0.0,
+            strategy_eq_recovery_days_mean_worst_1pct: 0.0,
+            strategy_eq_recovery_days_max: 0.0,
+            peak_recovery_hours_strategy_eq: 0.0,
+            peak_recovery_hours_strategy_eq_long: 0.0,
+            peak_recovery_hours_strategy_eq_short: 0.0,
+            peak_recovery_days_strategy_eq: 0.0,
+            peak_recovery_days_strategy_eq_long: 0.0,
+            peak_recovery_days_strategy_eq_short: 0.0,
+            equity_balance_diff_neg_max: 1.0,
+            equity_balance_diff_neg_mean: 1.0,
+            equity_balance_diff_pos_max: 1.0,
+            equity_balance_diff_pos_mean: 1.0,
+            paper_loss_ratio: 0.0,
+            paper_loss_mean_ratio: 0.0,
+            exposure_ratio: 0.0,
+            exposure_mean_ratio: 0.0,
+            loss_profit_ratio: 1.0,
+            loss_profit_ratio_long: 1.0,
+            loss_profit_ratio_short: 1.0,
+            pnl_ratio_long_short: 0.5,
+            long_short_profit_ratio: 0.5,
+            peak_recovery_hours_equity: 0.0,
+            peak_recovery_hours_pnl: 0.0,
+            peak_recovery_days_equity: 0.0,
+            peak_recovery_days_pnl: 0.0,
+            equity_choppiness: 1.0,
+            equity_jerkiness: 1.0,
+            exponential_fit_error: 1.0,
+            positions_held_per_day: 0.0,
+            positions_held_per_day_w: 0.0,
+            position_held_time_weighted_mean_hours: 0.0,
+            position_held_hours_mean: 0.0,
+            position_held_hours_max: 0.0,
+            position_held_hours_median: 0.0,
+            position_unchanged_hours_max: 0.0,
+            position_held_days_mean: 0.0,
+            position_held_days_max: 0.0,
+            position_held_days_median: 0.0,
+            position_unchanged_days_max: 0.0,
+            win_rate: 0.0,
+            trade_loss_max: 0.0,
+            trade_loss_mean: 0.0,
+            trade_loss_median: 0.0,
+            fills_active_days_count: 0.0,
+            fills_active_days_ratio: 0.0,
+            fills_active_symbols_count: 0.0,
+            fills_analysis_duration_days: 0.0,
+            fills_count: 0.0,
+            fills_count_close: 0.0,
+            fills_count_entry: 0.0,
+            fills_count_long: 0.0,
+            fills_count_short: 0.0,
+            fills_entry_per_close: 0.0,
+            fills_gap_longest_days: 0.0,
+            fills_gap_mean_hours: 0.0,
+            fills_gap_median_hours: 0.0,
+            fills_gap_p95_hours: 0.0,
+            fills_gap_p99_hours: 0.0,
+            fills_gap_time_weighted_mean_hours: 0.0,
+            fills_per_day: 0.0,
+            fills_per_day_close: 0.0,
+            fills_per_day_entry: 0.0,
+            fills_per_day_long: 0.0,
+            fills_per_day_per_position_slot: 0.0,
+            fills_per_day_per_position_slot_long: 0.0,
+            fills_per_day_per_position_slot_short: 0.0,
+            fills_per_day_short: 0.0,
+            fills_top_symbol_share: 0.0,
+            adg_w: 0.0,
+            adg_pnl_w: 0.0,
+            mdg_pnl_w: 0.0,
+            sharpe_ratio_pnl_w: 0.0,
+            sortino_ratio_pnl_w: 0.0,
+            adg_strategy_eq_w: 0.0,
+            mdg_strategy_eq_w: 0.0,
+            sharpe_ratio_strategy_eq_w: 0.0,
+            sortino_ratio_strategy_eq_w: 0.0,
+            omega_ratio_strategy_eq_w: 0.0,
+            calmar_ratio_strategy_eq_w: 0.0,
+            sterling_ratio_strategy_eq_w: 0.0,
+            mdg_w: 0.0,
+            sharpe_ratio_w: 0.0,
+            sortino_ratio_w: 0.0,
+            omega_ratio_w: 0.0,
+            calmar_ratio_w: 0.0,
+            sterling_ratio_w: 0.0,
+            loss_profit_ratio_w: 1.0,
+            win_rate_w: 0.0,
+            paper_loss_ratio_w: 0.0,
+            paper_loss_mean_ratio_w: 0.0,
+            exposure_ratio_w: 0.0,
+            exposure_mean_ratio_w: 0.0,
+            equity_choppiness_w: 1.0,
+            equity_jerkiness_w: 1.0,
+            exponential_fit_error_w: 1.0,
+            volume_pct_per_day_avg: 0.0,
+            volume_pct_per_day_avg_w: 0.0,
+            total_wallet_exposure_max: 0.0,
+            total_wallet_exposure_mean: 0.0,
+            total_wallet_exposure_median: 0.0,
+            high_exposure_hours_mean_long: 0.0,
+            high_exposure_hours_max_long: 0.0,
+            high_exposure_hours_mean_short: 0.0,
+            high_exposure_hours_max_short: 0.0,
+            high_exposure_days_mean_long: 0.0,
+            high_exposure_days_max_long: 0.0,
+            high_exposure_days_mean_short: 0.0,
+            high_exposure_days_max_short: 0.0,
+            entry_initial_balance_pct_long: 0.0,
+            entry_initial_balance_pct_short: 0.0,
+            entry_interval_hours_mean: 0.0,
+            entry_interval_hours_median: 0.0,
+            entry_interval_hours_p95: 0.0,
+            entry_interval_hours_p99: 0.0,
+            entry_interval_hours_max: 0.0,
+            hard_stop_triggers: 0,
+            hard_stop_triggers_per_year: 0.0,
+            hard_stop_triggers_long: 0,
+            hard_stop_triggers_short: 0,
+            hard_stop_halt_to_restart_equity_loss_pct: 0.0,
+            hard_stop_restarts: 0,
+            hard_stop_restarts_per_year: 0.0,
+            hard_stop_restarts_per_year_long: 0.0,
+            hard_stop_restarts_per_year_short: 0.0,
+            hard_stop_restarts_long: 0,
+            hard_stop_restarts_short: 0,
+            hard_stop_time_in_yellow_pct: 0.0,
+            hard_stop_time_in_orange_pct: 0.0,
+            hard_stop_time_in_red_pct: 0.0,
+            hard_stop_duration_minutes_mean: 0.0,
+            hard_stop_duration_minutes_max: 0.0,
+            hard_stop_trigger_drawdown_mean: 0.0,
+            hard_stop_panic_close_loss_sum: 0.0,
+            hard_stop_panic_close_loss_max: 0.0,
+            hard_stop_panic_close_loss_drawdown_pct_min: 0.0,
+            hard_stop_panic_close_loss_drawdown_pct_mean: 0.0,
+            hard_stop_panic_close_loss_drawdown_pct_max: 0.0,
+            hard_stop_flatten_time_minutes_mean: 0.0,
+            hard_stop_post_restart_retrigger_pct: 0.0,
+        }
+    }
+}

@@ -1,0 +1,5 @@
+# Тестов в репозитории нет.
+# Код тестов живёт на сервере: /opt/tradebot/<бот>/tests
+# (панели: test_live.py — v4, test_bet.py — turbo, deploy/test_telegram.py — телеграм)
+# Полный индекс имён тестов (315 файлов, 6599 тестов) лежал здесь до 2026-10-15,
+# архивная копия — extras/archive/TESTS_INDEX_full.txt

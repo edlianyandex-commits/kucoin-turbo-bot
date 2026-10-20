@@ -1,0 +1,2293 @@
+[
+ {
+  "name": "1. Основной бот: обычный месяц (30 дней, сентябрь 2026)",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "бот запущен панелью и работал весь месяц",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "ровно один процесс бота всё время",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "капитал в панели совпадает с расчётом passivbot",
+    "ok": true,
+    "detail": "313.8949 против 313.89"
+   },
+   {
+    "name": "Telegram: пришло «запуск»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: тревог не было",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: утренние отчёты каждый день",
+    "ok": true,
+    "detail": "30 за 30 дней"
+   },
+   {
+    "name": "Telegram: статус и позиции отвечают",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: без сообщения о каждой сделке, но со сводкой сделок за сутки",
+    "ok": true,
+    "detail": "сводок: 30"
+   },
+   {
+    "name": "Telegram: пресет назван по-человечески",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "careful_stop",
+    "balance": 300.0,
+    "leverage": 10,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "careful_stop": {
+     "name": "Осторожный + стоп",
+     "risk": "low",
+     "desc": "Настройки автора (экспозиция 1,5, до 7 монет) плюс стоп капитала: если счёт просел на 35% от пика, бот закрывает всё и 3 дня отдыхает. Единственный вариант, который был в плюсе в каждом году: 2022 +25%, 2023 +37%, 2024 +77%, 2025 +6%, 2026 (9 мес.) +42%. Сплошняком 2022–2026: +590% (≈ +3,4% в месяц), худшая просадка 52%. Рекомендуется.",
+     "min_balance_hint": 150,
+     "overrides": {
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.35,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "unified"
+     }
+    },
+    "careful": {
+     "name": "Осторожный (без стопа)",
+     "risk": "medium",
+     "desc": "Настройки автора passivbot без стопа. По годам тоже в плюсе, но в феврале–апреле 2025 счёт падал на 90% (с $1206 до $114) и вернулся к пику только к сентябрю 2026. Сплошняком 2022–2026: +289%, просадка 91%.",
+     "min_balance_hint": 150,
+     "overrides": {}
+    },
+    "tuned_moderate": {
+     "name": "Подобранный · умеренный",
+     "risk": "high",
+     "desc": "Подобран оптимизатором на декабре 2025–июле 2026: 3 монеты, экспозиция 0,95. На своём периоде +222%, но на новом для него 2025 году всего +17% за 9 месяцев при просадке 48%. Подогнан под историю — не рекомендуется.",
+     "min_balance_hint": 150,
+     "base": "tuned/tuned_moderate.json",
+     "overrides": {}
+    },
+    "balanced": {
+     "name": "Сбалансированный",
+     "risk": "high",
+     "desc": "Настройки автора с экспозицией 3. Ликвидирован в 2024 и в 2025 году. Не рекомендуется.",
+     "min_balance_hint": 150,
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 3.0
+     }
+    },
+    "tuned_growth": {
+     "name": "Подобранный · доходный",
+     "risk": "high",
+     "desc": "Подобран оптимизатором: 3 монеты, экспозиция 1,2. На своём периоде +260%, на новом для него 2025 году +25% за 9 месяцев при просадке 49%. Не рекомендуется.",
+     "min_balance_hint": 150,
+     "base": "tuned/tuned_growth.json",
+     "overrides": {}
+    },
+    "aggressive": {
+     "name": "Агрессивный",
+     "risk": "high",
+     "desc": "Настройки автора с экспозицией 5. Ликвидирован в обвал октября 2025 (−99% за месяц); экспозиция 2 и выше не пережила 2022–2026 подряд. Только для денег, которые не жалко потерять.",
+     "min_balance_hint": 150,
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 5.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 0.71,
+    "coins": [
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.11,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "ALGO",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 47
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.5,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.73,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.14,
+      "ok": false,
+      "turnover_m": 47
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.17,
+      "ok": false,
+      "turnover_m": 46
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.17,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.21,
+      "ok": false,
+      "turnover_m": 25
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.52,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.55,
+      "ok": false,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.74,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.33,
+      "ok": false,
+      "turnover_m": 27
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.52,
+      "ok": false,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.11,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.12,
+      "ok": false,
+      "turnover_m": 33
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.56,
+      "ok": false,
+      "turnover_m": 11
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 5.18,
+      "ok": false,
+      "turnover_m": 24
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.43,
+      "ok": false,
+      "turnover_m": 27
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.85,
+      "ok": false,
+      "turnover_m": 12
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": false,
+      "turnover_m": 14
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.72,
+      "ok": false,
+      "turnover_m": 29
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.83,
+      "ok": false,
+      "turnover_m": 39
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": false,
+      "turnover_m": 20
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.59,
+      "ok": false,
+      "turnover_m": 18
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 12.11,
+      "ok": false,
+      "turnover_m": 526
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 14.46,
+      "ok": false,
+      "turnover_m": 121
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 15.51,
+      "ok": false,
+      "turnover_m": 273
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 27.29,
+      "ok": false,
+      "turnover_m": 403
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.48,
+      "ok": false,
+      "turnover_m": 9
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 84.2,
+      "ok": false,
+      "turnover_m": 292
+     }
+    ],
+    "ok_count": 8,
+    "params": {
+     "exposure": 1.5,
+     "positions": 7.0,
+     "allowance": 0.37,
+     "initial_pct": 0.0081,
+     "hsl_enabled": true,
+     "hsl_threshold": 0.35
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-09-30 00:38",
+    "preset": "careful_stop",
+    "gave_up": null,
+    "snapshot": {
+     "balance": 314.1142,
+     "equity": 313.8949,
+     "positions": [
+      {
+       "symbol": "ARB/USDT:USDT",
+       "side": "long",
+       "size": 194.0,
+       "price": 0.2038079538949725,
+       "upnl": -0.044,
+       "we": 0.1258807350576276
+      },
+      {
+       "symbol": "ENA/USDT:USDT",
+       "side": "long",
+       "size": 23.0,
+       "price": 0.2581191304347826,
+       "upnl": -0.0066,
+       "we": 0.0188736191490085
+      },
+      {
+       "symbol": "WLD/USDT:USDT",
+       "side": "long",
+       "size": 8.0,
+       "price": 0.485875,
+       "upnl": -0.0043,
+       "we": 0.0123572612783582
+      },
+      {
+       "symbol": "NEAR/USDT:USDT",
+       "side": "long",
+       "size": 31.0,
+       "price": 4.768903225806452,
+       "upnl": -0.1644,
+       "we": 0.0469987801441846
+      }
+     ],
+     "orders": 8,
+     "ts": 1790718088042,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null
+     }
+    }
+   },
+   "lite": true,
+   "server_time": "00:41:28"
+  },
+  "replay_stats": {
+   "days": 29.96,
+   "fills": 1861,
+   "fills_per_day": 62.1,
+   "position_opens": 564,
+   "position_closes": 560,
+   "position_msgs_per_day": 37.5,
+   "start_equity": 299.9975,
+   "end_equity": 313.8949,
+   "max_dd_pct": 3.7,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "2. Основной бот: обвал февраля 2025 и стоп по просадке",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "Telegram: предупреждения о защите капитала (жёлтый/оранжевый)",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «сработал стоп» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «стоп завершён… продолжит после паузы»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "панель во время паузы видит стоп и срок паузы",
+    "ok": true,
+    "detail": "{'enabled': True, 'tier': 'red', 'halted': True, 'no_restart_latched': False, 'cooldown_until_ms': 1739130300000}"
+   },
+   {
+    "name": "Telegram: статус во время паузы — «пауза до …»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «пауза закончилась, торговля возобновлена»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "нет ложной тревоги «бот не работает» во время паузы",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "капитал в конце совпадает с расчётом passivbot",
+    "ok": true,
+    "detail": "200.3764 против 200.38"
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "careful_stop",
+    "balance": 300.0,
+    "leverage": 10,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "careful_stop": {
+     "name": "Осторожный + стоп",
+     "risk": "low",
+     "desc": "Настройки автора (экспозиция 1,5, до 7 монет) плюс стоп капитала: если счёт просел на 35% от пика, бот закрывает всё и 3 дня отдыхает. Единственный вариант, который был в плюсе в каждом году: 2022 +25%, 2023 +37%, 2024 +77%, 2025 +6%, 2026 (9 мес.) +42%. Сплошняком 2022–2026: +590% (≈ +3,4% в месяц), худшая просадка 52%. Рекомендуется.",
+     "min_balance_hint": 150,
+     "overrides": {
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.35,
+      "bot.long.hsl.restart_after_red_policy": "always",
+      "bot.long.hsl.cooldown_minutes_after_red": 4320.0,
+      "live.hsl_signal_mode": "unified"
+     }
+    },
+    "careful": {
+     "name": "Осторожный (без стопа)",
+     "risk": "medium",
+     "desc": "Настройки автора passivbot без стопа. По годам тоже в плюсе, но в феврале–апреле 2025 счёт падал на 90% (с $1206 до $114) и вернулся к пику только к сентябрю 2026. Сплошняком 2022–2026: +289%, просадка 91%.",
+     "min_balance_hint": 150,
+     "overrides": {}
+    },
+    "tuned_moderate": {
+     "name": "Подобранный · умеренный",
+     "risk": "high",
+     "desc": "Подобран оптимизатором на декабре 2025–июле 2026: 3 монеты, экспозиция 0,95. На своём периоде +222%, но на новом для него 2025 году всего +17% за 9 месяцев при просадке 48%. Подогнан под историю — не рекомендуется.",
+     "min_balance_hint": 150,
+     "base": "tuned/tuned_moderate.json",
+     "overrides": {}
+    },
+    "balanced": {
+     "name": "Сбалансированный",
+     "risk": "high",
+     "desc": "Настройки автора с экспозицией 3. Ликвидирован в 2024 и в 2025 году. Не рекомендуется.",
+     "min_balance_hint": 150,
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 3.0
+     }
+    },
+    "tuned_growth": {
+     "name": "Подобранный · доходный",
+     "risk": "high",
+     "desc": "Подобран оптимизатором: 3 монеты, экспозиция 1,2. На своём периоде +260%, на новом для него 2025 году +25% за 9 месяцев при просадке 49%. Не рекомендуется.",
+     "min_balance_hint": 150,
+     "base": "tuned/tuned_growth.json",
+     "overrides": {}
+    },
+    "aggressive": {
+     "name": "Агрессивный",
+     "risk": "high",
+     "desc": "Настройки автора с экспозицией 5. Ликвидирован в обвал октября 2025 (−99% за месяц); экспозиция 2 и выше не пережила 2022–2026 подряд. Только для денег, которые не жалко потерять.",
+     "min_balance_hint": 150,
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 5.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 0.71,
+    "coins": [
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.11,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "ALGO",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 47
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.5,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.73,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.14,
+      "ok": false,
+      "turnover_m": 47
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.17,
+      "ok": false,
+      "turnover_m": 46
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.17,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.21,
+      "ok": false,
+      "turnover_m": 25
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.52,
+      "ok": false,
+      "turnover_m": 36
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.55,
+      "ok": false,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.74,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.33,
+      "ok": false,
+      "turnover_m": 27
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.52,
+      "ok": false,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.11,
+      "ok": false,
+      "turnover_m": 22
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.12,
+      "ok": false,
+      "turnover_m": 33
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.56,
+      "ok": false,
+      "turnover_m": 11
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 5.18,
+      "ok": false,
+      "turnover_m": 24
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.43,
+      "ok": false,
+      "turnover_m": 27
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.85,
+      "ok": false,
+      "turnover_m": 12
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": false,
+      "turnover_m": 14
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.72,
+      "ok": false,
+      "turnover_m": 29
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.83,
+      "ok": false,
+      "turnover_m": 39
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": false,
+      "turnover_m": 20
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.59,
+      "ok": false,
+      "turnover_m": 18
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 12.11,
+      "ok": false,
+      "turnover_m": 526
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 14.46,
+      "ok": false,
+      "turnover_m": 121
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 15.51,
+      "ok": false,
+      "turnover_m": 273
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 27.29,
+      "ok": false,
+      "turnover_m": 403
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.48,
+      "ok": false,
+      "turnover_m": 9
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 84.2,
+      "ok": false,
+      "turnover_m": 292
+     }
+    ],
+    "ok_count": 8,
+    "params": {
+     "exposure": 1.5,
+     "positions": 7.0,
+     "allowance": 0.37,
+     "initial_pct": 0.0081,
+     "hsl_enabled": true,
+     "hsl_threshold": 0.35
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": true,
+    "started": "2026-09-30 00:41",
+    "preset": "careful_stop",
+    "gave_up": null,
+    "snapshot": {
+     "balance": 200.3325,
+     "equity": 200.3764,
+     "positions": [
+      {
+       "symbol": "ENA/USDT:USDT",
+       "side": "long",
+       "size": 31.0,
+       "price": 0.3949841935483871,
+       "upnl": 0.0439,
+       "we": 0.0611294334443292
+      }
+     ],
+     "orders": 2,
+     "ts": 1790718240562,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null
+     }
+    }
+   },
+   "lite": true,
+   "server_time": "00:44:00"
+  },
+  "replay_stats": {
+   "days": 49.96,
+   "fills": 2152,
+   "fills_per_day": 43.1,
+   "position_opens": 539,
+   "position_closes": 538,
+   "position_msgs_per_day": 21.6,
+   "start_equity": 300.0211,
+   "end_equity": 200.3764,
+   "max_dd_pct": 46.2,
+   "panic_fills": 7,
+   "first_panic_ms": 1738871040000,
+   "last_panic_ms": 1738871100000
+  }
+ },
+ {
+  "name": "3. Турбо: ставка удвоилась (февраль 2026)",
+  "app": "turbo",
+  "checks": [
+   {
+    "name": "ставка закрыта с итогом ≈ ×2",
+    "ok": true,
+    "detail": "старт 200.097, итог 399.9194 (×2.00)"
+   },
+   {
+    "name": "бот остановлен после фиксации",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "бот перезапускался в режиме panic и закрыл позиции",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «капитал на старте ставки»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «фиксация: цель ×2 достигнута» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «ставка закрыта»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: нет лишнего «бот остановлен»",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "turbo_smart",
+    "balance": 200.0,
+    "leverage": 25,
+    "auto_lock": true,
+    "target_mult": 2.0,
+    "regime_filter": true,
+    "profit_guard": false,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "turbo_smart": {
+     "name": "Умный ва-банк",
+     "risk": "high",
+     "desc": "3 монеты, экспозиция 20, стоп движка при просадке 40%, ставка только когда BTC выше средней за 200 дней, цель ×2. Правила выбраны на 2025–2026 и проверены на новых для них 2022–2024: там ×2 — 57%, сгорело 21%, средний итог ставки +38%, а в медвежьем 2022 фильтр не разрешил ни одной ставки. Всего за 2022–2026: 78 ставок из 160 месяцев. Ставьте не больше ~25% своих денег.",
+     "min_balance_hint": 100,
+     "odds": {
+      "bets": 78,
+      "episodes": 160,
+      "p_target": 59,
+      "p_burn": 22,
+      "p_loss50": 27,
+      "mean_pct": 38.6
+     },
+     "bet_defaults": {
+      "target_mult": 2.0,
+      "regime_filter": true,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 20.0,
+      "bot.long.risk.n_positions": 3.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.4,
+      "bot.long.hsl.restart_after_red_policy": "never",
+      "live.hsl_signal_mode": "unified"
+     }
+    },
+    "turbo_max": {
+     "name": "Максимум (без цели)",
+     "risk": "high",
+     "desc": "То же, что «Умный ва-банк», но без фиксации при ×2 — держит весь месяц. Средний итог ставки намного выше (+83% в 2025–26, +150% в 2022–24), но сгорает чаще: 36–38% ставок, а в 2024 году — 59%. Огромный разброс: либо кратный рост, либо ноль.",
+     "min_balance_hint": 100,
+     "odds": {
+      "bets": 78,
+      "episodes": 160,
+      "p_target": 0,
+      "p_burn": 37,
+      "p_loss50": 42,
+      "mean_pct": 131.4
+     },
+     "bet_defaults": {
+      "target_mult": 0,
+      "regime_filter": true,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 20.0,
+      "bot.long.risk.n_positions": 3.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.4,
+      "bot.long.hsl.restart_after_red_policy": "never",
+      "live.hsl_signal_mode": "unified"
+     }
+    },
+    "turbo_1": {
+     "name": "Ва-банк ×2 (без фильтра и стопа)",
+     "risk": "high",
+     "episode_idx": 6,
+     "desc": "Прежний вариант для сравнения: ставка каждый месяц при любом рынке, без стопа. Удвоил 51%, сжёг 36%, средний итог ставки +23%.",
+     "min_balance_hint": 100,
+     "bet_defaults": {
+      "target_mult": 2.0,
+      "regime_filter": false,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 20.0,
+      "bot.long.risk.n_positions": 3.0
+     }
+    },
+    "turbo_safe": {
+     "name": "Разгон (экспозиция 5)",
+     "risk": "high",
+     "episode_idx": 1,
+     "desc": "Для сравнения: настройки автора с экспозицией 5 и 7 монетами. Ни разу не удвоил, сгорел в 6% месяцев (все — обвал октября 2025), средний итог +10%.",
+     "min_balance_hint": 150,
+     "bet_defaults": {
+      "target_mult": 2.0,
+      "regime_filter": false,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 5.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 14.8,
+    "coins": [
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.11,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "ALGO",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 47
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.5,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.73,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 47
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 46
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.21,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 36
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.55,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.33,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.52,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.11,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.12,
+      "ok": true,
+      "turnover_m": 33
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.56,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 5.18,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.43,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.85,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.72,
+      "ok": true,
+      "turnover_m": 29
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.83,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.59,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 12.11,
+      "ok": true,
+      "turnover_m": 526
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 14.46,
+      "ok": true,
+      "turnover_m": 121
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 15.51,
+      "ok": false,
+      "turnover_m": 273
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 27.29,
+      "ok": false,
+      "turnover_m": 403
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.48,
+      "ok": false,
+      "turnover_m": 9
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 84.2,
+      "ok": false,
+      "turnover_m": 292
+     }
+    ],
+    "ok_count": 31,
+    "params": {
+     "exposure": 20.0,
+     "positions": 3.0,
+     "allowance": 0.37,
+     "initial_pct": 0.0081,
+     "hsl_enabled": true,
+     "hsl_threshold": 0.4
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": false,
+    "started": "2026-09-30 00:44",
+    "preset": "turbo_smart",
+    "gave_up": null,
+    "snapshot": {
+     "balance": 399.9194,
+     "equity": 399.9194,
+     "positions": [],
+     "orders": 0,
+     "ts": 1790718319126,
+     "hsl": {
+      "enabled": true,
+      "tier": "green",
+      "halted": false,
+      "no_restart_latched": false,
+      "cooldown_until_ms": null
+     }
+    }
+   },
+   "bet": {
+    "state": "done",
+    "started_ms": 1790718242651,
+    "start_equity": 200.097,
+    "target_mult": 2.0,
+    "auto_lock": true,
+    "profit_guard": false,
+    "preset": "turbo_smart",
+    "started": "2026-09-30 00:44",
+    "had_positions": true,
+    "peak_equity": 402.2789,
+    "last_equity": 402.2789,
+    "lock_reason": "цель ×2 достигнута: 402.28 USDT",
+    "lock_started_ms": 1790718289067,
+    "final_equity": 399.9194,
+    "finished": "2026-09-30 00:45"
+   },
+   "regime": {
+    "btc": 83502.8,
+    "sma": 71173.65,
+    "ok": true,
+    "gap_pct": 17.3,
+    "checked": "2026-09-30 00:44"
+   },
+   "lite": true,
+   "episodes": [
+    {
+     "name": "Автор, экспозиция 5, 7 монет",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 0.0,
+     "p_burn": 5.7,
+     "p_loss50": 5.7,
+     "p_positive": 88.7,
+     "mean_pct": 9.5,
+     "median_pct": 13.4,
+     "worst_pct": -95.0,
+     "days_to_double_median": null,
+     "periods": {
+      "2025": {
+       "p_double": 0.0,
+       "p_burn": 12.0,
+       "mean_pct": 6.4,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 0.0,
+       "p_burn": 0.0,
+       "mean_pct": 12.3,
+       "episodes": 28
+      }
+     },
+     "idx": 1
+    },
+    {
+     "name": "Автор, экспозиция 8, 3 монеты",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 11.3,
+     "p_burn": 32.1,
+     "p_loss50": 32.1,
+     "p_positive": 62.3,
+     "mean_pct": 0.1,
+     "median_pct": 24.1,
+     "worst_pct": -95.0,
+     "days_to_double_median": 23.8,
+     "periods": {
+      "2025": {
+       "p_double": 12.0,
+       "p_burn": 48.0,
+       "mean_pct": -14.3,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 10.7,
+       "p_burn": 17.9,
+       "mean_pct": 12.9,
+       "episodes": 28
+      }
+     },
+     "idx": 4
+    },
+    {
+     "name": "Автор, экспозиция 12, 3 монеты",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 24.5,
+     "p_burn": 28.3,
+     "p_loss50": 30.2,
+     "p_positive": 64.2,
+     "mean_pct": 17.9,
+     "median_pct": 45.0,
+     "worst_pct": -95.0,
+     "days_to_double_median": 18.9,
+     "periods": {
+      "2025": {
+       "p_double": 36.0,
+       "p_burn": 32.0,
+       "mean_pct": 25.5,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 14.3,
+       "p_burn": 25.0,
+       "mean_pct": 11.1,
+       "episodes": 28
+      }
+     },
+     "idx": 5
+    },
+    {
+     "name": "Автор, экспозиция 20, 3 монеты",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 50.9,
+     "p_burn": 35.8,
+     "p_loss50": 35.8,
+     "p_positive": 62.3,
+     "mean_pct": 22.9,
+     "median_pct": 100.0,
+     "worst_pct": -95.0,
+     "days_to_double_median": 19.8,
+     "periods": {
+      "2025": {
+       "p_double": 56.0,
+       "p_burn": 36.0,
+       "mean_pct": 29.1,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 46.4,
+       "p_burn": 35.7,
+       "mean_pct": 17.4,
+       "episodes": 28
+      }
+     },
+     "idx": 6
+    },
+    {
+     "name": "Автор, экспозиция 12, 3 монеты + стоп −50%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 22.6,
+     "p_burn": 15.1,
+     "p_loss50": 32.1,
+     "p_positive": 60.4,
+     "mean_pct": 14.9,
+     "median_pct": 38.7,
+     "worst_pct": -95.0,
+     "days_to_double_median": 17.9,
+     "periods": {
+      "2025": {
+       "p_double": 36.0,
+       "p_burn": 28.0,
+       "mean_pct": 26.5,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 10.7,
+       "p_burn": 3.6,
+       "mean_pct": 4.5,
+       "episodes": 28
+      }
+     },
+     "idx": 13
+    },
+    {
+     "name": "Автор, экспозиция 20, 3 монеты + стоп −50%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 45.3,
+     "p_burn": 20.8,
+     "p_loss50": 37.7,
+     "p_positive": 56.6,
+     "mean_pct": 18.8,
+     "median_pct": 70.8,
+     "worst_pct": -95.0,
+     "days_to_double_median": 18.4,
+     "periods": {
+      "2025": {
+       "p_double": 52.0,
+       "p_burn": 32.0,
+       "mean_pct": 26.0,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 39.3,
+       "p_burn": 10.7,
+       "mean_pct": 12.4,
+       "episodes": 28
+      }
+     },
+     "idx": 14
+    },
+    {
+     "name": "Автор, экспозиция 20, 3 монеты + стоп −40%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 47.2,
+     "p_burn": 17.0,
+     "p_loss50": 28.3,
+     "p_positive": 56.6,
+     "mean_pct": 22.1,
+     "median_pct": 70.8,
+     "worst_pct": -95.0,
+     "days_to_double_median": 18.6,
+     "periods": {
+      "2025": {
+       "p_double": 56.0,
+       "p_burn": 28.0,
+       "mean_pct": 27.0,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 39.3,
+       "p_burn": 7.1,
+       "mean_pct": 17.8,
+       "episodes": 28
+      }
+     },
+     "idx": 15
+    },
+    {
+     "name": "Автор, экспозиция 16, 3 монеты + стоп −50%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 30.2,
+     "p_burn": 20.8,
+     "p_loss50": 39.6,
+     "p_positive": 49.1,
+     "mean_pct": 5.1,
+     "median_pct": -26.3,
+     "worst_pct": -95.0,
+     "days_to_double_median": 16.3,
+     "periods": {
+      "2025": {
+       "p_double": 48.0,
+       "p_burn": 24.0,
+       "mean_pct": 25.0,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 14.3,
+       "p_burn": 17.9,
+       "mean_pct": -12.6,
+       "episodes": 28
+      }
+     },
+     "idx": 16
+    },
+    {
+     "name": "Автор, экспозиция 12, 3 монеты + стоп −40%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 20.8,
+     "p_burn": 11.3,
+     "p_loss50": 24.5,
+     "p_positive": 45.3,
+     "mean_pct": 5.6,
+     "median_pct": -10.6,
+     "worst_pct": -95.0,
+     "days_to_double_median": 17.0,
+     "periods": {
+      "2025": {
+       "p_double": 36.0,
+       "p_burn": 20.0,
+       "mean_pct": 26.1,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 7.1,
+       "p_burn": 3.6,
+       "mean_pct": -12.7,
+       "episodes": 28
+      }
+     },
+     "idx": 17
+    }
+   ],
+   "server_time": "00:45:20"
+  },
+  "replay_stats": {
+   "days": 29.96,
+   "fills": 1075,
+   "fills_per_day": 35.9,
+   "position_opens": 323,
+   "position_closes": 321,
+   "position_msgs_per_day": 21.5,
+   "start_equity": 199.994,
+   "end_equity": 1207.8359,
+   "max_dd_pct": 34.4,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "4. Турбо: ставка сгорела (май 2026), затем попытка новой ставки",
+  "app": "turbo",
+  "checks": [
+   {
+    "name": "ставка помечена «сгорела», есть дата «можно снова»",
+    "ok": true,
+    "detail": "итог 10.0, снова с 30.10.2026"
+   },
+   {
+    "name": "итог — остаток после ликвидации, причина названа честно",
+    "ok": true,
+    "detail": "итог 10.0"
+   },
+   {
+    "name": "Telegram: нет лишнего «бот остановлен»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "бот остановлен",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «сработал стоп» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «ставка сгорела» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "новая ставка сразу после сгоревшей — «не началась», бот остановлен",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "Telegram: «ставка не началась» со звуком",
+    "ok": false,
+    "detail": ""
+   }
+  ],
+  "notes": [],
+  "final_state": {
+   "settings": {
+    "preset": "turbo_smart",
+    "balance": 200.0,
+    "leverage": 25,
+    "auto_lock": true,
+    "target_mult": 2.0,
+    "regime_filter": true,
+    "profit_guard": false,
+    "exposure": null,
+    "positions": null,
+    "hsl_enabled": null,
+    "hsl_threshold": null
+   },
+   "presets": {
+    "turbo_smart": {
+     "name": "Умный ва-банк",
+     "risk": "high",
+     "desc": "3 монеты, экспозиция 20, стоп движка при просадке 40%, ставка только когда BTC выше средней за 200 дней, цель ×2. Правила выбраны на 2025–2026 и проверены на новых для них 2022–2024: там ×2 — 57%, сгорело 21%, средний итог ставки +38%, а в медвежьем 2022 фильтр не разрешил ни одной ставки. Всего за 2022–2026: 78 ставок из 160 месяцев. Ставьте не больше ~25% своих денег.",
+     "min_balance_hint": 100,
+     "odds": {
+      "bets": 78,
+      "episodes": 160,
+      "p_target": 59,
+      "p_burn": 22,
+      "p_loss50": 27,
+      "mean_pct": 38.6
+     },
+     "bet_defaults": {
+      "target_mult": 2.0,
+      "regime_filter": true,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 20.0,
+      "bot.long.risk.n_positions": 3.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.4,
+      "bot.long.hsl.restart_after_red_policy": "never",
+      "live.hsl_signal_mode": "unified"
+     }
+    },
+    "turbo_max": {
+     "name": "Максимум (без цели)",
+     "risk": "high",
+     "desc": "То же, что «Умный ва-банк», но без фиксации при ×2 — держит весь месяц. Средний итог ставки намного выше (+83% в 2025–26, +150% в 2022–24), но сгорает чаще: 36–38% ставок, а в 2024 году — 59%. Огромный разброс: либо кратный рост, либо ноль.",
+     "min_balance_hint": 100,
+     "odds": {
+      "bets": 78,
+      "episodes": 160,
+      "p_target": 0,
+      "p_burn": 37,
+      "p_loss50": 42,
+      "mean_pct": 131.4
+     },
+     "bet_defaults": {
+      "target_mult": 0,
+      "regime_filter": true,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 20.0,
+      "bot.long.risk.n_positions": 3.0,
+      "bot.long.hsl.enabled": true,
+      "bot.long.hsl.red_threshold": 0.4,
+      "bot.long.hsl.restart_after_red_policy": "never",
+      "live.hsl_signal_mode": "unified"
+     }
+    },
+    "turbo_1": {
+     "name": "Ва-банк ×2 (без фильтра и стопа)",
+     "risk": "high",
+     "episode_idx": 6,
+     "desc": "Прежний вариант для сравнения: ставка каждый месяц при любом рынке, без стопа. Удвоил 51%, сжёг 36%, средний итог ставки +23%.",
+     "min_balance_hint": 100,
+     "bet_defaults": {
+      "target_mult": 2.0,
+      "regime_filter": false,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 20.0,
+      "bot.long.risk.n_positions": 3.0
+     }
+    },
+    "turbo_safe": {
+     "name": "Разгон (экспозиция 5)",
+     "risk": "high",
+     "episode_idx": 1,
+     "desc": "Для сравнения: настройки автора с экспозицией 5 и 7 монетами. Ни разу не удвоил, сгорел в 6% месяцев (все — обвал октября 2025), средний итог +10%.",
+     "min_balance_hint": 150,
+     "bet_defaults": {
+      "target_mult": 2.0,
+      "regime_filter": false,
+      "profit_guard": false
+     },
+     "overrides": {
+      "bot.long.risk.total_wallet_exposure_limit": 5.0
+     }
+    }
+   },
+   "coins": {
+    "first_entry": 14.8,
+    "coins": [
+     {
+      "coin": "APT",
+      "min_cost": 0.08,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "FIL",
+      "min_cost": 0.11,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "ALGO",
+      "min_cost": 0.13,
+      "ok": true,
+      "turnover_m": 6
+     },
+     {
+      "coin": "RENDER",
+      "min_cost": 0.2,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ARB",
+      "min_cost": 0.21,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "ENA",
+      "min_cost": 0.26,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "NEAR",
+      "min_cost": 0.49,
+      "ok": true,
+      "turnover_m": 47
+     },
+     {
+      "coin": "WLD",
+      "min_cost": 0.5,
+      "ok": true,
+      "turnover_m": 16
+     },
+     {
+      "coin": "ASTER",
+      "min_cost": 0.73,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "HBAR",
+      "min_cost": 1.14,
+      "ok": true,
+      "turnover_m": 47
+     },
+     {
+      "coin": "SUI",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 46
+     },
+     {
+      "coin": "AVAX",
+      "min_cost": 1.17,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "DOT",
+      "min_cost": 1.21,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "LINK",
+      "min_cost": 1.52,
+      "ok": true,
+      "turnover_m": 36
+     },
+     {
+      "coin": "GRAM",
+      "min_cost": 1.55,
+      "ok": true,
+      "turnover_m": 25
+     },
+     {
+      "coin": "AAVE",
+      "min_cost": 1.74,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "XLM",
+      "min_cost": 2.33,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "ADA",
+      "min_cost": 2.52,
+      "ok": true,
+      "turnover_m": 26
+     },
+     {
+      "coin": "BCH",
+      "min_cost": 3.11,
+      "ok": true,
+      "turnover_m": 22
+     },
+     {
+      "coin": "TAO",
+      "min_cost": 3.12,
+      "ok": true,
+      "turnover_m": 33
+     },
+     {
+      "coin": "KAS",
+      "min_cost": 4.56,
+      "ok": true,
+      "turnover_m": 11
+     },
+     {
+      "coin": "ONDO",
+      "min_cost": 5.18,
+      "ok": true,
+      "turnover_m": 24
+     },
+     {
+      "coin": "XMR",
+      "min_cost": 5.43,
+      "ok": true,
+      "turnover_m": 27
+     },
+     {
+      "coin": "LTC",
+      "min_cost": 6.85,
+      "ok": true,
+      "turnover_m": 12
+     },
+     {
+      "coin": "BNB",
+      "min_cost": 7.65,
+      "ok": true,
+      "turnover_m": 14
+     },
+     {
+      "coin": "INJ",
+      "min_cost": 7.72,
+      "ok": true,
+      "turnover_m": 29
+     },
+     {
+      "coin": "HYPE",
+      "min_cost": 8.83,
+      "ok": true,
+      "turnover_m": 39
+     },
+     {
+      "coin": "UNI",
+      "min_cost": 9.05,
+      "ok": true,
+      "turnover_m": 20
+     },
+     {
+      "coin": "DOGE",
+      "min_cost": 9.59,
+      "ok": true,
+      "turnover_m": 18
+     },
+     {
+      "coin": "SOL",
+      "min_cost": 12.11,
+      "ok": true,
+      "turnover_m": 526
+     },
+     {
+      "coin": "ZEC",
+      "min_cost": 14.46,
+      "ok": true,
+      "turnover_m": 121
+     },
+     {
+      "coin": "XRP",
+      "min_cost": 15.51,
+      "ok": false,
+      "turnover_m": 273
+     },
+     {
+      "coin": "ETH",
+      "min_cost": 27.29,
+      "ok": false,
+      "turnover_m": 403
+     },
+     {
+      "coin": "TRX",
+      "min_cost": 33.48,
+      "ok": false,
+      "turnover_m": 9
+     },
+     {
+      "coin": "BTC",
+      "min_cost": 84.2,
+      "ok": false,
+      "turnover_m": 292
+     }
+    ],
+    "ok_count": 31,
+    "params": {
+     "exposure": 20.0,
+     "positions": 3.0,
+     "allowance": 0.37,
+     "initial_pct": 0.0081,
+     "hsl_enabled": true,
+     "hsl_threshold": 0.4
+    }
+   },
+   "job": {
+    "state": "idle"
+   },
+   "backtest": null,
+   "paper": {
+    "info": null,
+    "result": null
+   },
+   "keys": {
+    "set": true,
+    "key": "SIMU…KEY",
+    "secret": "задан",
+    "passphrase": "задан"
+   },
+   "live": {
+    "running": false,
+    "started": "2026-09-30 00:45",
+    "preset": "turbo_smart",
+    "gave_up": null,
+    "snapshot": {
+     "balance": 10.0,
+     "equity": 10.0,
+     "positions": [],
+     "orders": 0,
+     "ts": 1790718383511,
+     "hsl": {
+      "enabled": true,
+      "tier": "red",
+      "halted": true,
+      "no_restart_latched": true,
+      "cooldown_until_ms": null
+     }
+    }
+   },
+   "bet": {
+    "state": "burned",
+    "started_ms": 1790718322061,
+    "start_equity": 199.9921,
+    "target_mult": 2.0,
+    "auto_lock": true,
+    "profit_guard": false,
+    "preset": "turbo_smart",
+    "started": "2026-09-30 00:45",
+    "had_positions": true,
+    "peak_equity": 264.1499,
+    "last_equity": 124.9734,
+    "final_equity": 10.0,
+    "finished": "2026-09-30 00:46",
+    "trade_again": "30.10.2026"
+   },
+   "regime": {
+    "btc": 83502.8,
+    "sma": 71173.65,
+    "ok": true,
+    "gap_pct": 17.3,
+    "checked": "2026-09-30 00:45"
+   },
+   "lite": true,
+   "episodes": [
+    {
+     "name": "Автор, экспозиция 5, 7 монет",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 0.0,
+     "p_burn": 5.7,
+     "p_loss50": 5.7,
+     "p_positive": 88.7,
+     "mean_pct": 9.5,
+     "median_pct": 13.4,
+     "worst_pct": -95.0,
+     "days_to_double_median": null,
+     "periods": {
+      "2025": {
+       "p_double": 0.0,
+       "p_burn": 12.0,
+       "mean_pct": 6.4,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 0.0,
+       "p_burn": 0.0,
+       "mean_pct": 12.3,
+       "episodes": 28
+      }
+     },
+     "idx": 1
+    },
+    {
+     "name": "Автор, экспозиция 8, 3 монеты",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 11.3,
+     "p_burn": 32.1,
+     "p_loss50": 32.1,
+     "p_positive": 62.3,
+     "mean_pct": 0.1,
+     "median_pct": 24.1,
+     "worst_pct": -95.0,
+     "days_to_double_median": 23.8,
+     "periods": {
+      "2025": {
+       "p_double": 12.0,
+       "p_burn": 48.0,
+       "mean_pct": -14.3,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 10.7,
+       "p_burn": 17.9,
+       "mean_pct": 12.9,
+       "episodes": 28
+      }
+     },
+     "idx": 4
+    },
+    {
+     "name": "Автор, экспозиция 12, 3 монеты",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 24.5,
+     "p_burn": 28.3,
+     "p_loss50": 30.2,
+     "p_positive": 64.2,
+     "mean_pct": 17.9,
+     "median_pct": 45.0,
+     "worst_pct": -95.0,
+     "days_to_double_median": 18.9,
+     "periods": {
+      "2025": {
+       "p_double": 36.0,
+       "p_burn": 32.0,
+       "mean_pct": 25.5,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 14.3,
+       "p_burn": 25.0,
+       "mean_pct": 11.1,
+       "episodes": 28
+      }
+     },
+     "idx": 5
+    },
+    {
+     "name": "Автор, экспозиция 20, 3 монеты",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 50.9,
+     "p_burn": 35.8,
+     "p_loss50": 35.8,
+     "p_positive": 62.3,
+     "mean_pct": 22.9,
+     "median_pct": 100.0,
+     "worst_pct": -95.0,
+     "days_to_double_median": 19.8,
+     "periods": {
+      "2025": {
+       "p_double": 56.0,
+       "p_burn": 36.0,
+       "mean_pct": 29.1,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 46.4,
+       "p_burn": 35.7,
+       "mean_pct": 17.4,
+       "episodes": 28
+      }
+     },
+     "idx": 6
+    },
+    {
+     "name": "Автор, экспозиция 12, 3 монеты + стоп −50%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 22.6,
+     "p_burn": 15.1,
+     "p_loss50": 32.1,
+     "p_positive": 60.4,
+     "mean_pct": 14.9,
+     "median_pct": 38.7,
+     "worst_pct": -95.0,
+     "days_to_double_median": 17.9,
+     "periods": {
+      "2025": {
+       "p_double": 36.0,
+       "p_burn": 28.0,
+       "mean_pct": 26.5,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 10.7,
+       "p_burn": 3.6,
+       "mean_pct": 4.5,
+       "episodes": 28
+      }
+     },
+     "idx": 13
+    },
+    {
+     "name": "Автор, экспозиция 20, 3 монеты + стоп −50%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 45.3,
+     "p_burn": 20.8,
+     "p_loss50": 37.7,
+     "p_positive": 56.6,
+     "mean_pct": 18.8,
+     "median_pct": 70.8,
+     "worst_pct": -95.0,
+     "days_to_double_median": 18.4,
+     "periods": {
+      "2025": {
+       "p_double": 52.0,
+       "p_burn": 32.0,
+       "mean_pct": 26.0,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 39.3,
+       "p_burn": 10.7,
+       "mean_pct": 12.4,
+       "episodes": 28
+      }
+     },
+     "idx": 14
+    },
+    {
+     "name": "Автор, экспозиция 20, 3 монеты + стоп −40%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 47.2,
+     "p_burn": 17.0,
+     "p_loss50": 28.3,
+     "p_positive": 56.6,
+     "mean_pct": 22.1,
+     "median_pct": 70.8,
+     "worst_pct": -95.0,
+     "days_to_double_median": 18.6,
+     "periods": {
+      "2025": {
+       "p_double": 56.0,
+       "p_burn": 28.0,
+       "mean_pct": 27.0,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 39.3,
+       "p_burn": 7.1,
+       "mean_pct": 17.8,
+       "episodes": 28
+      }
+     },
+     "idx": 15
+    },
+    {
+     "name": "Автор, экспозиция 16, 3 монеты + стоп −50%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 30.2,
+     "p_burn": 20.8,
+     "p_loss50": 39.6,
+     "p_positive": 49.1,
+     "mean_pct": 5.1,
+     "median_pct": -26.3,
+     "worst_pct": -95.0,
+     "days_to_double_median": 16.3,
+     "periods": {
+      "2025": {
+       "p_double": 48.0,
+       "p_burn": 24.0,
+       "mean_pct": 25.0,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 14.3,
+       "p_burn": 17.9,
+       "mean_pct": -12.6,
+       "episodes": 28
+      }
+     },
+     "idx": 16
+    },
+    {
+     "name": "Автор, экспозиция 12, 3 монеты + стоп −40%",
+     "episodes": 53,
+     "errors": 0,
+     "p_double": 20.8,
+     "p_burn": 11.3,
+     "p_loss50": 24.5,
+     "p_positive": 45.3,
+     "mean_pct": 5.6,
+     "median_pct": -10.6,
+     "worst_pct": -95.0,
+     "days_to_double_median": 17.0,
+     "periods": {
+      "2025": {
+       "p_double": 36.0,
+       "p_burn": 20.0,
+       "mean_pct": 26.1,
+       "episodes": 25
+      },
+      "2025-26": {
+       "p_double": 7.1,
+       "p_burn": 3.6,
+       "mean_pct": -12.7,
+       "episodes": 28
+      }
+     },
+     "idx": 17
+    }
+   ],
+   "server_time": "00:46:24"
+  },
+  "replay_stats": {
+   "days": 6.21,
+   "fills": 267,
+   "fills_per_day": 43.0,
+   "position_opens": 58,
+   "position_closes": 55,
+   "position_msgs_per_day": 18.2,
+   "start_equity": 199.8046,
+   "end_equity": 10.0,
+   "max_dd_pct": 96.2,
+   "panic_fills": 0,
+   "first_panic_ms": null,
+   "last_panic_ms": null
+  }
+ },
+ {
+  "name": "5. Сбои: падение бота, перезапуск панели, перезагрузка сервера, бот падает при запуске, остановка из Telegram",
+  "app": "v4",
+  "checks": [
+   {
+    "name": "5.1 бот упал → панель подняла его сама",
+    "ok": true,
+    "detail": "[36084] → [36121]"
+   },
+   {
+    "name": "5.1 Telegram: «автовосстановление» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.1 Telegram: в сводке ошибок — суть падения, а не «Traceback»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.2 панель перезапущена — бот тот же процесс, не дублируется",
+    "ok": true,
+    "detail": "[36121] → [36121]"
+   },
+   {
+    "name": "5.2 без лишнего «автовосстановления»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.2 пока панели нет — только «панель не отвечает», без ложного «процесса нет»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.3 после «перезагрузки» панель сама подняла бота",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.4 падает при запуске — 3 попытки, затем стоп автоперезапуска",
+    "ok": true,
+    "detail": "попыток: 3"
+   },
+   {
+    "name": "5.4 Telegram: «автоперезапуск остановлен» со звуком",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.4 Telegram: тревога «бот должен работать, но процесса нет»",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.4 после исправления «Запуск» снова работает, тревога снята",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.5 остановка из Telegram (с подтверждением) — бот остановлен",
+    "ok": true,
+    "detail": ""
+   },
+   {
+    "name": "5.5 Telegram: подтверждение и «бот остановлен»",
+    "ok": true,
+    "detail": ""
+   }
+  ],
+  "notes": []
+ }
+]

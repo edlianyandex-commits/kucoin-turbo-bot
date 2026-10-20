@@ -1,0 +1,243 @@
+mod analysis;
+mod backtest;
+mod closes;
+mod coin_selection;
+mod constants;
+mod dynamic;
+mod entries;
+mod equity_hard_stop_loss;
+mod gpu;
+mod hsl_revised;
+mod hsl_revised_candle_free;
+mod hsl_revised_controller;
+mod hsl_revised_evaluator;
+mod hsl_revised_history;
+mod hsl_revised_json;
+mod hsl_revised_prices;
+mod hsl_revised_snapshot;
+mod hsl_revised_sum;
+mod hsl_revised_trace;
+mod limit_fills;
+mod orchestrator;
+mod python;
+mod risk;
+mod strategies;
+mod trailing;
+mod types;
+mod utils;
+
+use coin_selection::{select_coin_indices_py, select_forager_candidates_py};
+use pyo3::prelude::*;
+use pyo3::types::PyDict;
+use pyo3::wrap_pyfunction;
+use python::*;
+use utils::*;
+
+#[pyfunction]
+fn runtime_build_info(py: Python<'_>) -> PyResult<PyObject> {
+    let info = PyDict::new_bound(py);
+    info.set_item("crate_version", env!("CARGO_PKG_VERSION"))?;
+    info.set_item(
+        "source_fingerprint",
+        option_env!("PASSIVBOT_RUST_SOURCE_FINGERPRINT").unwrap_or("unknown"),
+    )?;
+    Ok(info.into())
+}
+
+#[pyfunction]
+fn mps_ema_anchor_source_py() -> &'static str {
+    gpu::mps_ema_anchor_source()
+}
+
+#[pyfunction]
+fn mps_ema_anchor_long_no_hsl_source_py() -> &'static str {
+    gpu::mps_ema_anchor_long_no_hsl_source()
+}
+
+#[pyfunction]
+fn mps_ema_anchor_short_no_hsl_source_py() -> &'static str {
+    gpu::mps_ema_anchor_short_no_hsl_source()
+}
+
+#[pyfunction]
+fn mps_ema_anchor_multicoin_source_py() -> &'static str {
+    gpu::mps_ema_anchor_multicoin_source()
+}
+
+#[pyfunction]
+fn mps_ema_anchor_multicoin_long_source_py() -> &'static str {
+    gpu::mps_ema_anchor_multicoin_long_source()
+}
+
+#[pyfunction]
+fn mps_trailing_martingale_source_py() -> &'static str {
+    gpu::mps_trailing_martingale_source()
+}
+
+#[pyfunction]
+fn mps_trailing_martingale_long_hsl_source_py() -> &'static str {
+    gpu::mps_trailing_martingale_long_hsl_source()
+}
+
+#[pyfunction]
+fn mps_trailing_martingale_short_hsl_source_py() -> &'static str {
+    gpu::mps_trailing_martingale_short_hsl_source()
+}
+
+#[pyfunction]
+fn mps_trailing_martingale_long_no_hsl_source_py() -> &'static str {
+    gpu::mps_trailing_martingale_long_no_hsl_source()
+}
+
+#[pyfunction]
+fn mps_trailing_martingale_short_no_hsl_source_py() -> &'static str {
+    gpu::mps_trailing_martingale_short_no_hsl_source()
+}
+
+#[pyfunction]
+fn mps_trailing_martingale_multicoin_source_py() -> &'static str {
+    gpu::mps_trailing_martingale_multicoin_source()
+}
+
+#[pyfunction]
+fn mps_strategy_eq_recovery_distribution_source_py() -> &'static str {
+    gpu::mps_strategy_eq_recovery_distribution_source()
+}
+
+/// A Python module implemented in Rust.
+#[pymodule]
+fn passivbot_rust(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_class::<HlcvsBundlePy>()?;
+    m.add_class::<EquityHardStopRollingPeakPy>()?;
+    m.add_class::<EquityHardStopRuntimePy>()?;
+    m.add_function(wrap_pyfunction!(runtime_build_info, m)?)?;
+    m.add_function(wrap_pyfunction!(hsl_revised::signal_py, m)?)?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_controller::hsl_revised_controller,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(hsl_revised_trace::hsl_revised_trace, m)?)?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_evaluator::hsl_revised_evaluate,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_evaluator::hsl_revised_evaluate_grids,
+        m
+    )?)?;
+    m.add_class::<hsl_revised_prices::RevisedHslPriceGrid>()?;
+    m.add_class::<hsl_revised_prices::RevisedHslCandleSource>()?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_prices::hsl_revised_native_price_grid,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_history::hsl_revised_history,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(hsl_revised_prices::hsl_revised_prices, m)?)?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_prices::hsl_revised_price_grid,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_snapshot::hsl_revised_snapshot,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        hsl_revised_candle_free::hsl_revised_candle_free,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(mps_ema_anchor_source_py, m)?)?;
+    m.add_function(wrap_pyfunction!(mps_ema_anchor_long_no_hsl_source_py, m)?)?;
+    m.add_function(wrap_pyfunction!(mps_ema_anchor_short_no_hsl_source_py, m)?)?;
+    m.add_function(wrap_pyfunction!(mps_ema_anchor_multicoin_source_py, m)?)?;
+    m.add_function(wrap_pyfunction!(
+        mps_ema_anchor_multicoin_long_source_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(mps_trailing_martingale_source_py, m)?)?;
+    m.add_function(wrap_pyfunction!(
+        mps_trailing_martingale_long_hsl_source_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        mps_trailing_martingale_short_hsl_source_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        mps_trailing_martingale_long_no_hsl_source_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        mps_trailing_martingale_short_no_hsl_source_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        mps_trailing_martingale_multicoin_source_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(
+        mps_strategy_eq_recovery_distribution_source_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(round_, m)?)?;
+    m.add_function(wrap_pyfunction!(round_up, m)?)?;
+    m.add_function(wrap_pyfunction!(round_dn, m)?)?;
+    m.add_function(wrap_pyfunction!(round_dynamic, m)?)?;
+    m.add_function(wrap_pyfunction!(round_dynamic_up, m)?)?;
+    m.add_function(wrap_pyfunction!(round_dynamic_dn, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_diff, m)?)?;
+    m.add_function(wrap_pyfunction!(qty_to_cost, m)?)?;
+    m.add_function(wrap_pyfunction!(cost_to_qty, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_pnl_long, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_pnl_short, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_wallet_exposure, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_new_psize_pprice, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_next_entry_long_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_trailing_grid_v7_diagnostic_py, m)?)?;
+    m.add_function(wrap_pyfunction!(
+        calc_trailing_martingale_close_diagnostic_py,
+        m
+    )?)?;
+    m.add_function(wrap_pyfunction!(calc_next_close_long_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_entries_long_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_next_entry_short_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_next_close_short_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_entries_short_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_closes_long_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_closes_short_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_twel_enforcer_orders_py, m)?)?;
+    m.add_function(wrap_pyfunction!(run_backtest, m)?)?;
+    m.add_function(wrap_pyfunction!(run_backtest_bundle, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_auto_unstuck_allowance, m)?)?;
+    m.add_function(wrap_pyfunction!(hysteresis, m)?)?;
+    m.add_function(wrap_pyfunction!(ema_last_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_min_entry_qty_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_pprice_diff_int, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_pside_price_diff_int, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_price_diff_pside_int, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_order_price_diff, m)?)?;
+    m.add_function(wrap_pyfunction!(order_type_id_to_snake, m)?)?;
+    m.add_function(wrap_pyfunction!(all_order_types_ids, m)?)?;
+    m.add_function(wrap_pyfunction!(order_type_snake_to_id, m)?)?;
+    m.add_function(wrap_pyfunction!(get_order_id_type_from_string_alias, m)?)?;
+    m.add_function(wrap_pyfunction!(compute_ideal_orders_json, m)?)?;
+    m.add_function(wrap_pyfunction!(compute_protective_closes_json, m)?)?;
+    m.add_function(wrap_pyfunction!(get_strategy_spec, m)?)?;
+    m.add_function(wrap_pyfunction!(get_strategy_kinds, m)?)?;
+    m.add_function(wrap_pyfunction!(gate_entries_by_twel_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_unstucking_close_py, m)?)?;
+    m.add_function(wrap_pyfunction!(trailing_bundle_default_py, m)?)?;
+    m.add_function(wrap_pyfunction!(hsl_no_restart_triggered, m)?)?;
+    m.add_function(wrap_pyfunction!(hsl_coin_drawdown_signal, m)?)?;
+    m.add_function(wrap_pyfunction!(hsl_emergency_signal, m)?)?;
+    m.add_function(wrap_pyfunction!(hsl_red_episode_finalization, m)?)?;
+    m.add_function(wrap_pyfunction!(update_trailing_bundle_py, m)?)?;
+    m.add_function(wrap_pyfunction!(equity_hard_stop_step_py, m)?)?;
+    m.add_function(wrap_pyfunction!(select_coin_indices_py, m)?)?;
+    m.add_function(wrap_pyfunction!(select_forager_candidates_py, m)?)?;
+    m.add_function(wrap_pyfunction!(calc_ema_anchor_quote_series_py, m)?)?;
+
+    Ok(())
+}

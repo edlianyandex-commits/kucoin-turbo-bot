@@ -1,0 +1,279 @@
+{
+ "coins": [
+  "BTC",
+  "ETH",
+  "BNB",
+  "XRP",
+  "SOL",
+  "TRX",
+  "HYPE",
+  "DOGE",
+  "ZEC",
+  "XLM",
+  "ADA",
+  "LINK",
+  "XMR",
+  "CC",
+  "BCH",
+  "GRAM",
+  "LTC",
+  "HBAR",
+  "SUI",
+  "AVAX",
+  "NEAR",
+  "UNI",
+  "TAO",
+  "ASTER",
+  "ONDO",
+  "AAVE",
+  "DOT",
+  "WLD",
+  "MORPHO",
+  "POL",
+  "ATOM",
+  "RENDER",
+  "KAS",
+  "ENA",
+  "ALGO",
+  "FIL",
+  "ARB",
+  "APT",
+  "INJ"
+ ],
+ "kucoin": {
+  "BTC": {
+   "symbol": "XBTUSDTM",
+   "multiplier": 0.001,
+   "maxLeverage": 125,
+   "turnover24h": 292421393.3188
+  },
+  "ETH": {
+   "symbol": "ETHUSDTM",
+   "multiplier": 0.01,
+   "maxLeverage": 100,
+   "turnover24h": 402688046.8808
+  },
+  "BNB": {
+   "symbol": "BNBUSDTM",
+   "multiplier": 0.01,
+   "maxLeverage": 75,
+   "turnover24h": 14290226.344
+  },
+  "XRP": {
+   "symbol": "XRPUSDTM",
+   "multiplier": 10.0,
+   "maxLeverage": 75,
+   "turnover24h": 272648662.7512
+  },
+  "SOL": {
+   "symbol": "SOLUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 75,
+   "turnover24h": 525692212.836
+  },
+  "TRX": {
+   "symbol": "TRXUSDTM",
+   "multiplier": 100.0,
+   "maxLeverage": 75,
+   "turnover24h": 9042946.07
+  },
+  "HYPE": {
+   "symbol": "HYPEUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 75,
+   "turnover24h": 39090817.3262
+  },
+  "DOGE": {
+   "symbol": "DOGEUSDTM",
+   "multiplier": 100.0,
+   "maxLeverage": 75,
+   "turnover24h": 17625264.57
+  },
+  "ZEC": {
+   "symbol": "ZECUSDTM",
+   "multiplier": 0.01,
+   "maxLeverage": 75,
+   "turnover24h": 121223003.9758
+  },
+  "XLM": {
+   "symbol": "XLMUSDTM",
+   "multiplier": 10.0,
+   "maxLeverage": 75,
+   "turnover24h": 27483067.576
+  },
+  "ADA": {
+   "symbol": "ADAUSDTM",
+   "multiplier": 10.0,
+   "maxLeverage": 75,
+   "turnover24h": 25961784.977
+  },
+  "LINK": {
+   "symbol": "LINKUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 75,
+   "turnover24h": 36436846.8452
+  },
+  "XMR": {
+   "symbol": "XMRUSDTM",
+   "multiplier": 0.01,
+   "maxLeverage": 50,
+   "turnover24h": 26681150.8462
+  },
+  "CC": {
+   "symbol": "CCUSDTM",
+   "multiplier": 10.0,
+   "maxLeverage": 50,
+   "turnover24h": 225726.8682
+  },
+  "BCH": {
+   "symbol": "BCHUSDTM",
+   "multiplier": 0.01,
+   "maxLeverage": 75,
+   "turnover24h": 22382810.3316
+  },
+  "GRAM": {
+   "symbol": "GRAMUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 50,
+   "turnover24h": 25090327.3402
+  },
+  "LTC": {
+   "symbol": "LTCUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 75,
+   "turnover24h": 12404747.052
+  },
+  "HBAR": {
+   "symbol": "HBARUSDTM",
+   "multiplier": 10.0,
+   "maxLeverage": 75,
+   "turnover24h": 46893288.862
+  },
+  "SUI": {
+   "symbol": "SUIUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 75,
+   "turnover24h": 45874008.121
+  },
+  "AVAX": {
+   "symbol": "AVAXUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 75,
+   "turnover24h": 21969669.7528
+  },
+  "NEAR": {
+   "symbol": "NEARUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 75,
+   "turnover24h": 46722572.2918
+  },
+  "UNI": {
+   "symbol": "UNIUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 75,
+   "turnover24h": 20192349.162
+  },
+  "TAO": {
+   "symbol": "TAOUSDTM",
+   "multiplier": 0.01,
+   "maxLeverage": 75,
+   "turnover24h": 33238296.7664
+  },
+  "ASTER": {
+   "symbol": "ASTERUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 75,
+   "turnover24h": 22498634.50744
+  },
+  "ONDO": {
+   "symbol": "ONDOUSDTM",
+   "multiplier": 10.0,
+   "maxLeverage": 50,
+   "turnover24h": 23704017.744
+  },
+  "AAVE": {
+   "symbol": "AAVEUSDTM",
+   "multiplier": 0.01,
+   "maxLeverage": 75,
+   "turnover24h": 22273224.8668
+  },
+  "DOT": {
+   "symbol": "DOTUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 75,
+   "turnover24h": 24626662.781
+  },
+  "WLD": {
+   "symbol": "WLDUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 50,
+   "turnover24h": 15917750.9048
+  },
+  "MORPHO": {
+   "symbol": "MORPHOUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 50,
+   "turnover24h": 125461.8326
+  },
+  "POL": {
+   "symbol": "POLUSDTM",
+   "multiplier": 10.0,
+   "maxLeverage": 50,
+   "turnover24h": 915077.8482
+  },
+  "ATOM": {
+   "symbol": "ATOMUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 50,
+   "turnover24h": 532591.7328
+  },
+  "RENDER": {
+   "symbol": "RENDERUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 50,
+   "turnover24h": 15727308.3448
+  },
+  "KAS": {
+   "symbol": "KASUSDTM",
+   "multiplier": 100.0,
+   "maxLeverage": 50,
+   "turnover24h": 11090341.1936
+  },
+  "ENA": {
+   "symbol": "ENAUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 75,
+   "turnover24h": 25295646.17276
+  },
+  "ALGO": {
+   "symbol": "ALGOUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 50,
+   "turnover24h": 5684546.96788
+  },
+  "FIL": {
+   "symbol": "FILUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 50,
+   "turnover24h": 23507341.94602
+  },
+  "ARB": {
+   "symbol": "ARBUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 75,
+   "turnover24h": 25273793.17448
+  },
+  "APT": {
+   "symbol": "APTUSDTM",
+   "multiplier": 0.1,
+   "maxLeverage": 50,
+   "turnover24h": 22335724.16394
+  },
+  "INJ": {
+   "symbol": "INJUSDTM",
+   "multiplier": 1.0,
+   "maxLeverage": 50,
+   "turnover24h": 28515790.646
+  }
+ }
+}
