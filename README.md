@@ -1,11 +1,11 @@
-# TB Turbo 6.0 — a KuCoin Futures bot that adapts to the strategy, not the other way round
+# KuCoin Turbo Bot 6.0 — a futures trading bot that adapts to the strategy, not the other way round
 
 **English** · [Русский](README.ru.md)
 
 [![Support the project — USDT TRC20](https://img.shields.io/badge/Donate-USDT%20TRC20-26A17B?logo=tether&logoColor=white)](#support-the-project)
 [![Donate by card — DonationAlerts](https://img.shields.io/badge/Donate-DonationAlerts-F57507)](https://www.donationalerts.com/r/edwardluan11)
 
-> **In short.** TB is a complete trading system for KuCoin Futures: a Python +
+> **In short.** KuCoin Turbo Bot is a complete trading system for KuCoin Futures: a Python +
 > Rust core, a web panel, a Telegram bot, server deployment and a simulator.
 > The strategy is not hard-coded: it is defined by a *preset* — a base config
 > plus a list of overrides. The default today is **Turbo 6.0**, an aggressive
@@ -109,7 +109,7 @@ What these numbers mean:
 
 ## The key advantage: one system, any strategy
 
-Most bots are a single strategy baked into code. TB is the opposite:
+Most bots are a single strategy baked into code. KuCoin Turbo Bot is the opposite:
 
 **1. A strategy is data.** Preset = base config + overrides. This is (abridged)
 Turbo 6.0 in `panel/presets.json`:
